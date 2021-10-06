@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "BRiXPmhzAm8yKb+BHBylbgIooq0n3AJufBVT3QN+/CAwTQ1seBmPjCNydxcbhyeyp+1JYzrDDBx8r/85ZW0joA==",
+  "success": true,
+  "projectFilePath": "D:\\Git\\IE307.M11\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp.iOS\\PhoneStoreApp.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\HP\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512"
+  ],
+  "logs": []
+}

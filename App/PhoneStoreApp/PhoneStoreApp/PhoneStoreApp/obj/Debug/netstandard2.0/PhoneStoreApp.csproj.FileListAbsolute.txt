@@ -1,0 +1,15 @@
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\bin\Debug\netstandard2.0\PhoneStoreApp.deps.json
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\bin\Debug\netstandard2.0\PhoneStoreApp.dll
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\bin\Debug\netstandard2.0\ref\PhoneStoreApp.dll
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\bin\Debug\netstandard2.0\PhoneStoreApp.pdb
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\PhoneStoreApp.csproj.AssemblyReference.cache
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\PhoneStoreApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\App.xaml.g.cs
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\PhoneStoreApp.AssemblyInfoInputs.cache
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\PhoneStoreApp.AssemblyInfo.cs
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\PhoneStoreApp.csproj.CoreCompileInputs.cache
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\XamlC.stamp
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\PhoneStoreApp.dll
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\ref\PhoneStoreApp.dll
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\PhoneStoreApp.pdb
