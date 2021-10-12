@@ -574,3 +574,7 @@ D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug
 D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\stamp\_GenerateJavaStubs.stamp
 D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\stamp\_GeneratePackageManagerJava.stamp
 D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\stamp\_ResolveLibraryProjectImports.stamp
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\res\drawable\home.png
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\res\drawable\heart.png
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\res\drawable\user.png
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\res\drawable\bag.png

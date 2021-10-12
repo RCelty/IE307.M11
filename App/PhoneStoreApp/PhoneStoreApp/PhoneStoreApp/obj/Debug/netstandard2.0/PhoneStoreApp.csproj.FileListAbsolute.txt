@@ -13,3 +13,8 @@ D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstan
 D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\PhoneStoreApp.dll
 D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\ref\PhoneStoreApp.dll
 D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\PhoneStoreApp.pdb
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\CartPage.xaml.g.cs
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\CustomerPage.xaml.g.cs
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\FavoriteProductPage.xaml.g.cs
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\HomePage.xaml.g.cs
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\MainViewPage.xaml.g.cs

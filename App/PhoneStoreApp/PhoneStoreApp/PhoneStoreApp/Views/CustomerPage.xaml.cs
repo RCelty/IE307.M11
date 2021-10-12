@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace PhoneStoreApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Home : ContentPage
+    public partial class CustomerPage : ContentPage
     {
-        public Home()
+        public CustomerPage()
         {
             InitializeComponent();
         }

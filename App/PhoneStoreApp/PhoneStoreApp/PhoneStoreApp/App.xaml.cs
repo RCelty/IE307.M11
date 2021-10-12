@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using PhoneStoreApp.Views;
 using Xamarin.Forms.Xaml;
 
 namespace PhoneStoreApp
@@ -10,7 +11,7 @@ namespace PhoneStoreApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainViewPage());
         }
 
         protected override void OnStart()

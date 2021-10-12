@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PhoneStoreApp.Views.MainViewPage"
+             xmlns:Views="clr-namespace:PhoneStoreApp.Views"
+             xmlns:Font="clr-namespace:PhoneStoreApp.Assets.Font"   
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             android:TabbedPage.ToolbarPlacement="Bottom"
+             NavigationPage.HasNavigationBar="False"
+             BarBackgroundColor="White"
+             TranslationY="0">
+    <!--Pages can be added as references or inline-->
+    <Views:HomePage IconImageSource="home.png" TranslationY="0"/>
+
+    <Views:FavoriteProductPage IconImageSource="heart.png" TranslationY="0"/>
+
+    <Views:CartPage IconImageSource="bag.png" TranslationY="0"/>
+
+    <Views:CustomerPage IconImageSource="user.png" TranslationY="0"/>
+
+</TabbedPage>
