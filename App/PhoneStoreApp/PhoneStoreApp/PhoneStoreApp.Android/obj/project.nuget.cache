@@ -1,9 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "QZNLOc4AgbdhJPQrprVWRUsO9/pYZ3rRiLCBH9VbCf1eePQhU+AYqH9FAF1SfiWCJzKPztsglSF6XMAsYeleWw==",
+  "dgSpecHash": "7sbud8biZGyM/ym18k/LGIWXB5aMtx6lfDAOoz5+XMFKd2zJ4xX5zs/JRthj4twUFq88fcEt6bRWO3lIoHF3qQ==",
   "success": true,
   "projectFilePath": "D:\\Git\\IE307.M11\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp.Android\\PhoneStoreApp.Android.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\HP\\.nuget\\packages\\com.airbnb.android.lottie\\3.6.1\\com.airbnb.android.lottie.3.6.1.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\com.airbnb.xamarin.forms.lottie\\4.0.9\\com.airbnb.xamarin.forms.lottie.4.0.9.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\rg.plugins.popup\\2.0.0.11\\rg.plugins.popup.2.0.0.11.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\square.okio\\1.17.4\\square.okio.1.17.4.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.androidx.activity\\1.1.0.5\\xamarin.androidx.activity.1.1.0.5.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.androidx.annotation\\1.1.0.8\\xamarin.androidx.annotation.1.1.0.8.nupkg.sha512",
@@ -52,7 +56,8 @@
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.google.android.material\\1.2.1.1\\xamarin.google.android.material.1.2.1.1.nupkg.sha512",
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.google.guava.listenablefuture\\1.0.0.2\\xamarin.google.guava.listenablefuture.1.0.0.2.nupkg.sha512"
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.google.guava.listenablefuture\\1.0.0.2\\xamarin.google.guava.listenablefuture.1.0.0.2.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\xf.material\\1.7.8\\xf.material.1.7.8.nupkg.sha512"
   ],
   "logs": []
 }

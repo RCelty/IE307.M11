@@ -1,13 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PhoneStoreApp.Views.HomePage">
+             x:Class="PhoneStoreApp.Views.HomePage"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="&#xf015;"
                 FontFamily="faS"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <material:MaterialTextField Placeholder="Placeholder" InputType="Default" BackgroundColor="White" AlwaysShowUnderline="True"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

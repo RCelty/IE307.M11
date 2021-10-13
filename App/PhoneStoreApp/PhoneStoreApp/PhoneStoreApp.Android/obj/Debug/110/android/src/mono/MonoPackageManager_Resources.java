@@ -4,7 +4,11 @@ public class MonoPackageManager_Resources {
 		/* We need to ensure that "PhoneStoreApp.Android.dll" comes first in this list. */
 		"PhoneStoreApp.Android.dll",
 		"FormsViewGroup.dll",
+		"Lottie.Android.dll",
+		"Lottie.Forms.dll",
 		"PhoneStoreApp.dll",
+		"Rg.Plugins.Popup.dll",
+		"Square.OkIO.dll",
 		"Xamarin.AndroidX.Activity.dll",
 		"Xamarin.AndroidX.Annotation.dll",
 		"Xamarin.AndroidX.Annotation.Experimental.dll",
@@ -55,6 +59,7 @@ public class MonoPackageManager_Resources {
 		"Xamarin.Forms.Xaml.dll",
 		"Xamarin.Google.Android.Material.dll",
 		"Xamarin.Google.Guava.ListenableFuture.dll",
+		"XF.Material.dll",
 	};
 	public static String[] Dependencies = new String[]{
 	};

@@ -10,6 +10,7 @@
       "PhoneStoreApp/1.0.0": {
         "dependencies": {
           "NETStandard.Library": "2.0.3",
+          "XF.Material": "1.7.8",
           "Xamarin.Essentials": "1.6.1",
           "Xamarin.Forms": "5.0.0.2012"
         },
@@ -17,10 +18,32 @@
           "PhoneStoreApp.dll": {}
         }
       },
+      "Com.Airbnb.Xamarin.Forms.Lottie/4.0.9": {
+        "dependencies": {
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Lottie.Forms.dll": {
+            "assemblyVersion": "4.0.9.0",
+            "fileVersion": "4.0.9.0"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/1.1.0": {},
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
+      "Rg.Plugins.Popup/2.0.0.11": {
+        "dependencies": {
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Rg.Plugins.Popup.dll": {
+            "assemblyVersion": "2.0.0.11",
+            "fileVersion": "2.0.0.11"
+          }
         }
       },
       "System.Numerics.Vectors/4.5.0": {
@@ -57,6 +80,20 @@
             "fileVersion": "5.0.0.671"
           }
         }
+      },
+      "XF.Material/1.7.8": {
+        "dependencies": {
+          "Com.Airbnb.Xamarin.Forms.Lottie": "4.0.9",
+          "Rg.Plugins.Popup": "2.0.0.11",
+          "Xamarin.Essentials": "1.6.1",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "runtime": {
+          "lib/netstandard2.0/XF.Material.dll": {
+            "assemblyVersion": "1.7.8.0",
+            "fileVersion": "1.7.8.0"
+          }
+        }
       }
     }
   },
@@ -65,6 +102,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Com.Airbnb.Xamarin.Forms.Lottie/4.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aMWf7ej3usaCljPig8Hq2pFzleKOlqL+Dm1Hl0rCc32CMFapnunOC/970AUkx2YaplN+IQcXdsD9y0ngQW+w3A==",
+      "path": "com.airbnb.xamarin.forms.lottie/4.0.9",
+      "hashPath": "com.airbnb.xamarin.forms.lottie.4.0.9.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
@@ -79,6 +123,13 @@
       "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "Rg.Plugins.Popup/2.0.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Fa225jLSyum7oFwmC2tZeJqf0b/m2ZpvVSEVIhqmxcme4nEW6rl1Ncnj6zGIOjKlZ05m8L3mxdFdiI/TxI5InQ==",
+      "path": "rg.plugins.popup/2.0.0.11",
+      "hashPath": "rg.plugins.popup.2.0.0.11.nupkg.sha512"
     },
     "System.Numerics.Vectors/4.5.0": {
       "type": "package",
@@ -100,6 +151,13 @@
       "sha512": "sha512-Rqc6xvWR/sf+Db5+qRCFmuYTWVp04QWRfwPto2/JHbShSy4Ed53Q2jpoFzsoloXkJA6saD236PlaWAhT6vI4gw==",
       "path": "xamarin.forms/5.0.0.2012",
       "hashPath": "xamarin.forms.5.0.0.2012.nupkg.sha512"
+    },
+    "XF.Material/1.7.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-g7VBANDzya8KAXJLcTlTPf+iX4tT21EgBtcVj+yr2Mky/mYP1Py159X3ouvsgSlP/3aTpQXOpkXbbjbRaqL6Dw==",
+      "path": "xf.material/1.7.8",
+      "hashPath": "xf.material.1.7.8.nupkg.sha512"
     }
   }
 }
