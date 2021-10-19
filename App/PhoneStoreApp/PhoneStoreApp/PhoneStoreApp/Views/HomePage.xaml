@@ -2,14 +2,129 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PhoneStoreApp.Views.HomePage"
+             x:Name="MyHomePage"
              xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="&#xf015;"
-                FontFamily="faS"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-            <material:MaterialTextField Placeholder="Placeholder" InputType="Default" BackgroundColor="White" AlwaysShowUnderline="True"/>
-        </StackLayout>
+        <ScrollView Margin="15" VerticalScrollBarVisibility="Never">
+            <StackLayout HorizontalOptions="FillAndExpand">
+
+                <!--Search bar-->
+                <Frame HasShadow="True"
+                           IsClippedToBounds="True" 
+                           Margin="5,10,5,0"
+                           HeightRequest="40"
+                           WidthRequest="300"
+                           CornerRadius="10"
+                           Padding="0"
+                           Opacity="0.9"
+                           x:Name="entrySearch" 
+                           >
+                    <SearchBar Placeholder="Search Product Name" BackgroundColor="#EAEAEA"></SearchBar>
+                </Frame>
+
+                <!--Carousel-->
+                <AbsoluteLayout>
+
+                    <CarouselView x:Name="CarouselViewer"
+                                  ItemsSource="{Binding Advertisements}" 
+                                  HeightRequest="250"
+                                  Margin="0,20,0,20"
+                                  TranslationY="0">
+                        <CarouselView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="5"/>
+                        </CarouselView.ItemsLayout>
+
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame HasShadow="True" 
+                                           HorizontalOptions="FillAndExpand"
+                                           VerticalOptions="FillAndExpand"
+                                           Scale="1.2">
+                                        <Image Source="{Binding Image}"/>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+
+                </AbsoluteLayout>
+
+                <!--Categories List-->
+                <ScrollView Orientation="Horizontal"
+                            Margin="0,10,20,0"
+                            HorizontalScrollBarVisibility="Never">
+                    <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Categories}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <material:MaterialButton BackgroundColor="Transparent" 
+                                             HorizontalOptions="Center" 
+                                             Text="{Binding DisplayName}" 
+                                             TextColor="Black" 
+                                             FontAttributes="None"
+                                             TextTransform="None"
+                                             VerticalOptions="Center" 
+                                             ButtonType="Outlined"
+                                             CornerRadius="20"
+                                             BorderWidth="1.5"
+                                             BorderColor="Black"/>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </ScrollView>
+
+                <!--Product Section 1-->
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Sản phẩm nổi bật" TextTransform="Uppercase" FontSize="Large" Margin="5"/>
+                        <material:MaterialButton BackgroundColor="Transparent"
+                                             Text="Xem tất cả"
+                                             TextColor="Blue"
+                                             FontAttributes="None"
+                                             TextTransform="None"
+                                             VerticalOptions="Center" 
+                                             HorizontalOptions="EndAndExpand"
+                                             ButtonType="Text"/>
+                    </StackLayout>
+
+                    <ScrollView Orientation="Horizontal"
+                                HorizontalScrollBarVisibility="Never">
+                        <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Products}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <material:MaterialCard>
+                                        <StackLayout>
+                                            <Image Source="{Binding Img}" HeightRequest="200" WidthRequest="200"/>
+                                            <Label Text="{Binding DisplayName}" FontSize="Large" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Price}" FontSize="Medium" TextColor="Red" FontAttributes="Bold"/>
+
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="&#xf005;" FontFamily="faS" TextColor="Yellow"/>
+                                                <Label Text="{Binding Rating}"/>
+                                                <Label Text="{Binding CommentCount}" Margin="10,0,0,0"/>
+                                                <Label Text="Reviews"/>
+                                                <ImageButton BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" 
+                                                             Command="{Binding BindingContext.FavoriteIconOnClickCommand, Source={x:Reference Name=MyHomePage}}"
+                                                             CommandParameter="{Binding .}">
+                                                    <ImageButton.Source>
+                                                        <FontImageSource Color="Red"
+                                                                         Size="Small"
+                                                                         FontFamily="faR"
+                                                                         Glyph="&#xf004;">
+                                                        </FontImageSource>
+                                                    </ImageButton.Source>
+                                                </ImageButton>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </material:MaterialCard>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </ScrollView>
+
+                </StackLayout>
+                
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

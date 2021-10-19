@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PhoneStoreApp.App">
+             x:Class="PhoneStoreApp.App"
+             xmlns:Converter="clr-namespace:PhoneStoreApp.Converter">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <Converter:ConvertBooleanFavoriteProductToFontFamily x:Key="ConvertBooleanFavoriteProductToFontFamily"></Converter:ConvertBooleanFavoriteProductToFontFamily>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
