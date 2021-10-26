@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 
 using PhoneStoreApp.Models;
+using PhoneStoreApp.Services;
 using Xamarin.Forms;
 
 namespace PhoneStoreApp.ViewModels
@@ -48,15 +49,19 @@ namespace PhoneStoreApp.ViewModels
 
 
         #region Command
-        public Command FavoriteIconOnClickCommand { get; set; }
+        
         #endregion
         public HomeViewModel()
         {
             createAdvertisement();
-            createCategory();
-            createProduct();
+            LoadData();
+            //createCategory();
+            createProduct();         
+        }
 
-            FavoriteIconOnClickCommand = new Command(FavoriteIconOnClick);
+        private async void LoadData()
+        {
+            Categories = new ObservableCollection<Category>(await HomeService.Instance.GetAllCategoryAsync());
         }
 
         public void createAdvertisement()
@@ -83,19 +88,6 @@ namespace PhoneStoreApp.ViewModels
             Products.Add(new Product { ID = 1, DisplayName = "Điện thoại 1", Img = "img1.jpg", Price = 2000000, Rating = 4.6, CommentCount = 86 });
             Products.Add(new Product { ID = 2, DisplayName = "Điện thoại 2", Img = "img1.jpg", Price = 2000000, Rating = 4.6, CommentCount = 86 });
             Products.Add(new Product { ID = 3, DisplayName = "Điện thoại 3", Img = "img1.jpg", Price = 2000000, Rating = 4.6, CommentCount = 86 });
-        }
-
-        public void FavoriteIconOnClick(object sender)
-        {
-            App.Current.MainPage.DisplayAlert("Alert", "your message", "OK");
-            //for (int i=0; i<Products.Count; i++)
-            //{
-            //    if (Products[i].ID == (int)sender)
-            //    {
-            //        Products[i].IsFavoriteProduct = !Products[i].IsFavoriteProduct;
-            //        break;
-            //    }
-            //}   
-        }
+        }       
     }
 }

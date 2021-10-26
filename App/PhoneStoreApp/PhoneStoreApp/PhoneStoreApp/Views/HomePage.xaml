@@ -101,19 +101,8 @@
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="&#xf005;" FontFamily="faS" TextColor="Yellow"/>
                                                 <Label Text="{Binding Rating}"/>
-                                                <Label Text="{Binding CommentCount}" Margin="10,0,0,0"/>
+                                                <Label Text="{Binding CommentCount}" Margin="10,0,0,0" HorizontalOptions="EndAndExpand"/>
                                                 <Label Text="Reviews"/>
-                                                <ImageButton BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" 
-                                                             Command="{Binding BindingContext.FavoriteIconOnClickCommand, Source={x:Reference Name=MyHomePage}}"
-                                                             CommandParameter="{Binding .}">
-                                                    <ImageButton.Source>
-                                                        <FontImageSource Color="Red"
-                                                                         Size="Small"
-                                                                         FontFamily="faR"
-                                                                         Glyph="&#xf004;">
-                                                        </FontImageSource>
-                                                    </ImageButton.Source>
-                                                </ImageButton>
                                             </StackLayout>
                                         </StackLayout>
                                     </material:MaterialCard>

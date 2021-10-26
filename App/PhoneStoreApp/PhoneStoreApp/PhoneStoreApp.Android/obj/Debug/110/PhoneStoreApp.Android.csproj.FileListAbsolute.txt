@@ -619,3 +619,4 @@ D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug
 D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\android\src\mono\com\airbnb\lottie\PerformanceTracker_FrameListenerImplementor.java
 D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\res\drawable\backgroundlogin.jpg
 D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\res\drawable\img1.jpg
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\android\assets\Newtonsoft.Json.dll

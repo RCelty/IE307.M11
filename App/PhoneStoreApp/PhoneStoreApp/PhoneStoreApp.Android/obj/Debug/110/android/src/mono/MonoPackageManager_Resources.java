@@ -6,6 +6,7 @@ public class MonoPackageManager_Resources {
 		"FormsViewGroup.dll",
 		"Lottie.Android.dll",
 		"Lottie.Forms.dll",
+		"Newtonsoft.Json.dll",
 		"PhoneStoreApp.dll",
 		"Rg.Plugins.Popup.dll",
 		"Square.OkIO.dll",

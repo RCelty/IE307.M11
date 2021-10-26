@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "7sbud8biZGyM/ym18k/LGIWXB5aMtx6lfDAOoz5+XMFKd2zJ4xX5zs/JRthj4twUFq88fcEt6bRWO3lIoHF3qQ==",
+  "dgSpecHash": "hOO2UvQjh55OYzEwOKAalj3wJPKp1odv6d2qeE6OfNO8OQ5w8qJiQaCLfr2Et0THkXUL8S9XYfTOmb8zrKDZMg==",
   "success": true,
   "projectFilePath": "D:\\Git\\IE307.M11\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp.Android\\PhoneStoreApp.Android.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\com.airbnb.android.lottie\\3.6.1\\com.airbnb.android.lottie.3.6.1.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\com.airbnb.xamarin.forms.lottie\\4.0.9\\com.airbnb.xamarin.forms.lottie.4.0.9.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\rg.plugins.popup\\2.0.0.11\\rg.plugins.popup.2.0.0.11.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\square.okio\\1.17.4\\square.okio.1.17.4.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
