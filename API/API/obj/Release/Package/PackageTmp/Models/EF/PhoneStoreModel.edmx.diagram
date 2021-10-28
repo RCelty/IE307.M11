@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="5bff103d01b840ef9a3b48eac1495bd4" Name="Diagram1">
         <EntityTypeShape EntityType="PhoneStoreModel.Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhoneStoreModel.Advertisement" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

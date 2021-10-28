@@ -34,12 +34,32 @@ namespace PhoneStoreApp.Services
                 {
                     var convertString = Const.ConverToPathWithParameter(Const.GetAllCategoryPath);
                     var dataString = await client.GetStringAsync(convertString);
-                    
+
                     var CategoryList = JsonConvert.DeserializeObject<List<Category>>(dataString);
 
                     return CategoryList;
                 }
                 catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public async Task<List<Advertisement>> GetAllAdvertisement()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.GetAllAdvertisementPath);
+                    var dataString = await client.GetStringAsync(convertString);
+
+                    var AdvertisementList = JsonConvert.DeserializeObject<List<Advertisement>>(dataString);
+
+                    return AdvertisementList;
+                }
+                catch(Exception e)
                 {
                     return null;
                 }

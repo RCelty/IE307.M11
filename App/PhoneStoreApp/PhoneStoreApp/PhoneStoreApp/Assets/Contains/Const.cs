@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace PhoneStoreApp.Assets.Contains
 {
     public class Const
-    {
+    {        
         public static readonly string SQLiteDBContextPath = "SQLite.db";
         public static readonly string Domain = $"http://192.168.1.5:88/";
 
         public static readonly string GetAllCategoryPath = Domain + @"Api/CategoryController/GetAllCategory";
+        public static readonly string GetAllAdvertisementPath = Domain + @"Api/AdvertisementController/GetAllAdvertisement";
 
         public static string ConverToPathWithParameter(string path, object[] param = null)
         {

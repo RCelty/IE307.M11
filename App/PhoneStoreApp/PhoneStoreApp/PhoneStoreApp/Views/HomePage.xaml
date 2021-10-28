@@ -28,7 +28,7 @@
                     <CarouselView x:Name="CarouselViewer"
                                   ItemsSource="{Binding Advertisements}" 
                                   HeightRequest="250"
-                                  Margin="0,20,0,20"
+                                  Margin="0,20,0,10"
                                   TranslationY="0">
                         <CarouselView.ItemsLayout>
                             <LinearItemsLayout Orientation="Horizontal" ItemSpacing="5"/>
@@ -37,11 +37,12 @@
                         <CarouselView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout>
-                                    <Frame HasShadow="True" 
+                                    <Frame HasShadow="True"                                            
+                                           VerticalOptions="FillAndExpand"    
                                            HorizontalOptions="FillAndExpand"
-                                           VerticalOptions="FillAndExpand"
                                            Scale="1.2">
-                                        <Image Source="{Binding Image}"/>
+                                        <Image Source="{Binding Image, Converter={x:StaticResource ConvertStringToImage}}"
+                                               Aspect="AspectFill"/>
                                     </Frame>
                                 </StackLayout>
                             </DataTemplate>
@@ -112,7 +113,7 @@
                     </ScrollView>
 
                 </StackLayout>
-                
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

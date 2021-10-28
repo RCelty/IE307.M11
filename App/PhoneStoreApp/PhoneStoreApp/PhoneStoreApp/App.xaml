@@ -6,6 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <Converter:ConvertBooleanFavoriteProductToFontFamily x:Key="ConvertBooleanFavoriteProductToFontFamily"></Converter:ConvertBooleanFavoriteProductToFontFamily>
+            <Converter:ConvertStringToImage x:Key="ConvertStringToImage"></Converter:ConvertStringToImage>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

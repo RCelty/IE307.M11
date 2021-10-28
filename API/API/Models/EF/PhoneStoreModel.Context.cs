@@ -26,5 +26,6 @@ namespace API.Models.EF
         }
     
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Advertisement> Advertisements { get; set; }
     }
 }

@@ -52,34 +52,16 @@ namespace PhoneStoreApp.ViewModels
         
         #endregion
         public HomeViewModel()
-        {
-            createAdvertisement();
-            LoadData();
-            //createCategory();
+        {            
+            LoadData();            
             createProduct();         
         }
 
         private async void LoadData()
         {
+            Advertisements = new ObservableCollection<Advertisement>(await HomeService.Instance.GetAllAdvertisement());
             Categories = new ObservableCollection<Category>(await HomeService.Instance.GetAllCategoryAsync());
-        }
-
-        public void createAdvertisement()
-        {
-            Advertisements = new ObservableCollection<Advertisement>();
-
-            Advertisements.Add(new Advertisement { Image = "backgroundLogin.jpg" });
-            Advertisements.Add(new Advertisement { Image = "backgroundLogin.jpg" });
-            Advertisements.Add(new Advertisement { Image = "backgroundLogin.jpg" });
-        }
-
-        public void createCategory()
-        {
-            Categories = new ObservableCollection<Category>();
-
-            Categories.Add(new Category { ID = 1, DisplayName = "Điện thoại" });
-            Categories.Add(new Category { ID = 2, DisplayName = "Laptop" });
-        }
+        }              
 
         public void createProduct()
         {
