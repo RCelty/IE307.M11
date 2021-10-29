@@ -49,12 +49,13 @@ namespace PhoneStoreApp.ViewModels
 
 
         #region Command
-        
+        public Command clickCommand { get; set; }
         #endregion
         public HomeViewModel()
         {            
             LoadData();            
-            createProduct();         
+            createProduct();
+            clickCommand = new Command<Product>(clickCommandExcute, product => product != null);
         }
 
         private async void LoadData()
@@ -71,5 +72,11 @@ namespace PhoneStoreApp.ViewModels
             Products.Add(new Product { ID = 2, DisplayName = "Điện thoại 2", Img = "img1.jpg", Price = 2000000, Rating = 4.6, CommentCount = 86 });
             Products.Add(new Product { ID = 3, DisplayName = "Điện thoại 3", Img = "img1.jpg", Price = 2000000, Rating = 4.6, CommentCount = 86 });
         }       
+
+        public void clickCommandExcute(Product product)
+        {
+            var message = product.DisplayName;
+            App.Current.MainPage.DisplayAlert("Test", message, "Ok");
+        }
     }
 }

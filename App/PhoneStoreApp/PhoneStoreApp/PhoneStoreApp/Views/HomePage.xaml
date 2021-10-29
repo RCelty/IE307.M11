@@ -102,8 +102,13 @@
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="&#xf005;" FontFamily="faS" TextColor="Yellow"/>
                                                 <Label Text="{Binding Rating}"/>
-                                                <Label Text="{Binding CommentCount}" Margin="10,0,0,0" HorizontalOptions="EndAndExpand"/>
+                                                <Label Text="{Binding CommentCount}" Margin="10,0,0,0"/>
                                                 <Label Text="Reviews"/>
+                                                <ImageButton BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Command="{Binding BindingContext.clickCommand, Source={x:Reference Name=MyHomePage}}" CommandParameter="{Binding .}">
+                                                    <ImageButton.Source>
+                                                        <FontImageSource Color="Red" FontFamily="faR" Glyph="&#xf004;" Size="20"/>
+                                                    </ImageButton.Source>
+                                                </ImageButton>
                                             </StackLayout>
                                         </StackLayout>
                                     </material:MaterialCard>
