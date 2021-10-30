@@ -6,10 +6,21 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="PhoneStoreModel.FK__Product__Categor__4BAC3F29" FromRole="Category" ToRole="Product" />
   </EntityType>
   <EntityContainer Name="PhoneStoreEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Categories" EntityType="Self.Category" />
     <EntitySet Name="Advertisements" EntityType="PhoneStoreModel.Advertisement" />
+    <EntitySet Name="Brands" EntityType="PhoneStoreModel.Brand" />
+    <EntitySet Name="Products" EntityType="PhoneStoreModel.Product" />
+    <AssociationSet Name="FK__Product__BrandID__4CA06362" Association="PhoneStoreModel.FK__Product__BrandID__4CA06362">
+      <End Role="Brand" EntitySet="Brands" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Categor__4BAC3F29" Association="PhoneStoreModel.FK__Product__Categor__4BAC3F29">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Advertisement">
     <Key>
@@ -18,4 +29,58 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Products" Relationship="PhoneStoreModel.FK__Product__BrandID__4CA06362" FromRole="Brand" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="DiscountPercent" Type="Int32" />
+    <Property Name="Rating" Type="Double" />
+    <Property Name="ViewCount" Type="Int32" />
+    <Property Name="Image1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Image2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Image3" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Image4" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="BrandID" Type="Int32" />
+    <NavigationProperty Name="Brand" Relationship="PhoneStoreModel.FK__Product__BrandID__4CA06362" FromRole="Product" ToRole="Brand" />
+    <NavigationProperty Name="Category" Relationship="PhoneStoreModel.FK__Product__Categor__4BAC3F29" FromRole="Product" ToRole="Category" />
+    <Property Name="CommentCount" Type="Int32" />
+  </EntityType>
+  <Association Name="FK__Product__BrandID__4CA06362">
+    <End Type="PhoneStoreModel.Brand" Role="Brand" Multiplicity="0..1" />
+    <End Type="PhoneStoreModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="BrandID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Categor__4BAC3F29">
+    <End Type="PhoneStoreModel.Category" Role="Category" Multiplicity="0..1" />
+    <End Type="PhoneStoreModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

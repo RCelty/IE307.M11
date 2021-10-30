@@ -7,6 +7,10 @@
       <Diagram DiagramId="5bff103d01b840ef9a3b48eac1495bd4" Name="Diagram1">
         <EntityTypeShape EntityType="PhoneStoreModel.Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PhoneStoreModel.Advertisement" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PhoneStoreModel.Brand" Width="1.5" PointX="3.75" PointY="5.25" />
+        <EntityTypeShape EntityType="PhoneStoreModel.Product" Width="1.5" PointX="6" PointY="0.75" />
+        <AssociationConnector Association="PhoneStoreModel.FK__Product__BrandID__4CA06362" />
+        <AssociationConnector Association="PhoneStoreModel.FK__Product__Categor__4BAC3F29" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

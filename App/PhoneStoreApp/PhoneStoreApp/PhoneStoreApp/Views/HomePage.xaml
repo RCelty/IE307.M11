@@ -5,7 +5,7 @@
              x:Name="MyHomePage"
              xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material">
     <ContentPage.Content>
-        <ScrollView Margin="15" VerticalScrollBarVisibility="Never">
+        <ScrollView Margin="15" VerticalScrollBarVisibility="Never" BackgroundColor="#fafafa">
             <StackLayout HorizontalOptions="FillAndExpand">
 
                 <!--Search bar-->
@@ -93,11 +93,12 @@
                         <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Products}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <material:MaterialCard>
+                                    <material:MaterialCard WidthRequest="250" Padding="15" HasShadow="True">
                                         <StackLayout>
-                                            <Image Source="{Binding Img}" HeightRequest="200" WidthRequest="200"/>
-                                            <Label Text="{Binding DisplayName}" FontSize="Large" FontAttributes="Bold"/>
-                                            <Label Text="{Binding Price}" FontSize="Medium" TextColor="Red" FontAttributes="Bold"/>
+                                            <Image Source="{Binding Image1, Converter={x:StaticResource ConvertStringToImage}}" HeightRequest="200" WidthRequest="200"/>
+                                            <Label Text="{Binding DisplayName}" FontSize="Large" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" HorizontalOptions="FillAndExpand"/>
+                                            <Label Text="{Binding Price, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="#8c8c8c" FontAttributes="Bold" TextDecorations="Strikethrough"/>
+                                            <Label Text="{Binding DiscountPrice, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="Red" FontAttributes="Bold"/>
 
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="&#xf005;" FontFamily="faS" TextColor="Yellow"/>

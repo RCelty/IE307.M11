@@ -14,6 +14,8 @@ namespace PhoneStoreApp.Assets.Contains
 
         public static readonly string GetAllCategoryPath = Domain + @"Api/CategoryController/GetAllCategory";
         public static readonly string GetAllAdvertisementPath = Domain + @"Api/AdvertisementController/GetAllAdvertisement";
+        public static readonly string GetAllBrandPath = Domain + @"Api/BrandController/GetAllBrand";
+        public static readonly string GetAllProductPath = Domain + @"Api/ProductController/GetAllProduct";
 
         public static string ConverToPathWithParameter(string path, object[] param = null)
         {
