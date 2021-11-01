@@ -26,7 +26,7 @@ namespace API.Models.DAO
             private set => instance = value;
         }
 
-        PhoneStoreEntities db = new PhoneStoreEntities();
+        PhoneStoreEntities1 db = new PhoneStoreEntities1();
 
         public async Task<List<AdvertisementDTO>> GetAllAdvertisement()
         {

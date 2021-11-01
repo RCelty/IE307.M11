@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5bff103d01b840ef9a3b48eac1495bd4" Name="Diagram1">
+      <Diagram DiagramId="af99d997eebe4f35800bc4e988fa8e78" Name="Diagram1">
+        <EntityTypeShape EntityType="PhoneStoreModel.Advertisement" Width="1.5" PointX="5.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhoneStoreModel.Brand" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PhoneStoreModel.Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PhoneStoreModel.Advertisement" Width="1.5" PointX="3.375" PointY="0.75" />
-        <EntityTypeShape EntityType="PhoneStoreModel.Brand" Width="1.5" PointX="3.75" PointY="5.25" />
-        <EntityTypeShape EntityType="PhoneStoreModel.Product" Width="1.5" PointX="6" PointY="0.75" />
-        <AssociationConnector Association="PhoneStoreModel.FK__Product__BrandID__4CA06362" />
-        <AssociationConnector Association="PhoneStoreModel.FK__Product__Categor__4BAC3F29" />
+        <EntityTypeShape EntityType="PhoneStoreModel.Product" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="PhoneStoreModel.FK__Product__BrandID__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="PhoneStoreModel.FK__Product__Categor__29572725" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -13,10 +13,10 @@ namespace API.Models.EF
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PhoneStoreEntities : DbContext
+    public partial class PhoneStoreEntities1 : DbContext
     {
-        public PhoneStoreEntities()
-            : base("name=PhoneStoreEntities")
+        public PhoneStoreEntities1()
+            : base("name=PhoneStoreEntities1")
         {
         }
     
@@ -25,9 +25,9 @@ namespace API.Models.EF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Advertisement> Advertisements { get; set; }
         public virtual DbSet<Brand> Brands { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Product> Products { get; set; }
     }
 }

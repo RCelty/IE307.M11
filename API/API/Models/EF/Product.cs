@@ -20,6 +20,7 @@ namespace API.Models.EF
         public Nullable<int> DiscountPercent { get; set; }
         public Nullable<double> Rating { get; set; }
         public Nullable<int> ViewCount { get; set; }
+        public Nullable<int> CommentCount { get; set; }
         public string Image1 { get; set; }
         public string Image2 { get; set; }
         public string Image3 { get; set; }
@@ -27,7 +28,6 @@ namespace API.Models.EF
         public string Description { get; set; }
         public Nullable<int> CategoryID { get; set; }
         public Nullable<int> BrandID { get; set; }
-        public Nullable<int> CommentCount { get; set; }
     
         public virtual Brand Brand { get; set; }
         public virtual Category Category { get; set; }

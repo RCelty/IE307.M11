@@ -238,8 +238,8 @@
     <Content Include="Global.asax" />
     <Content Include="Models\EF\PhoneStoreModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PhoneStoreModel.Context.cs</LastGenOutput>
       <DependentUpon>PhoneStoreModel.edmx</DependentUpon>
+      <LastGenOutput>PhoneStoreModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\EF\PhoneStoreModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
