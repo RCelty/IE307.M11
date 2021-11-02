@@ -179,6 +179,7 @@
     <Compile Include="Models\DTO\AdvertisementDTO.cs" />
     <Compile Include="Models\DTO\BrandDTO.cs" />
     <Compile Include="Models\DTO\CategoryDTO.cs" />
+    <Compile Include="Models\DTO\ProductDetailDTO.cs" />
     <Compile Include="Models\DTO\ProductDTO.cs" />
     <Compile Include="Models\EF\Advertisement.cs">
       <DependentUpon>PhoneStoreModel.tt</DependentUpon>
@@ -205,6 +206,9 @@
       <DependentUpon>PhoneStoreModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\EF\Product.cs">
+      <DependentUpon>PhoneStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\ProductDetail.cs">
       <DependentUpon>PhoneStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

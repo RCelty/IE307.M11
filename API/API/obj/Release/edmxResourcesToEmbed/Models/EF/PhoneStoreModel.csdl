@@ -44,6 +44,7 @@
     <Property Name="BrandID" Type="Int32" />
     <NavigationProperty Name="Brand" Relationship="Self.FK__Product__BrandID__2A4B4B5E" FromRole="Product" ToRole="Brand" />
     <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__29572725" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="ProductDetails" Relationship="PhoneStoreModel.FK__ProductDe__Produ__2D27B809" FromRole="Product" ToRole="ProductDetail" />
   </EntityType>
   <Association Name="FK__Product__BrandID__2A4B4B5E">
     <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
@@ -82,5 +83,32 @@
       <End Role="Category" EntitySet="Categories" />
       <End Role="Product" EntitySet="Products" />
     </AssociationSet>
+    <EntitySet Name="ProductDetails" EntityType="PhoneStoreModel.ProductDetail" />
+    <AssociationSet Name="FK__ProductDe__Produ__2D27B809" Association="PhoneStoreModel.FK__ProductDe__Produ__2D27B809">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductDetail" EntitySet="ProductDetails" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="ProductDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="DetailName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DetailDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__ProductDe__Produ__2D27B809" FromRole="ProductDetail" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK__ProductDe__Produ__2D27B809">
+    <End Type="PhoneStoreModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="PhoneStoreModel.ProductDetail" Role="ProductDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductDetail">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

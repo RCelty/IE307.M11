@@ -14,6 +14,12 @@ namespace API.Models.EF
     
     public partial class Product
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Product()
+        {
+            this.ProductDetails = new HashSet<ProductDetail>();
+        }
+    
         public int ID { get; set; }
         public string DisplayName { get; set; }
         public Nullable<int> Price { get; set; }
@@ -31,5 +37,7 @@ namespace API.Models.EF
     
         public virtual Brand Brand { get; set; }
         public virtual Category Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
     }
 }
