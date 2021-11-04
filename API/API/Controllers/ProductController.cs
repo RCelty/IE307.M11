@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using API.Models.DAO;
+using API.Models.DTO;
 
 namespace API.Controllers
 {
@@ -18,5 +19,14 @@ namespace API.Controllers
         {
             return Ok(await ProductDAO.Instance.GetAllProduct());
         }
+
+        //[Route("Api/ProductController/CreateProductDetail")]
+        //[AllowAnonymous]
+        //[HttpPost]
+        //public ProductDetailDTO CreateProductDetail(ProductDetailDTO productDetailDTO)
+        //{
+            
+        //    return productDetailDTO;
+        //}
     }
 }

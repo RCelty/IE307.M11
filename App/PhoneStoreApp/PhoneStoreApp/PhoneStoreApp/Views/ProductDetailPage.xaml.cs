@@ -16,7 +16,7 @@ namespace PhoneStoreApp
         public ProductDetailPage()
         {
             InitializeComponent();
-            BindingContext = new ProductViewModel();
+            //BindingContext = new ProductViewModel();
         }
     }
 }
