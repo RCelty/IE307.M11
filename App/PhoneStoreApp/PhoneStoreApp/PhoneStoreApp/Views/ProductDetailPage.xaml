@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PhoneStoreApp.ProductDetailPage"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"        
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame HasShadow="True" Margin="10,10,10,10" HeightRequest="30">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ImageButton Grid.Column="0" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" >
+                        <ImageButton.Source>
+                            <FontImageSource
+                                Size="25"
+                                Color="Black"
+                                 FontFamily="faS"
+                                Glyph="&#xf053;"
+                                >
+
+                            </FontImageSource>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <Label Text="Chi tiết sản phẩm" HorizontalTextAlignment="Center" Grid.Column="1" FontSize="20" VerticalTextAlignment="Center" TextColor="Black"></Label>
+                    <ImageButton BackgroundColor="Transparent" HorizontalOptions="End" Grid.Column="1" Margin="0,0,10,0">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                Size="25"
+                                Color="Black"
+                                 FontFamily="faL" 
+                                Glyph="&#xf064;">
+
+                                </FontImageSource>
+                            </ImageButton.Source>
+                        </ImageButton>
+                    <ImageButton BackgroundColor="Transparent" HorizontalOptions="End" Grid.Column="2">
+                        <ImageButton.Source>
+                            <FontImageSource
+                                Size="25"
+                                Color="Black"
+                                 FontFamily="faL" 
+                                Glyph="&#xf07a;">
+
+                            </FontImageSource>
+                        </ImageButton.Source>
+                    </ImageButton>
+                </Grid>
+            </Frame>
+            <ScrollView >
+                <StackLayout Orientation="Vertical" Margin="20">
+                    <Image Source="{Binding Img}" HeightRequest="300" WidthRequest="500" ></Image>
+                    <Label Text="{Binding DisplayName}" FontAttributes="Bold" TextColor="Black" FontSize="Large"></Label>
+                    <Label Text="{Binding Prices}" TextColor="Red" FontSize="Medium"></Label>
+                    <StackLayout Orientation="Horizontal">
+                        <ImageButton BackgroundColor="Transparent">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                Size="17"
+                                Color="#FFFFC120"
+                                 FontFamily="faS" 
+                                Glyph="&#xf005;">
+                                </FontImageSource>
+                            </ImageButton.Source>
+                        </ImageButton>
+                        <Label Text="{Binding Rating}"></Label>
+                        <Label Text="{Binding CommentCount}"></Label>
+                    </StackLayout>
+                    <BoxView HeightRequest="0.1" Color="Gray" Margin="0,15,0,0"></BoxView>
+                    <Label Text="Mô tả sản phẩm"></Label>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

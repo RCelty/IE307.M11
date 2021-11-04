@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\API",
+    "\\API\\API",
+    "\\API\\API\\Models",
+    "\\API\\API\\Models\\EF",
+    "\\App",
+    "\\App\\PhoneStoreApp",
+    "\\App\\PhoneStoreApp\\PhoneStoreApp",
+    "\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp",
+    "\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp\\Views"
+  ],
+  "SelectedNode": "\\API\\API\\Models\\EF\\Product.cs",
+  "PreviewInSolutionExplorer": false
+}
