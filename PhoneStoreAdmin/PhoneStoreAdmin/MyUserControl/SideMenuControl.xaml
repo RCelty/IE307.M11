@@ -1,0 +1,115 @@
+﻿<UserControl x:Class="PhoneStoreAdmin.MyUserControl.SideMenuControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PhoneStoreAdmin.MyUserControl"
+             mc:Ignorable="d" Height="450" x:Name="MySideMenu">
+
+    <UserControl.Resources>
+        <Style x:Key="tb_style" TargetType="{x:Type ToggleButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border x:Name="border"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                SnapsToDevicePixels="True"></Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid>
+            <Grid x:Name="nav_pn1" HorizontalAlignment="Left" Width="65" Background="#fafafa">
+                <StackPanel x:Name="st_pn1">
+
+                    <!--//menu toggle button//-->
+
+                    <Grid Height="90">
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="0"
+                                   Margin="73,-20,0,0"
+                                   Text="MENU"
+                                   Foreground="White"
+                                   FontSize="22"
+                                   Background="Transparent"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center">
+                            <TextBlock.Effect>
+                                <DropShadowEffect BlurRadius="10"
+                                                  ShadowDepth="1"
+                                                  Direction="90"
+                                                  Color="White"/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+
+                        <ToggleButton x:Name="tg_btn"
+                                      Grid.Column="0"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Left"
+                                      Margin="18,-20,0,0"
+                                      Height="30"
+                                      Width="30"
+                                      BorderThickness="0">
+                            <Image Source="/Assets/Images/Icons/toggle_button.png"/>
+
+                            <ToggleButton.Triggers>
+                                <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                                    <BeginStoryboard>
+                                        <Storyboard x:Name="HideStackPanel">
+                                            <DoubleAnimation Storyboard.TargetName="nav_pn1"
+                                                             Storyboard.TargetProperty="Width"
+                                                             BeginTime="0:0:0"
+                                                             From="230" To="65"
+                                                             Duration="0:0:0:0">
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+
+                                <EventTrigger RoutedEvent="ToggleButton.Checked">
+                                    <BeginStoryboard>
+                                        <Storyboard x:Name="ShowStackPanel">
+                                            <DoubleAnimation Storyboard.TargetName="nav_pn1"
+                                                             Storyboard.TargetProperty="Width"
+                                                             BeginTime="0:0:0"
+                                                             From="65" To="230"
+                                                             Duration="0:0:0:0"></DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </ToggleButton.Triggers>
+                        </ToggleButton>
+                    </Grid>
+
+                    <ListView x:Name="lstView"
+                              Background="Transparent"
+                              BorderBrush="Transparent"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                              SelectedIndex="{Binding SelectedIndex, ElementName=MySideMenu}"
+                              SelectionChanged="lstView_SelectionChanged">
+                        
+                        <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15">
+                            <StackPanel Orientation="Horizontal" Width="230">
+                                <Image Source="/Assets/Images/Icons/smartphone.png" Width="40" Height="40" Margin="0,0,0,0"/>
+                                <TextBlock Text="PRODUCTS" Margin="25,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        
+                        <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15">
+                            <StackPanel Orientation="Horizontal" Width="230">
+                                <Image Source="/Assets/Images/Icons/category.png" Width="40" Height="40" Margin="0,0,0,0"/>
+                                <TextBlock Text="CATEGORIES" Margin="25,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        
+                    </ListView>
+
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

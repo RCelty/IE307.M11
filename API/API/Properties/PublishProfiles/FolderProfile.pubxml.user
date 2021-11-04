@@ -4,8 +4,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
+<<<<<<< Updated upstream
     <_PublishTargetUrl>C:\Users\ngocd\Documents\GitHub\IE307.M11_pub</_PublishTargetUrl>
     <History>True|2021-11-04T03:14:09.0585309Z;True|2021-11-04T10:10:31.2657127+07:00;True|2021-11-04T10:10:09.7760847+07:00;True|2021-11-04T10:09:04.7004593+07:00;True|2021-11-04T10:08:37.2020059+07:00;True|2021-11-02T20:23:18.8835864+07:00;True|2021-11-01T12:09:46.1435432+07:00;True|2021-11-01T11:56:22.8084773+07:00;True|2021-10-30T20:46:06.6833932+07:00;True|2021-10-30T20:44:22.4959097+07:00;True|2021-10-30T19:50:14.3924712+07:00;True|2021-10-30T19:07:16.8871026+07:00;True|2021-10-28T19:46:44.5582428+07:00;True|2021-10-28T19:39:45.7119244+07:00;True|2021-10-26T21:33:06.2155389+07:00;True|2021-10-26T21:27:42.6645557+07:00;</History>
+=======
+    <_PublishTargetUrl>D:\Documents\Subjects\Xamarin_projects\WebAPIPublic</_PublishTargetUrl>
+    <History>True|2021-11-03T15:13:13.4705125Z;True|2021-11-03T21:53:35.6427513+07:00;True|2021-11-03T21:43:22.8778323+07:00;True|2021-11-03T21:20:45.2603947+07:00;True|2021-11-03T21:10:12.4877372+07:00;True|2021-11-02T20:23:18.8835864+07:00;True|2021-11-01T12:09:46.1435432+07:00;True|2021-11-01T11:56:22.8084773+07:00;True|2021-10-30T20:46:06.6833932+07:00;True|2021-10-30T20:44:22.4959097+07:00;True|2021-10-30T19:50:14.3924712+07:00;True|2021-10-30T19:07:16.8871026+07:00;True|2021-10-28T19:46:44.5582428+07:00;True|2021-10-28T19:39:45.7119244+07:00;True|2021-10-26T21:33:06.2155389+07:00;True|2021-10-26T21:27:42.6645557+07:00;</History>
+>>>>>>> Stashed changes
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/HelpPage/HelpPage.css">
@@ -132,10 +137,17 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/04/2021 09:53:33</publishTime>
     </File>
     <File Include="bin/API.dll">
+<<<<<<< Updated upstream
       <publishTime>11/04/2021 10:10:30</publishTime>
     </File>
     <File Include="bin/API.pdb">
       <publishTime>11/04/2021 10:10:30</publishTime>
+=======
+      <publishTime>11/03/2021 22:13:12</publishTime>
+    </File>
+    <File Include="bin/API.pdb">
+      <publishTime>11/03/2021 22:13:12</publishTime>
+>>>>>>> Stashed changes
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/04/2021 09:53:33</publishTime>

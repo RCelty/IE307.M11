@@ -25,7 +25,7 @@ namespace API.Controllers
         //[HttpPost]
         //public ProductDetailDTO CreateProductDetail(ProductDetailDTO productDetailDTO)
         //{
-            
+        //    productDetailDTO.DetailDescription += "delete";
         //    return productDetailDTO;
         //}
     }
