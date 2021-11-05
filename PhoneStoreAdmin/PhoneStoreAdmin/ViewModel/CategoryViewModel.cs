@@ -11,7 +11,7 @@ using PhoneStoreAdmin.Service;
 namespace PhoneStoreAdmin.ViewModel
 {
     public class CategoryViewModel : BaseViewModel
-    {
+    {       
         private ObservableCollection<Category> categories;
 
         public ObservableCollection<Category> Categories
@@ -24,17 +24,42 @@ namespace PhoneStoreAdmin.ViewModel
             }
         }
 
-        public ICommand AddCategoryCommand { get; set; }
+        public ICommand OpenAddCategoryCommand { get; set; }
+        public ICommand OpenEditCategoryCommand { get; set; }        
         public CategoryViewModel()
         {
-            LoadData();           
+            LoadData();
+            OpenAddCategoryCommand = new RelayCommand<object>((p) => { return true; }, (p) => { OpenAddCategoryCommandExecute(); });
+            OpenEditCategoryCommand = new RelayCommand<Category>((p) => { return true; }, (p) => { OpenEditCategoryCommandExecute(p); });          
         }
+
+        //public CategoryViewModel(Category category)
+        //{
+        //    LoadData();
+        //    categoryGlobal = category;
+        //    categoryGlobalDisplayName = categoryGlobal.DisplayName;
+        //    //OpenAddCategoryCommand = new RelayCommand<object>((p) => { return true; }, (p) => { OpenAddCategoryCommandExecute(); });
+        //    OpenEditCategoryCommand = new RelayCommand<Category>((p) => { return true; }, (p) => { OpenEditCategoryCommandExecute(p); });         
+        //}
 
         private async void LoadData()
         {
             
             Categories = new ObservableCollection<Category>(await CategoryService.Instance.GetAllCategoryAsync());
-            
+                       
         }
+
+        void OpenAddCategoryCommandExecute()
+        {
+            Category category = new Category();
+            AddCategoryWindow addCategoryWindow = new AddCategoryWindow(category);
+            addCategoryWindow.ShowDialog();
+        }
+
+        void OpenEditCategoryCommandExecute(Category category)
+        {
+            AddCategoryWindow addCategoryWindow = new AddCategoryWindow(category);
+            addCategoryWindow.ShowDialog();
+        }        
     }
 }
