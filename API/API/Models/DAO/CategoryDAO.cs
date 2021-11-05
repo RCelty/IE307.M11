@@ -35,5 +35,18 @@ namespace API.Models.DAO
                         .Select(category => new CategoryDTO(category))
                         .ToList();
         }
+
+        public async Task<int> AddCategory(CategoryDTO categoryDTO)
+        {
+            var category = new Category()
+            {
+                DisplayName = categoryDTO.DisplayName
+            };
+
+            db.Categories.Add(category);
+            await db.SaveChangesAsync();
+
+            return category.ID;
+        } 
     }
 }

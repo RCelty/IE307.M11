@@ -27,3 +27,5 @@ D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\CategoryPage.g.cs
 D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\ProductPage.g.cs
 D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\CategoryPage.baml
 D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\ProductPage.baml
+D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\bin\Debug\Newtonsoft.Json.dll
+D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\bin\Debug\Newtonsoft.Json.xml

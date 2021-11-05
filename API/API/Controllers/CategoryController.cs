@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using API.Models.DAO;
+using API.Models.DTO;
 
 namespace API.Controllers
 {
@@ -17,6 +18,14 @@ namespace API.Controllers
         public async Task<IHttpActionResult> GetAllCategory()
         {
             return Ok(await CategoryDAO.Instance.GetAllCategory());
+        }
+
+        [Route("Api/CategoryController/AddCategory")]
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IHttpActionResult> AddCategory(CategoryDTO categoryDTO)
+        {
+            return Ok(await CategoryDAO.Instance.AddCategory(categoryDTO));
         }
     }
 }

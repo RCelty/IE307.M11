@@ -18,5 +18,7 @@ namespace API.Controllers
         {
             return Ok(await BrandDAO.Instance.GetAllBrand());
         }
+
+        
     }
 }
