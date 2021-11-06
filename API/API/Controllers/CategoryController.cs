@@ -27,5 +27,13 @@ namespace API.Controllers
         {
             return Ok(await CategoryDAO.Instance.AddCategory(categoryDTO));
         }
+
+        [Route("Api/CategoryController/UpdateCategory")]
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IHttpActionResult> UpdateCategory(CategoryDTO categoryDTO)
+        {
+            return Ok(await CategoryDAO.Instance.UpdateCategory(categoryDTO));
+        }
     }
 }

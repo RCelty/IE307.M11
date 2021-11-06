@@ -36,7 +36,8 @@ namespace PhoneStoreAdmin.ViewModel
             }
             else
             {
-
+                await CategoryService.Instance.UpdateCategory(category);
+                w.Close();
             }
         }
     }

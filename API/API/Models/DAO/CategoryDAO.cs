@@ -48,5 +48,20 @@ namespace API.Models.DAO
 
             return category.ID;
         } 
+
+        public async Task<bool> UpdateCategory(CategoryDTO category)
+        {
+            var result = db.Categories.SingleOrDefault(c => c.ID == category.ID);
+
+            if (result != null)
+            {
+                result.DisplayName = category.DisplayName;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

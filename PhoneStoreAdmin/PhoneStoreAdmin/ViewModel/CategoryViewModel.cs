@@ -32,15 +32,7 @@ namespace PhoneStoreAdmin.ViewModel
             OpenAddCategoryCommand = new RelayCommand<object>((p) => { return true; }, (p) => { OpenAddCategoryCommandExecute(); });
             OpenEditCategoryCommand = new RelayCommand<Category>((p) => { return true; }, (p) => { OpenEditCategoryCommandExecute(p); });          
         }
-
-        //public CategoryViewModel(Category category)
-        //{
-        //    LoadData();
-        //    categoryGlobal = category;
-        //    categoryGlobalDisplayName = categoryGlobal.DisplayName;
-        //    //OpenAddCategoryCommand = new RelayCommand<object>((p) => { return true; }, (p) => { OpenAddCategoryCommandExecute(); });
-        //    OpenEditCategoryCommand = new RelayCommand<Category>((p) => { return true; }, (p) => { OpenEditCategoryCommandExecute(p); });         
-        //}
+        
 
         private async void LoadData()
         {
