@@ -34,6 +34,7 @@ namespace API.Models.EF
         public string Description { get; set; }
         public Nullable<int> CategoryID { get; set; }
         public Nullable<int> BrandID { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         public virtual Brand Brand { get; set; }
         public virtual Category Category { get; set; }

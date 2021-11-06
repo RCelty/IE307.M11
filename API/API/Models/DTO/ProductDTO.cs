@@ -38,6 +38,8 @@ namespace API.Models.DTO
 
         public string BrandName { get; set; }
 
+        public bool? IsDeleted { get; set; }
+
         public List<ProductDetailDTO> ProductDetails { get; set; }
 
         public ProductDTO()
@@ -64,8 +66,10 @@ namespace API.Models.DTO
             BrandName = product.Brand.DisplayName;
             DiscountPrice = product.Price - (int)Math.Ceiling((float)product.Price * (float)product.DiscountPercent / 100);
             ProductDetails = product.ProductDetails
+                                        .Where(productDetail => productDetail.IsDeleted == false)
                                         .Select(productDetail => new ProductDetailDTO(productDetail))
                                         .ToList();
+            IsDeleted = product.IsDeleted;
         }
     }
 }

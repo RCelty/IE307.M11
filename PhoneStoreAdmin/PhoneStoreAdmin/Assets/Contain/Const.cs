@@ -17,6 +17,7 @@ namespace PhoneStoreAdmin.Assets.Contain
         public static readonly string GetAllProductPath = Domain + @"Api/ProductController/GetAllProduct";
         public static readonly string AddCategoryPath = Domain + @"Api/CategoryController/AddCategory";
         public static readonly string UpdateCategoryPath = Domain + @"Api/CategoryController/UpdateCategory";
+        public static readonly string DeleteCategoryPath = Domain + @"Api/CategoryController/DeleteCategory";
 
         public static string ConverToPathWithParameter(string path, object[] param = null)
         {

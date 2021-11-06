@@ -15,6 +15,8 @@ namespace API.Models.DTO
 
         public string DetailDescription { get; set; }
 
+        public bool? IsDeleted { get; set; }
+
         public ProductDetailDTO()
         {
 
@@ -26,6 +28,7 @@ namespace API.Models.DTO
             ProductID = productDetail.ProductID;
             DetailName = productDetail.DetailName;
             DetailDescription = productDetail.DetailDescription;
+            IsDeleted = productDetail.IsDeleted;
         }
     }
 }

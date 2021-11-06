@@ -27,7 +27,7 @@
                         <TextBlock Grid.Column="0" x:Name="ID" Text="{Binding ID}" VerticalAlignment="Center"/>
                         <TextBlock Grid.Column="1" x:Name="DisplayName" Text="{Binding DisplayName}" VerticalAlignment="Center"/>
                             <Button Grid.Column="2" Content="Sửa" Margin="10,0,10,0" Background="LightGreen" Command="{Binding DataContext.OpenEditCategoryCommand, Source={x:Reference Name=MyCategoryPage}}" CommandParameter="{Binding .}"/>
-                        <Button Grid.Column="3" Content="Xóa" Margin="10,0,10,0" Background="red"/>
+                            <Button Grid.Column="3" Content="Xóa" Margin="10,0,10,0" Background="red" Command="{Binding DataContext.DeleteCategoryCommand, Source={x:Reference Name=MyCategoryPage}}" CommandParameter="{Binding .}"/>
                     </Grid>
                     </Border>
                 </DataTemplate>

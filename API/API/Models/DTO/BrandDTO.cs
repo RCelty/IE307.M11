@@ -15,6 +15,8 @@ namespace API.Models.DTO
 
         public string Image { get; set; }
 
+        public bool? IsDeleted { get; set; }
+
         public BrandDTO()
         {
 
@@ -25,6 +27,7 @@ namespace API.Models.DTO
             DisplayName = brand.DisplayName;
             ID = brand.ID;
             Image = Const.BrandImagePath + brand.Image;
+            IsDeleted = brand.IsDeleted;
         }
     }
 }

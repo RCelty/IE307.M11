@@ -19,6 +19,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DisplayName" Type="nvarchar" MaxLength="100" />
           <Property Name="Image" Type="varchar" MaxLength="500" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -26,6 +27,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DisplayName" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -45,6 +47,7 @@
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
           <Property Name="CategoryID" Type="int" />
           <Property Name="BrandID" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="ProductDetail">
           <Key>
@@ -54,8 +57,9 @@
           <Property Name="ProductID" Type="int" />
           <Property Name="DetailName" Type="nvarchar" MaxLength="100" />
           <Property Name="DetailDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
-        <Association Name="FK__Product__BrandID__2A4B4B5E">
+        <Association Name="FK__Product__BrandID__2C3393D0">
           <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -67,7 +71,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__Categor__29572725">
+        <Association Name="FK__Product__Categor__2B3F6F97">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -79,7 +83,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductDe__Produ__2D27B809">
+        <Association Name="FK__ProductDe__Produ__300424B4">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -97,15 +101,15 @@
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductDetail" EntityType="Self.ProductDetail" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Product__BrandID__2A4B4B5E" Association="Self.FK__Product__BrandID__2A4B4B5E">
+          <AssociationSet Name="FK__Product__BrandID__2C3393D0" Association="Self.FK__Product__BrandID__2C3393D0">
             <End Role="Brand" EntitySet="Brand" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__Categor__29572725" Association="Self.FK__Product__Categor__29572725">
+          <AssociationSet Name="FK__Product__Categor__2B3F6F97" Association="Self.FK__Product__Categor__2B3F6F97">
             <End Role="Category" EntitySet="Category" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductDe__Produ__2D27B809" Association="Self.FK__ProductDe__Produ__2D27B809">
+          <AssociationSet Name="FK__ProductDe__Produ__300424B4" Association="Self.FK__ProductDe__Produ__300424B4">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductDetail" EntitySet="ProductDetail" />
           </AssociationSet>
@@ -129,6 +133,7 @@
           <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Products" Relationship="Self.FK__Product__BrandID__2A4B4B5E" FromRole="Brand" ToRole="Product" />
+          <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -137,6 +142,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Products" Relationship="Self.FK__Product__Categor__29572725" FromRole="Category" ToRole="Product" />
+          <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -159,6 +165,7 @@
           <NavigationProperty Name="Brand" Relationship="Self.FK__Product__BrandID__2A4B4B5E" FromRole="Product" ToRole="Brand" />
           <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__29572725" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="ProductDetails" Relationship="PhoneStoreModel.FK__ProductDe__Produ__2D27B809" FromRole="Product" ToRole="ProductDetail" />
+          <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
         <Association Name="FK__Product__BrandID__2A4B4B5E">
           <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
@@ -212,6 +219,7 @@
           <Property Name="DetailName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DetailDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__ProductDe__Produ__2D27B809" FromRole="ProductDetail" ToRole="Product" />
+          <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
         <Association Name="FK__ProductDe__Produ__2D27B809">
           <End Type="PhoneStoreModel.Product" Role="Product" Multiplicity="0..1" />
@@ -242,6 +250,7 @@
           <EntitySetMapping Name="Brands">
             <EntityTypeMapping TypeName="PhoneStoreModel.Brand">
               <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
@@ -251,6 +260,7 @@
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="PhoneStoreModel.Category">
               <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
               </MappingFragment>
@@ -259,6 +269,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="PhoneStoreModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
@@ -279,6 +290,7 @@
           <EntitySetMapping Name="ProductDetails">
             <EntityTypeMapping TypeName="PhoneStoreModel.ProductDetail">
               <MappingFragment StoreEntitySet="ProductDetail">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="DetailDescription" ColumnName="DetailDescription" />
                 <ScalarProperty Name="DetailName" ColumnName="DetailName" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />

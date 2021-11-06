@@ -96,5 +96,30 @@ namespace PhoneStoreAdmin.Service
                 }
             }
         }
+
+        public async Task<bool> DeleteCategory(Category category)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.DeleteCategoryPath);
+
+                    var myContent = JsonConvert.SerializeObject(category);
+                    var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                    var byteContent = new ByteArrayContent(buffer);
+
+                    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    var result = client.PostAsync(convertString, byteContent).Result.Content.ReadAsStringAsync().Result;
+
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

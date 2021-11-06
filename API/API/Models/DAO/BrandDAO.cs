@@ -31,6 +31,7 @@ namespace API.Models.DAO
         public async Task<List<BrandDTO>> GetAllBrand()
         {
             return (await db.Brands
+                        .Where(brand => brand.IsDeleted == false)
                         .ToListAsync())
                         .Select(brand => new BrandDTO(brand))
                         .ToList();

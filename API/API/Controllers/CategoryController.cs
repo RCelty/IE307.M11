@@ -35,5 +35,21 @@ namespace API.Controllers
         {
             return Ok(await CategoryDAO.Instance.UpdateCategory(categoryDTO));
         }
+
+        [Route("Api/CategoryController/DeleteCategory")]
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IHttpActionResult> DeleteCategory(CategoryDTO categoryDTO)
+        {
+            return Ok(await CategoryDAO.Instance.DeleteCategory(categoryDTO));
+        }
+
+        [Route("Api/CategoryController/RestoreAllCategory")]
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IHttpActionResult> RestoreAllCategory()
+        {
+            return Ok(await CategoryDAO.Instance.RestoreAllCategory());
+        }
     }
 }

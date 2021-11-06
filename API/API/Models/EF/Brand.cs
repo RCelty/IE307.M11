@@ -23,6 +23,7 @@ namespace API.Models.EF
         public int ID { get; set; }
         public string DisplayName { get; set; }
         public string Image { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }

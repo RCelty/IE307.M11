@@ -18,6 +18,7 @@ namespace API.Models.EF
         public Nullable<int> ProductID { get; set; }
         public string DetailName { get; set; }
         public string DetailDescription { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         public virtual Product Product { get; set; }
     }

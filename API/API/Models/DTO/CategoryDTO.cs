@@ -12,6 +12,8 @@ namespace API.Models.DTO
 
         public string DisplayName { get; set; }
 
+        public bool? IsDeleted { get; set; }
+
         public CategoryDTO()
         {
 
@@ -21,6 +23,7 @@ namespace API.Models.DTO
         {
             DisplayName = category.DisplayName;
             ID = category.ID;
+            IsDeleted = category.IsDeleted;
         }
     }
 }

@@ -25,12 +25,15 @@ namespace PhoneStoreAdmin.ViewModel
         }
 
         public ICommand OpenAddCategoryCommand { get; set; }
-        public ICommand OpenEditCategoryCommand { get; set; }        
+        public ICommand OpenEditCategoryCommand { get; set; }     
+        public ICommand DeleteCategoryCommand { get; set; }     
+        
         public CategoryViewModel()
         {
             LoadData();
             OpenAddCategoryCommand = new RelayCommand<object>((p) => { return true; }, (p) => { OpenAddCategoryCommandExecute(); });
-            OpenEditCategoryCommand = new RelayCommand<Category>((p) => { return true; }, (p) => { OpenEditCategoryCommandExecute(p); });          
+            OpenEditCategoryCommand = new RelayCommand<Category>((p) => { return true; }, (p) => { OpenEditCategoryCommandExecute(p); });
+            DeleteCategoryCommand = new RelayCommand<Category>((p) => { return true; }, (p) => { DeleteCategoryCommandExecute(p); });
         }
         
 
@@ -52,6 +55,11 @@ namespace PhoneStoreAdmin.ViewModel
         {
             AddCategoryWindow addCategoryWindow = new AddCategoryWindow(category);
             addCategoryWindow.ShowDialog();
-        }        
+        }      
+        
+        async void DeleteCategoryCommandExecute(Category category)
+        {
+            await CategoryService.Instance.DeleteCategory(category);       
+        }
     }
 }

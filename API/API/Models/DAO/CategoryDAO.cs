@@ -30,24 +30,27 @@ namespace API.Models.DAO
 
         public async Task<List<CategoryDTO>> GetAllCategory()
         {
-            return (await db.Categories
+            var CategoryList = (await db.Categories
                         .ToListAsync())
                         .Select(category => new CategoryDTO(category))
                         .ToList();
+            CategoryList = CategoryList.FindAll(c => c.IsDeleted == false);
+            return CategoryList;
         }
 
         public async Task<int> AddCategory(CategoryDTO categoryDTO)
         {
             var category = new Category()
             {
-                DisplayName = categoryDTO.DisplayName
+                DisplayName = categoryDTO.DisplayName,
+                IsDeleted = false
             };
 
             db.Categories.Add(category);
             await db.SaveChangesAsync();
 
             return category.ID;
-        } 
+        }
 
         public async Task<bool> UpdateCategory(CategoryDTO category)
         {
@@ -59,6 +62,43 @@ namespace API.Models.DAO
                 return true;
             }
             else
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> DeleteCategory(CategoryDTO category)
+        {
+            var result = db.Categories.SingleOrDefault(c => c.ID == category.ID);
+
+            if (result != null)
+            {
+                result.IsDeleted = true;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> RestoreAllCategory()
+        {
+            var CategoryList = (await db.Categories
+                        .ToListAsync())
+                        .Select(category => new CategoryDTO(category))
+                        .ToList();
+            try
+            {
+                var DeletedList = CategoryList.FindAll(c => c.IsDeleted == true);
+
+                foreach (var c in DeletedList)
+                {
+                    c.IsDeleted = false;
+                }
+                return true;
+            }
+            catch (Exception e)
             {
                 return false;
             }

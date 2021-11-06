@@ -31,6 +31,7 @@ namespace API.Models.DAO
         public async Task<List<ProductDTO>> GetAllProduct()
         {
             return (await db.Products
+                                .Where(product => product.IsDeleted == false)
                                 .ToListAsync())
                                 .Select(product => new ProductDTO(product))
                                 .ToList();
