@@ -49,17 +49,20 @@ namespace PhoneStoreAdmin.ViewModel
             Category category = new Category();
             AddCategoryWindow addCategoryWindow = new AddCategoryWindow(category);
             addCategoryWindow.ShowDialog();
+            LoadData();
         }
 
         void OpenEditCategoryCommandExecute(Category category)
         {
             AddCategoryWindow addCategoryWindow = new AddCategoryWindow(category);
             addCategoryWindow.ShowDialog();
+            LoadData();
         }      
         
         async void DeleteCategoryCommandExecute(Category category)
         {
-            await CategoryService.Instance.DeleteCategory(category);       
+            await CategoryService.Instance.DeleteCategory(category);
+            LoadData();
         }
     }
 }

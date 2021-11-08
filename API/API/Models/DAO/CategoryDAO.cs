@@ -59,6 +59,7 @@ namespace API.Models.DAO
             if (result != null)
             {
                 result.DisplayName = category.DisplayName;
+                await db.SaveChangesAsync();
                 return true;
             }
             else
@@ -74,6 +75,7 @@ namespace API.Models.DAO
             if (result != null)
             {
                 result.IsDeleted = true;
+                await db.SaveChangesAsync();
                 return true;
             }
             else
@@ -90,12 +92,11 @@ namespace API.Models.DAO
                         .ToList();
             try
             {
-                var DeletedList = CategoryList.FindAll(c => c.IsDeleted == true);
+                var DeletedList = db.Categories.Where(c => c.IsDeleted == true).ToList();
+                DeletedList.ForEach(c => c.IsDeleted = false);
+                db.SaveChanges();
 
-                foreach (var c in DeletedList)
-                {
-                    c.IsDeleted = false;
-                }
+
                 return true;
             }
             catch (Exception e)
