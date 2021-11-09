@@ -37,7 +37,7 @@ namespace API.Controllers
             {
                 var postedFile = httpRequest.Files[file];
                 var filePath = HttpContext.Current.Server.MapPath("~/Assets/Images/Brand/" + postedFile.FileName);
-                postedFile.SaveAs(filePath);                
+                postedFile.SaveAs(filePath);
             }
 
             return Request.CreateResponse(HttpStatusCode.Created);
