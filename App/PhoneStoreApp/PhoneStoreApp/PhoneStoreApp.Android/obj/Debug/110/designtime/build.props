@@ -25,11 +25,7 @@ androidgeneratejnimarshalmethods=false
 os=windows_nt
 androidincludedebugsymbols=true
 androidpackagenamingpolicy=lowercasecrc64
-<<<<<<< Updated upstream
-_nugetassetstimestamp=637716318710771423
-=======
-_nugetassetstimestamp=637717906708944384
->>>>>>> Stashed changes
+_nugetassetstimestamp=637720695319416995
 typemapkind=strings-asm
 androidsupportedabis=arm64-v8a
 armeabi-v7a

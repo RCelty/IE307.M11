@@ -9,6 +9,6 @@
       Title="BrandPage">
 
     <Grid>
-        
+        <TextBlock Text="Brands" FontSize="100"/>
     </Grid>
 </Page>
