@@ -17,11 +17,8 @@
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>True</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
-<<<<<<< Updated upstream
-    <NameOfLastUsedPublishProfile>C:\Users\ngocd\Documents\GitHub\IE307.M11\API\API\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
-=======
     <NameOfLastUsedPublishProfile>C:\Users\ngocd\Documents\GitHub\IE307.M11\API\API\Properties\PublishProfiles\FolderProfile1.pubxml</NameOfLastUsedPublishProfile>
->>>>>>> Stashed changes
+    <NameOfLastUsedPublishProfile>C:\Users\ngocd\Documents\GitHub\IE307.M11\API\API\Properties\PublishProfiles\FolderProfile1.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
