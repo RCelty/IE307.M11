@@ -39,3 +39,4 @@ C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneS
 C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\ref\PhoneStoreApp.dll
 C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\PhoneStoreApp.pdb
 D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\ProductDetailPage.xaml.g.cs
+C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\ProductDetailPage.xaml.g.cs

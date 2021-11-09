@@ -50,11 +50,13 @@ namespace PhoneStoreApp.ViewModels
 
         #region Command
         public Command clickCommand { get; set; }
+        public Command ProductDetailOnClick { get; set; }
         #endregion
         public HomeViewModel()
         {            
             LoadData();                       
             clickCommand = new Command<Product>(clickCommandExcute, product => product != null);
+            ProductDetailOnClick = new Command<Product>(ProductDetailOnClickExcute, product => product != null);
         }
 
         private async void LoadData()
@@ -77,6 +79,10 @@ namespace PhoneStoreApp.ViewModels
         {
             var message = product.DisplayName;
             App.Current.MainPage.DisplayAlert("Test", message, "Ok");
+        }
+        public async void ProductDetailOnClickExcute(Product product)
+        {
+            await App.Current.MainPage.Navigation.PushAsync(new ProductDetailPage(product.ID), true);
         }
     }
 }

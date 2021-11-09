@@ -1425,24 +1425,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {},
+    "C:\\Users\\ngocd\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Git\\IE307.M11\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp.iOS\\PhoneStoreApp.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\ngocd\\Documents\\GitHub\\IE307.M11\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp.iOS\\PhoneStoreApp.iOS.csproj",
       "projectName": "PhoneStoreApp.iOS",
-      "projectPath": "D:\\Git\\IE307.M11\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp.iOS\\PhoneStoreApp.iOS.csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "D:\\Git\\IE307.M11\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp.iOS\\obj\\",
+      "projectPath": "C:\\Users\\ngocd\\Documents\\GitHub\\IE307.M11\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp.iOS\\PhoneStoreApp.iOS.csproj",
+      "packagesPath": "C:\\Users\\ngocd\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ngocd\\Documents\\GitHub\\IE307.M11\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ngocd\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -1456,8 +1456,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "D:\\Git\\IE307.M11\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp.csproj": {
-              "projectPath": "D:\\Git\\IE307.M11\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp.csproj"
+            "C:\\Users\\ngocd\\Documents\\GitHub\\IE307.M11\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp.csproj": {
+              "projectPath": "C:\\Users\\ngocd\\Documents\\GitHub\\IE307.M11\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp.csproj"
             }
           }
         }
