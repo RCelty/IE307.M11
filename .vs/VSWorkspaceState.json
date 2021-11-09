@@ -9,8 +9,10 @@
     "\\App\\PhoneStoreApp",
     "\\App\\PhoneStoreApp\\PhoneStoreApp",
     "\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp",
+    "\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp\\Services",
+    "\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp\\ViewModels",
     "\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp\\Views"
   ],
-  "SelectedNode": "\\API\\API\\Models\\EF\\Product.cs",
+  "SelectedNode": "\\API\\API.sln",
   "PreviewInSolutionExplorer": false
 }
