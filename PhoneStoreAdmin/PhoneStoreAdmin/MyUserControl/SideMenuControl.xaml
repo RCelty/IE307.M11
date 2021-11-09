@@ -105,7 +105,14 @@
                                 <TextBlock Text="CATEGORIES" Margin="25,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
                             </StackPanel>
                         </ListViewItem>
-                        
+
+                        <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15">
+                            <StackPanel Orientation="Horizontal" Width="230">
+                                <Image Source="/Assets/Images/Icons/brand.png" Width="40" Height="40" Margin="0,0,0,0"/>
+                                <TextBlock Text="BRANDS" Margin="25,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
+                            </StackPanel>
+                        </ListViewItem>
+
                     </ListView>
 
                 </StackPanel>

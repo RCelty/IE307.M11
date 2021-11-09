@@ -70,12 +70,19 @@
       <DependentUpon>AddCategoryWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Assets\Contain\Const.cs" />
+    <Compile Include="BrandPage.xaml.cs">
+      <DependentUpon>BrandPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\Category.cs" />
     <Compile Include="Service\CategoryService.cs" />
     <Compile Include="ViewModel\AddCategoryViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CategoryViewModel.cs" />
     <Page Include="AddCategoryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BrandPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,7 +147,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\Images\Icons\brand.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\Icons\toggle_button.png" />
   </ItemGroup>

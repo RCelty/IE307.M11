@@ -36,6 +36,9 @@ namespace PhoneStoreAdmin
                 case 1:
                     frame.Navigate(new Uri("CategoryPage.xaml", UriKind.RelativeOrAbsolute));
                     break;
+                case 2:
+                    frame.Navigate(new Uri("BrandPage.xaml", UriKind.RelativeOrAbsolute));
+                    break;
             }
         }
     }
