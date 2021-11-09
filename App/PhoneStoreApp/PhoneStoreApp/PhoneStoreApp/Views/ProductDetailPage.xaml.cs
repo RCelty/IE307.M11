@@ -1,4 +1,5 @@
-﻿using PhoneStoreApp.ViewModels;
+﻿using PhoneStoreApp.Models;
+using PhoneStoreApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,10 @@ namespace PhoneStoreApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProductDetailPage : ContentPage
     {
-        public ProductDetailPage()
+        public ProductDetailPage(Product product)
         {
             InitializeComponent();
-            //BindingContext = new ProductViewModel();
+            BindingContext = new ProductViewModel(int ID);
         }
     }
 }
