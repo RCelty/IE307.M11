@@ -52,7 +52,7 @@ namespace PhoneStoreAdmin.Service
         {
             using (HttpClient client = new HttpClient())
             {
-                var convertString = Const.ConverToPathWithParameter(Const.UploadImagePath);
+                var convertString = Const.ConverToPathWithParameter(Const.UploadBrandImagePath);
                 var requestContent = new MultipartFormDataContent();
                 //    here you can specify boundary if you need---^
                 var imageContent = new ByteArrayContent(ImageData);
@@ -62,6 +62,83 @@ namespace PhoneStoreAdmin.Service
                 requestContent.Add(imageContent, "image", ImageName);
 
                 return await client.PostAsync(convertString, requestContent);
+            }
+        }
+
+        public async Task<bool> AddBrand(Brand brand)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.AddBrandPath);
+
+                    var myContent = JsonConvert.SerializeObject(brand);
+                    var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                    var byteContent = new ByteArrayContent(buffer);
+
+                    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    var result = client.PostAsync(convertString, byteContent).Result.Content.ReadAsStringAsync().Result;
+
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                    throw e;
+                }
+            }
+        }
+
+        public async Task<bool> UpdateBrand(Brand brand)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.UpdateBrandPath);
+
+                    var myContent = JsonConvert.SerializeObject(brand);
+                    var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                    var byteContent = new ByteArrayContent(buffer);
+
+                    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    var result = client.PostAsync(convertString, byteContent).Result.Content.ReadAsStringAsync().Result;
+
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                    throw e;
+                }
+            }
+        }
+
+        public async Task<bool> DeleteBrand(Brand brand)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.DeleteBrandPath);
+
+                    var myContent = JsonConvert.SerializeObject(brand);
+                    var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                    var byteContent = new ByteArrayContent(buffer);
+
+                    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    var result = client.PostAsync(convertString, byteContent).Result.Content.ReadAsStringAsync().Result;
+
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
             }
         }
     }

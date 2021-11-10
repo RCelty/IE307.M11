@@ -14,6 +14,8 @@ namespace PhoneStoreAdmin.ViewModel
 {
     public class AddBrandViewModel : BaseViewModel
     {
+        public Brand brandGlobal { get; set; }
+
         public string DisplayName { get; set; }
 
         private string image;
@@ -31,15 +33,26 @@ namespace PhoneStoreAdmin.ViewModel
 
         public AddBrandViewModel(Brand brand, Window window)
         {
+            w = window;
+
+            brandGlobal = brand;
+            if (brandGlobal.ID != null)
+            {
+                string DomainString = "http://localhost:88/Assets/Images/Brand/";
+                DisplayName = brand.DisplayName;
+                Image = brand.Image;
+                ImageName = brand.Image.Replace(DomainString, "");
+            }
+
             ImageChooseCommand = new RelayCommand<object>((p) => { return true; }, (p) => { ImageChooseCommandExecute(); });
-            SubmitCommand = new RelayCommand<object>((p) => { return true; }, (p) => { SubmitCommandExecute(); });
+            SubmitCommand = new RelayCommand<object>((p) => { return true; }, (p) => { SubmitCommandExecute(new Brand { ID = brandGlobal.ID, DisplayName = DisplayName, Image = ImageName }); });
         }
 
         void ImageChooseCommandExecute()
         {
             var dialog = new OpenFileDialog();
             //var result = dialog.ShowDialog();
-            if (dialog.ShowDialog() == true) 
+            if (dialog.ShowDialog() == true)
             {
                 Image = dialog.FileName;
                 ImageName = dialog.SafeFileName;
@@ -48,9 +61,25 @@ namespace PhoneStoreAdmin.ViewModel
             }
         }
 
-        async void SubmitCommandExecute()
+        async void SubmitCommandExecute(Brand brand)
         {
-            await BrandService.Instance.UploadImage(ImageData, ImageName);
+            if (brand.ID == null)
+            {
+                await BrandService.Instance.UploadImage(ImageData, ImageName);
+                await BrandService.Instance.AddBrand(brand);
+                w.Close();
+            }
+            else if (ImageData != null)
+            {
+                await BrandService.Instance.UploadImage(ImageData, ImageName);
+                await BrandService.Instance.UpdateBrand(brand);
+                w.Close();
+            }
+            else
+            {
+                await BrandService.Instance.UpdateBrand(brand);
+                w.Close();
+            }
         }
     }
 }

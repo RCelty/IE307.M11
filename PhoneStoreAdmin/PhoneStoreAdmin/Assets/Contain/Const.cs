@@ -21,7 +21,10 @@ namespace PhoneStoreAdmin.Assets.Contain
         public static readonly string DeleteCategoryPath = Domain + @"Api/CategoryController/DeleteCategory";
 
         public static readonly string GetAllBrandPath = Domain + @"Api/BrandController/GetAllBrand";
-        public static readonly string UploadImagePath = Domain + @"Api/BrandController/UploadBrandImage";
+        public static readonly string UploadBrandImagePath = Domain + @"Api/BrandController/UploadBrandImage";
+        public static readonly string AddBrandPath = Domain + @"Api/BrandController/AddBrand";
+        public static readonly string UpdateBrandPath = Domain + @"Api/BrandController/UpdateBrand";
+        public static readonly string DeleteBrandPath = Domain + @"Api/BrandController/DeleteBrand";
 
         public static string ConverToPathWithParameter(string path, object[] param = null)
         {

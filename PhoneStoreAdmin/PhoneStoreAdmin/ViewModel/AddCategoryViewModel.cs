@@ -22,8 +22,10 @@ namespace PhoneStoreAdmin.ViewModel
         public AddCategoryViewModel(Category category, Window window)
         {
             w = window;
+
             categoryGlobal = category;
             DisplayName = category.DisplayName;
+
             AddOrEditCategoryCommand = new RelayCommand<object>((p) => { return true; }, (p) => { AddOrEditCategoryCommandExecute(new Category { ID = categoryGlobal.ID, DisplayName = DisplayName }); });
         }
 
