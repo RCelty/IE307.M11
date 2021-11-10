@@ -4,15 +4,14 @@
     "\\API",
     "\\API\\API",
     "\\API\\API\\Models",
-    "\\API\\API\\Models\\EF",
+    "\\API\\API\\Models\\DTO",
     "\\App",
     "\\App\\PhoneStoreApp",
     "\\App\\PhoneStoreApp\\PhoneStoreApp",
     "\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp",
-    "\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp\\Services",
     "\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp\\ViewModels",
     "\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp\\Views"
   ],
-  "SelectedNode": "\\API\\API.sln",
+  "SelectedNode": "\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp\\ViewModels\\ProductViewModel.cs",
   "PreviewInSolutionExplorer": false
 }

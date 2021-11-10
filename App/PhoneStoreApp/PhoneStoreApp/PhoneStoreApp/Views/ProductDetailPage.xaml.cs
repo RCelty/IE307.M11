@@ -14,10 +14,10 @@ namespace PhoneStoreApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProductDetailPage : ContentPage
     {
-        public ProductDetailPage()
+        public ProductDetailPage(int ID)
         {
             InitializeComponent();
-            BindingContext = new ProductViewModel();
+            BindingContext = new ProductViewModel(ID);
         }
     }
 }

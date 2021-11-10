@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PhoneStoreApp.ProductDetailPage"
              xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"        
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             x:Name="ProductDetaiPage">
     <ContentPage.Content>
         <StackLayout>
             <Frame HasShadow="True" Margin="10,10,10,10" HeightRequest="30">
@@ -13,7 +14,7 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition Width="auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <ImageButton Grid.Column="0" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" >
+                    <ImageButton Grid.Column="0" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" Command="{Binding BindingContext.GoBackOnClick, Source={Reference Name=ProductDetaiPage}}" >
                         <ImageButton.Source>
                             <FontImageSource
                                 Size="25"
@@ -52,9 +53,12 @@
             </Frame>
             <ScrollView >
                 <StackLayout Orientation="Vertical" Margin="20">
-                    <Image Source="{Binding Img}" HeightRequest="300" WidthRequest="500" ></Image>
-                    <Label Text="{Binding DisplayName}" FontAttributes="Bold" TextColor="Black" FontSize="Large"></Label>
-                    <Label Text="{Binding Prices}" TextColor="Red" FontSize="Medium"></Label>
+                    <Image Source="{Binding Product.Image1, Converter={x:StaticResource ConvertStringToImage}}" HeightRequest="300" WidthRequest="500" ></Image>
+                    <Label Text="{Binding Product.DisplayName}" FontAttributes="Bold" TextColor="Black" FontSize="Large"></Label>
+                    <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding Product.Price, Converter={x:StaticResource ConvertPriceToString}}"  FontSize="Medium" TextColor="#8c8c8c" FontAttributes="Bold" TextDecorations="Strikethrough"></Label>
+                    <Label Text="{Binding Product.DiscountPrice, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="Red" FontAttributes="Bold"/>
+                    </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <ImageButton BackgroundColor="Transparent">
                             <ImageButton.Source>
@@ -66,11 +70,32 @@
                                 </FontImageSource>
                             </ImageButton.Source>
                         </ImageButton>
-                        <Label Text="{Binding Rating}"></Label>
-                        <Label Text="{Binding CommentCount}"></Label>
+                        <Label Text="{Binding Product.Rating}"></Label>
+                        <Label Text="{Binding Product.CommentCount}"></Label>
                     </StackLayout>
                     <BoxView HeightRequest="0.1" Color="Gray" Margin="0,15,0,0"></BoxView>
-                    <Label Text="Mô tả sản phẩm"></Label>
+                    <Label Text="Thông số kĩ thuật" Margin="10,10,10,0" FontSize="Medium" FontAttributes="Bold"></Label>
+                    <StackLayout  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="10,0,10,0" Margin="0,0,0,30" IsEnabled="True" BindableLayout.ItemsSource="{Binding Product.ProductDetails}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Margin="0,0,0,0">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1.5*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="{Binding DetailName}" TextColor="Black" FontAttributes="Bold" Grid.Column="0" Grid.Row="0" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"></Label>
+                                        <Label Text="{Binding DetailDescription}" Margin="10,10,0,0" TextColor="Blue" Grid.Column="1" Grid.Row="0" HorizontalTextAlignment="Start"></Label>
+                                        
+                                    </Grid>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+
+                    </StackLayout>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

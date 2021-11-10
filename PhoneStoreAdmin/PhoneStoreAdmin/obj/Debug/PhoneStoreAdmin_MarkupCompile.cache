@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\
+C:\Users\ngocd\Documents\GitHub\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\
 PhoneStoreAdmin
 none
 false
 DEBUG;TRACE
-D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\App.xaml
+C:\Users\ngocd\Documents\GitHub\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\App.xaml
 7403794190
 
 21-423232852
-16-1871968204
+161491046294
 AddBrandWindow.xaml;AddCategoryWindow.xaml;BrandPage.xaml;CategoryPage.xaml;MainWindow.xaml;MyUserControl\SideMenuControl.xaml;ProductPage.xaml;
 
-False
+True
 

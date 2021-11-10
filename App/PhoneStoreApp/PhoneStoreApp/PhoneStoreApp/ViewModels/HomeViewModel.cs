@@ -82,7 +82,7 @@ namespace PhoneStoreApp.ViewModels
         }
         public async void ProductDetailOnClickExcute(Product product)
         {
-            await App.Current.MainPage.Navigation.PushAsync(new ProductDetailPage(), true);
+            await App.Current.MainPage.Navigation.PushAsync(new ProductDetailPage(product.ID), true);
         }
     }
 }

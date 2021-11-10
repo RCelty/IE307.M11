@@ -34,5 +34,6 @@ namespace PhoneStoreApp.Models
         public int? BrandID { get; set; }
 
         public string BrandName { get; set; }
+        public List<ProductDetail> ProductDetails { get; set; }
     }
 }
