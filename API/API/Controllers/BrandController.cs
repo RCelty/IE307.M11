@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Http;
 using API.Assets.Contain;
 using API.Models.DAO;
+using API.Models.DTO;
 
 namespace API.Controllers
 {
@@ -41,6 +42,38 @@ namespace API.Controllers
             }
 
             return Request.CreateResponse(HttpStatusCode.Created);
+        }
+
+        [Route("Api/BrandController/AddBrand")]
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IHttpActionResult> AddBrand(BrandDTO brandDTO)
+        {
+            return Ok(await BrandDAO.Instance.AddBrand(brandDTO));
+        }
+
+        [Route("Api/BrandController/UpdateBrand")]
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IHttpActionResult> UpdateBrand(BrandDTO brandDTO)
+        {
+            return Ok(await BrandDAO.Instance.UpdateBrand(brandDTO));
+        }
+
+        [Route("Api/BrandController/DeleteBrand")]
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IHttpActionResult> DeleteBrand(BrandDTO brandDTO)
+        {
+            return Ok(await BrandDAO.Instance.DeleteBrand(brandDTO));
+        }
+
+        [Route("Api/BrandController/RestoreAllBrand")]
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IHttpActionResult> RestoreAllBrand()
+        {
+            return Ok(await BrandDAO.Instance.RestoreAllBrand());
         }
     }
 }

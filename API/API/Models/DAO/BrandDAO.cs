@@ -30,11 +30,90 @@ namespace API.Models.DAO
 
         public async Task<List<BrandDTO>> GetAllBrand()
         {
-            return (await db.Brands
-                        .Where(brand => brand.IsDeleted == false)
+            var BrandList = (await db.Brands                        
                         .ToListAsync())
                         .Select(brand => new BrandDTO(brand))
                         .ToList();
+            BrandList = BrandList.FindAll(b => b.IsDeleted == false);
+            return BrandList;
+        }
+
+        public async Task<int> AddBrand(BrandDTO brandDTO)
+        {
+            var brand = new Brand()
+            {
+                DisplayName = brandDTO.DisplayName,
+                Image = brandDTO.Image,
+                IsDeleted = false
+            };
+
+            try
+            {
+                db.Brands.Add(brand);
+                await db.SaveChangesAsync();
+                return brand.ID;
+            }
+            catch(Exception e)
+            {
+                return -1;
+                throw e;
+            }            
+        }
+
+        public async Task<bool> UpdateBrand(BrandDTO brand)
+        {
+            var result = db.Brands.SingleOrDefault(b => b.ID == brand.ID);
+            try
+            {
+                result.DisplayName = brand.DisplayName;
+                result.Image = brand.Image;
+                await db.SaveChangesAsync();
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+                throw e;
+            }
+        }
+
+        public async Task<bool> DeleteBrand(BrandDTO brandDTO)
+        {
+            var result = db.Brands.SingleOrDefault(b => b.ID == brandDTO.ID);
+
+            try
+            {
+                result.IsDeleted = true;
+                await db.SaveChangesAsync();
+                return true;
+            }
+            catch(Exception e)
+            {                
+                return false;
+                throw e;
+            }
+        }
+
+        public async Task<bool> RestoreAllBrand()
+        {
+            var BrandList = (await db.Brands
+                        .ToListAsync())
+                        .Select(brand => new BrandDTO(brand))
+                        .ToList();
+
+            try
+            {
+                var DeletedList = db.Brands.Where(b => b.IsDeleted == true).ToList();
+                DeletedList.ForEach(b => b.IsDeleted = false);
+                db.SaveChanges();
+
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+                throw e;
+            }
         }
     }
 }

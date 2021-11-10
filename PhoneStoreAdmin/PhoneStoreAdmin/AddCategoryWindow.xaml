@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         x:Name="MyAddCategoryWindow"
+        WindowStartupLocation="CenterScreen"
         Title="Add Category" Width="400" SizeToContent="Height">
     <StackPanel>
         <TextBox materialDesign:HintAssist.Hint="Nhập Category" 

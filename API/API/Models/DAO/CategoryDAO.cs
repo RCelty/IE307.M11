@@ -56,15 +56,16 @@ namespace API.Models.DAO
         {
             var result = db.Categories.SingleOrDefault(c => c.ID == category.ID);
 
-            if (result != null)
+            try
             {
                 result.DisplayName = category.DisplayName;
                 await db.SaveChangesAsync();
                 return true;
             }
-            else
+            catch(Exception e)
             {
                 return false;
+                throw e;
             }
         }
 
@@ -72,15 +73,16 @@ namespace API.Models.DAO
         {
             var result = db.Categories.SingleOrDefault(c => c.ID == category.ID);
 
-            if (result != null)
+            try
             {
                 result.IsDeleted = true;
                 await db.SaveChangesAsync();
                 return true;
             }
-            else
+            catch(Exception e)
             {
                 return false;
+                throw e;
             }
         }
 
@@ -102,6 +104,7 @@ namespace API.Models.DAO
             catch (Exception e)
             {
                 return false;
+                throw e;
             }
         }
     }
