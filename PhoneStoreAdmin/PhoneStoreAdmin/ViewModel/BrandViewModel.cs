@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using PhoneStoreAdmin.Model;
 using PhoneStoreAdmin.Service;
 
@@ -23,9 +24,12 @@ namespace PhoneStoreAdmin.ViewModel
             }
         }
 
+        public ICommand OpenAddBrandCommand { get; set; }
+
         public BrandViewModel()
         {
             LoadData();
+            OpenAddBrandCommand = new RelayCommand<object>((p) => { return true; }, (p) => { OpenAddBrandCommandExecute(); });
         }
 
         private async void LoadData()
@@ -37,6 +41,14 @@ namespace PhoneStoreAdmin.ViewModel
             {
                 b.Image = b.Image.Replace(oldDomain, newDomain);
             }
+        }
+
+        void OpenAddBrandCommandExecute()
+        {
+            Brand brand = new Brand();
+            AddBrandWindow addBrandWindow = new AddBrandWindow(brand);
+            addBrandWindow.ShowDialog();
+            LoadData();
         }
     }
 }

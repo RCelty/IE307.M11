@@ -10,14 +10,18 @@ namespace PhoneStoreAdmin.Assets.Contain
     {
         public static readonly string SQLiteDBContextPath = "SQLite.db";
         public static readonly string Domain = $"http://localhost:88/";
+        
+        public static readonly string GetAllAdvertisementPath = Domain + @"Api/AdvertisementController/GetAllAdvertisement";
+        
+        public static readonly string GetAllProductPath = Domain + @"Api/ProductController/GetAllProduct";
 
         public static readonly string GetAllCategoryPath = Domain + @"Api/CategoryController/GetAllCategory";
-        public static readonly string GetAllAdvertisementPath = Domain + @"Api/AdvertisementController/GetAllAdvertisement";
-        public static readonly string GetAllBrandPath = Domain + @"Api/BrandController/GetAllBrand";
-        public static readonly string GetAllProductPath = Domain + @"Api/ProductController/GetAllProduct";
         public static readonly string AddCategoryPath = Domain + @"Api/CategoryController/AddCategory";
         public static readonly string UpdateCategoryPath = Domain + @"Api/CategoryController/UpdateCategory";
         public static readonly string DeleteCategoryPath = Domain + @"Api/CategoryController/DeleteCategory";
+
+        public static readonly string GetAllBrandPath = Domain + @"Api/BrandController/GetAllBrand";
+        public static readonly string UploadImagePath = Domain + @"Api/BrandController/UploadBrandImage";
 
         public static string ConverToPathWithParameter(string path, object[] param = null)
         {

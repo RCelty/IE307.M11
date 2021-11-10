@@ -11,7 +11,7 @@
 
     <StackPanel>
         <TextBlock Text="Brand" HorizontalAlignment="Center" FontSize="40"/>
-        <Button x:Name="add_btn" Content="Thêm" Width="80" HorizontalAlignment="Left" Margin="15" Command="{Binding }"/>
+        <Button x:Name="add_btn" Content="Thêm" Width="80" HorizontalAlignment="Left" Margin="15" Command="{Binding OpenAddBrandCommand}"/>
         <ListView ItemsSource="{Binding Brands}">
             <ListView.ItemTemplate>
                 <DataTemplate>

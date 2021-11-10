@@ -33,3 +33,5 @@ D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\AddCategoryWindow.g.c
 D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\AddCategoryWindow.baml
 D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\BrandPage.g.cs
 D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\BrandPage.baml
+D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\AddBrandWindow.g.cs
+D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\AddBrandWindow.baml

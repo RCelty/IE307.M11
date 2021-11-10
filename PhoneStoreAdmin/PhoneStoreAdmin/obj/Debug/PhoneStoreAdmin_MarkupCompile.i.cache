@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\App.xaml
-6520171964
+7403794190
 
-20-691836327
+22-1265592219
 16-1871968204
-AddCategoryWindow.xaml;BrandPage.xaml;CategoryPage.xaml;MainWindow.xaml;MyUserControl\SideMenuControl.xaml;ProductPage.xaml;
+AddBrandWindow.xaml;AddCategoryWindow.xaml;BrandPage.xaml;CategoryPage.xaml;MainWindow.xaml;MyUserControl\SideMenuControl.xaml;ProductPage.xaml;
 
-False
+True
 
