@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace PhoneStoreApp.ViewModels
 {
-    class ProductViewModel : BaseViewModel
+    class ProductDetailViewModel : BaseViewModel
     {
         public int ID { get; set; }
 
@@ -17,7 +17,7 @@ namespace PhoneStoreApp.ViewModels
         private Product product;
         public Product Product { get => product; set { product = value; OnPropertyChanged(); } }
         public Command GoBackOnClick { get; set; }
-        public ProductViewModel(int ID)
+        public ProductDetailViewModel(int ID)
         {
             this.ID = ID;
             LoadData();

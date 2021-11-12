@@ -9,12 +9,15 @@
         <StackLayout>
             <Frame HasShadow="True" Margin="10,10,10,10" HeightRequest="30">
                 <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition Width="auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <ImageButton Grid.Column="0" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" Command="{Binding BindingContext.GoBackOnClick, Source={Reference Name=ProductDetaiPage}}" >
+                    <ImageButton Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" Command="{Binding BindingContext.GoBackOnClick, Source={Reference Name=ProductDetaiPage}}" >
                         <ImageButton.Source>
                             <FontImageSource
                                 Size="25"
@@ -26,7 +29,7 @@
                             </FontImageSource>
                         </ImageButton.Source>
                     </ImageButton>
-                    <Label Text="Chi tiết sản phẩm" HorizontalTextAlignment="Center" Grid.Column="1" FontSize="20" VerticalTextAlignment="Center" TextColor="Black"></Label>
+                    <Label Text="Chi tiết sản phẩm" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="1" FontSize="20" VerticalTextAlignment="Center" TextColor="Black" ></Label>
                     <ImageButton BackgroundColor="Transparent" HorizontalOptions="End" Grid.Column="1" Margin="0,0,10,0">
                             <ImageButton.Source>
                                 <FontImageSource
@@ -38,7 +41,7 @@
                                 </FontImageSource>
                             </ImageButton.Source>
                         </ImageButton>
-                    <ImageButton BackgroundColor="Transparent" HorizontalOptions="End" Grid.Column="2">
+                    <ImageButton BackgroundColor="Transparent" HorizontalOptions="End" Grid.Row="0" Grid.Column="2">
                         <ImageButton.Source>
                             <FontImageSource
                                 Size="25"
@@ -71,10 +74,11 @@
                             </ImageButton.Source>
                         </ImageButton>
                         <Label Text="{Binding Product.Rating}"></Label>
-                        <Label Text="{Binding Product.CommentCount}"></Label>
+                        <Label Text="{Binding Product.CommentCount}" Margin="10,0,0,0"></Label>
+                        <Label Text="Reviews" ></Label>
                     </StackLayout>
                     <BoxView HeightRequest="0.1" Color="Gray" Margin="0,15,0,0"></BoxView>
-                    <Label Text="Thông số kĩ thuật" Margin="10,10,10,0" FontSize="Medium" FontAttributes="Bold"></Label>
+                    <Label Text="Thông số kĩ thuật" Margin="0,10,10,0" FontSize="Medium" FontAttributes="Bold" TextColor="Black"></Label>
                     <StackLayout  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="10,0,10,0" Margin="0,0,0,30" IsEnabled="True" BindableLayout.ItemsSource="{Binding Product.ProductDetails}">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
@@ -89,15 +93,42 @@
                                         </Grid.ColumnDefinitions>
                                         <Label Text="{Binding DetailName}" TextColor="Black" FontAttributes="Bold" Grid.Column="0" Grid.Row="0" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"></Label>
                                         <Label Text="{Binding DetailDescription}" Margin="10,10,0,0" TextColor="Blue" Grid.Column="1" Grid.Row="0" HorizontalTextAlignment="Start"></Label>
-                                        
+
                                     </Grid>
                                 </StackLayout>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
 
                     </StackLayout>
+                    <BoxView HeightRequest="0.1" Color="Gray" Margin="0,0,0,10"></BoxView>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Đánh Giá" FontSize="Medium" FontAttributes="Bold" TextColor="Black"></Label>
+                        <Label Text="{Binding Product.CommentCount}" FontSize="Medium" FontAttributes="Bold" TextColor="Black"></Label>
+                        <ImageButton BackgroundColor="Transparent" Margin="240,0,0,0" > 
+                            <ImageButton.Source>
+                                <FontImageSource
+                                Size="17"
+                                Color="#FFFFC120"
+                                 FontFamily="faS" 
+                                Glyph="&#xf005;">
+                                </FontImageSource>
+                            </ImageButton.Source>
+                        </ImageButton>
+                        <Label Text="{Binding Product.Rating}"  Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold" TextColor="Black" ></Label>
+                    </StackLayout>
                 </StackLayout>
             </ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <material:MaterialButton BackgroundColor="#FFFE3A30" HorizontalOptions="End" Text="Mua Ngay"  TextColor="White" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" HeightRequest="60"></material:MaterialButton>
+                <material:MaterialButton BackgroundColor="#FF3669C9" HorizontalOptions="Start" Text="Thêm vào giỏ" TextColor="White" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" HeightRequest="60" />
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
