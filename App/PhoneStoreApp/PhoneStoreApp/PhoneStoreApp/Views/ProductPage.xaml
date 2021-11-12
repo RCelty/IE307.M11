@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="MyProductPage"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             x:Class="PhoneStoreApp.Views.ProductPage">
+    <ContentPage.Content>
+        <ScrollView Margin="15" VerticalScrollBarVisibility="Never" BackgroundColor="#fafafa">
+            <StackLayout HorizontalOptions="FillAndExpand">
+                <!--Search bar-->
+                <Frame HasShadow="True"
+                           IsClippedToBounds="True" 
+                           Margin="5,10,5,0"
+                           HeightRequest="40"
+                           WidthRequest="300"
+                           CornerRadius="10"
+                           Padding="0"
+                           Opacity="0.9"
+                           x:Name="entrySearch" 
+                           >
+                    <SearchBar Placeholder="Search Product Name" BackgroundColor="#EAEAEA" SearchCommand="{Binding SearchCommand}"></SearchBar>
+                </Frame>
+                
+                <!--Product Collection-->
+                <CollectionView x:Name="MyProductCollection" ItemsSource="{Binding Products}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="10" VerticalItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <material:MaterialCard WidthRequest="250" Padding="15" HasShadow="True" IsClickable="True" ClickCommand="{Binding BindingContext.ProductDetailOnClick, Source={x:Reference Name=MyProductPage}}" ClickCommandParameter="{Binding .}">
+                                <StackLayout>
+                                    <Image Source="{Binding Image1, Converter={x:StaticResource ConvertStringToImage}}" HeightRequest="200" WidthRequest="200"/>
+                                    <Label Text="{Binding DisplayName}" FontSize="Large" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" HorizontalOptions="FillAndExpand"/>
+                                    <Label Text="{Binding Price, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="#8c8c8c" FontAttributes="Bold" TextDecorations="Strikethrough" IsVisible="{Binding DiscountPercent, Converter={StaticResource ConvertDiscountPercentToBoolean}}"/>
+                                    <Label Text="{Binding DiscountPrice, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="Red" FontAttributes="Bold"/>
+
+                                    <StackLayout  Orientation="Horizontal">
+                                        <Label Text="&#xf005;" FontFamily="faS" TextColor="Yellow"/>
+                                        <Label Text="{Binding Rating}"/>
+                                        <Label Text="{Binding CommentCount}" Margin="10,0,0,0"/>
+                                        <Label Text="Reviews"/>
+                                        <ImageButton BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Command="{Binding BindingContext.clickCommand, Source={x:Reference Name=MyProductPage}}" CommandParameter="{Binding .}">
+                                            <ImageButton.Source>
+                                                <FontImageSource Color="Red" FontFamily="faR" Glyph="&#xf004;" Size="20"/>
+                                            </ImageButton.Source>
+                                        </ImageButton>
+                                    </StackLayout>
+                                </StackLayout>
+                            </material:MaterialCard>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

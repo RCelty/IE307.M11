@@ -8,6 +8,7 @@
             <Converter:ConvertBooleanFavoriteProductToFontFamily x:Key="ConvertBooleanFavoriteProductToFontFamily"></Converter:ConvertBooleanFavoriteProductToFontFamily>
             <Converter:ConvertStringToImage x:Key="ConvertStringToImage"></Converter:ConvertStringToImage>
             <Converter:ConvertPriceToString x:Key="ConvertPriceToString"></Converter:ConvertPriceToString>
+            <Converter:ConvertDiscountPercentToBoolean x:Key="ConvertDiscountPercentToBoolean"></Converter:ConvertDiscountPercentToBoolean>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

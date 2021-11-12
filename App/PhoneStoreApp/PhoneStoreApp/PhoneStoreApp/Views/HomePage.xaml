@@ -19,7 +19,7 @@
                            Opacity="0.9"
                            x:Name="entrySearch" 
                            >
-                    <SearchBar Placeholder="Search Product Name" BackgroundColor="#EAEAEA"></SearchBar>
+                    <SearchBar Placeholder="Search Product Name" BackgroundColor="#EAEAEA" SearchCommand="{Binding SearchCommand}"></SearchBar>
                 </Frame>
 
                 <!--Carousel-->
@@ -68,7 +68,8 @@
                                              ButtonType="Outlined"
                                              CornerRadius="20"
                                              BorderWidth="1.5"
-                                             BorderColor="Black"/>
+                                             BorderColor="Black"
+                                             Command="{Binding BindingContext.CategoryPressCommand, Source={x:Reference Name=MyHomePage}}" CommandParameter="{Binding .}"/>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </StackLayout>
@@ -97,10 +98,10 @@
                                         <StackLayout>
                                             <Image Source="{Binding Image1, Converter={x:StaticResource ConvertStringToImage}}" HeightRequest="200" WidthRequest="200"/>
                                             <Label Text="{Binding DisplayName}" FontSize="Large" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" HorizontalOptions="FillAndExpand"/>
-                                            <Label Text="{Binding Price, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="#8c8c8c" FontAttributes="Bold" TextDecorations="Strikethrough"/>
+                                            <Label Text="{Binding Price, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="#8c8c8c" FontAttributes="Bold" TextDecorations="Strikethrough" IsVisible="{Binding DiscountPercent, Converter={StaticResource ConvertDiscountPercentToBoolean}}"/>
                                             <Label Text="{Binding DiscountPrice, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="Red" FontAttributes="Bold"/>
 
-                                            <StackLayout Orientation="Horizontal">
+                                            <StackLayout  Orientation="Horizontal">
                                                 <Label Text="&#xf005;" FontFamily="faS" TextColor="Yellow"/>
                                                 <Label Text="{Binding Rating}"/>
                                                 <Label Text="{Binding CommentCount}" Margin="10,0,0,0"/>

@@ -222,6 +222,10 @@
     <Content Include="Assets\Images\Brand\oppo.jpg" />
     <Content Include="Assets\Images\Brand\samsung.jpg" />
     <Content Include="Assets\Images\Brand\vivo.jpg" />
+    <Content Include="Assets\Images\Product\acer1_1.jpg" />
+    <Content Include="Assets\Images\Product\acer1_2.jpg" />
+    <Content Include="Assets\Images\Product\acer1_3.jpg" />
+    <Content Include="Assets\Images\Product\acer1_4.jpg" />
     <Content Include="Assets\Images\Product\iphone1_1.jpg" />
     <Content Include="Assets\Images\Product\iphone1_2.jpg" />
     <Content Include="Assets\Images\Product\iphone1_3.jpg" />
@@ -279,6 +283,7 @@
     <Content Include="Models\EF\PhoneStoreModel.edmx.diagram">
       <DependentUpon>PhoneStoreModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -302,7 +307,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\Advertisement\" />
   </ItemGroup>
   <ItemGroup>
