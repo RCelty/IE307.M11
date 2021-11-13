@@ -9,9 +9,10 @@
         <ScrollView Margin="15" VerticalScrollBarVisibility="Never" BackgroundColor="#fafafa">
             <StackLayout HorizontalOptions="FillAndExpand">
                 <!--Search bar-->
-                <Frame HasShadow="True"
+                <StackLayout Orientation="Horizontal">
+                    <Frame HasShadow="True"
                            IsClippedToBounds="True" 
-                           Margin="5,10,5,0"
+                           Margin="5,10,0,0"
                            HeightRequest="40"
                            WidthRequest="300"
                            CornerRadius="10"
@@ -19,8 +20,16 @@
                            Opacity="0.9"
                            x:Name="entrySearch" 
                            >
-                    <SearchBar Placeholder="Search Product Name" BackgroundColor="#EAEAEA" SearchCommand="{Binding SearchCommand}"></SearchBar>
-                </Frame>
+                        <SearchBar x:Name="MySearchBar" Placeholder="Search Product Name" BackgroundColor="#EAEAEA" SearchCommand="{Binding SearchCommand}" SearchCommandParameter="{Binding Text, Source={x:Reference MySearchBar}}"></SearchBar>
+                    </Frame>
+
+                    <ImageButton BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Margin="5">
+                        <ImageButton.Source>
+                            <FontImageSource Color="Black" FontFamily="faR" Glyph="&#xf0b0;"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                </StackLayout>
+                
                 
                 <!--Product Collection-->
                 <CollectionView x:Name="MyProductCollection" ItemsSource="{Binding Products}">

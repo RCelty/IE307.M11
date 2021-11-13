@@ -60,7 +60,7 @@ namespace PhoneStoreApp.ViewModels
             LoadData();
             clickCommand = new Command<Product>(clickCommandExcute, product => product != null);
             ProductDetailOnClick = new Command<Product>(ProductDetailOnClickExcute, product => product != null);
-            SearchCommand = new Command(SearchCommandExecute, () => true);
+            SearchCommand = new Command<string>(SearchCommandExecute, (s) => true);
             CategoryPressCommand = new Command<Category>(CategoryPressCommandExecute, category => category != null);
         }
 
@@ -90,9 +90,11 @@ namespace PhoneStoreApp.ViewModels
             await App.Current.MainPage.Navigation.PushAsync(new ProductDetailPage(product.ID), true);
         }
 
-        public async void SearchCommandExecute()
+        public async void SearchCommandExecute(string searchText)
         {
-            await App.Current.MainPage.Navigation.PushAsync(new ProductPage(Products));
+            var s = searchText;
+            var resultList = await ProductService.Instance.GetProductBySearchText(s);
+            await App.Current.MainPage.Navigation.PushAsync(new ProductPage(new ObservableCollection<Product>(resultList)));
         }
 
         public async void CategoryPressCommandExecute(Category category)

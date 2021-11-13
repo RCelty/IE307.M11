@@ -47,5 +47,27 @@ namespace PhoneStoreApp.Services
                 }
             }
         }
+
+        public async Task<List<Product>> GetProductBySearchText(string searchText)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.GetAllProductPath);
+                    var dataString = await client.GetStringAsync(convertString);
+
+                    var ProductList = JsonConvert.DeserializeObject<List<Product>>(dataString);
+
+                    ProductList = ProductList.FindAll(p => p.DisplayName.IndexOf(searchText, 0, StringComparison.CurrentCultureIgnoreCase) != -1);
+
+                    return ProductList;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
     }
 }
