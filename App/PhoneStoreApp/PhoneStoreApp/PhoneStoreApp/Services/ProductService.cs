@@ -59,7 +59,7 @@ namespace PhoneStoreApp.Services
 
                     var ProductList = JsonConvert.DeserializeObject<List<Product>>(dataString);
 
-                    ProductList = ProductList.FindAll(p => p.DisplayName.IndexOf(searchText, 0, StringComparison.CurrentCultureIgnoreCase) != -1);
+                    ProductList = ProductList.FindAll(p => Const.ConvertToUnsign(p.DisplayName).IndexOf(searchText, 0, StringComparison.CurrentCultureIgnoreCase) != -1);
 
                     return ProductList;
                 }
