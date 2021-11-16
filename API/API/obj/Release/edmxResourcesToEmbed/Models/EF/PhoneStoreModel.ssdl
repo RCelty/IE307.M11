@@ -24,6 +24,20 @@
     <Property Name="DisplayName" Type="nvarchar" MaxLength="100" />
     <Property Name="IsDeleted" Type="bit" />
   </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="200" />
+    <Property Name="PassWord" Type="varchar" MaxLength="200" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="Avatar" Type="varchar" MaxLength="500" />
+    <Property Name="IsAdmin" Type="bit" />
+  </EntityType>
   <EntityType Name="Product">
     <Key>
       <PropertyRef Name="ID" />
@@ -94,6 +108,7 @@
     <EntitySet Name="Advertisement" EntityType="Self.Advertisement" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductDetail" EntityType="Self.ProductDetail" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__Product__BrandID__2C3393D0" Association="Self.FK__Product__BrandID__2C3393D0">

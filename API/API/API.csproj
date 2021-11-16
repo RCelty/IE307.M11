@@ -166,6 +166,7 @@
     <Compile Include="Controllers\AdvertisementController.cs" />
     <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -175,10 +176,12 @@
     <Compile Include="Models\DAO\AdvertisementDAO.cs" />
     <Compile Include="Models\DAO\BrandDAO.cs" />
     <Compile Include="Models\DAO\CategoryDAO.cs" />
+    <Compile Include="Models\DAO\CustomerDAO.cs" />
     <Compile Include="Models\DAO\ProductDAO.cs" />
     <Compile Include="Models\DTO\AdvertisementDTO.cs" />
     <Compile Include="Models\DTO\BrandDTO.cs" />
     <Compile Include="Models\DTO\CategoryDTO.cs" />
+    <Compile Include="Models\DTO\CustomerDTO.cs" />
     <Compile Include="Models\DTO\ProductDetailDTO.cs" />
     <Compile Include="Models\DTO\ProductDTO.cs" />
     <Compile Include="Models\EF\Advertisement.cs">
@@ -188,6 +191,9 @@
       <DependentUpon>PhoneStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EF\Category.cs">
+      <DependentUpon>PhoneStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\Customer.cs">
       <DependentUpon>PhoneStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EF\PhoneStoreModel.Context.cs">
@@ -223,6 +229,7 @@
     <Content Include="Assets\Images\Brand\oppo.jpg" />
     <Content Include="Assets\Images\Brand\samsung.jpg" />
     <Content Include="Assets\Images\Brand\vivo.jpg" />
+    <Content Include="Assets\Images\Customer\admin.jpg" />
     <Content Include="Assets\Images\Product\acer1_1.jpg" />
     <Content Include="Assets\Images\Product\acer1_2.jpg" />
     <Content Include="Assets\Images\Product\acer1_3.jpg" />

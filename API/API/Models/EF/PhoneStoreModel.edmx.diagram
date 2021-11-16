@@ -13,6 +13,7 @@
         <AssociationConnector Association="PhoneStoreModel.FK__Product__Categor__29572725" ManuallyRouted="false" />
         <EntityTypeShape EntityType="PhoneStoreModel.ProductDetail" Width="1.5" PointX="5.25" PointY="4.625" />
         <AssociationConnector Association="PhoneStoreModel.FK__ProductDe__Produ__2D27B809" />
+        <EntityTypeShape EntityType="PhoneStoreModel.Customer" Width="1.5" PointX="0.75" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

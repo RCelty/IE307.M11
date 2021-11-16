@@ -91,6 +91,7 @@
       <End Role="Product" EntitySet="Products" />
       <End Role="ProductDetail" EntitySet="ProductDetails" />
     </AssociationSet>
+    <EntitySet Name="Customers" EntityType="PhoneStoreModel.Customer" />
   </EntityContainer>
   <EntityType Name="ProductDetail">
     <Key>
@@ -115,4 +116,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PassWord" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Avatar" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsAdmin" Type="Boolean" />
+  </EntityType>
 </Schema>

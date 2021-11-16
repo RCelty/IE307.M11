@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>D:\Documents\Subjects\Xamarin_projects\WebAPIPublic</_PublishTargetUrl>
-    <History>True|2021-11-15T15:27:52.0451917Z;False|2021-11-15T22:27:46.6523176+07:00;True|2021-11-12T21:21:32.3766046+07:00;False|2021-11-12T21:21:25.2187376+07:00;False|2021-11-12T14:55:52.6563820+07:00;True|2021-11-11T14:52:14.1268003+07:00;</History>
+    <History>True|2021-11-16T15:14:20.2198381Z;False|2021-11-16T22:13:57.2914523+07:00;False|2021-11-16T22:13:37.2879042+07:00;True|2021-11-16T21:39:50.5189679+07:00;True|2021-11-16T21:36:03.8472087+07:00;False|2021-11-16T21:35:57.2658660+07:00;True|2021-11-15T22:27:52.0451917+07:00;False|2021-11-15T22:27:46.6523176+07:00;True|2021-11-12T21:21:32.3766046+07:00;False|2021-11-12T21:21:25.2187376+07:00;False|2021-11-12T14:55:52.6563820+07:00;True|2021-11-11T14:52:14.1268003+07:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/HelpPage/HelpPage.css">
@@ -95,6 +95,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Assets/Images/Brand/vivo.jpg">
       <publishTime>11/10/2021 21:02:29</publishTime>
     </File>
+    <File Include="Assets/Images/Customer/admin.jpg">
+      <publishTime>11/16/2021 21:10:48</publishTime>
+    </File>
     <File Include="Assets/Images/Product/acer1_1.jpg">
       <publishTime>11/12/2021 21:21:13</publishTime>
     </File>
@@ -150,10 +153,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/10/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/API.dll">
-      <publishTime>11/15/2021 22:27:50</publishTime>
+      <publishTime>11/16/2021 21:39:50</publishTime>
     </File>
     <File Include="bin/API.pdb">
-      <publishTime>11/15/2021 22:27:50</publishTime>
+      <publishTime>11/16/2021 21:39:50</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>10/23/2017 13:15:18</publishTime>
@@ -399,7 +402,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/25/2021 14:50:28</publishTime>
     </File>
     <File Include="Models/EF/PhoneStoreModel.edmx.diagram">
-      <publishTime>11/02/2021 20:05:16</publishTime>
+      <publishTime>11/16/2021 21:07:46</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>10/25/2021 14:50:30</publishTime>

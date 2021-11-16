@@ -58,6 +58,20 @@ create table ProductDetail
 )
 go
 
+create table Customer
+(
+	ID int primary key identity(1,1),
+	UserName varchar(200) unique,
+	PassWord varchar(200),
+	DisplayName nvarchar(100),
+	PhoneNumber varchar(20),
+	Email varchar(100),
+	Address nvarchar(500),
+	Avatar varchar(500),
+	IsAdmin bit,
+)
+go
+
 --insert Advertisement
 insert into Advertisement values('advertisement1.jpg')
 insert into Advertisement values('advertisement2.jpg')
@@ -128,6 +142,12 @@ insert into ProductDetail values(4, N'Kích thước, trọng lượng', N'Dài 
 insert into ProductDetail values(4, N'Thời điểm ra mắt', N'2021', 0)
 go
 
+--inser into Customer
+insert into Customer values('Admin', '21232f297a57a5a743894a0e4a801fc3', N'Admin', '0123456789', '18520459@gm.uit.edu.vn', N'Đại học UIT', 'admin.jpg', 1)
+go
+
 --drop database PhoneStore
+
+
 
 
