@@ -23,16 +23,22 @@
                         <SearchBar x:Name="MySearchBar" Placeholder="Search Product Name" BackgroundColor="#EAEAEA" SearchCommand="{Binding SearchCommand}" SearchCommandParameter="{Binding Text, Source={x:Reference MySearchBar}}"></SearchBar>
                     </Frame>
 
-                    <ImageButton BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Margin="5">
+                    <ImageButton BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Margin="5" Command="{Binding OpenFilterCommand}">
                         <ImageButton.Source>
                             <FontImageSource Color="Black" FontFamily="faR" Glyph="&#xf0b0;"/>
                         </ImageButton.Source>
                     </ImageButton>
                 </StackLayout>
                 
+                <!--Nếu không có sản phẩm-->
+                <StackLayout IsVisible="{Binding Products.Count, Converter={x:StaticResource ConvertProductCountToNotVisibleBoolean}}" VerticalOptions="Center" Margin="5,50,5,50">
+                    <Image Source="curios.png" HeightRequest="100" WidthRequest="100" Aspect="AspectFit"/>
+                    <Label Text="Không có sản phẩm phù hợp" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="Center"/>
+                    <Label Text="Vui lòng nhập từ khóa khác hoặc thử lại bộ lọc" HorizontalOptions="Center"/>
+                </StackLayout>
                 
                 <!--Product Collection-->
-                <CollectionView x:Name="MyProductCollection" ItemsSource="{Binding Products}">
+                <CollectionView x:Name="MyProductCollection" ItemsSource="{Binding Products}" IsVisible="{Binding Products.Count, Converter={x:StaticResource ConvertProductCountToIsVisibleBoolean}}">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="10" VerticalItemSpacing="10"/>
                     </CollectionView.ItemsLayout>
@@ -40,7 +46,7 @@
                         <DataTemplate>
                             <material:MaterialCard WidthRequest="250" Padding="15" HasShadow="True" IsClickable="True" ClickCommand="{Binding BindingContext.ProductDetailOnClick, Source={x:Reference Name=MyProductPage}}" ClickCommandParameter="{Binding .}">
                                 <StackLayout>
-                                    <Image Source="{Binding Image1, Converter={x:StaticResource ConvertStringToImage}}" HeightRequest="200" WidthRequest="200"/>
+                                    <Image Source="{Binding Image1, Converter={x:StaticResource ConvertStringToImage}}" HeightRequest="200" WidthRequest="200" Aspect="AspectFit"/>
                                     <Label Text="{Binding DisplayName}" FontSize="Large" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" HorizontalOptions="FillAndExpand"/>
                                     <Label Text="{Binding Price, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="#8c8c8c" FontAttributes="Bold" TextDecorations="Strikethrough" IsVisible="{Binding DiscountPercent, Converter={StaticResource ConvertDiscountPercentToBoolean}}"/>
                                     <Label Text="{Binding DiscountPrice, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="Red" FontAttributes="Bold"/>

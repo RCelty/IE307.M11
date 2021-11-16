@@ -218,6 +218,7 @@
     <Content Include="Assets\Images\Advertisement\advertisement1.jpg" />
     <Content Include="Assets\Images\Advertisement\advertisement2.jpg" />
     <Content Include="Assets\Images\Advertisement\advertisement3.jpg" />
+    <Content Include="Assets\Images\Brand\acer.jpg" />
     <Content Include="Assets\Images\Brand\iphone.jpg" />
     <Content Include="Assets\Images\Brand\oppo.jpg" />
     <Content Include="Assets\Images\Brand\samsung.jpg" />

@@ -42,6 +42,28 @@ namespace PhoneStoreApp.Services
                 catch (Exception e)
                 {
                     return null;
+                    throw e;
+                }
+            }
+        }
+
+        public async Task<List<Brand>> GetAllBrandyAsync()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.GetAllBrandPath);
+                    var dataString = await client.GetStringAsync(convertString);
+
+                    var BrandList = JsonConvert.DeserializeObject<List<Brand>>(dataString);
+
+                    return BrandList;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                    throw e;
                 }
             }
         }
@@ -62,6 +84,7 @@ namespace PhoneStoreApp.Services
                 catch(Exception e)
                 {
                     return null;
+                    throw e;
                 }
             }
         }
@@ -82,6 +105,7 @@ namespace PhoneStoreApp.Services
                 catch (Exception e)
                 {
                     return null;
+                    throw e;
                 }
             }
         }       

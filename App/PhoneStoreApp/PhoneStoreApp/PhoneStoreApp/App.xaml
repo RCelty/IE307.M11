@@ -9,6 +9,8 @@
             <Converter:ConvertStringToImage x:Key="ConvertStringToImage"></Converter:ConvertStringToImage>
             <Converter:ConvertPriceToString x:Key="ConvertPriceToString"></Converter:ConvertPriceToString>
             <Converter:ConvertDiscountPercentToBoolean x:Key="ConvertDiscountPercentToBoolean"></Converter:ConvertDiscountPercentToBoolean>
+            <Converter:ConvertProductCountToIsVisibleBoolean x:Key="ConvertProductCountToIsVisibleBoolean"></Converter:ConvertProductCountToIsVisibleBoolean>
+            <Converter:ConvertProductCountToNotVisibleBoolean x:Key="ConvertProductCountToNotVisibleBoolean"></Converter:ConvertProductCountToNotVisibleBoolean>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

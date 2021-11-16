@@ -54,7 +54,8 @@ namespace PhoneStoreApp.ViewModels
         public Command ProductDetailOnClick { get; set; }
         public Command SearchCommand { get; set; }
         public Command CategoryPressCommand { get; set; }
-        #endregion
+        public Command OpenFilterCommand { get; set; }
+        #endregion        
         public HomeViewModel()
         {
             LoadData();
@@ -62,6 +63,7 @@ namespace PhoneStoreApp.ViewModels
             ProductDetailOnClick = new Command<Product>(ProductDetailOnClickExcute, product => product != null);
             SearchCommand = new Command<string>(SearchCommandExecute, (s) => true);
             CategoryPressCommand = new Command<Category>(CategoryPressCommandExecute, category => category != null);
+            OpenFilterCommand = new Command(OpenFilterCommandExecute, () => true);
         }
 
         private async void LoadData()
@@ -71,14 +73,7 @@ namespace PhoneStoreApp.ViewModels
             Products = new ObservableCollection<Product>(await HomeService.Instance.GetAllProduct());
         }
 
-        //public void createProduct()
-        //{
-        //    Products = new ObservableCollection<Product>();
-
-        //    Products.Add(new Product { ID = 1, DisplayName = "Điện thoại 1", Img = "img1.jpg", Price = 2000000, Rating = 4.6, CommentCount = 86 });
-        //    Products.Add(new Product { ID = 2, DisplayName = "Điện thoại 2", Img = "img1.jpg", Price = 2000000, Rating = 4.6, CommentCount = 86 });
-        //    Products.Add(new Product { ID = 3, DisplayName = "Điện thoại 3", Img = "img1.jpg", Price = 2000000, Rating = 4.6, CommentCount = 86 });
-        //}       
+             
 
         public void clickCommandExcute(Product product)
         {
@@ -101,6 +96,11 @@ namespace PhoneStoreApp.ViewModels
         {
             var productList = await ProductService.Instance.GetProductByCategoryID(category.ID);
             await App.Current.MainPage.Navigation.PushAsync(new ProductPage(new ObservableCollection<Product>(productList)));
+        }
+
+        public async void OpenFilterCommandExecute()
+        {
+            await App.Current.MainPage.Navigation.PushAsync(new FilterPage());
         }
     }
 }

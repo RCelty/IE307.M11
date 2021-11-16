@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             x:Class="PhoneStoreApp.Views.FilterPage">
+    <ContentPage.Content>
+        <ScrollView Margin="15" VerticalScrollBarVisibility="Never" BackgroundColor="#fafafa">
+            <StackLayout Spacing="20">
+                
+                <!--Fill theo giá-->
+                <Label Text="Giá tiền" FontSize="Large"/>
+                <StackLayout Orientation="Horizontal">
+                    <material:MaterialTextField Placeholder="Thấp nhất" Text="{Binding MinPrice, Mode=TwoWay}" InputType="Numeric" 
+                                                AlwaysShowUnderline="True" WidthRequest="150" BackgroundColor="#fafafa"
+                                                PlaceholderColor="MediumPurple"/>
+                    
+                    <material:MaterialTextField Placeholder="Cao nhất" Text="{Binding MaxPrice, Mode=TwoWay}" InputType="Numeric" 
+                                                AlwaysShowUnderline="True" WidthRequest="150" HorizontalOptions="EndAndExpand" BackgroundColor="#fafafa"
+                                                PlaceholderColor="MediumPurple"/>
+                </StackLayout>
+
+                <BoxView HeightRequest="1" WidthRequest="100" BackgroundColor="#DCDCDC"/>
+                
+                <!--Fill theo loại-->
+                <Label Text="Loại sản phẩm" FontSize="Large"/>
+                <CollectionView ItemsSource="{Binding CategoryChoices}" HeightRequest="{Binding CategoryCustomHeight}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="3" HorizontalItemSpacing="10" VerticalItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal">
+                                <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" Color="MediumPurple"/>
+                                <Label Text="{Binding DisplayName}" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <BoxView HeightRequest="1" WidthRequest="100" BackgroundColor="#DCDCDC"/>
+
+                <!--Fill theo nhãn-->
+                <Label Text="Nhãn hiệu" FontSize="Large"/>
+                <CollectionView ItemsSource="{Binding BrandChoices}" HeightRequest="{Binding BrandCustomHeight}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="3" HorizontalItemSpacing="10" VerticalItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal">
+                                <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" Color="MediumPurple"/>
+                                <Image Source="{Binding Image, Converter={x:StaticResource ConvertStringToImage}}" Aspect="AspectFit"/>
+                                <!--<Label Text="{Binding DisplayName}"/>-->
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <BoxView HeightRequest="1" WidthRequest="100" BackgroundColor="#DCDCDC"/>
+                
+                <!--Fill theo đánh giá-->
+                <Label Text="Đánh giá" FontSize="Large"/>
+                <CollectionView ItemsSource="{Binding RateChoices}" HeightRequest="80">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="3" HorizontalItemSpacing="10" VerticalItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal">
+                                <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" Color="MediumPurple"/>
+                                <Label Text="{Binding DisplayName}" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <BoxView HeightRequest="1" WidthRequest="100" BackgroundColor="#DCDCDC"/>
+                
+                <!--Fill theo giảm giá-->
+                <Label Text="Giảm giá" FontSize="Large"/>
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding IsSaleOff, Mode=TwoWay}" Color="MediumPurple"/>
+                    <Label Text="Đang giảm giá" VerticalOptions="Center"/>
+                </StackLayout>
+                <BoxView HeightRequest="1" WidthRequest="100" BackgroundColor="#DCDCDC"/>
+
+                <Button Text="Áp dụng" Command="{Binding ApplyCommand}" BackgroundColor="MediumPurple" TextColor="White" CornerRadius="5"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

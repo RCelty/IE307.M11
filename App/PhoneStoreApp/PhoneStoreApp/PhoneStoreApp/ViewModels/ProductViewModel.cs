@@ -26,6 +26,7 @@ namespace PhoneStoreApp.ViewModels
         #region Command
         public Command ProductDetailOnClick { get; set; }
         public Command SearchCommand { get; set; }
+        public Command OpenFilterCommand { get; set; }
         #endregion
 
         public ProductViewModel(ObservableCollection<Product> products)
@@ -34,6 +35,7 @@ namespace PhoneStoreApp.ViewModels
 
             ProductDetailOnClick = new Command<Product>(ProductDetailOnClickExcute, product => product != null);
             SearchCommand = new Command<string>(SearchCommandExecute, (s) => true);
+            OpenFilterCommand = new Command(OpenFilterCommandExecute, () => true);
         }
 
         public async void ProductDetailOnClickExcute(Product product)
@@ -47,6 +49,12 @@ namespace PhoneStoreApp.ViewModels
             var resultList = await ProductService.Instance.GetProductBySearchText(s);
             await App.Current.MainPage.Navigation.PopAsync();
             await App.Current.MainPage.Navigation.PushAsync(new ProductPage(new ObservableCollection<Product>(resultList)));
+        }
+
+        public async void OpenFilterCommandExecute()
+        {
+            await App.Current.MainPage.Navigation.PopAsync();
+            await App.Current.MainPage.Navigation.PushAsync(new FilterPage());
         }
     }
 }
