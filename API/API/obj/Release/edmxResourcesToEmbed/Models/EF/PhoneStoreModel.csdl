@@ -48,6 +48,7 @@
     <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__29572725" FromRole="Product" ToRole="Category" />
     <NavigationProperty Name="ProductDetails" Relationship="PhoneStoreModel.FK__ProductDe__Produ__2D27B809" FromRole="Product" ToRole="ProductDetail" />
     <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="FavoriteProducts" Relationship="PhoneStoreModel.FK__FavoriteP__Produ__36B12243" FromRole="Product" ToRole="FavoriteProduct" />
   </EntityType>
   <Association Name="FK__Product__BrandID__2A4B4B5E">
     <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
@@ -92,6 +93,15 @@
       <End Role="ProductDetail" EntitySet="ProductDetails" />
     </AssociationSet>
     <EntitySet Name="Customers" EntityType="PhoneStoreModel.Customer" />
+    <EntitySet Name="FavoriteProducts" EntityType="PhoneStoreModel.FavoriteProduct" />
+    <AssociationSet Name="FK__FavoriteP__Custo__37A5467C" Association="PhoneStoreModel.FK__FavoriteP__Custo__37A5467C">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="FavoriteProduct" EntitySet="FavoriteProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FavoriteP__Produ__36B12243" Association="PhoneStoreModel.FK__FavoriteP__Produ__36B12243">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="FavoriteProduct" EntitySet="FavoriteProducts" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="ProductDetail">
     <Key>
@@ -129,5 +139,40 @@
     <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="Avatar" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="IsAdmin" Type="Boolean" />
+    <NavigationProperty Name="FavoriteProducts" Relationship="PhoneStoreModel.FK__FavoriteP__Custo__37A5467C" FromRole="Customer" ToRole="FavoriteProduct" />
   </EntityType>
+  <EntityType Name="FavoriteProduct">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="CustomerID" Type="Int32" />
+    <NavigationProperty Name="Customer" Relationship="PhoneStoreModel.FK__FavoriteP__Custo__37A5467C" FromRole="FavoriteProduct" ToRole="Customer" />
+    <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__FavoriteP__Produ__36B12243" FromRole="FavoriteProduct" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK__FavoriteP__Custo__37A5467C">
+    <End Type="PhoneStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
+    <End Type="PhoneStoreModel.FavoriteProduct" Role="FavoriteProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FavoriteProduct">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FavoriteP__Produ__36B12243">
+    <End Type="PhoneStoreModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="PhoneStoreModel.FavoriteProduct" Role="FavoriteProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FavoriteProduct">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

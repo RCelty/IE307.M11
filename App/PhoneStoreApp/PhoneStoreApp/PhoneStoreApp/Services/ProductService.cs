@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -44,6 +45,7 @@ namespace PhoneStoreApp.Services
                 catch (Exception e)
                 {
                     return null;
+                    throw e;
                 }
             }
         }
@@ -66,6 +68,88 @@ namespace PhoneStoreApp.Services
                 catch (Exception e)
                 {
                     return null;
+                    throw e;
+                }
+            }
+        }
+
+        public async Task<List<FavoriteProduct>> GetFavoriteProductByCustomerID(int ID)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var dataString = await client.GetStringAsync(Const.ConverToPathWithParameter(Const.GetFavoriteProductByCustomerIDPath, new object[] { ID }));
+                    var FavProductList = JsonConvert.DeserializeObject<List<FavoriteProduct>>(dataString);
+
+                    return FavProductList;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                    throw e;
+                }
+            }
+        }
+
+        public async Task<int> AddFavoriteProduct(int CustomerID, int ProductID)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.AddFavoriteProductPath);
+
+                    FavoriteProduct favoriteProduct = new FavoriteProduct() { ProductID = ProductID, CustomerID = CustomerID };
+
+                    var myContent = JsonConvert.SerializeObject(favoriteProduct);
+
+                    var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                    var byteContent = new ByteArrayContent(buffer);
+
+                    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    var result = client.PostAsync(convertString, byteContent).Result.Content.ReadAsStringAsync().Result;
+
+                    var resultID = JsonConvert.DeserializeObject<int>(result);
+
+                    return resultID;
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                    throw e;
+                }
+            }
+        }
+
+        public async Task<bool> DeleteFavoriteProduct(int CustomerID, int ProductID)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.DeleteFavoriteProductPath);
+
+                    FavoriteProduct favoriteProduct = new FavoriteProduct() { ProductID = ProductID, CustomerID = CustomerID };
+
+                    var myContent = JsonConvert.SerializeObject(favoriteProduct);
+
+                    var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                    var byteContent = new ByteArrayContent(buffer);
+
+                    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    var result = client.PostAsync(convertString, byteContent).Result.Content.ReadAsStringAsync().Result;
+
+                    var resultBool = JsonConvert.DeserializeObject<bool>(result);
+
+                    return resultBool;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                    throw e;
                 }
             }
         }

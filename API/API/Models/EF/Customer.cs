@@ -14,6 +14,12 @@ namespace API.Models.EF
     
     public partial class Customer
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Customer()
+        {
+            this.FavoriteProducts = new HashSet<FavoriteProduct>();
+        }
+    
         public int ID { get; set; }
         public string UserName { get; set; }
         public string PassWord { get; set; }
@@ -23,5 +29,8 @@ namespace API.Models.EF
         public string Address { get; set; }
         public string Avatar { get; set; }
         public Nullable<bool> IsAdmin { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FavoriteProduct> FavoriteProducts { get; set; }
     }
 }

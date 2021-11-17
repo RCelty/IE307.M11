@@ -8,7 +8,8 @@ using System.Text.RegularExpressions;
 namespace PhoneStoreApp.Assets.Contains
 {
     public class Const
-    {        
+    {
+        public static int CurrentCustomerID = 1;
         public static readonly string SQLiteDBContextPath = "SQLite.db";
         public static readonly string Domain = $"http://10.0.2.2:88/";
 
@@ -16,7 +17,12 @@ namespace PhoneStoreApp.Assets.Contains
         public static readonly string GetAllAdvertisementPath = Domain + @"Api/AdvertisementController/GetAllAdvertisement";
         public static readonly string GetAllBrandPath = Domain + @"Api/BrandController/GetAllBrand";
         public static readonly string GetAllProductPath = Domain + @"Api/ProductController/GetAllProduct";
+
         public static readonly string LoginPath = Domain + @"Api/CustomerController/Login";
+        public static readonly string GetCustomerByIDPath = Domain + @"Api/CustomerController/GetCustomerByID/{ID}";
+        public static readonly string GetFavoriteProductByCustomerIDPath = Domain + @"Api/CustomerController/GetFavoriteProductByCustomerID/{ID}";
+        public static readonly string AddFavoriteProductPath = Domain + @"Api/CustomerController/AddFavoriteProduct";
+        public static readonly string DeleteFavoriteProductPath = Domain + @"Api/CustomerController/DeleteFavoriteProduct";
 
         public static string ConverToPathWithParameter(string path, object[] param = null)
         {

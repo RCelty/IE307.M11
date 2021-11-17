@@ -11,6 +11,7 @@
             <Converter:ConvertDiscountPercentToBoolean x:Key="ConvertDiscountPercentToBoolean"></Converter:ConvertDiscountPercentToBoolean>
             <Converter:ConvertProductCountToIsVisibleBoolean x:Key="ConvertProductCountToIsVisibleBoolean"></Converter:ConvertProductCountToIsVisibleBoolean>
             <Converter:ConvertProductCountToNotVisibleBoolean x:Key="ConvertProductCountToNotVisibleBoolean"></Converter:ConvertProductCountToNotVisibleBoolean>
+            <Converter:ConvertIsFavoriteBooleanToColor x:Key="ConvertIsFavoriteBooleanToColor"></Converter:ConvertIsFavoriteBooleanToColor>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -57,5 +57,25 @@ namespace PhoneStoreApp.Services
                 }
             }
         }
+
+        public async Task<Customer> GetCustomerByID(int ID)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var dataString = await client.GetStringAsync(Const.ConverToPathWithParameter(Const.GetCustomerByIDPath, new object[] { ID }));
+
+                    var customer = JsonConvert.DeserializeObject<Customer>(dataString);
+
+                    return customer;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                    throw e;
+                }
+            }
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace API.Models.EF
         public Product()
         {
             this.ProductDetails = new HashSet<ProductDetail>();
+            this.FavoriteProducts = new HashSet<FavoriteProduct>();
         }
     
         public int ID { get; set; }
@@ -40,5 +41,7 @@ namespace API.Models.EF
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductDetail> ProductDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FavoriteProduct> FavoriteProducts { get; set; }
     }
 }

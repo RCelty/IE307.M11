@@ -49,8 +49,7 @@ namespace PhoneStoreApp.ViewModels
         }
 
 
-        #region Command
-        public Command clickCommand { get; set; }
+        #region Command        
         public Command ProductDetailOnClick { get; set; }
         public Command SearchCommand { get; set; }
         public Command CategoryPressCommand { get; set; }
@@ -59,7 +58,7 @@ namespace PhoneStoreApp.ViewModels
         public HomeViewModel()
         {
             LoadData();
-            clickCommand = new Command<Product>(clickCommandExcute, product => product != null);
+            
             ProductDetailOnClick = new Command<Product>(ProductDetailOnClickExcute, product => product != null);
             SearchCommand = new Command<string>(SearchCommandExecute, (s) => true);
             CategoryPressCommand = new Command<Category>(CategoryPressCommandExecute, category => category != null);
@@ -73,13 +72,7 @@ namespace PhoneStoreApp.ViewModels
             Products = new ObservableCollection<Product>(await HomeService.Instance.GetAllProduct());
         }
 
-             
-
-        public void clickCommandExcute(Product product)
-        {
-            var message = product.DisplayName;
-            App.Current.MainPage.DisplayAlert("Test", message, "Ok");
-        }
+                    
         public async void ProductDetailOnClickExcute(Product product)
         {
             await App.Current.MainPage.Navigation.PushAsync(new ProductDetailPage(product.ID), true);

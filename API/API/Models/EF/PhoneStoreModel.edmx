@@ -43,6 +43,14 @@
           <Property Name="Avatar" Type="varchar" MaxLength="500" />
           <Property Name="IsAdmin" Type="bit" />
         </EntityType>
+        <EntityType Name="FavoriteProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="CustomerID" Type="int" />
+        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ID" />
@@ -73,6 +81,30 @@
           <Property Name="DetailDescription" Type="nvarchar" MaxLength="500" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
+        <Association Name="FK__FavoriteP__Custo__37A5467C">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="FavoriteProduct" Type="Self.FavoriteProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FavoriteProduct">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FavoriteP__Produ__36B12243">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="FavoriteProduct" Type="Self.FavoriteProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FavoriteProduct">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Product__BrandID__2C3393D0">
           <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
@@ -114,8 +146,17 @@
           <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FavoriteProduct" EntityType="Self.FavoriteProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductDetail" EntityType="Self.ProductDetail" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__FavoriteP__Custo__37A5467C" Association="Self.FK__FavoriteP__Custo__37A5467C">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="FavoriteProduct" EntitySet="FavoriteProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FavoriteP__Produ__36B12243" Association="Self.FK__FavoriteP__Produ__36B12243">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="FavoriteProduct" EntitySet="FavoriteProduct" />
+          </AssociationSet>
           <AssociationSet Name="FK__Product__BrandID__2C3393D0" Association="Self.FK__Product__BrandID__2C3393D0">
             <End Role="Brand" EntitySet="Brand" />
             <End Role="Product" EntitySet="Product" />
@@ -181,6 +222,7 @@
           <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__29572725" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="ProductDetails" Relationship="PhoneStoreModel.FK__ProductDe__Produ__2D27B809" FromRole="Product" ToRole="ProductDetail" />
           <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="FavoriteProducts" Relationship="PhoneStoreModel.FK__FavoriteP__Produ__36B12243" FromRole="Product" ToRole="FavoriteProduct" />
         </EntityType>
         <Association Name="FK__Product__BrandID__2A4B4B5E">
           <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
@@ -225,6 +267,15 @@
             <End Role="ProductDetail" EntitySet="ProductDetails" />
           </AssociationSet>
           <EntitySet Name="Customers" EntityType="PhoneStoreModel.Customer" />
+          <EntitySet Name="FavoriteProducts" EntityType="PhoneStoreModel.FavoriteProduct" />
+          <AssociationSet Name="FK__FavoriteP__Custo__37A5467C" Association="PhoneStoreModel.FK__FavoriteP__Custo__37A5467C">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="FavoriteProduct" EntitySet="FavoriteProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FavoriteP__Produ__36B12243" Association="PhoneStoreModel.FK__FavoriteP__Produ__36B12243">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="FavoriteProduct" EntitySet="FavoriteProducts" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="ProductDetail">
           <Key>
@@ -262,7 +313,42 @@
           <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Avatar" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="IsAdmin" Type="Boolean" />
+          <NavigationProperty Name="FavoriteProducts" Relationship="PhoneStoreModel.FK__FavoriteP__Custo__37A5467C" FromRole="Customer" ToRole="FavoriteProduct" />
         </EntityType>
+        <EntityType Name="FavoriteProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="CustomerID" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="PhoneStoreModel.FK__FavoriteP__Custo__37A5467C" FromRole="FavoriteProduct" ToRole="Customer" />
+          <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__FavoriteP__Produ__36B12243" FromRole="FavoriteProduct" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK__FavoriteP__Custo__37A5467C">
+          <End Type="PhoneStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="PhoneStoreModel.FavoriteProduct" Role="FavoriteProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FavoriteProduct">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FavoriteP__Produ__36B12243">
+          <End Type="PhoneStoreModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="PhoneStoreModel.FavoriteProduct" Role="FavoriteProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FavoriteProduct">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -339,6 +425,15 @@
                 <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
                 <ScalarProperty Name="PassWord" ColumnName="PassWord" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavoriteProducts">
+            <EntityTypeMapping TypeName="PhoneStoreModel.FavoriteProduct">
+              <MappingFragment StoreEntitySet="FavoriteProduct">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

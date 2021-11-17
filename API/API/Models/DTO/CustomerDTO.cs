@@ -27,6 +27,8 @@ namespace API.Models.DTO
 
         public bool? IsAdmin { get; set; }
 
+        public List<FavoriteProductDTO> FavoriteProducts { get; set; }
+
         public CustomerDTO()
         {
 
@@ -43,6 +45,9 @@ namespace API.Models.DTO
             Address = customer.Address;
             Avatar = Const.CustomerImagePath + customer.Avatar;
             IsAdmin = customer.IsAdmin;
+            FavoriteProducts = customer.FavoriteProducts
+                .Select(favoriteproduct => new FavoriteProductDTO(favoriteproduct))
+                                        .ToList();
         }       
     }
 }

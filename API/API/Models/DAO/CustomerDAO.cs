@@ -63,5 +63,23 @@ namespace API.Models.DAO
                 throw e;
             }
         }
+
+        public async Task<CustomerDTO> GetCustomerByID(int ID)
+        {
+            try
+            {
+                var myCustomer = await db.Customers.SingleOrDefaultAsync(customer => customer.ID == ID);
+                if (myCustomer != null)
+                {
+                    return new CustomerDTO(myCustomer);
+                }
+                else return null;
+            }
+            catch(Exception e)
+            {
+                return null;
+                throw e;
+            }
+        }
     }
 }

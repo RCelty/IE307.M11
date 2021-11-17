@@ -31,16 +31,16 @@
                     </ImageButton>
                     <Label Text="Chi tiết sản phẩm" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="1" FontSize="20" VerticalTextAlignment="Center" TextColor="Black" ></Label>
                     <ImageButton BackgroundColor="Transparent" HorizontalOptions="End" Grid.Column="1" Margin="0,0,10,0">
-                            <ImageButton.Source>
-                                <FontImageSource
+                        <ImageButton.Source>
+                            <FontImageSource
                                 Size="25"
                                 Color="Black"
                                  FontFamily="faL" 
                                 Glyph="&#xf064;">
 
-                                </FontImageSource>
-                            </ImageButton.Source>
-                        </ImageButton>
+                            </FontImageSource>
+                        </ImageButton.Source>
+                    </ImageButton>
                     <ImageButton BackgroundColor="Transparent" HorizontalOptions="End" Grid.Row="0" Grid.Column="2">
                         <ImageButton.Source>
                             <FontImageSource
@@ -59,8 +59,8 @@
                     <Image Source="{Binding Product.Image1, Converter={x:StaticResource ConvertStringToImage}}" HeightRequest="300" WidthRequest="500" ></Image>
                     <Label Text="{Binding Product.DisplayName}" FontAttributes="Bold" TextColor="Black" FontSize="Large"></Label>
                     <StackLayout Orientation="Horizontal">
-                    <Label Text="{Binding Product.Price, Converter={x:StaticResource ConvertPriceToString}}"  FontSize="Medium" TextColor="#8c8c8c" FontAttributes="Bold" TextDecorations="Strikethrough"></Label>
-                    <Label Text="{Binding Product.DiscountPrice, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="Red" FontAttributes="Bold"/>
+                        <Label Text="{Binding Product.Price, Converter={x:StaticResource ConvertPriceToString}}"  FontSize="Medium" TextColor="#8c8c8c" FontAttributes="Bold" TextDecorations="Strikethrough"></Label>
+                        <Label Text="{Binding Product.DiscountPrice, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="Red" FontAttributes="Bold"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <ImageButton BackgroundColor="Transparent">
@@ -104,7 +104,7 @@
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Đánh Giá" FontSize="Medium" FontAttributes="Bold" TextColor="Black"></Label>
                         <Label Text="{Binding Product.CommentCount}" FontSize="Medium" FontAttributes="Bold" TextColor="Black"></Label>
-                        <ImageButton BackgroundColor="Transparent" Margin="240,0,0,0" > 
+                        <ImageButton BackgroundColor="Transparent" Margin="240,0,0,0" >
                             <ImageButton.Source>
                                 <FontImageSource
                                 Size="17"
@@ -118,17 +118,29 @@
                     </StackLayout>
                 </StackLayout>
             </ScrollView>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <material:MaterialButton BackgroundColor="#FFFE3A30" HorizontalOptions="End" Text="Mua Ngay"  TextColor="White" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" HeightRequest="60"></material:MaterialButton>
-                <material:MaterialButton BackgroundColor="#FF3669C9" HorizontalOptions="Start" Text="Thêm vào giỏ" TextColor="White" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" HeightRequest="60" />
-            </Grid>
+            <StackLayout>
+                <BoxView HeightRequest="0.1" Color="Gray" Margin="0,0,0,10"></BoxView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <ImageButton Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" Margin="0,5,0,20" Command="{Binding FavoriteCommand}">
+                        <ImageButton.Source>
+                            <FontImageSource Glyph="&#xf004;" FontFamily="faS" Color="{Binding IsFavorite, Converter={x:StaticResource ConvertIsFavoriteBooleanToColor}}" Size="50"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <ImageButton Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent" Margin="0,5,0,20">
+                        <ImageButton.Source>
+                            <FontImageSource Glyph="&#xf07a;" FontFamily="faR" Color="LightGray" Size="50"/>
+                        </ImageButton.Source>
+                    </ImageButton>
+                </Grid>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

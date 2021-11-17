@@ -72,6 +72,14 @@ create table Customer
 )
 go
 
+create table FavoriteProduct
+(
+	ID int primary key identity(1,1),
+	ProductID int foreign key references Product(ID),
+	CustomerID int foreign key references Customer(ID)
+)
+go
+
 --insert Advertisement
 insert into Advertisement values('advertisement1.jpg')
 insert into Advertisement values('advertisement2.jpg')

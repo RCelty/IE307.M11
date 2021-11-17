@@ -15,7 +15,7 @@ namespace API.Controllers
         [Route("Api/CustomerController/GetAllCustomer")]
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IHttpActionResult> GetAllCategory()
+        public async Task<IHttpActionResult> GetAllCustomer()
         {
             return Ok(await CustomerDAO.Instance.GetAllCustomer());
         }
@@ -28,6 +28,36 @@ namespace API.Controllers
             return Ok(await CustomerDAO.Instance.Login(customerDTO));
         }
 
-       
+        [Route("Api/CustomerController/GetCustomerByID/{ID}")]
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetCustomerByID(int ID)
+        {
+            return Ok(await CustomerDAO.Instance.GetCustomerByID(ID));
+        }
+
+        [Route("Api/CustomerController/GetFavoriteProductByCustomerID/{ID}")]
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetFavoriteProductByCustomerID(int ID)
+        {
+            return Ok(await FavoriteProductDAO.Instance.GetFavoriteProductByCustomerID(ID));
+        }
+
+        [Route("Api/CustomerController/AddFavoriteProduct")]
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IHttpActionResult> AddFavoriteProduct(FavoriteProductDTO favoriteProductDTO)
+        {
+            return Ok(await FavoriteProductDAO.Instance.AddFavoriteProduct(favoriteProductDTO));
+        }
+
+        [Route("Api/CustomerController/DeleteFavoriteProduct")]
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IHttpActionResult> DeleteFavoriteProduct(FavoriteProductDTO favoriteProductDTO)
+        {
+            return Ok(await FavoriteProductDAO.Instance.DeleteFavoriteProduct(favoriteProductDTO));
+        }
     }
 }
