@@ -14,7 +14,7 @@ namespace PhoneStoreApp.Views
     {
         public CartPage()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
     }
 }

@@ -116,5 +116,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\curios.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Renderers\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -1243,3 +1243,4 @@ C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneS
 C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\stamp\_ResolveLibraryProjectImports.stamp
 C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\PhoneStoreApp.Android.csproj.CopyComplete
 D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\res\drawable\curios.png
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\android\src\crc64ce95f3ca3f26bb73\MainPageRenderer.java

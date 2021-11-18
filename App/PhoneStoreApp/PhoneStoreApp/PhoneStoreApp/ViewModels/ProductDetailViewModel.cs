@@ -46,7 +46,7 @@ namespace PhoneStoreApp.ViewModels
             foreach (Product product in temp_Product)
             {
                 if (product.ID == ID)
-                    Product = product;
+                    Product = product;               
             }           
         }
 

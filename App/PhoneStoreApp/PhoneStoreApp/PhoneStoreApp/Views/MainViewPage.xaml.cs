@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using PhoneStoreApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +15,12 @@ namespace PhoneStoreApp.Views
         public MainViewPage()
         {
             InitializeComponent();
+        }
+
+        private void FavoriteProductPage_Appearing(object sender, EventArgs e)
+        {
+            //(BindingContext as ViewModels.FavoriteProductViewModel).LoadData();
+            CurrentPage.BindingContext = new FavoriteProductViewModel();
         }
     }
 }

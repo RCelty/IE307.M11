@@ -11,7 +11,7 @@
     <!--Pages can be added as references or inline-->
     <Views:HomePage IconImageSource="home.png" TranslationY="0"/>
 
-    <Views:FavoriteProductPage IconImageSource="heart.png" TranslationY="0"/>
+    <Views:FavoriteProductPage IconImageSource="heart.png" TranslationY="0" Appearing="FavoriteProductPage_Appearing"/>
 
     <Views:CartPage IconImageSource="bag.png" TranslationY="0"/>
 
