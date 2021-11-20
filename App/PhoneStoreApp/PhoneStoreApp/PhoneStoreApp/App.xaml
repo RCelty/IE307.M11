@@ -12,6 +12,7 @@
             <Converter:ConvertProductCountToIsVisibleBoolean x:Key="ConvertProductCountToIsVisibleBoolean"></Converter:ConvertProductCountToIsVisibleBoolean>
             <Converter:ConvertProductCountToNotVisibleBoolean x:Key="ConvertProductCountToNotVisibleBoolean"></Converter:ConvertProductCountToNotVisibleBoolean>
             <Converter:ConvertIsFavoriteBooleanToColor x:Key="ConvertIsFavoriteBooleanToColor"></Converter:ConvertIsFavoriteBooleanToColor>
+            <Converter:ConvertIsInCartBooleanToColor x:Key="ConvertIsInCartBooleanToColor"></Converter:ConvertIsInCartBooleanToColor>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

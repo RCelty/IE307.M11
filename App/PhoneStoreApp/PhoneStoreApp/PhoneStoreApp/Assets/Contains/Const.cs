@@ -4,12 +4,15 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
+using PhoneStoreApp.Models;
 
 namespace PhoneStoreApp.Assets.Contains
 {
     public class Const
     {
         public static int CurrentCustomerID = 1;
+        public static List<Product> cartProducts = new List<Product>();
+
         public static readonly string SQLiteDBContextPath = "SQLite.db";
         public static readonly string Domain = $"http://10.0.2.2:88/";
 

@@ -22,5 +22,10 @@ namespace PhoneStoreApp.Views
             //(BindingContext as ViewModels.FavoriteProductViewModel).LoadData();
             CurrentPage.BindingContext = new FavoriteProductViewModel();
         }
+
+        private void CartPage_Appearing(object sender, EventArgs e)
+        {
+            CurrentPage.BindingContext = new CartViewModel();
+        }
     }
 }

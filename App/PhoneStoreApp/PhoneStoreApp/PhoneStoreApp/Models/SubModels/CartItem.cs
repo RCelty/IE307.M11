@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PhoneStoreApp.Models.SubModels
 {
-    public class FavoriteProductItem : INotifyPropertyChanged
+    public class CartItem : INotifyPropertyChanged
     {
         public int ID { get; set; }
 
@@ -24,7 +24,19 @@ namespace PhoneStoreApp.Models.SubModels
 
         public int? CommentCount { get; set; }
 
-        private bool isSelected;       
+        private int count;
+
+        public int Count
+        {
+            get => count;
+            set
+            {
+                count = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool isSelected;
 
         public bool IsSelected
         {

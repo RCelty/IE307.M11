@@ -41,7 +41,8 @@ namespace PhoneStoreApp.ViewModels
         public Command DeleteCommand { get; set; }
         public Command DeleteAllCommand { get; set; }
         public Command DeleteSelectedCommand { get; set; }
-        public Command ProductDetailOnClick { get; set; }
+        public Command ProductDetailOnClick { get; set; }        
+        //public Command SelectAllCmd { get; set; }        
         #endregion
 
         public FavoriteProductViewModel()
@@ -52,6 +53,7 @@ namespace PhoneStoreApp.ViewModels
             DeleteAllCommand = new Command(DeleteAllCommandExecute, () => true);
             DeleteSelectedCommand = new Command(DeleteSelectedCommandExecute, () => true);
             ProductDetailOnClick = new Command<FavoriteProductItem>(ProductDetailOnClickExcute, product => product != null);
+            //SelectAllCmd = new Command(SelectAllCmdExe, () => true);
         }
 
         public async void LoadData()
@@ -92,7 +94,7 @@ namespace PhoneStoreApp.ViewModels
             var result = await ProductService.Instance.DeleteFavoriteProduct(Const.CurrentCustomerID, favoriteProductItem.ID);
             if (result)
             {
-                LoadData();
+                FavoriteProducts.Remove(favoriteProductItem);
                 await App.Current.MainPage.DisplayAlert("Thông báo", "Đã xóa khỏi yêu thích", "OK");
             }
             else
@@ -105,11 +107,11 @@ namespace PhoneStoreApp.ViewModels
         {
             if (FavoriteProducts != null && FavoriteProducts.Count > 0)
             {
-                foreach(var f in FavoriteProducts)
+                foreach (var f in FavoriteProducts)
                 {
                     await ProductService.Instance.DeleteFavoriteProduct(Const.CurrentCustomerID, f.ID);
                 }
-                LoadData();
+                FavoriteProducts.Clear();
             }
         }
 
@@ -120,9 +122,10 @@ namespace PhoneStoreApp.ViewModels
 
             if (selectedList != null && selectedList.Count > 0)
             {
-                foreach(var f in selectedList)
+                foreach (var f in selectedList)
                 {
                     await ProductService.Instance.DeleteFavoriteProduct(Const.CurrentCustomerID, f.ID);
+                    FavoriteProducts.Remove(f);
                 }
             }
             else
@@ -130,13 +133,21 @@ namespace PhoneStoreApp.ViewModels
                 await App.Current.MainPage.DisplayAlert("Thông báo", "Bạn chưa chọn sản phẩm để xóa", "Ok");
             }
 
-            LoadData();
+            //LoadData();
         }
 
         public async void ProductDetailOnClickExcute(FavoriteProductItem product)
         {
             //await App.Current.MainPage.DisplayAlert("t", product.ID.ToString(), "OK");
             await App.Current.MainPage.Navigation.PushAsync(new ProductDetailPage(product.ID), true);
-        }
+        }       
+
+        //void SelectAllCmdExe()
+        //{
+        //    foreach(var f in FavoriteProducts)
+        //    {
+        //        f.IsSelected = true;
+        //    }
+        //}
     }
 }

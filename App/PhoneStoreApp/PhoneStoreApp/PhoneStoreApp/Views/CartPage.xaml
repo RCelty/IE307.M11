@@ -1,12 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             x:Name="MyCartPage"
              x:Class="PhoneStoreApp.Views.CartPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="&#xf07a;" FontFamily="faS"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="10">
+            <ScrollView VerticalScrollBarVisibility="Never">
+                <StackLayout BindableLayout.ItemsSource="{Binding CartProducts}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <material:MaterialCard Padding="5" HasShadow="True" IsClickable="True" 
+                                                   ClickCommand="{Binding BindingContext.ProductDetailOnClick, Source={x:Reference Name=MyCartPage}}"
+                                                   ClickCommandParameter="{Binding .}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="60"/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="7*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="{Binding Image1, Converter={x:StaticResource ConvertStringToImage}}" Aspect="AspectFit" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"/>
+                                    <Label Text="{Binding DisplayName}" FontSize="Large" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" Grid.Column="1" Grid.Row="0"/>
+                                    <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+                                        <Label Text="{Binding Price, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="#8c8c8c" FontAttributes="Bold" TextDecorations="Strikethrough" IsVisible="{Binding DiscountPercent, Converter={StaticResource ConvertDiscountPercentToBoolean}}"/>
+                                        <Label Text="{Binding DiscountPrice, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="Red" FontAttributes="Bold"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                        <ImageButton BackgroundColor="Transparent" Margin="10,0,10,0" Command="{Binding BindingContext.DecreaseCommand, Source={x:Reference Name=MyCartPage}}" 
+                                                     CommandParameter="{Binding .}">
+                                            <ImageButton.Source>
+                                                <FontImageSource Glyph="&#xf056;" FontFamily="faR" Color="MediumPurple"/>
+                                            </ImageButton.Source>
+                                        </ImageButton>
+                                        <Label Text="{Binding Count}" FontSize="Large"/>
+                                        <ImageButton BackgroundColor="Transparent" Margin="10,0,10,0" Command="{Binding BindingContext.IncreaseCommand, Source={x:Reference Name=MyCartPage}}" 
+                                                     CommandParameter="{Binding .}">
+                                            <ImageButton.Source>
+                                                <FontImageSource Glyph="&#xf055;" FontFamily="faR" Color="MediumPurple"/>
+                                            </ImageButton.Source>
+                                        </ImageButton>
+                                    </StackLayout>
+                                    <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" Grid.Column="2" Grid.Row="0" Color="MediumPurple" HorizontalOptions="Center"/>
+                                    <ImageButton Grid.Column="2" Grid.Row="1" BackgroundColor="Red" Padding="-2,2,-2,2" Command="{Binding BindingContext.DeleteCommand, Source={x:Reference Name=MyCartPage}}" CommandParameter="{Binding .}">
+                                        <ImageButton.Source>
+                                            <FontImageSource Glyph="&#xf00d;" FontFamily="faS" Color="White" Size="Medium"/>
+                                        </ImageButton.Source>
+                                    </ImageButton>
+
+                                </Grid>
+                            </material:MaterialCard>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout VerticalOptions="EndAndExpand">
+                <BoxView HeightRequest="0.1" Color="Gray" Margin="0,0,0,10"></BoxView>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Tổng cộng: " FontSize="Large"/>
+                    <Label Text="{Binding TotalPrice, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Large"/>
+                </StackLayout>
+                <BoxView HeightRequest="0.1" Color="Gray" Margin="0,0,0,10"></BoxView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <material:MaterialButton Text="Chọn tất cả" BackgroundColor="MediumPurple" FontSize="12"
+                                             Grid.Column="0" Grid.Row="0" IsEnabled="{Binding CartProducts.Count, Converter={x:StaticResource ConvertProductCountToIsVisibleBoolean}}"
+                                             Command="{Binding SelectAllCommand}"/>
+                    <material:MaterialButton Text="Xóa mục được chọn" BackgroundColor="Red" FontSize="12"
+                                             Grid.Column="1" Grid.Row="0" IsEnabled="{Binding CartProducts.Count, Converter={x:StaticResource ConvertProductCountToIsVisibleBoolean}}"
+                                             Command="{Binding DeleteSelectedCommand}"/>
+                    <material:MaterialButton Text="Thanh toán" BackgroundColor="#57acf5"  FontSize="12"
+                                             Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                                             IsEnabled="{Binding CartProducts.Count, Converter={x:StaticResource ConvertProductCountToIsVisibleBoolean}}"/>
+                </Grid>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -134,9 +134,9 @@
                             <FontImageSource Glyph="&#xf004;" FontFamily="faS" Color="{Binding IsFavorite, Converter={x:StaticResource ConvertIsFavoriteBooleanToColor}}" Size="50"/>
                         </ImageButton.Source>
                     </ImageButton>
-                    <ImageButton Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent" Margin="0,5,0,20">
+                    <ImageButton Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent" Margin="0,5,0,20" Command="{Binding AddToCartCommand}">
                         <ImageButton.Source>
-                            <FontImageSource Glyph="&#xf07a;" FontFamily="faR" Color="LightGray" Size="50"/>
+                            <FontImageSource Glyph="&#xf07a;" FontFamily="faR" Color="{Binding IsInCart, Converter={x:StaticResource ConvertIsInCartBooleanToColor}}" Size="50"/>
                         </ImageButton.Source>
                     </ImageButton>
                 </Grid>

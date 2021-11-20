@@ -43,6 +43,7 @@
                                             <FontImageSource Glyph="&#xf00d;" FontFamily="faS" Color="White" Size="Medium"/>
                                         </ImageButton.Source>
                                     </ImageButton>
+                                    
                                 </Grid>
                             </material:MaterialCard>
                         </DataTemplate>
@@ -54,6 +55,7 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
+                        <!--<RowDefinition Height="auto"/>-->
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -63,6 +65,7 @@
                                              Command="{Binding DeleteAllCommand}"/>
                     <material:MaterialButton Text="Xóa mục được chọn" Grid.Column="1" FontSize="12" BackgroundColor="MediumPurple" IsEnabled="{Binding FavoriteProducts.Count, Converter={x:StaticResource ConvertProductCountToIsVisibleBoolean}}"
                                              Command="{Binding DeleteSelectedCommand}"/>
+                    <!--<Button Text="select all" Command="{Binding SelectAllCmd}" Grid.Row="1"/>-->
                 </Grid>
             </StackLayout>
         </StackLayout>
