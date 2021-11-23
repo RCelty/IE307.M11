@@ -77,9 +77,9 @@ namespace API.Models.DAO
             }
         }
 
-        public async Task<bool> DeleteBrand(BrandDTO brandDTO)
+        public async Task<bool> DeleteBrand(int ID)
         {
-            var result = db.Brands.SingleOrDefault(b => b.ID == brandDTO.ID);
+            var result = db.Brands.SingleOrDefault(b => b.ID == ID);
 
             try
             {

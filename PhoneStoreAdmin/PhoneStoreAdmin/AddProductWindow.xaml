@@ -75,7 +75,8 @@
                             Command="{Binding AddCommand}"/>
                     <Button Content="Sửa" MinWidth="100" HorizontalAlignment="Center" Grid.Column="1"
                             Command="{Binding EditCommand}"/>
-                    <Button Content="Xóa" MinWidth="100" HorizontalAlignment="Center" Grid.Column="2"/>
+                    <Button Content="Xóa" MinWidth="100" HorizontalAlignment="Center" Grid.Column="2"
+                            Command="{Binding DeleteCommand}"/>
                 </Grid>
             </materialDesign:Card>
 
@@ -105,7 +106,7 @@
                 <Button Grid.Column="0" Grid.Row="0"
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     MinWidth="100" HorizontalAlignment="Center"
-                    Command="{Binding ImageChooseCommand}">
+                    Command="{Binding Image1ChooseCommand}">
                     Chọn hình 1
                 </Button>
                 <Image Grid.Column="1" Grid.Row="0" Source="{Binding Image1}" Stretch="Uniform" StretchDirection="DownOnly"/>
@@ -113,7 +114,7 @@
                 <Button Grid.Column="0" Grid.Row="1"
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     MinWidth="100" HorizontalAlignment="Center"
-                    Command="{Binding ImageChooseCommand}">
+                    Command="{Binding Image2ChooseCommand}">
                     Chọn hình 2
                 </Button>
                 <Image Grid.Column="1" Grid.Row="1" Source="{Binding Image2}" Stretch="Uniform" StretchDirection="DownOnly"/>
@@ -121,7 +122,7 @@
                 <Button Grid.Column="0" Grid.Row="2"
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     MinWidth="100" HorizontalAlignment="Center"
-                    Command="{Binding ImageChooseCommand}">
+                    Command="{Binding Image3ChooseCommand}">
                     Chọn hình 3
                 </Button>
                 <Image Grid.Column="1" Grid.Row="2" Source="{Binding Image3}" Stretch="Uniform" StretchDirection="DownOnly"/>
@@ -129,12 +130,12 @@
                 <Button Grid.Column="0" Grid.Row="3"
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     MinWidth="100" HorizontalAlignment="Center"
-                    Command="{Binding ImageChooseCommand}">
+                    Command="{Binding Image4ChooseCommand}">
                     Chọn hình 4
                 </Button>
                 <Image Grid.Column="1" Grid.Row="3" Source="{Binding Image4}" Stretch="Uniform" StretchDirection="DownOnly"/>
             </Grid>
-            <Button Content="Submit" Margin="10"/>
+            <Button Content="Submit" Margin="10" Command="{Binding SubmitCommand}"/>
         </StackPanel>
     </ScrollViewer>
 </Window>

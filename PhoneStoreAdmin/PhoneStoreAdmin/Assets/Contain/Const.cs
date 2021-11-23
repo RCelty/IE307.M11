@@ -14,17 +14,25 @@ namespace PhoneStoreAdmin.Assets.Contain
         public static readonly string GetAllAdvertisementPath = Domain + @"Api/AdvertisementController/GetAllAdvertisement";
         
         public static readonly string GetAllProductPath = Domain + @"Api/ProductController/GetAllProduct";
+        public static readonly string AddProductPath = Domain + @"Api/ProductController/AddProduct";
+        public static readonly string UploadProductImagePath = Domain + @"Api/ProductController/UploadProductImage";
+        public static readonly string UpdateProductPath = Domain + @"Api/ProductController/UpdateProduct";
+        public static readonly string DeleteProductPath = Domain + @"Api/ProductController/DeleteProduct/{ID}";
+
+        public static readonly string GetProductDetailByProductIDPath = Domain + @"Api/ProductController/GetAllProductDetailByProductID/{ID}";
+        public static readonly string AddProductDetailPath = Domain + @"Api/ProductController/AddProductDetail";
+        public static readonly string DeleteProductDetailPath = Domain + @"Api/ProductController/DeleteProductDetailByProductID/{ID}";
 
         public static readonly string GetAllCategoryPath = Domain + @"Api/CategoryController/GetAllCategory";
         public static readonly string AddCategoryPath = Domain + @"Api/CategoryController/AddCategory";
         public static readonly string UpdateCategoryPath = Domain + @"Api/CategoryController/UpdateCategory";
-        public static readonly string DeleteCategoryPath = Domain + @"Api/CategoryController/DeleteCategory";
+        public static readonly string DeleteCategoryPath = Domain + @"Api/CategoryController/DeleteCategory/{ID}";
 
         public static readonly string GetAllBrandPath = Domain + @"Api/BrandController/GetAllBrand";
         public static readonly string UploadBrandImagePath = Domain + @"Api/BrandController/UploadBrandImage";
         public static readonly string AddBrandPath = Domain + @"Api/BrandController/AddBrand";
         public static readonly string UpdateBrandPath = Domain + @"Api/BrandController/UpdateBrand";
-        public static readonly string DeleteBrandPath = Domain + @"Api/BrandController/DeleteBrand";
+        public static readonly string DeleteBrandPath = Domain + @"Api/BrandController/DeleteBrand/{ID}";
 
         public static string ConverToPathWithParameter(string path, object[] param = null)
         {

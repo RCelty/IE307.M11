@@ -69,9 +69,9 @@ namespace API.Models.DAO
             }
         }
 
-        public async Task<bool> DeleteCategory(CategoryDTO category)
+        public async Task<bool> DeleteCategory(int ID)
         {
-            var result = db.Categories.SingleOrDefault(c => c.ID == category.ID);
+            var result = db.Categories.SingleOrDefault(c => c.ID == ID);
 
             try
             {

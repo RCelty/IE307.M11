@@ -60,12 +60,12 @@ namespace API.Controllers
             return Ok(await BrandDAO.Instance.UpdateBrand(brandDTO));
         }
 
-        [Route("Api/BrandController/DeleteBrand")]
+        [Route("Api/BrandController/DeleteBrand/{ID}")]
         [AllowAnonymous]
-        [HttpPost]
-        public async Task<IHttpActionResult> DeleteBrand(BrandDTO brandDTO)
+        [HttpGet]
+        public async Task<IHttpActionResult> DeleteBrand(int ID)
         {
-            return Ok(await BrandDAO.Instance.DeleteBrand(brandDTO));
+            return Ok(await BrandDAO.Instance.DeleteBrand(ID));
         }
 
         [Route("Api/BrandController/RestoreAllBrand")]

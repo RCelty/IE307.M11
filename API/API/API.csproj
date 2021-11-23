@@ -179,6 +179,7 @@
     <Compile Include="Models\DAO\CustomerDAO.cs" />
     <Compile Include="Models\DAO\FavoriteProductDAO.cs" />
     <Compile Include="Models\DAO\ProductDAO.cs" />
+    <Compile Include="Models\DAO\ProductDetailDAO.cs" />
     <Compile Include="Models\DTO\AdvertisementDTO.cs" />
     <Compile Include="Models\DTO\BrandDTO.cs" />
     <Compile Include="Models\DTO\CategoryDTO.cs" />

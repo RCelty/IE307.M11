@@ -64,7 +64,7 @@ namespace PhoneStoreAdmin.ViewModel
 
         async void DeleteBrandCommandExecute(Brand brand)
         {
-            await BrandService.Instance.DeleteBrand(brand);
+            await BrandService.Instance.DeleteBrand((int)brand.ID);
             LoadData();
         }
     }

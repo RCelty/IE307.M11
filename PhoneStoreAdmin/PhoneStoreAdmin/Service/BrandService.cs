@@ -66,7 +66,7 @@ namespace PhoneStoreAdmin.Service
             }
         }
 
-        public async Task<bool> AddBrand(Brand brand)
+        public async Task<int> AddBrand(Brand brand)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -82,11 +82,13 @@ namespace PhoneStoreAdmin.Service
 
                     var result = client.PostAsync(convertString, byteContent).Result.Content.ReadAsStringAsync().Result;
 
-                    return true;
+                    var resultID = JsonConvert.DeserializeObject<int>(result);
+
+                    return resultID;
                 }
                 catch (Exception e)
                 {
-                    return false;
+                    return -1;
                     throw e;
                 }
             }
@@ -108,7 +110,9 @@ namespace PhoneStoreAdmin.Service
 
                     var result = client.PostAsync(convertString, byteContent).Result.Content.ReadAsStringAsync().Result;
 
-                    return true;
+                    var resultBool = JsonConvert.DeserializeObject<bool>(result);
+
+                    return resultBool;
                 }
                 catch (Exception e)
                 {
@@ -118,23 +122,19 @@ namespace PhoneStoreAdmin.Service
             }
         }
 
-        public async Task<bool> DeleteBrand(Brand brand)
+        public async Task<bool> DeleteBrand(int ID)
         {
             using (HttpClient client = new HttpClient())
             {
                 try
                 {
-                    var convertString = Const.ConverToPathWithParameter(Const.DeleteBrandPath);
+                    var convertString = Const.ConverToPathWithParameter(Const.DeleteBrandPath, new object[] { ID});
 
-                    var myContent = JsonConvert.SerializeObject(brand);
-                    var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
-                    var byteContent = new ByteArrayContent(buffer);
+                    var dataString = await client.GetStringAsync(convertString);
 
-                    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                    var result = JsonConvert.DeserializeObject<bool>(dataString);
 
-                    var result = client.PostAsync(convertString, byteContent).Result.Content.ReadAsStringAsync().Result;
-
-                    return true;
+                    return result;
                 }
                 catch (Exception e)
                 {
