@@ -25,6 +25,8 @@ namespace API.Models.DTO
         
         public int? CommentCount { get; set; }
 
+        public string Description { get; set; }
+
         public string Image1 { get; set; }
         public string Image2 { get; set; }
         public string Image3 { get; set; }
@@ -56,6 +58,7 @@ namespace API.Models.DTO
             Rating = product.Rating;
             ViewCount = product.ViewCount;
             CommentCount = product.CommentCount;
+            Description = product.Description;
             Image1 = Const.ProductImagePath + product.Image1;
             Image2 = Const.ProductImagePath + product.Image2;
             Image3 = Const.ProductImagePath + product.Image3;

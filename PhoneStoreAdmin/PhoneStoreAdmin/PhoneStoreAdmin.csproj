@@ -72,24 +72,36 @@
     <Compile Include="AddCategoryWindow.xaml.cs">
       <DependentUpon>AddCategoryWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddProductWindow.xaml.cs">
+      <DependentUpon>AddProductWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Assets\Contain\Const.cs" />
     <Compile Include="BrandPage.xaml.cs">
       <DependentUpon>BrandPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Brand.cs" />
     <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\ProductDetail.cs" />
     <Compile Include="Service\BrandService.cs" />
     <Compile Include="Service\CategoryService.cs" />
+    <Compile Include="Service\ProductService.cs" />
     <Compile Include="ViewModel\AddBrandViewModel.cs" />
     <Compile Include="ViewModel\AddCategoryViewModel.cs" />
+    <Compile Include="ViewModel\AddProductViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\BrandViewModel.cs" />
     <Compile Include="ViewModel\CategoryViewModel.cs" />
+    <Compile Include="ViewModel\ProductViewModel.cs" />
     <Page Include="AddBrandWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddCategoryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddProductWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

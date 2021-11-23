@@ -6,6 +6,7 @@
         xmlns:uc="clr-namespace:PhoneStoreAdmin.MyUserControl"
         xmlns:local="clr-namespace:PhoneStoreAdmin"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="Admin" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>

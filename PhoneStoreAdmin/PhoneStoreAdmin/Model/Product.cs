@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace PhoneStoreApp.Models
+namespace PhoneStoreAdmin.Model
 {
     public class Product
     {
-        public int ID { get; set; }
+        public int? ID { get; set; }
 
         public string DisplayName { get; set; }
 
@@ -36,6 +38,9 @@ namespace PhoneStoreApp.Models
         public int? BrandID { get; set; }
 
         public string BrandName { get; set; }
+
+        public bool? IsDeleted { get; set; }
+
         public List<ProductDetail> ProductDetails { get; set; }
     }
 }

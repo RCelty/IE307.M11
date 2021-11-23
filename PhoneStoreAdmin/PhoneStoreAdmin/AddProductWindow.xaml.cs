@@ -10,21 +10,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PhoneStoreAdmin.Model;
 using PhoneStoreAdmin.ViewModel;
 
 namespace PhoneStoreAdmin
 {
     /// <summary>
-    /// Interaction logic for ProductPage.xaml
+    /// Interaction logic for AddProductWindow.xaml
     /// </summary>
-    public partial class ProductPage : Page
+    public partial class AddProductWindow : Window
     {
-        public ProductPage()
+        public AddProductWindow()
         {
             InitializeComponent();
-            DataContext = new ProductViewModel();
+        }
+
+        public AddProductWindow(Product product)
+        {
+            InitializeComponent();
+            DataContext = new AddProductViewModel(product, this);
         }
     }
 }

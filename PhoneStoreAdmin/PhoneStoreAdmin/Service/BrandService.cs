@@ -44,6 +44,7 @@ namespace PhoneStoreAdmin.Service
                 catch (Exception e)
                 {
                     return null;
+                    throw e;
                 }
             }
         }
@@ -138,6 +139,7 @@ namespace PhoneStoreAdmin.Service
                 catch (Exception e)
                 {
                     return false;
+                    throw e;
                 }
             }
         }
