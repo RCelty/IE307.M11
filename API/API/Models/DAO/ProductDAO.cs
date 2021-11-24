@@ -48,6 +48,7 @@ namespace API.Models.DAO
                 Rating = 0,
                 ViewCount = 0,
                 CommentCount = 0,
+                SellCount = 0,
                 Description = productDTO.Description,
                 Image1 = productDTO.Image1,
                 Image2 = productDTO.Image2,
