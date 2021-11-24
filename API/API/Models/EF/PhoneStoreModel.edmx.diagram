@@ -17,6 +17,9 @@
         <EntityTypeShape EntityType="PhoneStoreModel.FavoriteProduct" Width="1.5" PointX="8.25" PointY="5.75" />
         <AssociationConnector Association="PhoneStoreModel.FK__FavoriteP__Custo__37A5467C" />
         <AssociationConnector Association="PhoneStoreModel.FK__FavoriteP__Produ__36B12243" />
+        <EntityTypeShape EntityType="PhoneStoreModel.Comment" Width="1.5" PointX="5.25" PointY="8.5" />
+        <AssociationConnector Association="PhoneStoreModel.FK__Comment__Custome__3B75D760" />
+        <AssociationConnector Association="PhoneStoreModel.FK__Comment__Product__3A81B327" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

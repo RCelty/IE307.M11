@@ -31,6 +31,7 @@
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="PhoneStoreModel.Product">
         <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="SellCount" ColumnName="SellCount" />
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
@@ -78,6 +79,17 @@
     <EntitySetMapping Name="FavoriteProducts">
       <EntityTypeMapping TypeName="PhoneStoreModel.FavoriteProduct">
         <MappingFragment StoreEntitySet="FavoriteProduct">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="PhoneStoreModel.Comment">
+        <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
           <ScalarProperty Name="ID" ColumnName="ID" />

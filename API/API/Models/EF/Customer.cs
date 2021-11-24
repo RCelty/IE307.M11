@@ -18,6 +18,7 @@ namespace API.Models.EF
         public Customer()
         {
             this.FavoriteProducts = new HashSet<FavoriteProduct>();
+            this.Comments = new HashSet<Comment>();
         }
     
         public int ID { get; set; }
@@ -32,5 +33,7 @@ namespace API.Models.EF
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FavoriteProduct> FavoriteProducts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

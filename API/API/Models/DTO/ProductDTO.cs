@@ -25,6 +25,8 @@ namespace API.Models.DTO
         
         public int? CommentCount { get; set; }
 
+        public int? SellCount { get; set; }
+
         public string Description { get; set; }
 
         public string Image1 { get; set; }
@@ -44,6 +46,8 @@ namespace API.Models.DTO
 
         public List<ProductDetailDTO> ProductDetails { get; set; }
 
+        public List<CommentDTO> Comments { get; set; }
+
         public ProductDTO()
         {
 
@@ -58,6 +62,7 @@ namespace API.Models.DTO
             Rating = product.Rating;
             ViewCount = product.ViewCount;
             CommentCount = product.CommentCount;
+            SellCount = product.SellCount;
             Description = product.Description;
             Image1 = Const.ProductImagePath + product.Image1;
             Image2 = Const.ProductImagePath + product.Image2;
@@ -71,6 +76,7 @@ namespace API.Models.DTO
             ProductDetails = product.ProductDetails
                                         .Select(productDetail => new ProductDetailDTO(productDetail))
                                         .ToList();
+            Comments = product.Comments.Select(c => new CommentDTO(c)).ToList();
             IsDeleted = product.IsDeleted;
         }
     }
