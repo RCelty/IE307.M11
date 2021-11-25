@@ -12,15 +12,17 @@ namespace PhoneStoreApp.Models
 
         public int? Price { get; set; }
 
-        public int? DiscountPercent { get; set; }
+        public int DiscountPercent { get; set; }
 
-        public int? DiscountPrice { get; set; }
+        public int DiscountPrice { get; set; }
 
-        public double? Rating { get; set; }
+        public double Rating { get; set; }
 
         public int? ViewCount { get; set; }
 
         public int? CommentCount { get; set; }
+
+        public int SellCount { get; set; }
 
         public string Description { get; set; }
 

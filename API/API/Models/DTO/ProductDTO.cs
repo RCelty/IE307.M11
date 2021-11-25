@@ -61,7 +61,8 @@ namespace API.Models.DTO
             DiscountPercent = product.DiscountPercent;
             Rating = product.Rating;
             ViewCount = product.ViewCount;
-            CommentCount = product.CommentCount;
+            //CommentCount = product.CommentCount;
+            CommentCount = product.Comments.Count();
             SellCount = product.SellCount;
             Description = product.Description;
             Image1 = Const.ProductImagePath + product.Image1;

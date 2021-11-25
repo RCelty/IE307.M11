@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Linq;
 
 using PhoneStoreApp.Models;
 using PhoneStoreApp.Services;
@@ -48,21 +49,59 @@ namespace PhoneStoreApp.ViewModels
             }
         }
 
+        private ObservableCollection<Product> topDiscountProducts;
+
+        public ObservableCollection<Product> TopDiscountProducts
+        {
+            get => topDiscountProducts;
+            set
+            {
+                topDiscountProducts = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<Product> topSellProducts;
+
+        public ObservableCollection<Product> TopSellProducts
+        {
+            get => topSellProducts;
+            set
+            {
+                topSellProducts = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<Product> topRateProducts;
+
+        public ObservableCollection<Product> TopRateProducts
+        {
+            get => topRateProducts;
+            set
+            {
+                topRateProducts = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         #region Command        
         public Command ProductDetailOnClick { get; set; }
         public Command SearchCommand { get; set; }
         public Command CategoryPressCommand { get; set; }
         public Command OpenFilterCommand { get; set; }
+        public Command SeeAllCommand { get; set; }
         #endregion        
         public HomeViewModel()
         {
             LoadData();
-            
+
             ProductDetailOnClick = new Command<Product>(ProductDetailOnClickExcute, product => product != null);
             SearchCommand = new Command<string>(SearchCommandExecute, (s) => true);
             CategoryPressCommand = new Command<Category>(CategoryPressCommandExecute, category => category != null);
             OpenFilterCommand = new Command(OpenFilterCommandExecute, () => true);
+            SeeAllCommand = new Command<ObservableCollection<Product>>(SeeAllCommandExecute, products => products != null);
         }
 
         private async void LoadData()
@@ -70,9 +109,27 @@ namespace PhoneStoreApp.ViewModels
             Advertisements = new ObservableCollection<Advertisement>(await HomeService.Instance.GetAllAdvertisement());
             Categories = new ObservableCollection<Category>(await HomeService.Instance.GetAllCategoryAsync());
             Products = new ObservableCollection<Product>(await HomeService.Instance.GetAllProduct());
+
+            TopDiscountProducts = new ObservableCollection<Product>(await HomeService.Instance.GetTopDiscountProduct());
+            if (TopDiscountProducts.Count >= 5)
+            {
+                TopDiscountProducts = (ObservableCollection<Product>)TopDiscountProducts.Take(5);
+            }
+
+            TopSellProducts = new ObservableCollection<Product>(await HomeService.Instance.GetTopSellProduct());
+            if (TopSellProducts.Count >=5 )
+            {
+                TopSellProducts = (ObservableCollection<Product>)TopSellProducts.Take(5);
+            }
+
+            TopRateProducts = new ObservableCollection<Product>(await HomeService.Instance.GetTopRateProduct());
+            if (TopRateProducts.Count >= 5)
+            {
+                TopRateProducts = (ObservableCollection<Product>)TopRateProducts.Take(5);
+            }
         }
 
-                    
+
         public async void ProductDetailOnClickExcute(Product product)
         {
             await App.Current.MainPage.Navigation.PushAsync(new ProductDetailPage(product.ID), true);
@@ -94,6 +151,11 @@ namespace PhoneStoreApp.ViewModels
         public async void OpenFilterCommandExecute()
         {
             await App.Current.MainPage.Navigation.PushAsync(new FilterPage());
+        }
+
+        public async void SeeAllCommandExecute(ObservableCollection<Product> products)
+        {
+            await App.Current.MainPage.Navigation.PushAsync(new ProductPage(products));
         }
     }
 }

@@ -83,12 +83,12 @@
                         </StackLayout>
                     </ScrollView>
 
-                    <!--Product Section 1-->
-                    <StackLayout>
+                    <!--Product Section 1: Sản phẩm nổi bật-->
+                    <StackLayout Margin="0,0,0,10">
                         <StackLayout Orientation="Horizontal">
                             <Label Text="Sản phẩm nổi bật" TextTransform="Uppercase" FontSize="Large" Margin="5"/>
                             <material:MaterialButton BackgroundColor="Transparent"
-                                             Text="Xem tất cả"
+                                             Text="Xem tất cả" Command="{Binding SeeAllCommand}" CommandParameter="{Binding Products}"
                                              TextColor="Blue"
                                              FontAttributes="None"
                                              TextTransform="None"
@@ -100,6 +100,129 @@
                         <ScrollView Orientation="Horizontal"
                                 HorizontalScrollBarVisibility="Never">
                             <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Products}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <material:MaterialCard WidthRequest="250" Padding="15" HasShadow="True" IsClickable="True" ClickCommand="{Binding BindingContext.ProductDetailOnClick, Source={x:Reference Name=MyHomePage}}" ClickCommandParameter="{Binding .}">
+                                            <StackLayout>
+                                                <Image Source="{Binding Image1, Converter={x:StaticResource ConvertStringToImage}}" HeightRequest="200" WidthRequest="200" Aspect="AspectFit"/>
+                                                <Label Text="{Binding DisplayName}" FontSize="Large" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" HorizontalOptions="FillAndExpand"/>
+                                                <Label Text="{Binding Price, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="#8c8c8c" FontAttributes="Bold" TextDecorations="Strikethrough" IsVisible="{Binding DiscountPercent, Converter={StaticResource ConvertDiscountPercentToBoolean}}"/>
+                                                <Label Text="{Binding DiscountPrice, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="Red" FontAttributes="Bold"/>
+
+                                                <StackLayout  Orientation="Horizontal">
+                                                    <Label Text="&#xf005;" FontFamily="faS" TextColor="Yellow"/>
+                                                    <Label Text="{Binding Rating}"/>
+                                                    <Label Text="{Binding CommentCount}" Margin="10,0,0,0"/>
+                                                    <Label Text="Reviews"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </material:MaterialCard>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </ScrollView>
+
+                    </StackLayout>
+
+                    <!--Product Section 2: Đang giảm giá-->
+                    <StackLayout Margin="0,0,0,10">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Đang giảm giá" TextTransform="Uppercase" FontSize="Large" Margin="5"/>
+                            <material:MaterialButton BackgroundColor="Transparent"
+                                             Text="Xem tất cả" Command="{Binding SeeAllCommand}" CommandParameter="{Binding TopDiscountProducts}"
+                                             TextColor="Blue"
+                                             FontAttributes="None"
+                                             TextTransform="None"
+                                             VerticalOptions="Center" 
+                                             HorizontalOptions="EndAndExpand"
+                                             ButtonType="Text"/>
+                        </StackLayout>
+
+                        <ScrollView Orientation="Horizontal"
+                                HorizontalScrollBarVisibility="Never">
+                            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding TopDiscountProducts}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <material:MaterialCard WidthRequest="250" Padding="15" HasShadow="True" IsClickable="True" ClickCommand="{Binding BindingContext.ProductDetailOnClick, Source={x:Reference Name=MyHomePage}}" ClickCommandParameter="{Binding .}">
+                                            <StackLayout>
+                                                <Image Source="{Binding Image1, Converter={x:StaticResource ConvertStringToImage}}" HeightRequest="200" WidthRequest="200" Aspect="AspectFit"/>
+                                                <Label Text="{Binding DisplayName}" FontSize="Large" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" HorizontalOptions="FillAndExpand"/>
+                                                <Label Text="{Binding Price, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="#8c8c8c" FontAttributes="Bold" TextDecorations="Strikethrough" IsVisible="{Binding DiscountPercent, Converter={StaticResource ConvertDiscountPercentToBoolean}}"/>
+                                                <Label Text="{Binding DiscountPrice, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="Red" FontAttributes="Bold"/>
+
+                                                <StackLayout  Orientation="Horizontal">
+                                                    <Label Text="&#xf005;" FontFamily="faS" TextColor="Yellow"/>
+                                                    <Label Text="{Binding Rating}"/>
+                                                    <Label Text="{Binding CommentCount}" Margin="10,0,0,0"/>
+                                                    <Label Text="Reviews"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </material:MaterialCard>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </ScrollView>
+
+                    </StackLayout>
+
+                    <!--Product Section 3: Bán chạy-->
+                    <StackLayout Margin="0,0,0,10">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Sản phẩm bán chạy" TextTransform="Uppercase" FontSize="Large" Margin="5"/>
+                            <material:MaterialButton BackgroundColor="Transparent"
+                                             Text="Xem tất cả" Command="{Binding SeeAllCommand}" CommandParameter="{Binding TopSellProducts}"
+                                             TextColor="Blue"
+                                             FontAttributes="None"
+                                             TextTransform="None"
+                                             VerticalOptions="Center" 
+                                             HorizontalOptions="EndAndExpand"
+                                             ButtonType="Text"/>
+                        </StackLayout>
+
+                        <ScrollView Orientation="Horizontal"
+                                HorizontalScrollBarVisibility="Never">
+                            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding TopSellProducts}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <material:MaterialCard WidthRequest="250" Padding="15" HasShadow="True" IsClickable="True" ClickCommand="{Binding BindingContext.ProductDetailOnClick, Source={x:Reference Name=MyHomePage}}" ClickCommandParameter="{Binding .}">
+                                            <StackLayout>
+                                                <Image Source="{Binding Image1, Converter={x:StaticResource ConvertStringToImage}}" HeightRequest="200" WidthRequest="200" Aspect="AspectFit"/>
+                                                <Label Text="{Binding DisplayName}" FontSize="Large" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" HorizontalOptions="FillAndExpand"/>
+                                                <Label Text="{Binding Price, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="#8c8c8c" FontAttributes="Bold" TextDecorations="Strikethrough" IsVisible="{Binding DiscountPercent, Converter={StaticResource ConvertDiscountPercentToBoolean}}"/>
+                                                <Label Text="{Binding DiscountPrice, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="Red" FontAttributes="Bold"/>
+
+                                                <StackLayout  Orientation="Horizontal">
+                                                    <Label Text="&#xf005;" FontFamily="faS" TextColor="Yellow"/>
+                                                    <Label Text="{Binding Rating}"/>
+                                                    <Label Text="{Binding CommentCount}" Margin="10,0,0,0"/>
+                                                    <Label Text="Reviews"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </material:MaterialCard>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </ScrollView>
+
+                    </StackLayout>
+
+                    <!--Product Section 4: Đánh giá cao-->
+                    <StackLayout Margin="0,0,0,10">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Sản phẩm được đánh giá cao" TextTransform="Uppercase" FontSize="Large" Margin="5"/>
+                            <material:MaterialButton BackgroundColor="Transparent"
+                                             Text="Xem tất cả" Command="{Binding SeeAllCommand}" CommandParameter="{Binding TopRateProducts}"
+                                             TextColor="Blue"
+                                             FontAttributes="None"
+                                             TextTransform="None"
+                                             VerticalOptions="Center" 
+                                             HorizontalOptions="EndAndExpand"
+                                             ButtonType="Text"/>
+                        </StackLayout>
+
+                        <ScrollView Orientation="Horizontal"
+                                HorizontalScrollBarVisibility="Never">
+                            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding TopRateProducts}">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <material:MaterialCard WidthRequest="250" Padding="15" HasShadow="True" IsClickable="True" ClickCommand="{Binding BindingContext.ProductDetailOnClick, Source={x:Reference Name=MyHomePage}}" ClickCommandParameter="{Binding .}">

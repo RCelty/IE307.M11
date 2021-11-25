@@ -100,6 +100,8 @@ namespace PhoneStoreApp.Services
 
                     var ProductList = JsonConvert.DeserializeObject<List<Product>>(dataString);
 
+                    //ProductList.Sort((p1, p2) => p2.DiscountPrice.CompareTo(p1.DiscountPrice));
+
                     return ProductList;
                 }
                 catch (Exception e)
@@ -108,6 +110,77 @@ namespace PhoneStoreApp.Services
                     throw e;
                 }
             }
-        }       
+        }
+
+        public async Task<List<Product>> GetTopDiscountProduct()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.GetAllProductPath);
+                    var dataString = await client.GetStringAsync(convertString);
+
+                    var ProductList = JsonConvert.DeserializeObject<List<Product>>(dataString);
+
+                    ProductList.Sort((p1, p2) => p2.DiscountPercent.CompareTo(p1.DiscountPercent));
+
+                    ProductList = ProductList.FindAll(p => p.DiscountPercent > 0);
+
+                    return ProductList;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                    throw e;
+                }
+            }
+        }
+
+        public async Task<List<Product>> GetTopSellProduct()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.GetAllProductPath);
+                    var dataString = await client.GetStringAsync(convertString);
+
+                    var ProductList = JsonConvert.DeserializeObject<List<Product>>(dataString);
+
+                    ProductList.Sort((p1, p2) => p2.SellCount.CompareTo(p1.SellCount));                    
+
+                    return ProductList;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                    throw e;
+                }
+            }
+        }
+
+        public async Task<List<Product>> GetTopRateProduct()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.GetAllProductPath);
+                    var dataString = await client.GetStringAsync(convertString);
+
+                    var ProductList = JsonConvert.DeserializeObject<List<Product>>(dataString);
+
+                    ProductList.Sort((p1, p2) => p2.Rating.CompareTo(p1.Rating));
+
+                    return ProductList;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                    throw e;
+                }
+            }
+        }
     }
 }
