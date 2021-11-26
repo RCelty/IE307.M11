@@ -106,26 +106,40 @@ namespace PhoneStoreApp.ViewModels
 
         private async void LoadData()
         {
-            Advertisements = new ObservableCollection<Advertisement>(await HomeService.Instance.GetAllAdvertisement());
-            Categories = new ObservableCollection<Category>(await HomeService.Instance.GetAllCategoryAsync());
-            Products = new ObservableCollection<Product>(await HomeService.Instance.GetAllProduct());
+            if (await HomeService.Instance.GetAllAdvertisement() != null)
+                Advertisements = new ObservableCollection<Advertisement>(await HomeService.Instance.GetAllAdvertisement());
 
-            TopDiscountProducts = new ObservableCollection<Product>(await HomeService.Instance.GetTopDiscountProduct());
-            if (TopDiscountProducts.Count >= 5)
+            if (await HomeService.Instance.GetAllCategoryAsync() != null)
+                Categories = new ObservableCollection<Category>(await HomeService.Instance.GetAllCategoryAsync());
+
+            if (await HomeService.Instance.GetAllProduct() != null)
+                Products = new ObservableCollection<Product>(await HomeService.Instance.GetAllProduct());
+
+            if (await HomeService.Instance.GetTopDiscountProduct() != null)
             {
-                TopDiscountProducts = (ObservableCollection<Product>)TopDiscountProducts.Take(5);
+                TopDiscountProducts = new ObservableCollection<Product>(await HomeService.Instance.GetTopDiscountProduct());
+                if (TopDiscountProducts.Count >= 5)
+                {
+                    TopDiscountProducts = (ObservableCollection<Product>)TopDiscountProducts.Take(5);
+                }
             }
 
-            TopSellProducts = new ObservableCollection<Product>(await HomeService.Instance.GetTopSellProduct());
-            if (TopSellProducts.Count >=5 )
+            if (await HomeService.Instance.GetTopSellProduct() != null)
             {
-                TopSellProducts = (ObservableCollection<Product>)TopSellProducts.Take(5);
+                TopSellProducts = new ObservableCollection<Product>(await HomeService.Instance.GetTopSellProduct());
+                if (TopSellProducts.Count >= 5)
+                {
+                    TopSellProducts = (ObservableCollection<Product>)TopSellProducts.Take(5);
+                }
             }
 
-            TopRateProducts = new ObservableCollection<Product>(await HomeService.Instance.GetTopRateProduct());
-            if (TopRateProducts.Count >= 5)
+            if (await HomeService.Instance.GetTopRateProduct() != null)
             {
-                TopRateProducts = (ObservableCollection<Product>)TopRateProducts.Take(5);
+                TopRateProducts = new ObservableCollection<Product>(await HomeService.Instance.GetTopRateProduct());
+                if (TopRateProducts.Count >= 5)
+                {
+                    TopRateProducts = (ObservableCollection<Product>)TopRateProducts.Take(5);
+                }
             }
         }
 

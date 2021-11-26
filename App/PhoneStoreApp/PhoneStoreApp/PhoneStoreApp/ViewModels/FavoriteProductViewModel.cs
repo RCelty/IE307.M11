@@ -41,7 +41,7 @@ namespace PhoneStoreApp.ViewModels
         public Command DeleteCommand { get; set; }
         public Command DeleteAllCommand { get; set; }
         public Command DeleteSelectedCommand { get; set; }
-        public Command ProductDetailOnClick { get; set; }        
+        public Command ProductDetailOnClick { get; set; }
         //public Command SelectAllCmd { get; set; }        
         #endregion
 
@@ -59,7 +59,9 @@ namespace PhoneStoreApp.ViewModels
         public async void LoadData()
         {
             var productList = await HomeService.Instance.GetAllProduct();
-            FavoriteList = new ObservableCollection<FavoriteProduct>(await ProductService.Instance.GetFavoriteProductByCustomerID(Const.CurrentCustomerID));
+
+            if (await ProductService.Instance.GetFavoriteProductByCustomerID(Const.CurrentCustomerID) != null)
+                FavoriteList = new ObservableCollection<FavoriteProduct>(await ProductService.Instance.GetFavoriteProductByCustomerID(Const.CurrentCustomerID));
 
             FavoriteProducts = new ObservableCollection<FavoriteProductItem>();
             if (productList != null && productList.Count > 0 && FavoriteList != null && FavoriteList.Count > 0)
@@ -140,7 +142,7 @@ namespace PhoneStoreApp.ViewModels
         {
             //await App.Current.MainPage.DisplayAlert("t", product.ID.ToString(), "OK");
             await App.Current.MainPage.Navigation.PushAsync(new ProductDetailPage(product.ID), true);
-        }       
+        }
 
         //void SelectAllCmdExe()
         //{
