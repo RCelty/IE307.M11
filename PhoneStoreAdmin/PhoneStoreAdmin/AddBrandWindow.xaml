@@ -9,24 +9,28 @@
         x:Name="MyAddBrandWindow"
         WindowStartupLocation="CenterScreen"
         Title="Add Brand Window" Width="600" SizeToContent="Height">
-    <StackPanel>
+    <StackPanel Margin="10">
+        <materialDesign:Card>
+            <StackPanel>
         <TextBox materialDesign:HintAssist.Hint="Nhập tên Brand" Margin="10"
-                 Text="{Binding DisplayName, Mode=TwoWay}"
+                 Text="{Binding DisplayName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-        <Grid Margin="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" 
+                    <Button Grid.Column="0" 
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     Width="100"
                     Command="{Binding ImageChooseCommand}">
-                Chọn hình
-            </Button>
-            <Image Grid.Column="1" Source="{Binding Image}" Stretch="Uniform" StretchDirection="DownOnly"/>
-        </Grid>
-        <Button Margin="10" Content="Submit" x:Name="submit_btn" Command="{Binding SubmitCommand}"/>
+                        Chọn hình
+                    </Button>
+                    <Image Height="150" Grid.Column="1" Source="{Binding Image}" Stretch="Uniform" StretchDirection="DownOnly"/>
+                </Grid>
+            </StackPanel>
+        </materialDesign:Card>
+        <Button Content="Submit" x:Name="submit_btn" Command="{Binding SubmitCommand}"/>
     </StackPanel>
 </Window>

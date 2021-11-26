@@ -145,21 +145,30 @@ namespace PhoneStoreApp.ViewModels
 
         public async void LoadData()
         {
-            Brands = new ObservableCollection<Brand>(await HomeService.Instance.GetAllBrandyAsync());
-            BrandChoices = new ObservableCollection<BrandChoice>(BrandChoicesInit(Brands));
+            if (await HomeService.Instance.GetAllBrandyAsync() != null)
+            {
+                Brands = new ObservableCollection<Brand>(await HomeService.Instance.GetAllBrandyAsync());
+                BrandChoices = new ObservableCollection<BrandChoice>(BrandChoicesInit(Brands));
+            }
 
-            Categories = new ObservableCollection<Category>(await HomeService.Instance.GetAllCategoryAsync());
-            CategoryChoices = new ObservableCollection<CategoryChoice>(CategoryChoicesInit(Categories));
+            if (await HomeService.Instance.GetAllCategoryAsync() != null)
+            {
+                Categories = new ObservableCollection<Category>(await HomeService.Instance.GetAllCategoryAsync());
+                CategoryChoices = new ObservableCollection<CategoryChoice>(CategoryChoicesInit(Categories));
+            }
 
             RateChoices = new ObservableCollection<RateChoice>(RateChoicesInit());
 
             BrandCustomHeight = (Brands.Count() / 3) > 0 ? 80 * (Brands.Count() / 3) : 80;
             CategoryCustomHeight = (Categories.Count() / 3) > 0 ? 80 * (Categories.Count() / 3) : 80;
 
-            var productList = new ObservableCollection<Product>(await HomeService.Instance.GetAllProduct()).ToList();
+            if (await HomeService.Instance.GetAllProduct() != null)
+            {
+                var productList = new ObservableCollection<Product>(await HomeService.Instance.GetAllProduct()).ToList();
 
-            MinPrice = 0;
-            MaxPrice = GetMaxPrice(productList);
+                MinPrice = 0;
+                MaxPrice = GetMaxPrice(productList);
+            }
 
             IsSaleOff = false;
         }
@@ -178,7 +187,7 @@ namespace PhoneStoreApp.ViewModels
         List<CategoryChoice> CategoryChoicesInit(ObservableCollection<Category> categories)
         {
             var result = new List<CategoryChoice>();
-            foreach(var c in categories)
+            foreach (var c in categories)
             {
                 result.Add(new CategoryChoice { ID = c.ID, DisplayName = c.DisplayName, IsSelected = false });
             }
@@ -188,7 +197,7 @@ namespace PhoneStoreApp.ViewModels
         List<RateChoice> RateChoicesInit()
         {
             var result = new List<RateChoice>();
-            for(int i =1; i<=5; i++)
+            for (int i = 1; i <= 5; i++)
             {
                 result.Add(new RateChoice { DisplayName = i + " sao", Value = i, IsSelected = false });
             }
@@ -198,7 +207,7 @@ namespace PhoneStoreApp.ViewModels
         int GetMaxPrice(List<Product> products)
         {
             var result = products[0].DiscountPrice;
-            foreach(var p in products)
+            foreach (var p in products)
             {
                 if (p.DiscountPrice > result)
                 {
@@ -211,22 +220,26 @@ namespace PhoneStoreApp.ViewModels
         public async void ApplyCommandExecute()
         {
             var selectedCategoryList = CategoryChoices.ToList();
+
             selectedCategoryList = selectedCategoryList.FindAll(c => c.IsSelected == true);
 
             var selectedBrandList = BrandChoices.ToList();
+
             selectedBrandList = selectedBrandList.FindAll(b => b.IsSelected == true);
 
             var selectedRateList = RateChoices.ToList();
+
             selectedRateList = selectedRateList.FindAll(r => r.IsSelected == true);
 
             var productList = await HomeService.Instance.GetAllProduct();
 
-            if (selectedCategoryList != null && selectedCategoryList.Count > 0)
+
+            if (selectedCategoryList != null && selectedCategoryList.Count > 0 && productList != null)
             {
                 var itemList = new List<Product>();
-                foreach(var c in selectedCategoryList)
+                foreach (var c in selectedCategoryList)
                 {
-                    foreach(var p in productList)
+                    foreach (var p in productList)
                     {
                         if (p.CategoryID == c.ID)
                         {
@@ -237,12 +250,12 @@ namespace PhoneStoreApp.ViewModels
                 productList = itemList;
             }
 
-            if (selectedBrandList != null && selectedBrandList.Count > 0)
+            if (selectedBrandList != null && selectedBrandList.Count > 0 && productList != null)
             {
                 var itemList = new List<Product>();
-                foreach(var p in productList)
+                foreach (var p in productList)
                 {
-                    foreach(var b in selectedBrandList)
+                    foreach (var b in selectedBrandList)
                     {
                         if (p.BrandID == b.ID)
                         {
@@ -253,12 +266,12 @@ namespace PhoneStoreApp.ViewModels
                 productList = itemList;
             }
 
-            if (selectedRateList != null && selectedRateList.Count > 0)
+            if (selectedRateList != null && selectedRateList.Count > 0 && productList != null)
             {
                 var itemList = new List<Product>();
-                foreach(var p in productList)
+                foreach (var p in productList)
                 {
-                    foreach(var r in selectedRateList)
+                    foreach (var r in selectedRateList)
                     {
                         if (Math.Round((decimal)p.Rating) == r.Value)
                         {
@@ -268,11 +281,14 @@ namespace PhoneStoreApp.ViewModels
                 }
                 productList = itemList;
             }
-            productList = productList.FindAll(p => p.DiscountPrice >= MinPrice && p.DiscountPrice <= MaxPrice);
-            if (IsSaleOff == true)
+
+            if (productList != null)
+                productList = productList.FindAll(p => p.DiscountPrice >= MinPrice && p.DiscountPrice <= MaxPrice);
+            if (IsSaleOff == true && productList != null)
             {
                 productList = productList.FindAll(p => p.DiscountPercent > 0);
             }
+
             await App.Current.MainPage.Navigation.PopAsync();
             await App.Current.MainPage.Navigation.PushAsync(new ProductPage(new ObservableCollection<Product>(productList)));
         }

@@ -29,23 +29,23 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <TextBox Margin="10"
-  materialDesign:HintAssist.Hint="Tên sản phẩm" Text="{Binding DisplayName, Mode=TwoWay}"
+  materialDesign:HintAssist.Hint="Tên sản phẩm" Text="{Binding DisplayName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
                     <TextBox Margin="10"
-  materialDesign:HintAssist.Hint="Giá bán" Text="{Binding Price, Mode=TwoWay}"
+  materialDesign:HintAssist.Hint="Giá bán" Text="{Binding Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="0"/>
-                    <TextBox Margin="10" Text="{Binding DiscountPercent, Mode=TwoWay}"
+                    <TextBox Margin="10" Text="{Binding DiscountPercent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
   materialDesign:HintAssist.Hint="Phần trăm giảm giá (1 - 100)"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="1"/>
-                    <ComboBox Margin="10" ItemsSource="{Binding Categories}" DisplayMemberPath="DisplayName" SelectedItem="{Binding SelectedCategory}"
+                    <ComboBox Margin="10" ItemsSource="{Binding Categories}" DisplayMemberPath="DisplayName" SelectedItem="{Binding SelectedCategory, UpdateSourceTrigger=PropertyChanged}"
   materialDesign:HintAssist.Hint="Loại sản phẩm"
   IsEditable="False"
   Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="2" Grid.Column="0"/>
-                    <ComboBox Margin="10" ItemsSource="{Binding Brands}" DisplayMemberPath="DisplayName" SelectedItem="{Binding SelectedBrand}"
+                    <ComboBox Margin="10" ItemsSource="{Binding Brands}" DisplayMemberPath="DisplayName" SelectedItem="{Binding SelectedBrand, UpdateSourceTrigger=PropertyChanged}"
   materialDesign:HintAssist.Hint="Nhãn hiệu"
   IsEditable="False"
   Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="2" Grid.Column="1"/>
-                    <TextBox Text="{Binding Description, Mode=TwoWay}"
+                    <TextBox Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
     Margin="10" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
     VerticalAlignment="Top"

@@ -16,7 +16,17 @@ namespace PhoneStoreAdmin.ViewModel
     {
         public Brand brandGlobal { get; set; }
 
-        public string DisplayName { get; set; }
+        private string displayName;
+
+        public string DisplayName
+        {
+            get => displayName;
+            set
+            {
+                displayName = value;
+                OnPropertyChanged();
+            }
+        }
 
         private string image;
         public string Image { get => image; set { image = value; OnPropertyChanged(); } }
@@ -45,7 +55,12 @@ namespace PhoneStoreAdmin.ViewModel
             }
 
             ImageChooseCommand = new RelayCommand<object>((p) => { return true; }, (p) => { ImageChooseCommandExecute(); });
-            SubmitCommand = new RelayCommand<object>((p) => { return true; }, (p) => { SubmitCommandExecute(new Brand { ID = brandGlobal.ID, DisplayName = DisplayName, Image = ImageName }); });
+            SubmitCommand = new RelayCommand<object>((p) =>
+            {
+                if (string.IsNullOrEmpty(DisplayName) || string.IsNullOrEmpty(ImageName)) 
+                    return false; 
+                return true;
+            }, (p) => { SubmitCommandExecute(new Brand { ID = brandGlobal.ID, DisplayName = DisplayName, Image = ImageName }); });
         }
 
         void ImageChooseCommandExecute()

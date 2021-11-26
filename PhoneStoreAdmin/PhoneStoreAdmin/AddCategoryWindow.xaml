@@ -9,10 +9,12 @@
         x:Name="MyAddCategoryWindow"
         WindowStartupLocation="CenterScreen"
         Title="Add Category" Width="400" SizeToContent="Height">
-    <StackPanel>
-        <TextBox materialDesign:HintAssist.Hint="Nhập Category" 
-                 Text="{Binding DisplayName, Mode=TwoWay}"
+    <StackPanel Margin="10">
+        <materialDesign:Card>
+            <TextBox materialDesign:HintAssist.Hint="Nhập Category" Margin="10"
+                 Text="{Binding DisplayName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        </materialDesign:Card>
         <Button Content="Submit" x:Name="submit_btn" Command="{Binding AddOrEditCategoryCommand}"/>
     </StackPanel>
 </Window>

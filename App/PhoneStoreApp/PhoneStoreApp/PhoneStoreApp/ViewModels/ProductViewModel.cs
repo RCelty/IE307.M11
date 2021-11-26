@@ -31,7 +31,8 @@ namespace PhoneStoreApp.ViewModels
 
         public ProductViewModel(ObservableCollection<Product> products)
         {
-            Products = products;
+            if (products != null)
+                Products = products;
 
             ProductDetailOnClick = new Command<Product>(ProductDetailOnClickExcute, product => product != null);
             SearchCommand = new Command<string>(SearchCommandExecute, (s) => true);

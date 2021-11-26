@@ -14,7 +14,17 @@ namespace PhoneStoreAdmin.ViewModel
     {
         public Category categoryGlobal { get; set; }
 
-        public string DisplayName { get; set; }
+        private string displayName;
+
+        public string DisplayName
+        {
+            get => displayName;
+            set
+            {
+                displayName = value;
+                OnPropertyChanged();
+            }
+        }
 
         public Window w { get; set; }
 
@@ -26,20 +36,24 @@ namespace PhoneStoreAdmin.ViewModel
             categoryGlobal = category;
             DisplayName = category.DisplayName;
 
-            AddOrEditCategoryCommand = new RelayCommand<object>((p) => { return true; }, (p) => { AddOrEditCategoryCommandExecute(new Category { ID = categoryGlobal.ID, DisplayName = DisplayName }); });
+            AddOrEditCategoryCommand = new RelayCommand<object>((p) => { if (string.IsNullOrEmpty(DisplayName)) return false; return true; },
+                (p) => { AddOrEditCategoryCommandExecute(new Category { ID = categoryGlobal.ID, DisplayName = DisplayName }); });
         }
 
         async void AddOrEditCategoryCommandExecute(Category category)
         {
-            if (category.ID == null)
-            {               
-                await CategoryService.Instance.AddCategory(category);
-                w.Close();
-            }
-            else
+            if (!string.IsNullOrEmpty(category.DisplayName))
             {
-                await CategoryService.Instance.UpdateCategory(category);
-                w.Close();
+                if (category.ID == null)
+                {
+                    await CategoryService.Instance.AddCategory(category);
+                    w.Close();
+                }
+                else
+                {
+                    await CategoryService.Instance.UpdateCategory(category);
+                    w.Close();
+                }
             }
         }
     }
