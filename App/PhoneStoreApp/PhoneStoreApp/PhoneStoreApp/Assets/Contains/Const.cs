@@ -27,6 +27,11 @@ namespace PhoneStoreApp.Assets.Contains
         public static readonly string AddFavoriteProductPath = Domain + @"Api/CustomerController/AddFavoriteProduct";
         public static readonly string DeleteFavoriteProductPath = Domain + @"Api/CustomerController/DeleteFavoriteProduct";
 
+        public static readonly string GetCommentByProductIDPath = Domain + @"Api/CommentController/GetCommentByProductID/{ID}";
+        public static readonly string AddCommentPath = Domain + @"Api/CommentController/AddComment";
+        public static readonly string UpdateCommentPath = Domain + @"Api/CommentController/UpdateComment";
+        public static readonly string DeleteCommentPath = Domain + @"Api/CommentController/DeleteComment/{ID}";
+
         public static string ConverToPathWithParameter(string path, object[] param = null)
         {
             if (param == null)

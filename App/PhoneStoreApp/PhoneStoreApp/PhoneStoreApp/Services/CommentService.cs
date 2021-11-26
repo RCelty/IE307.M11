@@ -1,61 +1,61 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using PhoneStoreAdmin.Assets.Contain;
-using PhoneStoreAdmin.Model;
+using PhoneStoreApp.Assets.Contains;
+using PhoneStoreApp.Models;
 
-namespace PhoneStoreAdmin.Service
+namespace PhoneStoreApp.Services
 {
-    public class CategoryService
+    public class CommentService
     {
-        private static CategoryService instance;
+        private static CommentService instance;
 
-        public static CategoryService Instance
+        public static CommentService Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new CategoryService();
+                    instance = new CommentService();
                 }
                 return instance;
             }
             private set => instance = value;
         }
 
-        public async Task<List<Category>> GetAllCategoryAsync()
+        public async Task<List<Comment>> GetCommentByProductID(int ID)
         {
             using (HttpClient client = new HttpClient())
             {
                 try
                 {
-                    var convertString = Const.ConverToPathWithParameter(Const.GetAllCategoryPath);
-                    var dataString = await client.GetStringAsync(convertString);
+                    var dataString = await client.GetStringAsync(Const.ConverToPathWithParameter(Const.GetCommentByProductIDPath, new object[] { ID }));
 
-                    var CategoryList = JsonConvert.DeserializeObject<List<Category>>(dataString);
+                    var resultList = JsonConvert.DeserializeObject<List<Comment>>(dataString);
 
-                    return CategoryList;
+                    return resultList;
                 }
                 catch (Exception e)
                 {
                     return null;
+                    throw e;
                 }
             }
         }
-        public async Task<int> AddCategory(Category category)
+
+        public async Task<int> AddComment(Comment comment)
         {
-            using(HttpClient client = new HttpClient())
+            using (HttpClient client = new HttpClient())
             {
                 try
                 {
-                    var convertString = Const.ConverToPathWithParameter(Const.AddCategoryPath);
+                    var convertString = Const.ConverToPathWithParameter(Const.AddCommentPath);
 
-                    var myContent = JsonConvert.SerializeObject(category);
+                    var myContent = JsonConvert.SerializeObject(comment);
                     var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
                     var byteContent = new ByteArrayContent(buffer);
 
@@ -67,7 +67,7 @@ namespace PhoneStoreAdmin.Service
 
                     return resultID;
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     return -1;
                     throw e;
@@ -75,15 +75,15 @@ namespace PhoneStoreAdmin.Service
             }
         }
 
-        public async Task<bool> UpdateCategory(Category category)
+        public async Task<bool> UpdateComment(Comment comment)
         {
             using (HttpClient client = new HttpClient())
             {
                 try
                 {
-                    var convertString = Const.ConverToPathWithParameter(Const.UpdateCategoryPath);
+                    var convertString = Const.ConverToPathWithParameter(Const.UpdateCommentPath);
 
-                    var myContent = JsonConvert.SerializeObject(category);
+                    var myContent = JsonConvert.SerializeObject(comment);
                     var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
                     var byteContent = new ByteArrayContent(buffer);
 
@@ -98,17 +98,18 @@ namespace PhoneStoreAdmin.Service
                 catch (Exception e)
                 {
                     return false;
+                    throw e;
                 }
             }
         }
 
-        public async Task<bool> DeleteCategory(int ID)
+        public async Task<bool> DeleteComment(int ID)
         {
             using (HttpClient client = new HttpClient())
             {
                 try
                 {
-                    var convertString = Const.ConverToPathWithParameter(Const.DeleteCategoryPath, new object[] { ID });
+                    var convertString = Const.ConverToPathWithParameter(Const.DeleteCommentPath, new object[] { ID });
 
                     var dataString = await client.GetStringAsync(convertString);
 
