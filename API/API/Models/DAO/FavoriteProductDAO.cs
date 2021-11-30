@@ -86,5 +86,22 @@ namespace API.Models.DAO
                 throw e;
             }
         }
+
+        public async Task<bool> DeleteFavoriteProductByID(int ID)
+        {
+            var result = db.FavoriteProducts.SingleOrDefault(f => f.ID == ID);
+
+            try
+            {
+                db.FavoriteProducts.Remove(result);
+                await db.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+                throw e;
+            }
+        }
     }
 }

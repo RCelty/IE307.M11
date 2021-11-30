@@ -164,6 +164,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Assets\Contain\Const.cs" />
     <Compile Include="Controllers\AdvertisementController.cs" />
+    <Compile Include="Controllers\BillController.cs" />
     <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
@@ -175,6 +176,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DAO\AdvertisementDAO.cs" />
+    <Compile Include="Models\DAO\BillDAO.cs" />
+    <Compile Include="Models\DAO\BillDetailDAO.cs" />
     <Compile Include="Models\DAO\BrandDAO.cs" />
     <Compile Include="Models\DAO\CategoryDAO.cs" />
     <Compile Include="Models\DAO\CommentDAO.cs" />
@@ -183,6 +186,8 @@
     <Compile Include="Models\DAO\ProductDAO.cs" />
     <Compile Include="Models\DAO\ProductDetailDAO.cs" />
     <Compile Include="Models\DTO\AdvertisementDTO.cs" />
+    <Compile Include="Models\DTO\BillDetailDTO.cs" />
+    <Compile Include="Models\DTO\BillDTO.cs" />
     <Compile Include="Models\DTO\BrandDTO.cs" />
     <Compile Include="Models\DTO\CategoryDTO.cs" />
     <Compile Include="Models\DTO\CommentDTO.cs" />
@@ -191,6 +196,12 @@
     <Compile Include="Models\DTO\ProductDetailDTO.cs" />
     <Compile Include="Models\DTO\ProductDTO.cs" />
     <Compile Include="Models\EF\Advertisement.cs">
+      <DependentUpon>PhoneStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\Bill.cs">
+      <DependentUpon>PhoneStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\BillDetail.cs">
       <DependentUpon>PhoneStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EF\Brand.cs">

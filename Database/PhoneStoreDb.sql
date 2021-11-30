@@ -91,6 +91,25 @@ create table Comment
 )
 go
 
+create table Bill
+(
+	ID int primary key identity(1,1),
+	TotalPrice bigint,
+	CreationDate datetime,
+	CustomerID int foreign key references Customer(ID),
+	IsDelete bit,
+)
+go
+
+create table BillDetail
+(
+	ID int primary key identity(1,1),
+	TotalCount int,
+	ProductID int foreign key references Product(ID),
+	BillID int foreign key references Bill(ID)
+)
+go
+
 --insert Advertisement
 insert into Advertisement values('advertisement1.jpg')
 insert into Advertisement values('advertisement2.jpg')

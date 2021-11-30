@@ -20,6 +20,11 @@
         <EntityTypeShape EntityType="PhoneStoreModel.Comment" Width="1.5" PointX="5.25" PointY="8.5" />
         <AssociationConnector Association="PhoneStoreModel.FK__Comment__Custome__3B75D760" />
         <AssociationConnector Association="PhoneStoreModel.FK__Comment__Product__3A81B327" />
+        <EntityTypeShape EntityType="PhoneStoreModel.Bill" Width="1.5" PointX="3.25" PointY="10" />
+        <EntityTypeShape EntityType="PhoneStoreModel.BillDetail" Width="1.5" PointX="8.5" PointY="9.75" />
+        <AssociationConnector Association="PhoneStoreModel.FK__Bill__CustomerID__2B3F6F97" />
+        <AssociationConnector Association="PhoneStoreModel.FK__BillDetai__BillI__2F10007B" />
+        <AssociationConnector Association="PhoneStoreModel.FK__BillDetai__Produ__2E1BDC42" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

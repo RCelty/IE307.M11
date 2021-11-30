@@ -51,6 +51,7 @@
     <NavigationProperty Name="FavoriteProducts" Relationship="PhoneStoreModel.FK__FavoriteP__Produ__36B12243" FromRole="Product" ToRole="FavoriteProduct" />
     <Property Name="SellCount" Type="Int32" />
     <NavigationProperty Name="Comments" Relationship="PhoneStoreModel.FK__Comment__Product__3A81B327" FromRole="Product" ToRole="Comment" />
+    <NavigationProperty Name="BillDetails" Relationship="PhoneStoreModel.FK__BillDetai__Produ__2E1BDC42" FromRole="Product" ToRole="BillDetail" />
   </EntityType>
   <Association Name="FK__Product__BrandID__2A4B4B5E">
     <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
@@ -113,6 +114,20 @@
       <End Role="Product" EntitySet="Products" />
       <End Role="Comment" EntitySet="Comments" />
     </AssociationSet>
+    <EntitySet Name="Bills" EntityType="PhoneStoreModel.Bill" />
+    <EntitySet Name="BillDetails" EntityType="PhoneStoreModel.BillDetail" />
+    <AssociationSet Name="FK__Bill__CustomerID__2B3F6F97" Association="PhoneStoreModel.FK__Bill__CustomerID__2B3F6F97">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Bill" EntitySet="Bills" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BillDetai__BillI__2F10007B" Association="PhoneStoreModel.FK__BillDetai__BillI__2F10007B">
+      <End Role="Bill" EntitySet="Bills" />
+      <End Role="BillDetail" EntitySet="BillDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BillDetai__Produ__2E1BDC42" Association="PhoneStoreModel.FK__BillDetai__Produ__2E1BDC42">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="BillDetail" EntitySet="BillDetails" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="ProductDetail">
     <Key>
@@ -152,6 +167,7 @@
     <Property Name="IsAdmin" Type="Boolean" />
     <NavigationProperty Name="FavoriteProducts" Relationship="PhoneStoreModel.FK__FavoriteP__Custo__37A5467C" FromRole="Customer" ToRole="FavoriteProduct" />
     <NavigationProperty Name="Comments" Relationship="PhoneStoreModel.FK__Comment__Custome__3B75D760" FromRole="Customer" ToRole="Comment" />
+    <NavigationProperty Name="Bills" Relationship="PhoneStoreModel.FK__Bill__CustomerID__2B3F6F97" FromRole="Customer" ToRole="Bill" />
   </EntityType>
   <EntityType Name="FavoriteProduct">
     <Key>
@@ -219,6 +235,65 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Comment">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Bill">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TotalPrice" Type="Int64" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <NavigationProperty Name="Customer" Relationship="PhoneStoreModel.FK__Bill__CustomerID__2B3F6F97" FromRole="Bill" ToRole="Customer" />
+    <NavigationProperty Name="BillDetails" Relationship="PhoneStoreModel.FK__BillDetai__BillI__2F10007B" FromRole="Bill" ToRole="BillDetail" />
+  </EntityType>
+  <EntityType Name="BillDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TotalCount" Type="Int32" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="BillID" Type="Int32" />
+    <NavigationProperty Name="Bill" Relationship="PhoneStoreModel.FK__BillDetai__BillI__2F10007B" FromRole="BillDetail" ToRole="Bill" />
+    <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__BillDetai__Produ__2E1BDC42" FromRole="BillDetail" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK__Bill__CustomerID__2B3F6F97">
+    <End Type="PhoneStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
+    <End Type="PhoneStoreModel.Bill" Role="Bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Bill">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BillDetai__BillI__2F10007B">
+    <End Type="PhoneStoreModel.Bill" Role="Bill" Multiplicity="0..1" />
+    <End Type="PhoneStoreModel.BillDetail" Role="BillDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bill">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BillDetail">
+        <PropertyRef Name="BillID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BillDetai__Produ__2E1BDC42">
+    <End Type="PhoneStoreModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="PhoneStoreModel.BillDetail" Role="BillDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BillDetail">
         <PropertyRef Name="ProductID" />
       </Dependent>
     </ReferentialConstraint>

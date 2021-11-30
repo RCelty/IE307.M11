@@ -59,5 +59,13 @@ namespace API.Controllers
         {
             return Ok(await FavoriteProductDAO.Instance.DeleteFavoriteProduct(favoriteProductDTO));
         }
+
+        [Route("Api/CustomerController/DeleteFavoriteProductByID/{ID}")]
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IHttpActionResult> DeleteFavoriteProductByID(int ID)
+        {
+            return Ok(await FavoriteProductDAO.Instance.DeleteFavoriteProductByID(ID));
+        }
     }
 }

@@ -23,6 +23,7 @@ namespace PhoneStoreApp.Assets.Contains
 
         public static readonly string LoginPath = Domain + @"Api/CustomerController/Login";
         public static readonly string GetCustomerByIDPath = Domain + @"Api/CustomerController/GetCustomerByID/{ID}";
+
         public static readonly string GetFavoriteProductByCustomerIDPath = Domain + @"Api/CustomerController/GetFavoriteProductByCustomerID/{ID}";
         public static readonly string AddFavoriteProductPath = Domain + @"Api/CustomerController/AddFavoriteProduct";
         public static readonly string DeleteFavoriteProductPath = Domain + @"Api/CustomerController/DeleteFavoriteProduct";
@@ -31,6 +32,14 @@ namespace PhoneStoreApp.Assets.Contains
         public static readonly string AddCommentPath = Domain + @"Api/CommentController/AddComment";
         public static readonly string UpdateCommentPath = Domain + @"Api/CommentController/UpdateComment";
         public static readonly string DeleteCommentPath = Domain + @"Api/CommentController/DeleteComment/{ID}";
+
+        public static readonly string CreateBillPath = Domain + @"Api/BillController/CreateBill";
+        public static readonly string GetAllBillByCustomerIDPath = Domain + @"Api/BillController/GetAllBillByCustomerID/{ID}";
+
+        public static readonly string GetAllBillDetailByBillIDPath = Domain + @"Api/BillController/GetAllBillDetailByBillID/{ID}";
+        public static readonly string AddBillDetailPath = Domain + @"Api/BillController/AddBillDetail";
+        public static readonly string DeleteBillDetailByIDPath = Domain + @"Api/BillController/DeleteBillDetailByID/{ID}";
+
 
         public static string ConverToPathWithParameter(string path, object[] param = null)
         {

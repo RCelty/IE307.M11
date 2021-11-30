@@ -22,7 +22,7 @@ namespace API.Models.DTO
         public double? Rating { get; set; }
 
         public int? ViewCount { get; set; }
-        
+
         public int? CommentCount { get; set; }
 
         public int? SellCount { get; set; }
@@ -48,6 +48,8 @@ namespace API.Models.DTO
 
         public List<CommentDTO> Comments { get; set; }
 
+        public List<BillDetailDTO> BillDetails { get; set; }
+
         public ProductDTO()
         {
 
@@ -59,11 +61,11 @@ namespace API.Models.DTO
             DisplayName = product.DisplayName;
             Price = product.Price;
             DiscountPercent = product.DiscountPercent;
-            Rating = product.Rating;
+            //Rating = product.Rating;
             ViewCount = product.ViewCount;
             //CommentCount = product.CommentCount;
             CommentCount = product.Comments.Count();
-            SellCount = product.SellCount;
+            //SellCount = product.SellCount;
             Description = product.Description;
             Image1 = Const.ProductImagePath + product.Image1;
             Image2 = Const.ProductImagePath + product.Image2;
@@ -79,6 +81,9 @@ namespace API.Models.DTO
                                         .ToList();
             Comments = product.Comments.Select(c => new CommentDTO(c)).ToList();
             IsDeleted = product.IsDeleted;
+            BillDetails = product.BillDetails.Select(b => new BillDetailDTO(b)).ToList();
+            Rating = Comments.Count > 0 ? product.Comments.Average(c => c.Rating) : 0;
+            SellCount = BillDetails.Count > 0 ? product.BillDetails.Sum(b => b.TotalCount) : 0;
         }
     }
 }

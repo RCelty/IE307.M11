@@ -33,5 +33,7 @@ namespace API.Models.EF
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<FavoriteProduct> FavoriteProducts { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<Bill> Bills { get; set; }
+        public virtual DbSet<BillDetail> BillDetails { get; set; }
     }
 }
