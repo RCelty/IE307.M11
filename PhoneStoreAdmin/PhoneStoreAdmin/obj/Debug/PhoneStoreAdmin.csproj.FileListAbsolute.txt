@@ -37,3 +37,7 @@ D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\AddBrandWindow.g.cs
 D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\AddBrandWindow.baml
 D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\AddProductWindow.g.cs
 D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\AddProductWindow.baml
+D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\CommentPage.g.cs
+D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\CommentPage.baml
+D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\CommentDetailWindow.g.cs
+D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\CommentDetailWindow.baml

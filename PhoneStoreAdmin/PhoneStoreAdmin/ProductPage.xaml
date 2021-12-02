@@ -28,7 +28,7 @@
 
                             <TextBlock Grid.Column="0" x:Name="ID" Text="{Binding ID}" VerticalAlignment="Center"/>
                             <Image Grid.Column="1" Source="{Binding Image1}" Stretch="Uniform" StretchDirection="DownOnly"/>
-                            <TextBlock Grid.Column="2" x:Name="DisplayName" Text="{Binding DisplayName}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="2" x:Name="DisplayName" Text="{Binding DisplayName}" VerticalAlignment="Center" TextTrimming="WordEllipsis" TextWrapping="NoWrap"/>
                             <Button Grid.Column="3" Content="Sửa" Margin="10,0,10,0" Background="LightGreen" Command="{Binding DataContext.OpenEditCommand, Source={x:Reference Name=MyProductPage}}" CommandParameter="{Binding .}"/>
                             <Button Grid.Column="4" Content="Xóa" Margin="10,0,10,0" Background="red" Command="{Binding DataContext.DeleteCommand, Source={x:Reference Name=MyProductPage}}" CommandParameter="{Binding .}"/>
                         </Grid>

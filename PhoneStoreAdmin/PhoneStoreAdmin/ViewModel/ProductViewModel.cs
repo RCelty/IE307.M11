@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using PhoneStoreAdmin.Assets.Contain;
 using PhoneStoreAdmin.Model;
 using PhoneStoreAdmin.Service;
 
@@ -39,13 +40,13 @@ namespace PhoneStoreAdmin.ViewModel
         {
             Products = new ObservableCollection<Product>(await ProductService.Instance.GetAllProductAsync());
             string oldDomain = "http://10.0.2.2:88/";
-            string newDomain = "http://localhost:88/";
+            //string newDomain = "http://localhost:88/";
             foreach (var p in Products)
             {
-                p.Image1 = p.Image1.Replace(oldDomain, newDomain);
-                p.Image2 = p.Image2.Replace(oldDomain, newDomain);
-                p.Image3 = p.Image3.Replace(oldDomain, newDomain);
-                p.Image4 = p.Image4.Replace(oldDomain, newDomain);
+                p.Image1 = p.Image1.Replace(oldDomain, Const.Domain);
+                p.Image2 = p.Image2.Replace(oldDomain, Const.Domain);
+                p.Image3 = p.Image3.Replace(oldDomain, Const.Domain);
+                p.Image4 = p.Image4.Replace(oldDomain, Const.Domain);
             }
         }
 
