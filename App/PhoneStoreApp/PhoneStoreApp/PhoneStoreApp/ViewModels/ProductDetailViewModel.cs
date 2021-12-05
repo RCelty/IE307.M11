@@ -35,11 +35,16 @@ namespace PhoneStoreApp.ViewModels
                 OnPropertyChanged();
             }
         }
+        private ObservableCollection<string> listImage;
+        public ObservableCollection<string> ListImage { get=>listImage; set { listImage = value; OnPropertyChanged(); } }
+
         public int ID { get; set; }
 
         public ObservableCollection<Product> temp_Product = new ObservableCollection<Product>();
         private Product product;
         public Product Product { get => product; set { product = value; OnPropertyChanged(); } }
+        private List<Comment> listComment;
+        public List<Comment> ListComment { get =>listComment; set { listComment = value; OnPropertyChanged(); } }
 
         #region Command
         public Command GoBackOnClick { get; set; }
@@ -68,6 +73,8 @@ namespace PhoneStoreApp.ViewModels
                     break;
                 }
             }
+            ListImage = new ObservableCollection<string>() {Product.Image1, Product.Image2 , Product.Image3 , Product.Image4 };
+            ListComment = await CommentService.Instance.GetCommentByProductID(Product.ID);
         }
 
         async void SetIsFavorite()

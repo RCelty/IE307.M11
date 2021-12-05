@@ -56,7 +56,31 @@
             </Frame>
             <ScrollView >
                 <StackLayout Orientation="Vertical" Margin="20">
-                    <Image Source="{Binding Product.Image1, Converter={x:StaticResource ConvertStringToImage}}" HeightRequest="300" WidthRequest="500" ></Image>
+                    <CarouselView x:Name="CarouselViewer"
+                                            ItemsSource="{Binding ListImage}" 
+                                            HeightRequest="250"
+                                            Margin="0,0,0,0"
+                                            TranslationY="0">
+                        <CarouselView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="4" />
+                        </CarouselView.ItemsLayout>
+                        <CarouselView.ItemTemplate >
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame HasShadow="True" 
+                                                    HorizontalOptions="FillAndExpand"
+                                                    VerticalOptions="FillAndExpand"
+                                                    Scale="1.2">
+                                        <StackLayout>
+                                            <Image Source="{Binding .}" Aspect="AspectFill">
+
+                                            </Image>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
                     <Label Text="{Binding Product.DisplayName}" FontAttributes="Bold" TextColor="Black" FontSize="Large"></Label>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="{Binding Product.Price, Converter={x:StaticResource ConvertPriceToString}}"  FontSize="Medium" TextColor="#8c8c8c" FontAttributes="Bold" TextDecorations="Strikethrough"></Label>
@@ -115,6 +139,54 @@
                             </ImageButton.Source>
                         </ImageButton>
                         <Label Text="{Binding Product.Rating}"  Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold" TextColor="Black" ></Label>
+
+                    </StackLayout>
+                    <BoxView HeightRequest="0.1" Color="Gray" Margin="0,0,0,10"></BoxView>
+                    <Label Text="Chưa có đánh giá nào cho sản phẩm này" Padding="10,0,10,0" IsVisible="{ Binding ListComment, Converter={x:StaticResource ConvertCountCommentToBooleanLabel}}" HorizontalTextAlignment="Center" Margin="0,0,0,0" TextColor="Blue" FontSize="14"></Label>
+                    <StackLayout IsVisible="{ Binding ListComment, Converter={x:StaticResource ConvertCountCommentToBoolean}}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,0,0,30" IsEnabled="True" BindableLayout.ItemsSource="{Binding ListComment}" Padding="10,0,10,0">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout BackgroundColor="Transparent">
+                                    <Grid Margin="0,10,0,20">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="50"></RowDefinition>
+                                            <RowDefinition Height="30"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"></ColumnDefinition>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="30"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Frame Padding="0" Grid.Column="0" Grid.Row="0" CornerRadius="30" >
+                                            <Image Source="{Binding AvatarCustomer}" Aspect="AspectFill"></Image>
+                                        </Frame>
+                                        <Label Text="{Binding CustomerName}" TextColor="Black" Grid.Column="1" Grid.Row="0" FontAttributes="Bold" Margin="10,0,0,0"></Label>
+                                        <StackLayout BindableLayout.ItemsSource="{Binding StarNumber}"
+                                                                Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackLayout>
+                                                        <Image>
+                                                            <Image.Source>
+                                                                <FontImageSource Color="{x:StaticResource TextColorH}" Size="20"
+                                     
+                                                                                        FontFamily="UserIcon"
+                                                                                        Glyph="{Binding .}">
+
+                                                                </FontImageSource>
+                                                            </Image.Source>
+                                                        </Image>
+                                                    </StackLayout>
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                        </StackLayout>
+                                        <Label Text="{Binding Content}" TextColor="Black" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Margin="10,0,0,0"></Label>
+                                    </Grid>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

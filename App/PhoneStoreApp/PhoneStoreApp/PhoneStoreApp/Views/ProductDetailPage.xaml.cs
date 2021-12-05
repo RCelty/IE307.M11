@@ -18,6 +18,11 @@ namespace PhoneStoreApp
         {
             InitializeComponent();
             BindingContext = new ProductDetailViewModel(ID);
+            Device.StartTimer(TimeSpan.FromSeconds(2), (Func<bool>)(() =>
+            {
+                CarouselViewer.Position = (CarouselViewer.Position + 1) % 4;
+                return true;
+            }));
         }
     }
 }

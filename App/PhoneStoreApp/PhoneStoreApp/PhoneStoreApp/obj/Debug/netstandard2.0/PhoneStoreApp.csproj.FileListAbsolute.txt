@@ -42,3 +42,5 @@ C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneS
 D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\PhoneStoreApp.csproj.AssemblyReference.cache
 D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\ProductPage.xaml.g.cs
 D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\FilterPage.xaml.g.cs
+C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\FilterPage.xaml.g.cs
+C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\ProductPage.xaml.g.cs

@@ -13,6 +13,8 @@
             <Converter:ConvertProductCountToNotVisibleBoolean x:Key="ConvertProductCountToNotVisibleBoolean"></Converter:ConvertProductCountToNotVisibleBoolean>
             <Converter:ConvertIsFavoriteBooleanToColor x:Key="ConvertIsFavoriteBooleanToColor"></Converter:ConvertIsFavoriteBooleanToColor>
             <Converter:ConvertIsInCartBooleanToColor x:Key="ConvertIsInCartBooleanToColor"></Converter:ConvertIsInCartBooleanToColor>
+            <Converter:ConvertCountCommentToBoolean x:Key="ConvertCountCommentToBoolean"></Converter:ConvertCountCommentToBoolean>
+            <Converter:ConvertCountCommentToBooleanLabel x:Key="ConvertCountCommentToBooleanLabel"></Converter:ConvertCountCommentToBooleanLabel>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

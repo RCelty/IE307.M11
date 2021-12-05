@@ -3,15 +3,16 @@
     "",
     "\\API",
     "\\API\\API",
-    "\\API\\API\\Models",
-    "\\API\\API\\Models\\DTO",
+    "\\API\\API\\Controllers",
     "\\App",
     "\\App\\PhoneStoreApp",
     "\\App\\PhoneStoreApp\\PhoneStoreApp",
     "\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp",
+    "\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp\\Assets",
+    "\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp\\Assets\\Contains",
     "\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp\\ViewModels",
     "\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp\\Views"
   ],
-  "SelectedNode": "\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp\\Views\\ProductDetailPage.xaml",
+  "SelectedNode": "\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp\\Assets\\Contains\\Const.cs",
   "PreviewInSolutionExplorer": false
 }
