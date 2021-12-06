@@ -18,6 +18,8 @@ namespace API.Models.DTO
 
         public string CustomerName { get; set; }
 
+        public string CustomerAvatar { get; set; }
+
         public string Content { get; set; }
 
         public int? Rating { get; set; }
@@ -34,6 +36,7 @@ namespace API.Models.DTO
             CustomerID = comment.CustomerID;
             CreationDate = comment.CreationDate;
             CustomerName = comment.Customer.DisplayName;
+            CustomerAvatar = comment.Customer.Avatar;
             Content = comment.Content;
             Rating = comment.Rating;
         }

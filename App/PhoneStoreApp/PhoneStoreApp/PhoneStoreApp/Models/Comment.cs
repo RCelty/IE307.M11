@@ -18,6 +18,8 @@ namespace PhoneStoreApp.Models
 
         public string CustomerName { get; set; }
 
+        public string CustomerAvatar { get; set; }
+
         private string content;
 
         public string Content

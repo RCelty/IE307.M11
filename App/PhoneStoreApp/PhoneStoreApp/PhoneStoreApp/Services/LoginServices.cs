@@ -77,5 +77,29 @@ namespace PhoneStoreApp.Services
                 }
             }
         }
+
+        public async Task<HttpResponseMessage> UploadImage(byte[] ImageData, string ImageName)
+        {
+            if (ImageData != null && !string.IsNullOrEmpty(ImageName))
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.UploadProductImagePath);
+                    var requestContent = new MultipartFormDataContent();
+                    //    here you can specify boundary if you need---^
+                    var imageContent = new ByteArrayContent(ImageData);
+                    imageContent.Headers.ContentType =
+                        MediaTypeHeaderValue.Parse("image/jpeg");
+
+                    requestContent.Add(imageContent, "image", ImageName);
+
+                    return await client.PostAsync(convertString, requestContent);
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
