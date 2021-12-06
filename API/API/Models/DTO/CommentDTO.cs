@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using API.Assets.Contain;
 using API.Models.EF;
 
 namespace API.Models.DTO
@@ -36,7 +37,7 @@ namespace API.Models.DTO
             CustomerID = comment.CustomerID;
             CreationDate = comment.CreationDate;
             CustomerName = comment.Customer.DisplayName;
-            CustomerAvatar = comment.Customer.Avatar;
+            CustomerAvatar = Const.CustomerImagePath + comment.Customer.Avatar;
             Content = comment.Content;
             Rating = comment.Rating;
         }
