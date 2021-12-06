@@ -14,8 +14,8 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Products" Relationship="Self.FK__Product__BrandID__2A4B4B5E" FromRole="Brand" ToRole="Product" />
     <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="Products" Relationship="PhoneStoreModel.FK__Product__BrandID__2D27B809" FromRole="Brand" ToRole="Product" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -23,95 +23,23 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Products" Relationship="Self.FK__Product__Categor__29572725" FromRole="Category" ToRole="Product" />
     <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="Products" Relationship="PhoneStoreModel.FK__Product__Categor__2C3393D0" FromRole="Category" ToRole="Product" />
   </EntityType>
-  <EntityType Name="Product">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Price" Type="Int32" />
-    <Property Name="DiscountPercent" Type="Int32" />
-    <Property Name="Rating" Type="Double" />
-    <Property Name="ViewCount" Type="Int32" />
-    <Property Name="CommentCount" Type="Int32" />
-    <Property Name="Image1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="Image2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="Image3" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="Image4" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="CategoryID" Type="Int32" />
-    <Property Name="BrandID" Type="Int32" />
-    <NavigationProperty Name="Brand" Relationship="Self.FK__Product__BrandID__2A4B4B5E" FromRole="Product" ToRole="Brand" />
-    <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__29572725" FromRole="Product" ToRole="Category" />
-    <NavigationProperty Name="ProductDetails" Relationship="PhoneStoreModel.FK__ProductDe__Produ__2D27B809" FromRole="Product" ToRole="ProductDetail" />
-    <Property Name="IsDeleted" Type="Boolean" />
-    <NavigationProperty Name="FavoriteProducts" Relationship="PhoneStoreModel.FK__FavoriteP__Produ__36B12243" FromRole="Product" ToRole="FavoriteProduct" />
-    <Property Name="SellCount" Type="Int32" />
-    <NavigationProperty Name="Comments" Relationship="PhoneStoreModel.FK__Comment__Product__3A81B327" FromRole="Product" ToRole="Comment" />
-    <NavigationProperty Name="BillDetails" Relationship="PhoneStoreModel.FK__BillDetai__Produ__2E1BDC42" FromRole="Product" ToRole="BillDetail" />
-  </EntityType>
-  <Association Name="FK__Product__BrandID__2A4B4B5E">
-    <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
-    <End Role="Product" Type="Self.Product" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Brand">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Product">
-        <PropertyRef Name="BrandID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Product__Categor__29572725">
-    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
-    <End Role="Product" Type="Self.Product" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Category">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Product">
-        <PropertyRef Name="CategoryID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="PhoneStoreEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Advertisements" EntityType="Self.Advertisement" />
     <EntitySet Name="Brands" EntityType="Self.Brand" />
     <EntitySet Name="Categories" EntityType="Self.Category" />
-    <EntitySet Name="Products" EntityType="Self.Product" />
-    <AssociationSet Name="FK__Product__BrandID__2A4B4B5E" Association="Self.FK__Product__BrandID__2A4B4B5E">
-      <End Role="Brand" EntitySet="Brands" />
-      <End Role="Product" EntitySet="Products" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Product__Categor__29572725" Association="Self.FK__Product__Categor__29572725">
-      <End Role="Category" EntitySet="Categories" />
-      <End Role="Product" EntitySet="Products" />
-    </AssociationSet>
     <EntitySet Name="ProductDetails" EntityType="PhoneStoreModel.ProductDetail" />
-    <AssociationSet Name="FK__ProductDe__Produ__2D27B809" Association="PhoneStoreModel.FK__ProductDe__Produ__2D27B809">
-      <End Role="Product" EntitySet="Products" />
-      <End Role="ProductDetail" EntitySet="ProductDetails" />
-    </AssociationSet>
     <EntitySet Name="Customers" EntityType="PhoneStoreModel.Customer" />
     <EntitySet Name="FavoriteProducts" EntityType="PhoneStoreModel.FavoriteProduct" />
     <AssociationSet Name="FK__FavoriteP__Custo__37A5467C" Association="PhoneStoreModel.FK__FavoriteP__Custo__37A5467C">
       <End Role="Customer" EntitySet="Customers" />
       <End Role="FavoriteProduct" EntitySet="FavoriteProducts" />
     </AssociationSet>
-    <AssociationSet Name="FK__FavoriteP__Produ__36B12243" Association="PhoneStoreModel.FK__FavoriteP__Produ__36B12243">
-      <End Role="Product" EntitySet="Products" />
-      <End Role="FavoriteProduct" EntitySet="FavoriteProducts" />
-    </AssociationSet>
     <EntitySet Name="Comments" EntityType="PhoneStoreModel.Comment" />
     <AssociationSet Name="FK__Comment__Custome__3B75D760" Association="PhoneStoreModel.FK__Comment__Custome__3B75D760">
       <End Role="Customer" EntitySet="Customers" />
-      <End Role="Comment" EntitySet="Comments" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Comment__Product__3A81B327" Association="PhoneStoreModel.FK__Comment__Product__3A81B327">
-      <End Role="Product" EntitySet="Products" />
       <End Role="Comment" EntitySet="Comments" />
     </AssociationSet>
     <EntitySet Name="Bills" EntityType="PhoneStoreModel.Bill" />
@@ -124,9 +52,30 @@
       <End Role="Bill" EntitySet="Bills" />
       <End Role="BillDetail" EntitySet="BillDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK__BillDetai__Produ__2E1BDC42" Association="PhoneStoreModel.FK__BillDetai__Produ__2E1BDC42">
+    <EntitySet Name="Products" EntityType="PhoneStoreModel.Product" />
+    <AssociationSet Name="FK__BillDetai__Produ__4222D4EF" Association="PhoneStoreModel.FK__BillDetai__Produ__4222D4EF">
       <End Role="Product" EntitySet="Products" />
       <End Role="BillDetail" EntitySet="BillDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__BrandID__2D27B809" Association="PhoneStoreModel.FK__Product__BrandID__2D27B809">
+      <End Role="Brand" EntitySet="Brands" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Categor__2C3393D0" Association="PhoneStoreModel.FK__Product__Categor__2C3393D0">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comment__Product__3B75D760" Association="PhoneStoreModel.FK__Comment__Product__3B75D760">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FavoriteP__Produ__37A5467C" Association="PhoneStoreModel.FK__FavoriteP__Produ__37A5467C">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="FavoriteProduct" EntitySet="FavoriteProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductDe__Produ__30F848ED" Association="PhoneStoreModel.FK__ProductDe__Produ__30F848ED">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductDetail" EntitySet="ProductDetails" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="ProductDetail">
@@ -137,21 +86,9 @@
     <Property Name="ProductID" Type="Int32" />
     <Property Name="DetailName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="DetailDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__ProductDe__Produ__2D27B809" FromRole="ProductDetail" ToRole="Product" />
     <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__ProductDe__Produ__30F848ED" FromRole="ProductDetail" ToRole="Product" />
   </EntityType>
-  <Association Name="FK__ProductDe__Produ__2D27B809">
-    <End Type="PhoneStoreModel.Product" Role="Product" Multiplicity="0..1" />
-    <End Type="PhoneStoreModel.ProductDetail" Role="ProductDetail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Product">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ProductDetail">
-        <PropertyRef Name="ProductID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="Customer">
     <Key>
       <PropertyRef Name="ID" />
@@ -177,7 +114,7 @@
     <Property Name="ProductID" Type="Int32" />
     <Property Name="CustomerID" Type="Int32" />
     <NavigationProperty Name="Customer" Relationship="PhoneStoreModel.FK__FavoriteP__Custo__37A5467C" FromRole="FavoriteProduct" ToRole="Customer" />
-    <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__FavoriteP__Produ__36B12243" FromRole="FavoriteProduct" ToRole="Product" />
+    <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__FavoriteP__Produ__37A5467C" FromRole="FavoriteProduct" ToRole="Product" />
   </EntityType>
   <Association Name="FK__FavoriteP__Custo__37A5467C">
     <End Type="PhoneStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
@@ -191,18 +128,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__FavoriteP__Produ__36B12243">
-    <End Type="PhoneStoreModel.Product" Role="Product" Multiplicity="0..1" />
-    <End Type="PhoneStoreModel.FavoriteProduct" Role="FavoriteProduct" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Product">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="FavoriteProduct">
-        <PropertyRef Name="ProductID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="Comment">
     <Key>
       <PropertyRef Name="ID" />
@@ -213,7 +138,8 @@
     <Property Name="Content" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="Rating" Type="Int32" />
     <NavigationProperty Name="Customer" Relationship="PhoneStoreModel.FK__Comment__Custome__3B75D760" FromRole="Comment" ToRole="Customer" />
-    <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__Comment__Product__3A81B327" FromRole="Comment" ToRole="Product" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__Comment__Product__3B75D760" FromRole="Comment" ToRole="Product" />
   </EntityType>
   <Association Name="FK__Comment__Custome__3B75D760">
     <End Type="PhoneStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
@@ -224,18 +150,6 @@
       </Principal>
       <Dependent Role="Comment">
         <PropertyRef Name="CustomerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Comment__Product__3A81B327">
-    <End Type="PhoneStoreModel.Product" Role="Product" Multiplicity="0..1" />
-    <End Type="PhoneStoreModel.Comment" Role="Comment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Product">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Comment">
-        <PropertyRef Name="ProductID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -250,6 +164,7 @@
     <Property Name="IsDelete" Type="Boolean" />
     <NavigationProperty Name="Customer" Relationship="PhoneStoreModel.FK__Bill__CustomerID__2B3F6F97" FromRole="Bill" ToRole="Customer" />
     <NavigationProperty Name="BillDetails" Relationship="PhoneStoreModel.FK__BillDetai__BillI__2F10007B" FromRole="Bill" ToRole="BillDetail" />
+    <Property Name="IsCheckOut" Type="Boolean" />
   </EntityType>
   <EntityType Name="BillDetail">
     <Key>
@@ -260,7 +175,7 @@
     <Property Name="ProductID" Type="Int32" />
     <Property Name="BillID" Type="Int32" />
     <NavigationProperty Name="Bill" Relationship="PhoneStoreModel.FK__BillDetai__BillI__2F10007B" FromRole="BillDetail" ToRole="Bill" />
-    <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__BillDetai__Produ__2E1BDC42" FromRole="BillDetail" ToRole="Product" />
+    <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__BillDetai__Produ__4222D4EF" FromRole="BillDetail" ToRole="Product" />
   </EntityType>
   <Association Name="FK__Bill__CustomerID__2B3F6F97">
     <End Type="PhoneStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
@@ -286,7 +201,31 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__BillDetai__Produ__2E1BDC42">
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="DiscountPercent" Type="Int32" />
+    <Property Name="ViewCount" Type="Int32" />
+    <Property Name="Image1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Image2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Image3" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Image4" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="BrandID" Type="Int32" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="BillDetails" Relationship="PhoneStoreModel.FK__BillDetai__Produ__4222D4EF" FromRole="Product" ToRole="BillDetail" />
+    <NavigationProperty Name="Brand" Relationship="PhoneStoreModel.FK__Product__BrandID__2D27B809" FromRole="Product" ToRole="Brand" />
+    <NavigationProperty Name="Category" Relationship="PhoneStoreModel.FK__Product__Categor__2C3393D0" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="Comments" Relationship="PhoneStoreModel.FK__Comment__Product__3B75D760" FromRole="Product" ToRole="Comment" />
+    <NavigationProperty Name="FavoriteProducts" Relationship="PhoneStoreModel.FK__FavoriteP__Produ__37A5467C" FromRole="Product" ToRole="FavoriteProduct" />
+    <NavigationProperty Name="ProductDetails" Relationship="PhoneStoreModel.FK__ProductDe__Produ__30F848ED" FromRole="Product" ToRole="ProductDetail" />
+  </EntityType>
+  <Association Name="FK__BillDetai__Produ__4222D4EF">
     <End Type="PhoneStoreModel.Product" Role="Product" Multiplicity="0..1" />
     <End Type="PhoneStoreModel.BillDetail" Role="BillDetail" Multiplicity="*" />
     <ReferentialConstraint>
@@ -294,6 +233,66 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="BillDetail">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__BrandID__2D27B809">
+    <End Type="PhoneStoreModel.Brand" Role="Brand" Multiplicity="0..1" />
+    <End Type="PhoneStoreModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="BrandID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Categor__2C3393D0">
+    <End Type="PhoneStoreModel.Category" Role="Category" Multiplicity="0..1" />
+    <End Type="PhoneStoreModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comment__Product__3B75D760">
+    <End Type="PhoneStoreModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="PhoneStoreModel.Comment" Role="Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FavoriteP__Produ__37A5467C">
+    <End Type="PhoneStoreModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="PhoneStoreModel.FavoriteProduct" Role="FavoriteProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FavoriteProduct">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductDe__Produ__30F848ED">
+    <End Type="PhoneStoreModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="PhoneStoreModel.ProductDetail" Role="ProductDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductDetail">
         <PropertyRef Name="ProductID" />
       </Dependent>
     </ReferentialConstraint>

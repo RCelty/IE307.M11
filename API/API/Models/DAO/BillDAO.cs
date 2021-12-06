@@ -45,7 +45,8 @@ namespace API.Models.DAO
                 TotalPrice = billDTO.TotalPrice,
                 CreationDate = DateTime.Now,
                 CustomerID = billDTO.CustomerID,
-                IsDelete = false
+                IsDelete = false,
+                IsCheckOut = false
             };
             try
             {

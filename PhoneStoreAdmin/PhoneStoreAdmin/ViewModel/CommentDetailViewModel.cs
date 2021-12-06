@@ -78,6 +78,18 @@ namespace PhoneStoreAdmin.ViewModel
             }
         }
 
+        private DateTime creationDate;
+
+        public DateTime CreationDate
+        {
+            get => creationDate;
+            set
+            {
+                creationDate = value;
+                OnPropertyChanged();
+            }
+        }
+
         private int rating;
         public int Rating
         {
@@ -121,6 +133,7 @@ namespace PhoneStoreAdmin.ViewModel
                 ProductImage = Product.Image1.Replace(oldDomain, Const.Domain);
                 ProductName = Product.DisplayName;
                 CustomerName = Comment.CustomerName;
+                CreationDate = Comment.CreationDate;
                 Rating = (int)Comment.Rating;
                 Content = Comment.Content;
             }

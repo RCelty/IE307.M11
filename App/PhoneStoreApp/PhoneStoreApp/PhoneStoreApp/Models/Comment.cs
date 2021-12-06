@@ -14,6 +14,8 @@ namespace PhoneStoreApp.Models
 
         public int CustomerID { get; set; }
 
+        public DateTime? CreationDate { get; set; }
+
         public string CustomerName { get; set; }
 
         private string content;

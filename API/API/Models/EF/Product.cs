@@ -17,19 +17,17 @@ namespace API.Models.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.ProductDetails = new HashSet<ProductDetail>();
-            this.FavoriteProducts = new HashSet<FavoriteProduct>();
-            this.Comments = new HashSet<Comment>();
             this.BillDetails = new HashSet<BillDetail>();
+            this.Comments = new HashSet<Comment>();
+            this.FavoriteProducts = new HashSet<FavoriteProduct>();
+            this.ProductDetails = new HashSet<ProductDetail>();
         }
     
         public int ID { get; set; }
         public string DisplayName { get; set; }
         public Nullable<int> Price { get; set; }
         public Nullable<int> DiscountPercent { get; set; }
-        public Nullable<double> Rating { get; set; }
         public Nullable<int> ViewCount { get; set; }
-        public Nullable<int> CommentCount { get; set; }
         public string Image1 { get; set; }
         public string Image2 { get; set; }
         public string Image3 { get; set; }
@@ -38,17 +36,16 @@ namespace API.Models.EF
         public Nullable<int> CategoryID { get; set; }
         public Nullable<int> BrandID { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
-        public Nullable<int> SellCount { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BillDetail> BillDetails { get; set; }
         public virtual Brand Brand { get; set; }
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FavoriteProduct> FavoriteProducts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comment> Comments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BillDetail> BillDetails { get; set; }
+        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
     }
 }

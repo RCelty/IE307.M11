@@ -15,6 +15,7 @@
     <Property Name="TotalPrice" Type="bigint" />
     <Property Name="CreationDate" Type="datetime" />
     <Property Name="CustomerID" Type="int" />
+    <Property Name="IsCheckOut" Type="bit" />
     <Property Name="IsDelete" Type="bit" />
   </EntityType>
   <EntityType Name="BillDetail">
@@ -50,6 +51,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ProductID" Type="int" />
     <Property Name="CustomerID" Type="int" />
+    <Property Name="CreationDate" Type="datetime" />
     <Property Name="Content" Type="nvarchar" MaxLength="500" />
     <Property Name="Rating" Type="int" />
   </EntityType>
@@ -83,10 +85,7 @@
     <Property Name="DisplayName" Type="nvarchar" MaxLength="100" />
     <Property Name="Price" Type="int" />
     <Property Name="DiscountPercent" Type="int" />
-    <Property Name="Rating" Type="float" />
     <Property Name="ViewCount" Type="int" />
-    <Property Name="CommentCount" Type="int" />
-    <Property Name="SellCount" Type="int" />
     <Property Name="Image1" Type="varchar" MaxLength="500" />
     <Property Name="Image2" Type="varchar" MaxLength="500" />
     <Property Name="Image3" Type="varchar" MaxLength="500" />
@@ -106,7 +105,7 @@
     <Property Name="DetailDescription" Type="nvarchar" MaxLength="500" />
     <Property Name="IsDeleted" Type="bit" />
   </EntityType>
-  <Association Name="FK__Bill__CustomerID__2B3F6F97">
+  <Association Name="FK__Bill__CustomerID__3F466844">
     <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
     <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
     <ReferentialConstraint>
@@ -118,7 +117,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__BillDetai__BillI__2F10007B">
+  <Association Name="FK__BillDetai__BillI__4316F928">
     <End Role="Bill" Type="Self.Bill" Multiplicity="0..1" />
     <End Role="BillDetail" Type="Self.BillDetail" Multiplicity="*" />
     <ReferentialConstraint>
@@ -130,7 +129,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__BillDetai__Produ__2E1BDC42">
+  <Association Name="FK__BillDetai__Produ__4222D4EF">
     <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
     <End Role="BillDetail" Type="Self.BillDetail" Multiplicity="*" />
     <ReferentialConstraint>
@@ -142,7 +141,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Comment__Custome__286302EC">
+  <Association Name="FK__Comment__Custome__3C69FB99">
     <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
     <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -154,7 +153,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Comment__Product__276EDEB3">
+  <Association Name="FK__Comment__Product__3B75D760">
     <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
     <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -166,7 +165,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__FavoriteP__Custo__24927208">
+  <Association Name="FK__FavoriteP__Custo__38996AB5">
     <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
     <End Role="FavoriteProduct" Type="Self.FavoriteProduct" Multiplicity="*" />
     <ReferentialConstraint>
@@ -178,7 +177,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__FavoriteP__Produ__239E4DCF">
+  <Association Name="FK__FavoriteP__Produ__37A5467C">
     <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
     <End Role="FavoriteProduct" Type="Self.FavoriteProduct" Multiplicity="*" />
     <ReferentialConstraint>
@@ -190,7 +189,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Product__BrandID__1920BF5C">
+  <Association Name="FK__Product__BrandID__2D27B809">
     <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
     <End Role="Product" Type="Self.Product" Multiplicity="*" />
     <ReferentialConstraint>
@@ -202,7 +201,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Product__Categor__182C9B23">
+  <Association Name="FK__Product__Categor__2C3393D0">
     <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
     <End Role="Product" Type="Self.Product" Multiplicity="*" />
     <ReferentialConstraint>
@@ -214,7 +213,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ProductDe__Produ__1CF15040">
+  <Association Name="FK__ProductDe__Produ__30F848ED">
     <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
     <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
     <ReferentialConstraint>
@@ -237,43 +236,43 @@
     <EntitySet Name="FavoriteProduct" EntityType="Self.FavoriteProduct" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductDetail" EntityType="Self.ProductDetail" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Bill__CustomerID__2B3F6F97" Association="Self.FK__Bill__CustomerID__2B3F6F97">
+    <AssociationSet Name="FK__Bill__CustomerID__3F466844" Association="Self.FK__Bill__CustomerID__3F466844">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="Bill" EntitySet="Bill" />
     </AssociationSet>
-    <AssociationSet Name="FK__BillDetai__BillI__2F10007B" Association="Self.FK__BillDetai__BillI__2F10007B">
+    <AssociationSet Name="FK__BillDetai__BillI__4316F928" Association="Self.FK__BillDetai__BillI__4316F928">
       <End Role="Bill" EntitySet="Bill" />
       <End Role="BillDetail" EntitySet="BillDetail" />
     </AssociationSet>
-    <AssociationSet Name="FK__BillDetai__Produ__2E1BDC42" Association="Self.FK__BillDetai__Produ__2E1BDC42">
+    <AssociationSet Name="FK__BillDetai__Produ__4222D4EF" Association="Self.FK__BillDetai__Produ__4222D4EF">
       <End Role="Product" EntitySet="Product" />
       <End Role="BillDetail" EntitySet="BillDetail" />
     </AssociationSet>
-    <AssociationSet Name="FK__Comment__Custome__286302EC" Association="Self.FK__Comment__Custome__286302EC">
+    <AssociationSet Name="FK__Comment__Custome__3C69FB99" Association="Self.FK__Comment__Custome__3C69FB99">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="Comment" EntitySet="Comment" />
     </AssociationSet>
-    <AssociationSet Name="FK__Comment__Product__276EDEB3" Association="Self.FK__Comment__Product__276EDEB3">
+    <AssociationSet Name="FK__Comment__Product__3B75D760" Association="Self.FK__Comment__Product__3B75D760">
       <End Role="Product" EntitySet="Product" />
       <End Role="Comment" EntitySet="Comment" />
     </AssociationSet>
-    <AssociationSet Name="FK__FavoriteP__Custo__24927208" Association="Self.FK__FavoriteP__Custo__24927208">
+    <AssociationSet Name="FK__FavoriteP__Custo__38996AB5" Association="Self.FK__FavoriteP__Custo__38996AB5">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="FavoriteProduct" EntitySet="FavoriteProduct" />
     </AssociationSet>
-    <AssociationSet Name="FK__FavoriteP__Produ__239E4DCF" Association="Self.FK__FavoriteP__Produ__239E4DCF">
+    <AssociationSet Name="FK__FavoriteP__Produ__37A5467C" Association="Self.FK__FavoriteP__Produ__37A5467C">
       <End Role="Product" EntitySet="Product" />
       <End Role="FavoriteProduct" EntitySet="FavoriteProduct" />
     </AssociationSet>
-    <AssociationSet Name="FK__Product__BrandID__1920BF5C" Association="Self.FK__Product__BrandID__1920BF5C">
+    <AssociationSet Name="FK__Product__BrandID__2D27B809" Association="Self.FK__Product__BrandID__2D27B809">
       <End Role="Brand" EntitySet="Brand" />
       <End Role="Product" EntitySet="Product" />
     </AssociationSet>
-    <AssociationSet Name="FK__Product__Categor__182C9B23" Association="Self.FK__Product__Categor__182C9B23">
+    <AssociationSet Name="FK__Product__Categor__2C3393D0" Association="Self.FK__Product__Categor__2C3393D0">
       <End Role="Category" EntitySet="Category" />
       <End Role="Product" EntitySet="Product" />
     </AssociationSet>
-    <AssociationSet Name="FK__ProductDe__Produ__1CF15040" Association="Self.FK__ProductDe__Produ__1CF15040">
+    <AssociationSet Name="FK__ProductDe__Produ__30F848ED" Association="Self.FK__ProductDe__Produ__30F848ED">
       <End Role="Product" EntitySet="Product" />
       <End Role="ProductDetail" EntitySet="ProductDetail" />
     </AssociationSet>

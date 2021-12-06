@@ -18,6 +18,8 @@ namespace API.Models.DTO
 
         public bool? IsDelete { get; set; }
 
+        public bool? IsCheckOut { get; set; }
+
         public List<BillDetailDTO> BillDetailDTOs { get; set; }
 
         public BillDTO()
@@ -32,6 +34,7 @@ namespace API.Models.DTO
             CreationDate = bill.CreationDate;
             CustomerID = bill.CustomerID;
             IsDelete = bill.IsDelete;
+            IsCheckOut = bill.IsCheckOut;
             BillDetailDTOs = bill.BillDetails.Select(b => new BillDetailDTO(b)).ToList();
         }
     }

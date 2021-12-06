@@ -44,11 +44,8 @@ namespace API.Models.DAO
             {
                 DisplayName = productDTO.DisplayName,
                 Price = productDTO.Price,
-                DiscountPercent = productDTO.DiscountPercent,
-                Rating = 0,
-                ViewCount = 0,
-                CommentCount = 0,
-                SellCount = 0,
+                DiscountPercent = productDTO.DiscountPercent,                
+                ViewCount = 0,                                
                 Description = productDTO.Description,
                 Image1 = productDTO.Image1,
                 Image2 = productDTO.Image2,

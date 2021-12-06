@@ -34,10 +34,7 @@ create table Product
 	DisplayName nvarchar(100),
 	Price int,
 	DiscountPercent int,
-	Rating float,
-	ViewCount int,
-	CommentCount int,
-	SellCount int,
+	ViewCount int,	
 	Image1 varchar(500),
 	Image2 varchar(500),
 	Image3 varchar(500),
@@ -86,6 +83,7 @@ create table Comment
 	ID int primary key identity(1,1),
 	ProductID int foreign key references Product(ID),
 	CustomerID int foreign key references Customer(ID),
+	CreationDate datetime,
 	Content nvarchar(500),
 	Rating int
 )
@@ -97,6 +95,7 @@ create table Bill
 	TotalPrice bigint,
 	CreationDate datetime,
 	CustomerID int foreign key references Customer(ID),
+	IsCheckOut bit,
 	IsDelete bit,
 )
 go
@@ -130,10 +129,10 @@ insert into Brand values(N'Acer', 'acer.jpg', 0)
 go
 
 --insert Product
-insert into Product values(N'Điện thoại Samsung Galaxy Z Fold3 5G 512GB', 43990000, 10, 0, 0, 0, 0, 'samsung1_1.jpg', 'samsung1_2.jpg', 'samsung1_3.jpg', 'samsung1_4.jpg', N'Galaxy Z Fold3 5G đánh dấu bước tiến mới của Samsung trong phân khúc điện thoại gập cao cấp khi được cải tiến về độ bền cùng những nâng cấp đáng giá về cấu hình hiệu năng, hứa hẹn sẽ mang đến trải nghiệm sử dụng đột phá cho người dùng.', 1, 1, 0)
-insert into Product values(N'Điện thoại iPhone 12 64GB', 20490000, 5, 0, 0, 0, 0, 'iphone1_1.jpg', 'iphone1_2.jpg', 'iphone1_3.jpg', 'iphone1_4.jpg', N'Trong những tháng cuối năm 2020, Apple đã chính thức giới thiệu đến người dùng cũng như iFan thế hệ iPhone 12 series mới với hàng loạt tính năng bứt phá, thiết kế được lột xác hoàn toàn, hiệu năng đầy mạnh mẽ và một trong số đó chính là iPhone 12 64GB.', 1, 2, 0)
-insert into Product values(N'Điện thoại OPPO Reno6 Z 5G', 9490000, 0, 0, 0, 0, 0, 'oppo1_1.jpg', 'opppo1_2.jpg', 'oppo1_3.jpg', 'oppo1_4.jpg', N'Reno6 Z 5G đến từ nhà OPPO với hàng loạt sự nâng cấp và cải tiến không chỉ ngoại hình bên ngoài mà còn sức mạnh bên trong.', 1, 3, 0)
-insert into Product values(N'Laptop Acer Nitro 5 Gaming AN515 57 727J i7 11800H/8GB/512GB/4GB RTX3050Ti/144Hz/Win10', 29690000, 5, 0, 0, 0, 0, 'acer1_1.jpg', 'acer1_2.jpg', 'acer1_3.jpg', 'acer1_4.jpg', N'Acer Nitro 5 Gaming AN515 57 727J i7 (NH.QD9SV.005.) sở hữu vẻ ngoài cá tính, nổi bật và được tích hợp bộ vi xử lý Intel thế hệ 11 tân tiến, card đồ hoạ rời NVIDIA GeForce RTX, hứa hẹn mang đến các trải nghiệm tuyệt vời cho người dùng.', 2, 4, 0)
+insert into Product values(N'Điện thoại Samsung Galaxy Z Fold3 5G 512GB', 43990000, 10, 0, 'samsung1_1.jpg', 'samsung1_2.jpg', 'samsung1_3.jpg', 'samsung1_4.jpg', N'Galaxy Z Fold3 5G đánh dấu bước tiến mới của Samsung trong phân khúc điện thoại gập cao cấp khi được cải tiến về độ bền cùng những nâng cấp đáng giá về cấu hình hiệu năng, hứa hẹn sẽ mang đến trải nghiệm sử dụng đột phá cho người dùng.', 1, 1, 0)
+insert into Product values(N'Điện thoại iPhone 12 64GB', 20490000, 5, 0, 'iphone1_1.jpg', 'iphone1_2.jpg', 'iphone1_3.jpg', 'iphone1_4.jpg', N'Trong những tháng cuối năm 2020, Apple đã chính thức giới thiệu đến người dùng cũng như iFan thế hệ iPhone 12 series mới với hàng loạt tính năng bứt phá, thiết kế được lột xác hoàn toàn, hiệu năng đầy mạnh mẽ và một trong số đó chính là iPhone 12 64GB.', 1, 2, 0)
+insert into Product values(N'Điện thoại OPPO Reno6 Z 5G', 9490000, 0, 0, 'oppo1_1.jpg', 'opppo1_2.jpg', 'oppo1_3.jpg', 'oppo1_4.jpg', N'Reno6 Z 5G đến từ nhà OPPO với hàng loạt sự nâng cấp và cải tiến không chỉ ngoại hình bên ngoài mà còn sức mạnh bên trong.', 1, 3, 0)
+insert into Product values(N'Laptop Acer Nitro 5 Gaming AN515 57 727J i7 11800H/8GB/512GB/4GB RTX3050Ti/144Hz/Win10', 29690000, 5, 0, 'acer1_1.jpg', 'acer1_2.jpg', 'acer1_3.jpg', 'acer1_4.jpg', N'Acer Nitro 5 Gaming AN515 57 727J i7 (NH.QD9SV.005.) sở hữu vẻ ngoài cá tính, nổi bật và được tích hợp bộ vi xử lý Intel thế hệ 11 tân tiến, card đồ hoạ rời NVIDIA GeForce RTX, hứa hẹn mang đến các trải nghiệm tuyệt vời cho người dùng.', 2, 4, 0)
 go
 
 --insert ProductDetail
@@ -185,6 +184,7 @@ insert into Customer values('Admin', '21232f297a57a5a743894a0e4a801fc3', N'Admin
 go
 
 --drop database PhoneStore
+
 
 
 

@@ -14,6 +14,8 @@ namespace API.Models.DTO
 
         public int? CustomerID { get; set; }
 
+        public DateTime? CreationDate { get; set; }
+
         public string CustomerName { get; set; }
 
         public string Content { get; set; }
@@ -30,6 +32,7 @@ namespace API.Models.DTO
             ID = comment.ID;
             ProductID = comment.ProductID;
             CustomerID = comment.CustomerID;
+            CreationDate = comment.CreationDate;
             CustomerName = comment.Customer.DisplayName;
             Content = comment.Content;
             Rating = comment.Rating;

@@ -44,6 +44,7 @@ namespace API.Models.DAO
             {
                 ProductID = commentDTO.ProductID,
                 CustomerID = commentDTO.CustomerID,
+                CreationDate = DateTime.Now,
                 Content = commentDTO.Content,
                 Rating = commentDTO.Rating
             };

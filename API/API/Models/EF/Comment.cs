@@ -19,6 +19,7 @@ namespace API.Models.EF
         public Nullable<int> CustomerID { get; set; }
         public string Content { get; set; }
         public Nullable<int> Rating { get; set; }
+        public Nullable<System.DateTime> CreationDate { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Product Product { get; set; }

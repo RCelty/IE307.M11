@@ -31,7 +31,10 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="{Binding CustomerName}" FontWeight="Bold" Grid.Column="0" Grid.Row="0"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
+                    <TextBlock Text="{Binding CustomerName}" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding CreationDate}" Margin="5,0,0,0"/>
+                </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0">
                     <TextBlock Text="{Binding Rating}"/>
                     <Image Source="/Assets/Images/Icons/star.png" Height="15"

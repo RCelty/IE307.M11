@@ -14,6 +14,8 @@ namespace PhoneStoreAdmin.Model
 
         public int? CustomerID { get; set; }
 
+        public DateTime CreationDate { get; set; }
+
         public string CustomerName { get; set; }
 
         public string Content { get; set; }
