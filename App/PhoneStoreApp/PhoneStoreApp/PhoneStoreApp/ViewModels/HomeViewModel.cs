@@ -8,6 +8,8 @@ using PhoneStoreApp.Models;
 using PhoneStoreApp.Services;
 using PhoneStoreApp.Views;
 using Xamarin.Forms;
+using System.IO;
+using Xamarin.Essentials;
 
 namespace PhoneStoreApp.ViewModels
 {
@@ -92,6 +94,7 @@ namespace PhoneStoreApp.ViewModels
         public Command CategoryPressCommand { get; set; }
         public Command OpenFilterCommand { get; set; }
         public Command SeeAllCommand { get; set; }
+        public Command ImagePickCommand { get; set; }
         #endregion        
         public HomeViewModel()
         {
@@ -102,6 +105,7 @@ namespace PhoneStoreApp.ViewModels
             CategoryPressCommand = new Command<Category>(CategoryPressCommandExecute, category => category != null);
             OpenFilterCommand = new Command(OpenFilterCommandExecute, () => true);
             SeeAllCommand = new Command<ObservableCollection<Product>>(SeeAllCommandExecute, products => products != null);
+            ImagePickCommand = new Command(ImagePickCommandExecute, () => true);
         }
 
         private async void LoadData()
@@ -170,6 +174,20 @@ namespace PhoneStoreApp.ViewModels
         public async void SeeAllCommandExecute(ObservableCollection<Product> products)
         {
             await App.Current.MainPage.Navigation.PushAsync(new ProductPage(products));
+        }
+
+        public async void ImagePickCommandExecute()
+        {
+            var file = await MediaPicker.PickPhotoAsync();
+            if (file == null)
+                return;
+           
+            byte[] buffer = File.ReadAllBytes(file.FullPath);
+            byte[] ImageData = buffer;
+
+            string ImageName = file.FileName;
+
+            await LoginServices.Instance.UploadImage(ImageData, ImageName);
         }
     }
 }

@@ -84,7 +84,7 @@ namespace PhoneStoreApp.Services
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var convertString = Const.ConverToPathWithParameter(Const.UploadProductImagePath);
+                    var convertString = Const.ConverToPathWithParameter(Const.CustomerUploadImagePath);
                     var requestContent = new MultipartFormDataContent();
                     //    here you can specify boundary if you need---^
                     var imageContent = new ByteArrayContent(ImageData);
