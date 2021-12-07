@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Net.Mail;
 using System.Net.Sockets;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using PhoneStoreApp.Models;
@@ -41,6 +43,9 @@ namespace PhoneStoreApp.Assets.Contains
         public static readonly string AddBillDetailPath = Domain + @"Api/BillController/AddBillDetail";
         public static readonly string DeleteBillDetailByIDPath = Domain + @"Api/BillController/DeleteBillDetailByID/{ID}";
 
+        public static readonly string Email = "duyanh2000pro@gmail.com";
+        public static readonly string Password = "duyanh123";
+
 
         public static string ConverToPathWithParameter(string path, object[] param = null)
         {
@@ -63,5 +68,53 @@ namespace PhoneStoreApp.Assets.Contains
             string temp = s.Normalize(NormalizationForm.FormD);
             return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
         }
+
+        public static string CreateMD5(string input)
+        {
+            // Use input string to calculate MD5 hash
+            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
+            {
+                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                // Convert the byte array to hexadecimal string
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("X2"));
+                }
+                return sb.ToString();
+            }
+        }
+
+        public static bool SendMail(string to, string subject, string body)
+        {
+            try
+            {
+                MailMessage message = new MailMessage();
+                SmtpClient smtp = new SmtpClient();
+
+                message.From = new MailAddress(Const.Email);
+                message.To.Add(new MailAddress(to));
+                message.Subject = subject;
+                message.IsBodyHtml = true; //to make message body as html  
+                message.Body = body;
+
+                smtp.Port = 587;
+                smtp.Host = "smtp.gmail.com"; //for gmail host  
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential(Const.Email, Const.Password);
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+               
+                smtp.Send(message);                
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+                throw e;
+            }
+        }        
     }
 }

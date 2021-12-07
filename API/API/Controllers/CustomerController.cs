@@ -24,7 +24,7 @@ namespace API.Controllers
         [Route("Api/CustomerController/Login")]
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IHttpActionResult> AddCategory(CustomerDTO customerDTO)
+        public async Task<IHttpActionResult> Login(CustomerDTO customerDTO)
         {
             return Ok(await CustomerDAO.Instance.Login(customerDTO));
         }
@@ -35,6 +35,14 @@ namespace API.Controllers
         public async Task<IHttpActionResult> GetCustomerByID(int ID)
         {
             return Ok(await CustomerDAO.Instance.GetCustomerByID(ID));
+        }
+
+        [Route("Api/CustomerController/GetCustomerByUserName/{UserName}")]
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetCustomerByUserName(string UserName)
+        {
+            return Ok(await CustomerDAO.Instance.GetCustomerByUserName(UserName));
         }
 
         [Route("Api/CustomerController/GetFavoriteProductByCustomerID/{ID}")]
@@ -88,6 +96,14 @@ namespace API.Controllers
             }
 
             return Request.CreateResponse(HttpStatusCode.Created);
+        }
+
+        [Route("Api/CustomerController/IsRegisterAble")]
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IHttpActionResult> IsRegisterAble(CustomerDTO customerDTO)
+        {
+            return Ok(await CustomerDAO.Instance.IsRegisterAble(customerDTO));
         }
     }
 }

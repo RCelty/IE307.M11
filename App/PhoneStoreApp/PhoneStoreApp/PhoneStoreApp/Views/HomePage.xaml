@@ -246,7 +246,7 @@
                         </ScrollView>
 
                     </StackLayout>
-                    <!--<Button Text="Image" Command="{Binding ImagePickCommand}"/>-->
+                    <Button Text="Image" Command="{Binding ImagePickCommand}"/>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

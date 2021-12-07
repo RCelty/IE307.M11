@@ -57,7 +57,7 @@ namespace API.Models.DAO
                     return null;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return null;
                 throw e;
@@ -75,9 +75,66 @@ namespace API.Models.DAO
                 }
                 else return null;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return null;
+                throw e;
+            }
+        }
+
+        public async Task<CustomerDTO> GetCustomerByUserName(string userName)
+        {
+            try
+            {
+                var myCustomer = await db.Customers.SingleOrDefaultAsync(customer => customer.UserName == userName);
+                if (myCustomer != null)
+                {
+                    return new CustomerDTO(myCustomer);
+                }
+                else return null;
+            }
+            catch (Exception e)
+            {
+                return null;
+                throw e;
+            }
+        }
+
+        public async Task<int> IsRegisterAble(CustomerDTO customerDTO)
+        {
+            if (await db.Customers.SingleOrDefaultAsync(c => c.UserName == customerDTO.UserName || c.Email == customerDTO.Email) != null)
+            {
+                return -1; //Tên đăng nhập hoặc email đã tồn tại
+            }
+            return await Const.VerifyEmail(customerDTO.Email) ? 1 : -2; //1: có thể đăng ký; -2: email không hợp lệ
+        }
+
+        public async Task<int> Register(CustomerDTO customerDTO)
+        {
+            try
+            {
+                string passWord = Const.CreateMD5(customerDTO.PassWord);
+
+                Customer customer = new Customer()
+                {
+                    UserName = customerDTO.UserName,
+                    PassWord = passWord,
+                    DisplayName = customerDTO.DisplayName,
+                    PhoneNumber = customerDTO.PhoneNumber,
+                    Email = customerDTO.Email,
+                    Address = customerDTO.Address,
+                    Avatar = customerDTO.Avatar,
+                    IsAdmin = false
+                };
+
+                db.Customers.Add(customer);
+                await db.SaveChangesAsync();
+
+                return customer.ID;
+            }
+            catch (Exception e)
+            {
+                return -1;
                 throw e;
             }
         }

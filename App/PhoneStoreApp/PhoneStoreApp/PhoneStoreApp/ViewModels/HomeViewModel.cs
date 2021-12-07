@@ -10,6 +10,7 @@ using PhoneStoreApp.Views;
 using Xamarin.Forms;
 using System.IO;
 using Xamarin.Essentials;
+using PhoneStoreApp.Assets.Contains;
 
 namespace PhoneStoreApp.ViewModels
 {
@@ -178,16 +179,18 @@ namespace PhoneStoreApp.ViewModels
 
         public async void ImagePickCommandExecute()
         {
-            var file = await MediaPicker.PickPhotoAsync();
-            if (file == null)
-                return;
-           
-            byte[] buffer = File.ReadAllBytes(file.FullPath);
-            byte[] ImageData = buffer;
+            //var file = await MediaPicker.PickPhotoAsync();
+            //if (file == null)
+            //    return;
 
-            string ImageName = file.FileName;
+            //byte[] buffer = File.ReadAllBytes(file.FullPath);
+            //byte[] ImageData = buffer;
 
-            await LoginServices.Instance.UploadImage(ImageData, ImageName);
+            //string ImageName = file.FileName;
+
+            //await LoginServices.Instance.UploadImage(ImageData, ImageName);
+            var user = await LoginServices.Instance.GetCustomerByID(Const.CurrentCustomerID);
+            var result = await LoginServices.Instance.ConfirmOTPEmail(user.DisplayName, user.Email);
         }
     }
 }

@@ -101,5 +101,35 @@ namespace PhoneStoreApp.Services
                 return null;
             }
         }
+
+        public async Task<string> ConfirmOTPEmail(string fullName, string email)
+        {
+            Task<string> task = new Task<string>(new Func<string>(() =>
+            {
+                try
+                {
+                    string OTP = new Random().Next(1000, 10000).ToString();
+                    var body = "";
+
+                    body += "<hr/>";
+                    body += "Xin chào <b>" + fullName + "</b>,<br/><br/>";
+                    
+                    body += "Mã xác thực OTP Chotech của bạn là: <b>" + OTP + "</b><br/><br/>";                    
+
+                    Const.SendMail(email, "Confirm Password - Electronic Shop", body);
+                    return OTP;
+
+                }
+                catch (Exception e)
+                {
+                    return "";
+                    throw e;
+                }
+            }));
+
+            task.Start();
+
+            return await task;
+        }
     }
 }
