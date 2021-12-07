@@ -78,6 +78,26 @@ namespace PhoneStoreApp.Services
             }
         }
 
+        public async Task<Customer> GetCustomerUserNameID(string userName)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var dataString = await client.GetStringAsync(Const.ConverToPathWithParameter(Const.GetCustomerByUserNamePath, new object[] { userName }));
+
+                    var customer = JsonConvert.DeserializeObject<Customer>(dataString);
+
+                    return customer;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                    throw e;
+                }
+            }
+        }
+
         public async Task<HttpResponseMessage> UploadImage(byte[] ImageData, string ImageName)
         {
             if (ImageData != null && !string.IsNullOrEmpty(ImageName))
@@ -102,34 +122,118 @@ namespace PhoneStoreApp.Services
             }
         }
 
-        public async Task<string> ConfirmOTPEmail(string fullName, string email)
+        public async Task<int> IsRegisterAlbe(Customer customer)
         {
-            Task<string> task = new Task<string>(new Func<string>(() =>
+            using (HttpClient client = new HttpClient())
             {
                 try
                 {
-                    string OTP = new Random().Next(1000, 10000).ToString();
-                    var body = "";
+                    var convertString = Const.ConverToPathWithParameter(Const.IsRegisterAblePath);
 
-                    body += "<hr/>";
-                    body += "Xin chào <b>" + fullName + "</b>,<br/><br/>";
-                    
-                    body += "Mã xác thực OTP Chotech của bạn là: <b>" + OTP + "</b><br/><br/>";                    
+                    var myContent = JsonConvert.SerializeObject(customer);
+                    var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                    var byteContent = new ByteArrayContent(buffer);
 
-                    Const.SendMail(email, "Confirm Password - Electronic Shop", body);
+                    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    var result = client.PostAsync(convertString, byteContent).Result.Content.ReadAsStringAsync().Result;
+
+                    var resultInt = JsonConvert.DeserializeObject<int>(result);
+
+                    return resultInt;
+                }
+                catch (Exception e)
+                {
+                    return -3;
+                    throw e;
+                }
+            }
+        }
+
+        public async Task<int> Register(Customer customer)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.RegisterPath);
+
+                    var myContent = JsonConvert.SerializeObject(customer);
+                    var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                    var byteContent = new ByteArrayContent(buffer);
+
+                    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    var result = client.PostAsync(convertString, byteContent).Result.Content.ReadAsStringAsync().Result;
+
+                    var resultID = JsonConvert.DeserializeObject<int>(result);
+
+                    return resultID;
+                }
+                catch (Exception e)
+                {
+                    return -1;
+                    throw e;
+                }
+            }
+        }
+
+        public async Task<string> SendOTP(Customer customer)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.SendOTPPath);
+
+                    var myContent = JsonConvert.SerializeObject(customer);
+                    var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                    var byteContent = new ByteArrayContent(buffer);
+
+                    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    var result = client.PostAsync(convertString, byteContent).Result.Content.ReadAsStringAsync().Result;
+
+                    var OTP = JsonConvert.DeserializeObject<string>(result);
+
                     return OTP;
-
                 }
                 catch (Exception e)
                 {
                     return "";
                     throw e;
                 }
-            }));
-
-            task.Start();
-
-            return await task;
+            }
         }
+
+        //public async Task<string> ConfirmOTPEmail(string fullName, string email)
+        //{
+        //    Task<string> task = new Task<string>(new Func<string>(() =>
+        //    {
+        //        try
+        //        {
+        //            string OTP = new Random().Next(1000, 10000).ToString();
+        //            var body = "";
+
+        //            body += "<hr/>";
+        //            body += "Xin chào <b>" + fullName + "</b>,<br/><br/>";
+                    
+        //            body += "Mã xác thực OTP Chotech của bạn là: <b>" + OTP + "</b><br/><br/>";                    
+
+        //            Const.SendMail(email, "Confirm Password - Electronic Shop", body);
+        //            return OTP;
+
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            return "";
+        //            throw e;
+        //        }
+        //    }));
+
+        //    task.Start();
+
+        //    return await task;
+        //}
     }
 }

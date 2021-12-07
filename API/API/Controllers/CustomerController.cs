@@ -105,5 +105,21 @@ namespace API.Controllers
         {
             return Ok(await CustomerDAO.Instance.IsRegisterAble(customerDTO));
         }
+
+        [Route("Api/CustomerController/Register")]
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IHttpActionResult> Register(CustomerDTO customerDTO)
+        {
+            return Ok(await CustomerDAO.Instance.Register(customerDTO));
+        }
+
+        [Route("Api/CustomerController/SendOTP")]
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IHttpActionResult> SendOTP(CustomerDTO customerDTO)
+        {
+            return Ok(await CustomerDAO.Instance.SendOTP(customerDTO));
+        }
     }
 }

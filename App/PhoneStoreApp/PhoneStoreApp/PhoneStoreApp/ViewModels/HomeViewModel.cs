@@ -190,7 +190,8 @@ namespace PhoneStoreApp.ViewModels
 
             //await LoginServices.Instance.UploadImage(ImageData, ImageName);
             var user = await LoginServices.Instance.GetCustomerByID(Const.CurrentCustomerID);
-            var result = await LoginServices.Instance.ConfirmOTPEmail(user.DisplayName, user.Email);
+            var result = await LoginServices.Instance.SendOTP(user);
+
         }
     }
 }

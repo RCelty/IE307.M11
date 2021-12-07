@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +14,14 @@ namespace API.Assets.Contain
     public class Const
     {
         public static readonly string Domain = $"http://10.0.2.2:88/";
-        
-        public static readonly string AdvertisementImagePath = Domain + @"Assets/Images/Advertisement/";       
-        public static readonly string BrandImagePath = Domain + @"Assets/Images/Brand/";       
+
+        public static readonly string AdvertisementImagePath = Domain + @"Assets/Images/Advertisement/";
+        public static readonly string BrandImagePath = Domain + @"Assets/Images/Brand/";
         public static readonly string ProductImagePath = Domain + @"Assets/Images/Product/";
         public static readonly string CustomerImagePath = Domain + @"Assets/Images/Customer/";
+
+        public static readonly string Email = "ndo227587@gmail.com";
+        public static readonly string Password = "766583Ha";
 
         public static string CreateMD5(string input)
         {
@@ -79,6 +84,36 @@ namespace API.Assets.Contain
         public static int GetResponseCode(string ResponseString)
         {
             return int.Parse(ResponseString.Substring(0, 3));
+        }
+
+        public static bool SendMail(string to, string subject, string body)
+        {
+            try
+            {
+                MailMessage message = new MailMessage();
+                SmtpClient smtp = new SmtpClient();
+
+                message.From = new MailAddress(Const.Email);
+                message.To.Add(new MailAddress(to));
+                message.Subject = subject;
+                message.IsBodyHtml = true; //to make message body as html  
+                message.Body = body;
+
+                smtp.Port = 587;
+                smtp.Host = "smtp.gmail.com"; //for gmail host  
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential(Const.Email, Const.Password);
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+
+                smtp.Send(message);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+                throw e;
+            }
         }
     }
 }

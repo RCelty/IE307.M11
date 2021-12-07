@@ -25,7 +25,12 @@ namespace PhoneStoreApp.Assets.Contains
 
         public static readonly string LoginPath = Domain + @"Api/CustomerController/Login";
         public static readonly string GetCustomerByIDPath = Domain + @"Api/CustomerController/GetCustomerByID/{ID}";
+        public static readonly string GetCustomerByUserNamePath = Domain + @"Api/CustomerController/GetCustomerByUserName/{UserName}";
         public static readonly string CustomerUploadImagePath = Domain + @"Api/CustomerController/UploadImage";
+
+        public static readonly string IsRegisterAblePath = Domain + @"Api/CustomerController/IsRegisterAble";
+        public static readonly string RegisterPath = Domain + @"Api/CustomerController/Register";
+        public static readonly string SendOTPPath = Domain + @"Api/CustomerController/SendOTP";
 
         public static readonly string GetFavoriteProductByCustomerIDPath = Domain + @"Api/CustomerController/GetFavoriteProductByCustomerID/{ID}";
         public static readonly string AddFavoriteProductPath = Domain + @"Api/CustomerController/AddFavoriteProduct";
@@ -87,34 +92,34 @@ namespace PhoneStoreApp.Assets.Contains
             }
         }
 
-        public static bool SendMail(string to, string subject, string body)
-        {
-            try
-            {
-                MailMessage message = new MailMessage();
-                SmtpClient smtp = new SmtpClient();
+        //public static bool SendMail(string to, string subject, string body)
+        //{
+        //    try
+        //    {
+        //        MailMessage message = new MailMessage();
+        //        SmtpClient smtp = new SmtpClient();
 
-                message.From = new MailAddress(Const.Email);
-                message.To.Add(new MailAddress(to));
-                message.Subject = subject;
-                message.IsBodyHtml = true; //to make message body as html  
-                message.Body = body;
+        //        message.From = new MailAddress(Const.Email);
+        //        message.To.Add(new MailAddress(to));
+        //        message.Subject = subject;
+        //        message.IsBodyHtml = true; //to make message body as html  
+        //        message.Body = body;
 
-                smtp.Port = 587;
-                smtp.Host = "smtp.gmail.com"; //for gmail host  
-                smtp.EnableSsl = true;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential(Const.Email, Const.Password);
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+        //        smtp.Port = 587;
+        //        smtp.Host = "smtp.gmail.com"; //for gmail host  
+        //        smtp.EnableSsl = true;
+        //        smtp.UseDefaultCredentials = false;
+        //        smtp.Credentials = new NetworkCredential(Const.Email, Const.Password);
+        //        smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                
-                smtp.Send(message);                
-                return true;
-            }
-            catch (Exception e)
-            {
-                return false;
-                throw e;
-            }
-        }        
+        //        smtp.Send(message);                
+        //        return true;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return false;
+        //        throw e;
+        //    }
+        //}        
     }
 }

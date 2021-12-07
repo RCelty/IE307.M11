@@ -138,5 +138,45 @@ namespace API.Models.DAO
                 throw e;
             }
         }
+
+        public async Task<string> SendOTP(CustomerDTO customerDTO)
+        {
+            Task<string> task = new Task<string>(new Func<string>(() =>
+            {
+                try
+                {
+                    string OTP = new Random().Next(1000, 10000).ToString();
+                    var body = "";
+
+                    body += "<hr/>";
+                    body += "Xin chào <b>" + customerDTO.DisplayName + "</b>,<br/><br/>";
+
+                    body += "Mã xác thực OTP Chotech của bạn là: <b>" + OTP + "</b><br/><br/>";
+                    body += "Vui lòng không cung cấp mã OTP cho bất kì ai khác.<br/><br/>";
+                    body += "Cảm ơn đã đăng ký,<br/><br/>";
+                    body += "-----------------------------<br/>";
+                    body += "<b>D.A Nguyen - Leader</b><br/>";
+                    body += "<b>Phone:</b> (84) 00 7143 619<br/>";
+                    body += "<b>Facebook: </b><a href=" + "https://www.facebook.com/duyanh.nguyenngoc.14/" + ">https://www.facebook.com/duyanh.nguyenngoc.14/<a/>";
+                    body += "<hr/>";
+
+                    var result = Const.SendMail(customerDTO.Email, "Xác thực Email - ChoTech", body);
+                    if (result)
+                        return OTP;
+                    else
+                        return "";
+
+                }
+                catch (Exception e)
+                {
+                    return "";
+                    throw e;
+                }
+            }));
+
+            task.Start();
+
+            return await task;
+        }
     }
 }
