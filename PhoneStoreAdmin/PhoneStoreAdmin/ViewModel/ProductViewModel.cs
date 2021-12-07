@@ -27,6 +27,7 @@ namespace PhoneStoreAdmin.ViewModel
 
         public ICommand OpenEditCommand { get; set; }
         public ICommand OpenAddProductWindowCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
 
         public ProductViewModel()
         {
@@ -34,6 +35,7 @@ namespace PhoneStoreAdmin.ViewModel
 
             OpenEditCommand = new RelayCommand<Product>((p) => { return true; }, (p) => { OpenEditCommandExecute(p); });
             OpenAddProductWindowCommand = new RelayCommand<object>((p) => { return true; }, (p) => { OpenAddProductWindowCommandExecute(); });
+            DeleteCommand = new RelayCommand<Product>((p) => { return true; }, (p) => { DeleteCommandExecute(p); });
         }
 
         public async void LoadData()
@@ -63,6 +65,15 @@ namespace PhoneStoreAdmin.ViewModel
             AddProductWindow addProductWindow = new AddProductWindow(product);
             addProductWindow.ShowDialog();
             LoadData();
+        }
+
+        public async void DeleteCommandExecute(Product product)
+        {
+            var result = await ProductService.Instance.DeleteProduct((int)product.ID);
+            if (result)
+            {
+                Products.Remove(product);
+            }
         }
     }
 }

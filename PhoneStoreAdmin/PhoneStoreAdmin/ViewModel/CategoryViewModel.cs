@@ -61,8 +61,11 @@ namespace PhoneStoreAdmin.ViewModel
         
         async void DeleteCategoryCommandExecute(Category category)
         {
-            await CategoryService.Instance.DeleteCategory((int)category.ID);
-            LoadData();
+            var result = await CategoryService.Instance.DeleteCategory((int)category.ID);
+            if (result)
+            {
+                Categories.Remove(category);
+            }
         }
     }
 }
