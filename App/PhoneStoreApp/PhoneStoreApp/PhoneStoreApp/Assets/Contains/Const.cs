@@ -43,8 +43,8 @@ namespace PhoneStoreApp.Assets.Contains
         public static readonly string AddBillDetailPath = Domain + @"Api/BillController/AddBillDetail";
         public static readonly string DeleteBillDetailByIDPath = Domain + @"Api/BillController/DeleteBillDetailByID/{ID}";
 
-        public static readonly string Email = "duyanh2000pro@gmail.com";
-        public static readonly string Password = "duyanh123";
+        public static readonly string Email = "ndo227587@gmail.com";
+        public static readonly string Password = "766583Ha";
 
 
         public static string ConverToPathWithParameter(string path, object[] param = null)
