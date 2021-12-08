@@ -37,6 +37,8 @@ namespace PhoneStoreAdmin.Assets.Contain
         public static readonly string GetAllCommentPath = Domain + @"Api/CommentController/GetAllComment";
         public static readonly string DeleteCommentPath = Domain + @"Api/CommentController/DeleteComment/{ID}";
 
+        public static readonly string LoginPath = Domain + @"Api/CustomerController/Login";
+
         public static string ConverToPathWithParameter(string path, object[] param = null)
         {
             if (param == null)
