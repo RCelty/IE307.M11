@@ -14,6 +14,8 @@ namespace PhoneStoreApp.Models
 
         public int? CustomerID { get; set; }
 
+        public string CustomerName { get; set; }
+
         public bool? IsDelete { get; set; }
 
         public List<BillDetail> BillDetails { get; set; }
