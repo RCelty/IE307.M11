@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PhoneStoreApp.Views.SignUpPage"
+             BackgroundColor="White">
+    <StackLayout Padding="30,0,30,0" >
+        <!--Color Btn #57acf5-->
+        <Label Text="Đăng ký tài khoản" 
+               FontSize="30" TextColor="Black" FontAttributes="Bold"
+               Margin="0,20,0,20"></Label>
+        <Label Text="Email"   Margin="0,20,0,00"
+               FontSize="15" TextColor="Black"></Label>
+        <Entry Keyboard="Email" MaxLength="80"
+               TextColor="Black" FontSize="18" Placeholder="Email đăng nhập"
+               x:Name="txtLoginUserEmail"></Entry>
+        <Label FontSize="10" TextColor="Red" IsVisible="False"
+               x:Name="lbUserMailError"></Label>
+
+        <Label Text="Tên người dùng" Margin="0,20,0,00"
+               FontSize="15" TextColor="Black"></Label>
+        <Entry Keyboard="Text" MaxLength="80"
+               TextColor="Black" FontSize="18" Placeholder="Tên người dùng"
+               x:Name="txtUserName"></Entry>
+
+        <Label Text="Mật khẩu" Margin="0,20,0,00"
+               FontSize="15" TextColor="Black"></Label>
+        <Entry Keyboard="Text" IsPassword="True" MaxLength="80"
+               TextColor="Black" FontSize="18" Placeholder="Mật khẩu" 
+               x:Name="txtUserPassword"></Entry>
+        <Label FontSize="10" TextColor="Red" IsVisible="False"
+               x:Name="lbUserPasswordError"></Label>
+
+        <Label Text="Nhập lại mật khẩu" Margin="0,20,0,00"
+               FontSize="15" TextColor="Black"></Label>
+        <Entry Keyboard="Text" IsPassword="True" MaxLength="80"
+               TextColor="Black" FontSize="18" Placeholder="Mật khẩu"
+               x:Name="txtUserConfirmPassword"></Entry>
+        <Label FontSize="10" TextColor="Red" IsVisible="False"
+               x:Name="lbConfirmPasswordError"></Label>
+
+        <Button Text="Đăng ký" FontSize="18" TextTransform="None"
+                CornerRadius="10"
+                BackgroundColor="#57acf5" TextColor="White"
+                VerticalOptions="EndAndExpand" Margin="0,0,0,30"
+                x:Name="btnSendFormSignUp" Clicked="btnSendFormSignUp_Clicked"></Button>
+    </StackLayout>
+</ContentPage>
