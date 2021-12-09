@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using PhoneStoreApp.ViewModels;
+using PhoneStoreApp.Models;
 
 namespace PhoneStoreApp.Views
 {
@@ -16,6 +18,12 @@ namespace PhoneStoreApp.Views
         {
             InitializeComponent();
         }
+        public VerifyCodePage(Customer customer)
+        {
+            InitializeComponent();
+            BindingContext = new VerifyCodeViewModel(customer);
+        }
+        /*
         public VerifyCodePage(string email)
         {
             InitializeComponent();
@@ -89,6 +97,6 @@ namespace PhoneStoreApp.Views
             btnResendCode.IsEnabled = false;
             await DisplayAlert("", "Đã gửi lại mã xác thực", "Ok");
             InitCouwndown();
-        }
+        }*/
     }
 }
