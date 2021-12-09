@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:PhoneStoreAdmin"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
         Title="Admin" Height="450" Width="800">
     
     <Grid>

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PhoneStoreAdmin.MyUserControl"
-             mc:Ignorable="d" Height="450" x:Name="MySideMenu">
+             mc:Ignorable="d" Height="auto" x:Name="MySideMenu">
 
     <UserControl.Resources>
         <Style x:Key="tb_style" TargetType="{x:Type ToggleButton}">
@@ -119,6 +119,13 @@
                             <StackPanel Orientation="Horizontal" Width="230">
                                 <Image Source="/Assets/Images/Icons/comment.png" Height="40" Margin="0,0,0,0" Stretch="Uniform" StretchDirection="DownOnly"/>
                                 <TextBlock Text="COMMENTS" Margin="25,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
+                            </StackPanel>
+                        </ListViewItem>
+
+                        <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15">
+                            <StackPanel Orientation="Horizontal" Width="230">
+                                <Image Source="/Assets/Images/Icons/bill.png" Height="40" Margin="0,0,0,0" Stretch="Uniform" StretchDirection="DownOnly"/>
+                                <TextBlock Text="BILLS" Margin="25,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
                             </StackPanel>
                         </ListViewItem>
 
