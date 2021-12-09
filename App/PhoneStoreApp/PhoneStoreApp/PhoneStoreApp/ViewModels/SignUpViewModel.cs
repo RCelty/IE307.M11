@@ -93,23 +93,15 @@ namespace PhoneStoreApp.ViewModels
                 var isRegisterAlbe = await Services.LoginServices.Instance.IsRegisterAlbe(customer);
                 if (isRegisterAlbe == 1)
                 {
-                    var RegisterID = (int)await Services.LoginServices.Instance.Register(customer);
-                    if (RegisterID != -1)
-                    {
-                        App.Current.MainPage.Navigation.PushAsync(new SignUpSuccessPage());
-                    }
-                    else
-                    {
-                        App.Current.MainPage.DisplayAlert("Thông báo", "Đăng ký thông thành công", "Ok");
-                    }
+                    App.Current.MainPage.Navigation.PushAsync(new VerifyCodePage(customer));
                 }
-                else
+                else if (isRegisterAlbe == -1)
                 {
-                    
-                    
-                        App.Current.MainPage.DisplayAlert("Thông báo", "Thông tin nhập chưa đúng", "Ok");
-                    
-
+                        App.Current.MainPage.DisplayAlert("Thông báo", "Tài khoản đã tồn tại", "Ok");
+                }
+                else if (isRegisterAlbe == -2)
+                {
+                    App.Current.MainPage.DisplayAlert("Thông báo", "Email đăng ký chưa đúng", "Ok");
                 }
 
             }

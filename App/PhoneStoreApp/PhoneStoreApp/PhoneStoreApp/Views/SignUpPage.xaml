@@ -2,46 +2,75 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PhoneStoreApp.Views.SignUpPage"
-             BackgroundColor="White">
+             x:Name="MySignUpPage"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
     <StackLayout Padding="30,0,30,0" >
         <!--Color Btn #57acf5-->
-        <Label Text="Đăng ký tài khoản" 
-               FontSize="30" TextColor="Black" FontAttributes="Bold"
-               Margin="0,20,0,20"></Label>
-        <Label Text="Email"   Margin="0,20,0,00"
+        <StackLayout Orientation="Horizontal">
+            <ImageButton Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" Command="{Binding BindingContext.GoBackOnClick, Source={Reference Name=MySignUpPage}}" >
+                <ImageButton.Source>
+                    <FontImageSource
+                                Size="25"
+                                Color="Black"
+                                 FontFamily="faS"
+                                Glyph="&#xf053;"
+                                >
+
+                    </FontImageSource>
+                </ImageButton.Source>
+            </ImageButton>
+            <Label Text="Đăng ký tài khoản" 
+                    FontSize="30" TextColor="Black" FontAttributes="Bold"
+                    Margin="0,20,0,20" 
+                   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Email"   Margin="0,20,0,00"
                FontSize="15" TextColor="Black"></Label>
-        <Entry Keyboard="Email" MaxLength="80"
+                <Entry Keyboard="Email" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Email đăng nhập"
-               x:Name="txtLoginUserEmail"></Entry>
-        <Label FontSize="10" TextColor="Red" IsVisible="False"
-               x:Name="lbUserMailError"></Label>
+                Text="{Binding CustomerEmail}"></Entry>
+                <Label FontSize="10" TextColor="Red" IsVisible="False"
+               ></Label>
 
-        <Label Text="Tên người dùng" Margin="0,20,0,00"
+                <Label Text="Họ và Tên"   Margin="0,20,0,00"
                FontSize="15" TextColor="Black"></Label>
-        <Entry Keyboard="Text" MaxLength="80"
+                <Entry Keyboard="Text" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Tên người dùng"
-               x:Name="txtUserName"></Entry>
+                Text="{Binding CustomerDisplayName}"></Entry>
+                <Label FontSize="10" TextColor="Red" IsVisible="False"
+               ></Label>
 
-        <Label Text="Mật khẩu" Margin="0,20,0,00"
+                <Label Text="Tên đăng nhập" Margin="0,20,0,00"
                FontSize="15" TextColor="Black"></Label>
-        <Entry Keyboard="Text" IsPassword="True" MaxLength="80"
+                <Entry Keyboard="Text" MaxLength="80"
+               TextColor="Black" FontSize="18" Placeholder="Tên đăng nhập"
+                Text="{Binding CustomerName}"></Entry>
+
+                <Label Text="Mật khẩu" Margin="0,20,0,00"
+               FontSize="15" TextColor="Black"></Label>
+                <Entry Keyboard="Text" IsPassword="True" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Mật khẩu" 
-               x:Name="txtUserPassword"></Entry>
-        <Label FontSize="10" TextColor="Red" IsVisible="False"
-               x:Name="lbUserPasswordError"></Label>
+                Text="{Binding CustomerPassword}"></Entry>
+                <Label FontSize="10" TextColor="Red" IsVisible="False"
+               ></Label>
 
-        <Label Text="Nhập lại mật khẩu" Margin="0,20,0,00"
+                <Label Text="Nhập lại mật khẩu" Margin="0,20,0,00"
                FontSize="15" TextColor="Black"></Label>
-        <Entry Keyboard="Text" IsPassword="True" MaxLength="80"
+                <Entry Keyboard="Text" IsPassword="True" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Mật khẩu"
-               x:Name="txtUserConfirmPassword"></Entry>
-        <Label FontSize="10" TextColor="Red" IsVisible="False"
-               x:Name="lbConfirmPasswordError"></Label>
+               Text="{Binding CustomerConfirmPassword}"></Entry>
+                <Label FontSize="10" TextColor="Red" IsVisible="False"
+               ></Label>
+            </StackLayout>
+        </ScrollView>
 
         <Button Text="Đăng ký" FontSize="18" TextTransform="None"
                 CornerRadius="10"
                 BackgroundColor="#57acf5" TextColor="White"
                 VerticalOptions="EndAndExpand" Margin="0,0,0,30"
-                x:Name="btnSendFormSignUp" Clicked="btnSendFormSignUp_Clicked"></Button>
+                x:Name="btnSendFormSignUp" Command="{Binding SendFormSignUpCommand}"></Button>
     </StackLayout>
 </ContentPage>
