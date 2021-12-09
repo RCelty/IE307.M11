@@ -23,27 +23,27 @@
                      Orientation="Vertical" 
                      Padding="30,0,30,50">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <ImageButton Source="facebook.png"  WidthRequest="60"  Margin="20,20,10,20" BackgroundColor="White"
+                <ImageButton Source="facebook.png"  WidthRequest="60"  Margin="20,20,10,20" BackgroundColor="Transparent"
                              BorderWidth="3" CornerRadius="20" BorderColor="black"
-                             x:Name="btnLoginWithFacebook"></ImageButton>
-                <ImageButton Source="google.png"  WidthRequest="60" Margin="10,20,20,20" BackgroundColor="White"
+                             ></ImageButton>
+                <ImageButton Source="google.png"  WidthRequest="60" Margin="10,20,20,20" BackgroundColor="Transparent"
                              BorderWidth="3" CornerRadius="20" BorderColor="black"
-                             x:Name="btnLoginWithGoogle"></ImageButton>
+                             ></ImageButton>
             </StackLayout>
             <Entry Placeholder="Email" Keyboard="Email"
-                   BackgroundColor="#FAFAFA" TextColor="Black" MaxLength="80"
-                   x:Name="txtLoginUserEmail"></Entry>
+                   BackgroundColor="Transparent" TextColor="Black" MaxLength="80"
+                   x:Name="txtLoginUserEmail" Text="{Binding UserName}"></Entry>
             <Label Text="" FontSize="10" TextColor="Red"
                    x:Name="lbUserMailError"></Label>
-            <Entry IsPassword="True" Placeholder="Mật khẩu"
-                   BackgroundColor="#FAFAFA" TextColor="black" MaxLength="80" FontSize="20"
+            <Entry IsPassword="True" Placeholder="Mật khẩu" Text="{Binding UserPassword}"
+                   BackgroundColor="Transparent" TextColor="black" MaxLength="80" FontSize="20"
                     x:Name="txtLoginUserPassword">
             </Entry>
             <Label Text="" FontSize="10" TextColor="Red"
                    x:Name="lbUserPasswordError"></Label>
-            <Button Text="Quên mật khẩu?" BackgroundColor="White" TextTransform="None"
+            <Button Text="Quên mật khẩu?" BackgroundColor="Transparent" TextTransform="None"
                     HorizontalOptions="Center"
-                    x:Name="btnLostPassword" Clicked="btnLostPassword_Clicked"></Button>
+                    x:Name="btnLostPassword" Command="{Binding LostPasswordCommand}"></Button>
         </StackLayout>
         <StackLayout Grid.Row="2" Grid.Column="0"
                      Orientation="Vertical"
@@ -51,12 +51,12 @@
             <Button Text="Đăng nhập" FontSize="25" TextTransform="None"
                     BackgroundColor="#57acf5" TextColor="White"
                     CornerRadius="10"
-                    x:Name="btnLogin" Clicked="btnLogin_Clicked"></Button>
+                    x:Name="btnLogin" Command="{Binding LoginCommand}"></Button>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Label Text="Bạn chưa có tài khoản?" FontSize="15" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                <Button Text="Đăng ký ngay" BackgroundColor="#ffffffff" TextColor="#57acf5"
+                <Button Text="Đăng ký ngay" BackgroundColor="Transparent" TextColor="#57acf5"
                         TextTransform="None" Margin="-6,0,0,0"
-                        x:Name="btnSignUpNewAccount" Clicked="btnSignUpNewAccount_Clicked"></Button>
+                        x:Name="btnSignUpNewAccount" Command="{Binding SignUpCommand}"></Button>
             </StackLayout>
         </StackLayout>
     </Grid>
