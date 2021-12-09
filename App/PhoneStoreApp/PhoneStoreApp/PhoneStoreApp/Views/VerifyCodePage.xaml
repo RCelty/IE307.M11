@@ -24,7 +24,7 @@
             <Button Text="Gửi lại mã" FontSize="18" TextTransform="None" FontAttributes="Bold"
                     BackgroundColor="White" TextColor="#57acf5"
                     HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"
-                    x:Name="btnResendCode" Clicked="btnResenCode_Clicked"></Button>
+                    x:Name="btnResendCode" Clicked="btnResendCode_Clicked"></Button>
         </StackLayout>
         <StackLayout Orientation="Horizontal" 
                      HorizontalOptions="Center">
