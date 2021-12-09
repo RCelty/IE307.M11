@@ -85,14 +85,19 @@
     <Compile Include="CommentPage.xaml.cs">
       <DependentUpon>CommentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\Brand.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Comment.cs" />
+    <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\ProductDetail.cs" />
     <Compile Include="Service\BrandService.cs" />
     <Compile Include="Service\CategoryService.cs" />
     <Compile Include="Service\CommentService.cs" />
+    <Compile Include="Service\LoginService.cs" />
     <Compile Include="Service\ProductService.cs" />
     <Compile Include="ViewModel\AddBrandViewModel.cs" />
     <Compile Include="ViewModel\AddCategoryViewModel.cs" />
@@ -102,6 +107,7 @@
     <Compile Include="ViewModel\CategoryViewModel.cs" />
     <Compile Include="ViewModel\CommentDetailViewModel.cs" />
     <Compile Include="ViewModel\CommentViewModel.cs" />
+    <Compile Include="ViewModel\LoginWindowViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
     <Page Include="AddBrandWindow.xaml">
       <SubType>Designer</SubType>
@@ -128,6 +134,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CommentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -16,6 +16,8 @@ namespace API.Models.DTO
 
         public int? CustomerID { get; set; }
 
+        public string CustomerName { get; set; }
+
         public bool? IsDelete { get; set; }
 
         public bool? IsCheckOut { get; set; }
@@ -33,6 +35,7 @@ namespace API.Models.DTO
             TotalPrice = bill.TotalPrice;
             CreationDate = bill.CreationDate;
             CustomerID = bill.CustomerID;
+            CustomerName = bill.Customer.DisplayName;
             IsDelete = bill.IsDelete;
             IsCheckOut = bill.IsCheckOut;
             BillDetailDTOs = bill.BillDetails.Select(b => new BillDetailDTO(b)).ToList();
