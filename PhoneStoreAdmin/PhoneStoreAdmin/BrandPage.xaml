@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       x:Name="MyBrandPage"
-      Title="BrandPage">
+      Title="Brand Page">
 
     <StackPanel>
         <TextBlock Text="Brand" HorizontalAlignment="Center" FontSize="40"/>

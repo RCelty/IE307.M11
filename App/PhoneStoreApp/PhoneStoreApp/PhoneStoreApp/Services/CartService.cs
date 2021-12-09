@@ -177,5 +177,27 @@ namespace PhoneStoreApp.Services
                 }
             }
         }
+
+        public async Task<bool> ChangeBillStatus(int ID)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.ChangeBillStatusPath, new object[] { ID });
+
+                    var dataString = await client.GetStringAsync(convertString);
+
+                    var result = JsonConvert.DeserializeObject<bool>(dataString);
+
+                    return result;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                    throw e;
+                }
+            }
+        }
     }
 }

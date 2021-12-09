@@ -83,5 +83,13 @@ namespace API.Controllers
         {
             return Ok(await BillDetailDAO.Instance.DeleteBillDetailByID(ID));
         }
+
+        [Route("Api/BillController/ChangeBillStatus/{ID}")]
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IHttpActionResult> ChangeBillStatus(int ID)
+        {
+            return Ok(await BillDAO.Instance.ChangeBillStatus(ID));
+        }
     }
 }

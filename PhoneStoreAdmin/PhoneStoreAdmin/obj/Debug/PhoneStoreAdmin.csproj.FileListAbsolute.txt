@@ -43,3 +43,7 @@ D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\CommentDetailWindow.g
 D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\CommentDetailWindow.baml
 D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\LoginWindow.g.cs
 D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\LoginWindow.baml
+D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\BillPage.g.cs
+D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\BillPage.baml
+D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\BillDetailWindow.g.cs
+D:\Git\IE307.M11\PhoneStoreAdmin\PhoneStoreAdmin\obj\Debug\BillDetailWindow.baml

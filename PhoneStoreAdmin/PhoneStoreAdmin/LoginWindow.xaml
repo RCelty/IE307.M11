@@ -23,7 +23,7 @@
                 </Grid.RowDefinitions>
 
                 <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="10"
-  materialDesign:HintAssist.Hint="Tên đăng nhập" Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}"
+  materialDesign:HintAssist.Hint="Tên đăng nhập" Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                 <PasswordBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
   x:Name="FloatingPasswordBox"

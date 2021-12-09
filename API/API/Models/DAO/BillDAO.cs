@@ -70,5 +70,21 @@ namespace API.Models.DAO
             resultList = resultList.FindAll(b => b.CustomerID == ID);
             return resultList;
         }
+
+        public async Task<bool> ChangeBillStatus(int ID)
+        {
+            var result = db.Bills.SingleOrDefault(b => b.ID == ID);
+            try
+            {
+                result.IsCheckOut = !result.IsCheckOut;
+                await db.SaveChangesAsync();
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+                throw e;
+            }
+        }
     }
 }
