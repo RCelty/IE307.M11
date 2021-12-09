@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PhoneStoreApp.Views.VerifyCodePage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+    <StackLayout Padding="30,0,30,0" >
+        <!--Color Btn #57acf5-->
+        <Label Text="Xác thực" 
+               FontSize="30" TextColor="Black" FontAttributes="Bold"
+               Margin="0,50,0,20"></Label>
+        <Label Text="" 
+               FontSize="15" TextColor="#838589"
+               x:Name="lbEmailVerify"></Label>
+        <Button Text="Không phải mail này?" FontSize="15" TextTransform="None" FontAttributes="Bold"
+                    BackgroundColor="White" TextColor="#57acf5"
+                    HorizontalOptions="Start" VerticalOptions="Start" 
+                    Margin="-10,0,0,60"
+                x:Name="btnBack" Clicked="btnBack_Clicked"></Button>
+        <StackLayout Orientation="Horizontal" Margin="0,0,0,20">
+            <Label Text="Mã xác thực" 
+               FontSize="15" TextColor="Black"
+               Margin="0,0,0,10" VerticalTextAlignment="Center"></Label>
+            <Button Text="Gửi lại mã" FontSize="18" TextTransform="None" FontAttributes="Bold"
+                    BackgroundColor="White" TextColor="#57acf5"
+                    HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"
+                    x:Name="btnResendCode" Clicked="btnResenCode_Clicked"></Button>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" 
+                     HorizontalOptions="Center">
+            <Entry Keyboard="Numeric" MaxLength="1"
+               TextColor="Black" FontSize="18"
+               WidthRequest="50" HorizontalTextAlignment="Center"></Entry>
+            <Entry Keyboard="Numeric" MaxLength="1"
+               TextColor="Black" FontSize="18"
+               WidthRequest="50" HorizontalTextAlignment="Center"></Entry>
+            <Entry Keyboard="Numeric" MaxLength="1"
+               TextColor="Black" FontSize="18"
+               WidthRequest="50" HorizontalTextAlignment="Center"></Entry>
+            <Entry Keyboard="Numeric" MaxLength="1"
+               TextColor="Black" FontSize="18"
+               WidthRequest="50" HorizontalTextAlignment="Center"></Entry>
+        </StackLayout>
+
+        <CollectionView x:Name="CouwndownVerifyCode" ItemsSource="{Binding}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <ContentView>
+                        <StackLayout Orientation="Horizontal" Margin="0,20,0,50" HorizontalOptions="End">
+                            <Label Text="{Binding Minutes}"  TextColor="#838589"></Label>
+                            <Label Text=":"  TextColor="#838589"></Label>
+                            <Label Text="{Binding Seconds}"  TextColor="#838589"></Label>
+                        </StackLayout>
+                    </ContentView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Tiếp tục" FontSize="18" TextTransform="None"
+                CornerRadius="10"
+                BackgroundColor="#57acf5" TextColor="White"
+                x:Name="btnToResetPassword" Clicked="btnToResetPassword_Clicked"
+                Margin="0,0,0,30"></Button>
+    </StackLayout>
+</ContentPage>
