@@ -206,6 +206,34 @@ namespace PhoneStoreApp.Services
             }
         }
 
+        public async Task<bool> UpdateCustomer(Customer customer)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.UpdateCustomerPath);
+
+                    var myContent = JsonConvert.SerializeObject(customer);
+                    var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                    var byteContent = new ByteArrayContent(buffer);
+
+                    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    var result = client.PostAsync(convertString, byteContent).Result.Content.ReadAsStringAsync().Result;
+
+                    var resultBool = JsonConvert.DeserializeObject<bool>(result);
+
+                    return resultBool;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                    throw e;
+                }
+            }
+        }
+
         //public async Task<string> ConfirmOTPEmail(string fullName, string email)
         //{
         //    Task<string> task = new Task<string>(new Func<string>(() =>
@@ -217,7 +245,7 @@ namespace PhoneStoreApp.Services
 
         //            body += "<hr/>";
         //            body += "Xin chào <b>" + fullName + "</b>,<br/><br/>";
-                    
+
         //            body += "Mã xác thực OTP Chotech của bạn là: <b>" + OTP + "</b><br/><br/>";                    
 
         //            Const.SendMail(email, "Confirm Password - Electronic Shop", body);

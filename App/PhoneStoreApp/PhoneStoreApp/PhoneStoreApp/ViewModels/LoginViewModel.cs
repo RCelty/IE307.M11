@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using PhoneStoreApp.Assets.Contains;
 using PhoneStoreApp.Models;
 using PhoneStoreApp.Services;
 using PhoneStoreApp.Views;
@@ -58,6 +59,7 @@ namespace PhoneStoreApp.ViewModels
             if (customer != null)
             {
                 await App.Current.MainPage.Navigation.PushAsync(new MainViewPage());
+                Const.CurrentCustomerID = (int)customer.ID;
             }
             else
             {

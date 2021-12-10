@@ -115,7 +115,7 @@ namespace PhoneStoreApp.ViewModels
 
         public void startTimeSpan()
         {
-            Timer timer = new Timer() {Date = new DateTime(DateTime.Now.Ticks + new TimeSpan(0, 0, 1, 30).Ticks) };
+            Timer timer = new Timer() { Date = new DateTime(DateTime.Now.Ticks + new TimeSpan(0, 0, 1, 30).Ticks) };
             Minutes = timer.Minutes;
             Seconds = timer.Seconds;
 
@@ -162,7 +162,6 @@ namespace PhoneStoreApp.ViewModels
 
         public async void ResendCodeCommandExecute()
         {
-
             setOTP(customer);
             startTimeSpan();
         }
@@ -172,20 +171,19 @@ namespace PhoneStoreApp.ViewModels
 
             if (optConfirm == OTP)
             {
-                var RegisterID = (int)await Services.LoginServices.Instance.Register(customer);
+                var RegisterID = await Services.LoginServices.Instance.Register(customer);
                 if (RegisterID != -1)
                 {
-                    App.Current.MainPage.Navigation.PushAsync(new SignUpSuccessPage());
+                    await App.Current.MainPage.Navigation.PushAsync(new SignUpSuccessPage());
                 }
                 else
                 {
-                    App.Current.MainPage.DisplayAlert("Thông báo", "Lỗi đăng ký", "Ok");
+                    await App.Current.MainPage.DisplayAlert("Thông báo", "Lỗi đăng ký", "Ok");
                 }
             }
             else
             {
-                App.Current.MainPage.DisplayAlert("Thông báo", "Mã xác thực không đúng", "Ok");
-
+                await App.Current.MainPage.DisplayAlert("Thông báo", "Mã xác thực không đúng", "Ok");
             }
         }
     }

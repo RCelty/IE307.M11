@@ -121,5 +121,21 @@ namespace API.Controllers
         {
             return Ok(await CustomerDAO.Instance.SendOTP(customerDTO));
         }
+
+        [Route("Api/CustomerController/DeleteCustomer/{ID}")]
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IHttpActionResult> DeleteCustomer(int ID)
+        {
+            return Ok(await CustomerDAO.Instance.DeleteCustomer(ID));
+        }
+
+        [Route("Api/CustomerController/UpdateCustomer")]
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IHttpActionResult> UpdateCustomer(CustomerDTO customerDTO)
+        {
+            return Ok(await CustomerDAO.Instance.UpdateCustomer(customerDTO));
+        }
     }
 }

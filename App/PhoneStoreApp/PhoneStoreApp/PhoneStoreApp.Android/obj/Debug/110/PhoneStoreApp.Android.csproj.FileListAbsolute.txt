@@ -1244,3 +1244,8 @@ C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneS
 D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\res\drawable\curios.png
 C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\res\drawable\curios.png
 C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\PhoneStoreApp.Android.csproj.CopyComplete
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\res\drawable\success.png
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\res\drawable\eye.png
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\res\drawable\google.png
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\res\drawable\facebook.png
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\res\drawable\closeeye.png

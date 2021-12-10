@@ -20,6 +20,8 @@ namespace PhoneStoreAdmin.Model
 
         public string CustomerName { get; set; }
 
+        public string CustomerAddress { get; set; }
+
         public bool? IsDelete { get; set; }
 
         private bool isCheckOut;

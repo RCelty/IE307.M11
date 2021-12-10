@@ -253,6 +253,7 @@
     <Content Include="Assets\Images\Brand\samsung.jpg" />
     <Content Include="Assets\Images\Brand\vivo.jpg" />
     <Content Include="Assets\Images\Customer\admin.jpg" />
+    <Content Include="Assets\Images\Customer\default.jpg" />
     <Content Include="Assets\Images\Product\acer1_1.jpg" />
     <Content Include="Assets\Images\Product\acer1_2.jpg" />
     <Content Include="Assets\Images\Product\acer1_3.jpg" />

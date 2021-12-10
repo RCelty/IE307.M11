@@ -123,9 +123,16 @@ namespace API.Models.DAO
                     PhoneNumber = customerDTO.PhoneNumber,
                     Email = customerDTO.Email,
                     Address = customerDTO.Address,
-                    Avatar = customerDTO.Avatar,
                     IsAdmin = false
                 };
+                if (string.IsNullOrEmpty(customerDTO.Avatar))
+                {
+                    customer.Avatar = "default.jpg";
+                }
+                else
+                {
+                    customer.Avatar = customerDTO.Avatar;
+                }
 
                 db.Customers.Add(customer);
                 await db.SaveChangesAsync();
@@ -177,6 +184,49 @@ namespace API.Models.DAO
             task.Start();
 
             return await task;
+        }
+
+        public async Task<bool> DeleteCustomer(int ID)
+        {
+            var result = db.Customers.SingleOrDefault(b => b.ID == ID);
+
+            try
+            {
+                db.Customers.Remove(result);
+                await db.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+                throw e;
+            }
+        }
+
+        public async Task<bool> UpdateCustomer(CustomerDTO customerDTO)
+        {
+            var result = db.Customers.SingleOrDefault(c => c.ID == customerDTO.ID);
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(customerDTO.DisplayName))
+                    result.DisplayName = customerDTO.DisplayName;
+                if (!string.IsNullOrWhiteSpace(customerDTO.PassWord))
+                    result.PassWord = Const.CreateMD5(customerDTO.PassWord);
+                if (!string.IsNullOrWhiteSpace(customerDTO.Address))
+                    result.Address = customerDTO.Address;
+                if (!string.IsNullOrWhiteSpace(customerDTO.PhoneNumber))
+                    result.PhoneNumber = customerDTO.PhoneNumber;
+                if (!string.IsNullOrWhiteSpace(customerDTO.Avatar))
+                    result.Avatar = customerDTO.Avatar;
+
+                await db.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+                throw e;
+            }
         }
     }
 }

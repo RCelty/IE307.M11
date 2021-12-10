@@ -31,7 +31,7 @@
                FontSize="15" TextColor="Black"></Label>
                 <Entry Keyboard="Email" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Email đăng nhập"
-                Text="{Binding CustomerEmail}"></Entry>
+                Text="{Binding CustomerEmail, Mode=TwoWay}"></Entry>
                 <Label FontSize="10" TextColor="Red" IsVisible="False"
                ></Label>
 
@@ -39,7 +39,7 @@
                FontSize="15" TextColor="Black"></Label>
                 <Entry Keyboard="Text" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Tên người dùng"
-                Text="{Binding CustomerDisplayName}"></Entry>
+                Text="{Binding CustomerDisplayName, Mode=TwoWay}"></Entry>
                 <Label FontSize="10" TextColor="Red" IsVisible="False"
                ></Label>
 
@@ -47,13 +47,13 @@
                FontSize="15" TextColor="Black"></Label>
                 <Entry Keyboard="Text" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Tên đăng nhập"
-                Text="{Binding CustomerName}"></Entry>
+                Text="{Binding CustomerName, Mode=TwoWay}"></Entry>
 
                 <Label Text="Mật khẩu" Margin="0,20,0,00"
                FontSize="15" TextColor="Black"></Label>
                 <Entry Keyboard="Text" IsPassword="True" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Mật khẩu" 
-                Text="{Binding CustomerPassword}"></Entry>
+                Text="{Binding CustomerPassword, Mode=TwoWay}"></Entry>
                 <Label FontSize="10" TextColor="Red" IsVisible="False"
                ></Label>
 
@@ -61,9 +61,21 @@
                FontSize="15" TextColor="Black"></Label>
                 <Entry Keyboard="Text" IsPassword="True" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Mật khẩu"
-               Text="{Binding CustomerConfirmPassword}"></Entry>
+               Text="{Binding CustomerConfirmPassword, Mode=TwoWay}"></Entry>
                 <Label FontSize="10" TextColor="Red" IsVisible="False"
                ></Label>
+
+                <Label Text="Số điện thoại" Margin="0,20,0,00"
+               FontSize="15" TextColor="Black"></Label>
+                <Entry Keyboard="Text" MaxLength="80"
+               TextColor="Black" FontSize="18" Placeholder="Số điện thoại"
+                Text="{Binding CustomerPhone, Mode=TwoWay}"></Entry>
+
+                <Label Text="Địa chỉ" Margin="0,20,0,00"
+               FontSize="15" TextColor="Black"></Label>
+                <Entry Keyboard="Text" MaxLength="80"
+               TextColor="Black" FontSize="18" Placeholder="Địa chỉ"
+                Text="{Binding CustomerAddress, Mode=TwoWay}"></Entry>
             </StackLayout>
         </ScrollView>
 

@@ -12,7 +12,7 @@ namespace PhoneStoreApp.Assets.Contains
 {
     public class Const
     {
-        public static int CurrentCustomerID = 1;
+        public static int CurrentCustomerID = -1;
         public static List<Product> cartProducts = new List<Product>();
 
         public static readonly string SQLiteDBContextPath = "SQLite.db";
@@ -31,6 +31,7 @@ namespace PhoneStoreApp.Assets.Contains
         public static readonly string IsRegisterAblePath = Domain + @"Api/CustomerController/IsRegisterAble";
         public static readonly string RegisterPath = Domain + @"Api/CustomerController/Register";
         public static readonly string SendOTPPath = Domain + @"Api/CustomerController/SendOTP";
+        public static readonly string UpdateCustomerPath = Domain + @"Api/CustomerController/UpdateCustomer";
 
         public static readonly string GetFavoriteProductByCustomerIDPath = Domain + @"Api/CustomerController/GetFavoriteProductByCustomerID/{ID}";
         public static readonly string AddFavoriteProductPath = Domain + @"Api/CustomerController/AddFavoriteProduct";

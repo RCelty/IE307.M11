@@ -22,6 +22,7 @@
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
 
                     <TextBlock Text="Tên khách hàng:" FontSize="20" VerticalAlignment="Center"
@@ -49,6 +50,13 @@
                                FontSize="20" Foreground="Blue"
                                VerticalAlignment="Center" HorizontalAlignment="Right"
                                Grid.Column="1" Grid.Row="3"/>
+
+                    <TextBlock Text="Địa chỉ:" FontSize="20" VerticalAlignment="Center"
+                               Grid.Column="0" Grid.Row="4"/>
+                    <TextBlock Text="{Binding Bill.CustomerAddress}"
+                               FontSize="20" Foreground="Blue"
+                               VerticalAlignment="Center" HorizontalAlignment="Right"
+                               Grid.Column="1" Grid.Row="4"/>
                 </Grid>
             </materialDesign:Card>
             <materialDesign:Card Margin="10">

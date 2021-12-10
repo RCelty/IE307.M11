@@ -19,6 +19,7 @@ namespace PhoneStoreApp.ViewModels
             {
                 customeremail = value;
                 OnPropertyChanged();
+                SendFormSignUpCommand.ChangeCanExecute();
             }
         }
 
@@ -30,6 +31,7 @@ namespace PhoneStoreApp.ViewModels
             {
                 customerdisplayname = value;
                 OnPropertyChanged();
+                SendFormSignUpCommand.ChangeCanExecute();
             }
         }
 
@@ -41,6 +43,7 @@ namespace PhoneStoreApp.ViewModels
             {
                 customername = value;
                 OnPropertyChanged();
+                SendFormSignUpCommand.ChangeCanExecute();
             }
         }
 
@@ -52,6 +55,7 @@ namespace PhoneStoreApp.ViewModels
             {
                 customerpassword = value;
                 OnPropertyChanged();
+                SendFormSignUpCommand.ChangeCanExecute();
             }
         }
 
@@ -63,6 +67,31 @@ namespace PhoneStoreApp.ViewModels
             {
                 customerconfirmpassword = value;
                 OnPropertyChanged();
+                SendFormSignUpCommand.ChangeCanExecute();
+            }
+        }
+
+        private string customerPhone;
+        public string CustomerPhone
+        {
+            get => customerPhone;
+            set
+            {
+                customerPhone = value;
+                OnPropertyChanged();
+                SendFormSignUpCommand.ChangeCanExecute();
+            }
+        }
+
+        private string customerAddress;
+        public string CustomerAddress
+        {
+            get => customerAddress;
+            set
+            {
+                customerAddress = value;
+                OnPropertyChanged();
+                SendFormSignUpCommand.ChangeCanExecute();
             }
         }
 
@@ -73,41 +102,62 @@ namespace PhoneStoreApp.ViewModels
 
         public SignUpViewModel()
         {
-            
-
             GoBackOnClick = new Command(GoBackOnClickExecute, () => true);
-            SendFormSignUpCommand = new Command(SendFormSignUpCommandExecute, () =>  true);
+            SendFormSignUpCommand = new Command(SendFormSignUpCommandExecute, () => SendFormSignUpCommandCanExecute());
         }
 
         private async void GoBackOnClickExecute()
         {
-            App.Current.MainPage.Navigation.PopAsync();
+            await App.Current.MainPage.Navigation.PopAsync();
         }
 
         private async void SendFormSignUpCommandExecute()
         {
-            Customer customer = new Customer() { Email = CustomerEmail, DisplayName = CustomerDisplayName, UserName = CustomerName, PassWord = CustomerPassword };
+            Customer customer = new Customer()
+            {
+                Email = CustomerEmail,
+                DisplayName = CustomerDisplayName,
+                UserName = CustomerName,
+                PassWord = CustomerPassword,
+                Address = CustomerAddress,
+                PhoneNumber = CustomerPhone
+            };
 
             if (customer != null)
             {
                 var isRegisterAlbe = await Services.LoginServices.Instance.IsRegisterAlbe(customer);
                 if (isRegisterAlbe == 1)
                 {
-                    App.Current.MainPage.Navigation.PushAsync(new VerifyCodePage(customer));
+                    await App.Current.MainPage.Navigation.PushAsync(new VerifyCodePage(customer));
                 }
                 else if (isRegisterAlbe == -1)
                 {
-                        App.Current.MainPage.DisplayAlert("Thông báo", "Tài khoản đã tồn tại", "Ok");
+                    await App.Current.MainPage.DisplayAlert("Thông báo", "Tài khoản đã tồn tại", "Ok");
                 }
                 else if (isRegisterAlbe == -2)
                 {
-                    App.Current.MainPage.DisplayAlert("Thông báo", "Email đăng ký chưa đúng", "Ok");
+                    await App.Current.MainPage.DisplayAlert("Thông báo", "Email đăng ký chưa đúng", "Ok");
                 }
 
             }
-            
+
         }
 
-        
+        bool SendFormSignUpCommandCanExecute()
+        {
+            if (string.IsNullOrWhiteSpace(CustomerDisplayName) ||
+                string.IsNullOrWhiteSpace(CustomerEmail) ||
+                string.IsNullOrWhiteSpace(CustomerName) ||
+                string.IsNullOrWhiteSpace(CustomerPassword) ||
+                string.IsNullOrWhiteSpace(CustomerConfirmPassword) ||
+                string.IsNullOrWhiteSpace(CustomerAddress) ||
+                string.IsNullOrWhiteSpace(CustomerPhone))
+            {
+                return false;
+            }
+            return true;
+        }
+
+
     }
 }
