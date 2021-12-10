@@ -228,5 +228,21 @@ namespace API.Models.DAO
                 throw e;
             }
         }
+
+        public async Task<bool> ChangeCustomerRole(int ID)
+        {
+            var result = db.Customers.SingleOrDefault(c => c.ID == ID);
+            try
+            {
+                result.IsAdmin = !result.IsAdmin;
+                await db.SaveChangesAsync();
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+                throw e;
+            }
+        }
     }
 }

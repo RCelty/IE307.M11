@@ -41,6 +41,9 @@ namespace PhoneStoreAdmin.Assets.Contain
         public static readonly string GetBillDetailByBillIDPath = Domain + @"Api/BillController/GetAllBillDetailByBillID/{ID}";
         public static readonly string ChangeBillStatusPath = Domain + @"Api/BillController/ChangeBillStatus/{ID}";
 
+        public static readonly string GetAllCustomerPath = Domain + @"Api/CustomerController/GetAllCustomer";
+        public static readonly string ChangeCustomerRolePath = Domain + @"Api/CustomerController/ChangeCustomerRole/{ID}";
+
         public static readonly string LoginPath = Domain + @"Api/CustomerController/Login";
 
         public static string ConverToPathWithParameter(string path, object[] param = null)

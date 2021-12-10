@@ -38,6 +38,7 @@ namespace PhoneStoreAdmin.ViewModel
         {
             this.window = window;
             LoginCommand = new RelayCommand<object>((p) => { return true; }, (p) => { LoginCommandExecute(p); });
+            ExitCommand = new RelayCommand<object>((p) => { return true; }, (p) => { ExitCommandExecute(); });
         }
 
         public async void LoginCommandExecute(object parameter)
@@ -70,6 +71,11 @@ namespace PhoneStoreAdmin.ViewModel
                     }
                 }
             }           
+        }
+
+        void ExitCommandExecute()
+        {
+            window.Close();
         }
     }
 }

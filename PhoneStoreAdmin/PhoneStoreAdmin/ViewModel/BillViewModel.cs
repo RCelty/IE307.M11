@@ -39,7 +39,8 @@ namespace PhoneStoreAdmin.ViewModel
 
         public async void LoadData()
         {
-            Bills = new ObservableCollection<Bill>(await BillService.Instance.GetAllBillAsync());
+            if (await BillService.Instance.GetAllBillAsync() != null)
+                Bills = new ObservableCollection<Bill>(await BillService.Instance.GetAllBillAsync());
         }
 
         public async void CheckoutCommandExecute(Bill bill)

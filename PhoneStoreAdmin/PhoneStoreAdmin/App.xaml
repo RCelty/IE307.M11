@@ -16,6 +16,8 @@
             <Converter:IsNotCheckoutConverter x:Key="IsNotCheckoutConverter"></Converter:IsNotCheckoutConverter>
             <Converter:PriceToStringConverter x:Key="PriceToStringConverter"></Converter:PriceToStringConverter>
             <Converter:PriceToStringConverter2 x:Key="PriceToStringConverter2"></Converter:PriceToStringConverter2>
+            <Converter:IsAdminConverter x:Key="IsAdminConverter"></Converter:IsAdminConverter>
+            <Converter:ImageSourceConverter x:Key="ImageSourceConverter"></Converter:ImageSourceConverter>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

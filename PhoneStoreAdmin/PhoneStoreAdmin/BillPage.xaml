@@ -12,7 +12,7 @@
     <StackPanel>
         <TextBlock Text="Bill" HorizontalAlignment="Center" FontSize="40"/>
 
-        <ListView ItemsSource="{Binding Bills}">
+        <ListView ItemsSource="{Binding Bills}" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5">

@@ -137,5 +137,13 @@ namespace API.Controllers
         {
             return Ok(await CustomerDAO.Instance.UpdateCustomer(customerDTO));
         }
+
+        [Route("Api/CustomerController/ChangeCustomerRole/{ID}")]
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IHttpActionResult> ChangeCustomerRole(int ID)
+        {
+            return Ok(await CustomerDAO.Instance.ChangeCustomerRole(ID));
+        }
     }
 }

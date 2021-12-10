@@ -20,6 +20,7 @@ namespace PhoneStoreApp.ViewModels
             {
                 username = value;
                 OnPropertyChanged();
+                LoginCommand.ChangeCanExecute();
             }
         }
 
@@ -31,6 +32,7 @@ namespace PhoneStoreApp.ViewModels
             {
                 userpassword = value;
                 OnPropertyChanged();
+                LoginCommand.ChangeCanExecute();
             }
         }
 
@@ -43,7 +45,7 @@ namespace PhoneStoreApp.ViewModels
         public LoginViewModel()
         {
             //LoadData();
-            LoginCommand = new Command(LoginCommandExecute, () => true);
+            LoginCommand = new Command(LoginCommandExecute, () => LoginCommandCanExecute());
             LostPasswordCommand = new Command(LostPasswordCommandExecute, () => true); ;
             SignUpCommand = new Command(SignUpCommandExecute, () => true);
         }
@@ -71,5 +73,11 @@ namespace PhoneStoreApp.ViewModels
             await App.Current.MainPage.Navigation.PushAsync(new SignUpPage());
         }
 
+        bool LoginCommandCanExecute()
+        {
+            if (string.IsNullOrWhiteSpace(UserName) || string.IsNullOrWhiteSpace(UserPassword))
+                return false;
+            return true;
+        }
     }
 }
