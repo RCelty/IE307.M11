@@ -66,7 +66,7 @@ namespace PhoneStoreApp.ViewModels
             {
                 foreach (var c in CartProducts)
                 {
-                    TotalPrice += (int)c.Price * c.Count;
+                    TotalPrice += (int)c.DiscountPrice * c.Count;
                 }
             }
         }
@@ -76,14 +76,14 @@ namespace PhoneStoreApp.ViewModels
             if (cartItem.Count > 1)
             {
                 cartItem.Count--;
-                TotalPrice -= (int)cartItem.Price;
+                TotalPrice -= (int)cartItem.DiscountPrice;
             }
         }
 
         void IncreaseCommandExecute(CartItem cartItem)
         {
             cartItem.Count++;
-            TotalPrice += (int)cartItem.Price;
+            TotalPrice += (int)cartItem.DiscountPrice;
         }
 
         void DeleteCommandExecute(CartItem cartItem)
@@ -91,7 +91,7 @@ namespace PhoneStoreApp.ViewModels
             var delete = Const.cartProducts.FirstOrDefault(p => p.ID == cartItem.ID);
             Const.cartProducts.Remove(delete);
             CartProducts.Remove(cartItem);
-            TotalPrice -= (int)cartItem.Price;
+            TotalPrice -= (int)cartItem.DiscountPrice;
         }
 
         void SelectAllCommandExecute()
@@ -114,7 +114,7 @@ namespace PhoneStoreApp.ViewModels
                     var delete = Const.cartProducts.SingleOrDefault(c => c.ID == s.ID);
                     Const.cartProducts.Remove(delete);
                     CartProducts.Remove(s);
-                    TotalPrice -= (int)s.Price;
+                    TotalPrice -= (int)s.DiscountPrice;
                 }
             }
             else
