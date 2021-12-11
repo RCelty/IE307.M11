@@ -15,6 +15,10 @@
             <Converter:ConvertIsInCartBooleanToColor x:Key="ConvertIsInCartBooleanToColor"></Converter:ConvertIsInCartBooleanToColor>
             <Converter:ConvertCountCommentToBoolean x:Key="ConvertCountCommentToBoolean"></Converter:ConvertCountCommentToBoolean>
             <Converter:ConvertCountCommentToBooleanLabel x:Key="ConvertCountCommentToBooleanLabel"></Converter:ConvertCountCommentToBooleanLabel>
+            <Converter:ConvertBitStarNumberToStarIcon x:Key="ConvertBitStarNumberToStarIcon"></Converter:ConvertBitStarNumberToStarIcon>
+            <Converter:ConvertStarNumberToStarList x:Key="ConvertStarNumberToStarList"></Converter:ConvertStarNumberToStarList>
+            <Converter:ConvertDateTime x:Key="ConvertDateTime"></Converter:ConvertDateTime>
+            <Converter:ConvertIDCommentToIsVisbleButton x:Key="ConvertIDCommentToIsVisbleButton"></Converter:ConvertIDCommentToIsVisbleButton>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "hOO2UvQjh55OYzEwOKAalj3wJPKp1odv6d2qeE6OfNO8OQ5w8qJiQaCLfr2Et0THkXUL8S9XYfTOmb8zrKDZMg==",
+  "dgSpecHash": "/g63s+jrsGC1jHFtVlbTcw7lU03+YNEWv2l8MvdIBN+cOnbCs/lh4ZWLUh9ksnSHAjlL9e+NPhn2z9p4mDrouw==",
   "success": true,
-  "projectFilePath": "D:\\Git\\IE307.M11\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp.Android\\PhoneStoreApp.Android.csproj",
+  "projectFilePath": "C:\\Users\\ngocd\\Desktop\\git\\IE307.M11\\App\\PhoneStoreApp\\PhoneStoreApp\\PhoneStoreApp.Android\\PhoneStoreApp.Android.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\HP\\.nuget\\packages\\com.airbnb.android.lottie\\3.6.1\\com.airbnb.android.lottie.3.6.1.nupkg.sha512",
-    "C:\\Users\\HP\\.nuget\\packages\\com.airbnb.xamarin.forms.lottie\\4.0.9\\com.airbnb.xamarin.forms.lottie.4.0.9.nupkg.sha512",
-    "C:\\Users\\HP\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
-    "C:\\Users\\HP\\.nuget\\packages\\rg.plugins.popup\\2.0.0.11\\rg.plugins.popup.2.0.0.11.nupkg.sha512",
-    "C:\\Users\\HP\\.nuget\\packages\\square.okio\\1.17.4\\square.okio.1.17.4.nupkg.sha512",
-    "C:\\Users\\HP\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\ngocd\\.nuget\\packages\\com.airbnb.android.lottie\\3.6.1\\com.airbnb.android.lottie.3.6.1.nupkg.sha512",
+    "C:\\Users\\ngocd\\.nuget\\packages\\com.airbnb.xamarin.forms.lottie\\4.0.9\\com.airbnb.xamarin.forms.lottie.4.0.9.nupkg.sha512",
+    "C:\\Users\\ngocd\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\ngocd\\.nuget\\packages\\rg.plugins.popup\\2.0.0.11\\rg.plugins.popup.2.0.0.11.nupkg.sha512",
+    "C:\\Users\\ngocd\\.nuget\\packages\\square.okio\\1.17.4\\square.okio.1.17.4.nupkg.sha512",
+    "C:\\Users\\ngocd\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.androidx.activity\\1.1.0.5\\xamarin.androidx.activity.1.1.0.5.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.androidx.annotation\\1.1.0.8\\xamarin.androidx.annotation.1.1.0.8.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.androidx.annotation.experimental\\1.0.0.8\\xamarin.androidx.annotation.experimental.1.0.0.8.nupkg.sha512",
@@ -58,7 +58,7 @@
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.google.android.material\\1.2.1.1\\xamarin.google.android.material.1.2.1.1.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.google.guava.listenablefuture\\1.0.0.2\\xamarin.google.guava.listenablefuture.1.0.0.2.nupkg.sha512",
-    "C:\\Users\\HP\\.nuget\\packages\\xf.material\\1.7.8\\xf.material.1.7.8.nupkg.sha512"
+    "C:\\Users\\ngocd\\.nuget\\packages\\xf.material\\1.7.8\\xf.material.1.7.8.nupkg.sha512"
   ],
   "logs": []
 }

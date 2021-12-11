@@ -1,6 +1,7 @@
 ﻿using PhoneStoreApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Text;
 using Xamarin.Forms;
@@ -11,7 +12,7 @@ namespace PhoneStoreApp.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var list = value as List<Comment>;
+            var list = value as ObservableCollection<Comment>;
 
             if (list == null || list.Count <= 0)
                 return false;

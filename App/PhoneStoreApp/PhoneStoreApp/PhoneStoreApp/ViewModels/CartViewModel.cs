@@ -7,7 +7,11 @@ using PhoneStoreApp.Assets.Contains;
 using PhoneStoreApp.Models.SubModels;
 using PhoneStoreApp.Services;
 using Xamarin.Forms;
-
+using Xamarin.Essentials;
+using PhoneStoreApp.Models;
+using PhoneStoreApp.Views;
+using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
 namespace PhoneStoreApp.ViewModels
 {
     class CartViewModel : BaseViewModel
@@ -43,6 +47,7 @@ namespace PhoneStoreApp.ViewModels
         public Command SelectAllCommand { get; set; }
         public Command DeleteSelectedCommand { get; set; }
         public Command ProductDetailOnClick { get; set; }
+        public Command CartPageOnClick { get; set; }
 
         #endregion
 
@@ -56,6 +61,7 @@ namespace PhoneStoreApp.ViewModels
             SelectAllCommand = new Command(SelectAllCommandExecute, () => true);
             DeleteSelectedCommand = new Command(DeleteSelectedCommandExecute, () => true);
             ProductDetailOnClick = new Command<CartItem>(ProductDetailOnClickExcute, product => product != null);
+            CartPageOnClick = new Command(CartPageOnClickExcute, () => true);
         }
 
         public async void LoadData()
@@ -122,7 +128,83 @@ namespace PhoneStoreApp.ViewModels
                 await App.Current.MainPage.DisplayAlert("Thông báo", "Bạn chưa chọn sản phẩm để xóa", "Ok");
             }
         }
+        async void CartPageOnClickExcute()
+        {
+            string action = await App.Current.MainPage.DisplayActionSheet("Bạn muốn thanh toán bằng?", "Hủy", null, "Momo", "Tiền mặt");
 
+            if (action == "Momo")
+                CartPageOnClickMoMoExcute();
+            if (action == "Tiền mặt")
+            {
+                Bill bill = new Bill() { TotalPrice = TotalPrice, CustomerID = Const.CurrentCustomerID };
+                int ID = await CartService.Instance.CreateBill(bill);
+                if (ID != -1)
+                {
+                    foreach (var c in CartProducts)
+                    {
+                        BillDetail billdetail = new BillDetail() { ProductID = c.ID, TotalCount = c.Count, BillID = ID };
+                        await CartService.Instance.AddBillDetail(billdetail);
+                    }
+                    await App.Current.MainPage.DisplayAlert("Thông báo", "Đặt hàng thành công", "Ok");
+                    await App.Current.MainPage.Navigation.PopAsync();
+                    await App.Current.MainPage.Navigation.PushAsync(new MainViewPage());
+                }
+            }
+        }
+        public async void CartPageOnClickMoMoExcute()
+        {
+            //request params need to request to MoMo system
+            string endpoint = "https://test-payment.momo.vn/gw_payment/transactionProcessor";
+            string partnerCode = "MOMOOJOI20210710";
+            string accessKey = "iPXneGmrJH0G8FOP";
+            string serectkey = "sFcbSGRSJjwGxwhhcEktCHWYUuTuPNDB";
+            string orderInfo = "Thanh toán chợ TECH";
+            string returnUrl = "~";
+            string notifyurl = "http://ba1adf48beba.ngrok.io/Home/SavePayment"; //lưu ý: notifyurl không được sử dụng localhost, có thể sử dụng ngrok để public localhost trong quá trình test
+
+            string amount = totalPrice.ToString();
+            string orderid = DateTime.Now.Ticks.ToString();
+            string requestId = DateTime.Now.Ticks.ToString();
+            string extraData = "";
+            //Before sign HMAC SHA256 signature
+            string rawHash = "partnerCode=" +
+                partnerCode + "&accessKey=" +
+                accessKey + "&requestId=" +
+                requestId + "&amount=" +
+                amount + "&orderId=" +
+                orderid + "&orderInfo=" +
+                orderInfo + "&returnUrl=" +
+                returnUrl + "&notifyUrl=" +
+                notifyurl + "&extraData=" +
+                extraData;
+
+            //sign signature SHA256
+            string signature = MomoSercurity.signSHA256(rawHash, serectkey);
+
+            //build body json request
+            JObject message = new JObject
+            {
+                { "partnerCode", partnerCode },
+                { "accessKey", accessKey },
+                { "requestId", requestId },
+                { "amount", amount },
+                { "orderId", orderid },
+                { "orderInfo", orderInfo },
+                { "returnUrl", returnUrl },
+                { "notifyUrl", notifyurl },
+                { "extraData", extraData },
+                { "requestType", "captureMoMoWallet" },
+                { "signature", signature }
+
+            };
+            string responseMomoModel = await MomoService.Instance.sendPaymentRequest(endpoint, message.ToString());
+
+            string responseFromMomo = responseMomoModel;
+            JObject jmessage = JObject.Parse(responseFromMomo);
+            await Browser.OpenAsync(jmessage.GetValue("payUrl").ToString(), BrowserLaunchMode.SystemPreferred);
+
+
+        }
         public async void ProductDetailOnClickExcute(CartItem product)
         {
             //await App.Current.MainPage.DisplayAlert("t", product.ID.ToString(), "OK");
