@@ -8,7 +8,9 @@
     <StackLayout Padding="30,0,30,0" >
         <!--Color Btn #57acf5-->
         <StackLayout Orientation="Horizontal">
-            <ImageButton BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" Command="{Binding BindingContext.GoBackOnClick, Source={Reference Name=MyVerifyCodePage}}" >
+            <ImageButton BackgroundColor="Transparent" 
+                         VerticalOptions="Center" HorizontalOptions="Start" 
+                         Command="{Binding BindingContext.GoBackOnClick, Source={Reference Name=MyVerifyCodePage}}" >
                 <ImageButton.Source>
                     <FontImageSource
                                 Size="25"
@@ -39,6 +41,8 @@
                     BackgroundColor="Transparent" TextColor="#57acf5"
                     HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"
                     x:Name="btnResendCode" Command="{Binding ResendCodeCommand}"></Button>
+            <Label Text="{Binding Seconds}"  TextColor="Black" 
+                   HorizontalOptions="End" VerticalOptions="Center"></Label>
         </StackLayout>
         <StackLayout Orientation="Horizontal" 
                      HorizontalOptions="Center">
@@ -57,8 +61,6 @@
         </StackLayout>
         <StackLayout Orientation="Horizontal" Margin="0,20,0,50" HorizontalOptions="End">
             <Label Text="{Binding Minutes}"  TextColor="#838589"></Label>
-            <Label Text=":"  TextColor="#838589"></Label>
-            <Label Text="{Binding Seconds}"  TextColor="#838589"></Label>
         </StackLayout>
 
         <Button Text="Xác nhận" FontSize="18" TextTransform="None"

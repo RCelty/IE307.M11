@@ -7,8 +7,8 @@
     <Grid BackgroundColor="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="1.5*"></RowDefinition>
-            <RowDefinition  Height="2*"></RowDefinition>
-            <RowDefinition  Height="2*"></RowDefinition>
+            <RowDefinition  Height="2.5*"></RowDefinition>
+            <RowDefinition  Height="1.5*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -22,7 +22,6 @@
         <StackLayout Grid.Row="1" Grid.Column="0" 
                      Orientation="Vertical" 
                      Padding="30,0,30,50">
-            <!--
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                   <ImageButton Source="facebook.png"  WidthRequest="60"  Margin="20,20,10,20" BackgroundColor="Transparent"
                              BorderWidth="3" CornerRadius="20" BorderColor="black"
@@ -30,7 +29,7 @@
                 <ImageButton Source="google.png"  WidthRequest="60" Margin="10,20,20,20" BackgroundColor="Transparent"
                              BorderWidth="3" CornerRadius="20" BorderColor="black"
                              ></ImageButton> 
-            </StackLayout>-->
+            </StackLayout>
             <Entry Placeholder="Email" Keyboard="Email"
                    BackgroundColor="Transparent" TextColor="Black" MaxLength="80"
                    x:Name="txtLoginUserEmail" Text="{Binding UserName}"></Entry>

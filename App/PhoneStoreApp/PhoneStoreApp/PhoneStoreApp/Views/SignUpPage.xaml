@@ -25,23 +25,19 @@
                     Margin="0,20,0,20" 
                    HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
         </StackLayout>
-        <ScrollView>
+        <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout>
                 <Label Text="Email"   Margin="0,20,0,00"
                FontSize="15" TextColor="Black"></Label>
                 <Entry Keyboard="Email" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Email đăng nhập"
                 Text="{Binding CustomerEmail, Mode=TwoWay}"></Entry>
-                <Label FontSize="10" TextColor="Red" IsVisible="False"
-               ></Label>
 
                 <Label Text="Họ và Tên"   Margin="0,20,0,00"
                FontSize="15" TextColor="Black"></Label>
                 <Entry Keyboard="Text" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Tên người dùng"
                 Text="{Binding CustomerDisplayName, Mode=TwoWay}"></Entry>
-                <Label FontSize="10" TextColor="Red" IsVisible="False"
-               ></Label>
 
                 <Label Text="Tên đăng nhập" Margin="0,20,0,00"
                FontSize="15" TextColor="Black"></Label>
@@ -54,16 +50,12 @@
                 <Entry Keyboard="Text" IsPassword="True" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Mật khẩu" 
                 Text="{Binding CustomerPassword, Mode=TwoWay}"></Entry>
-                <Label FontSize="10" TextColor="Red" IsVisible="False"
-               ></Label>
 
                 <Label Text="Nhập lại mật khẩu" Margin="0,20,0,00"
                FontSize="15" TextColor="Black"></Label>
                 <Entry Keyboard="Text" IsPassword="True" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Mật khẩu"
                Text="{Binding CustomerConfirmPassword, Mode=TwoWay}"></Entry>
-                <Label FontSize="10" TextColor="Red" IsVisible="False"
-               ></Label>
 
                 <Label Text="Số điện thoại" Margin="0,20,0,00"
                FontSize="15" TextColor="Black"></Label>

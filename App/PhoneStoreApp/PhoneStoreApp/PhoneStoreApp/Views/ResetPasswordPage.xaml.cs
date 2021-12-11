@@ -19,17 +19,17 @@ namespace PhoneStoreApp.Views
             InitializeComponent();
         }
 
-        public ResetPasswordPage(Customer customer, bool isLostPassword) // isLostPassword == false "edit password, create new password"
+        public ResetPasswordPage(Customer customer, bool isLostPassword) // isLostPassword == false "change old password"
         {
             InitializeComponent();
             if (isLostPassword)
             {
-                lbOldPassword.IsVisible = true;
-                txtOldPassword.IsVisible = true;
-            }else
-            {
                 lbOldPassword.IsVisible = false;
                 txtOldPassword.IsVisible = false;
+            }else
+            {
+                lbOldPassword.IsVisible = true;
+                txtOldPassword.IsVisible = true;
             }
 
             BindingContext = new ResetPasswordViewModel(customer, isLostPassword);
