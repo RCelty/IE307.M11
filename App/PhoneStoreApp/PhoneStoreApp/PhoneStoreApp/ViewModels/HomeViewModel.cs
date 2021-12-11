@@ -76,6 +76,18 @@ namespace PhoneStoreApp.ViewModels
             }
         }
 
+        private ObservableCollection<Product> topViewProducts;
+
+        public ObservableCollection<Product> TopViewProducts
+        {
+            get => topViewProducts;
+            set
+            {
+                topViewProducts = value;
+                OnPropertyChanged();
+            }
+        }
+
         private ObservableCollection<Product> topRateProducts;
 
         public ObservableCollection<Product> TopRateProducts
@@ -117,8 +129,17 @@ namespace PhoneStoreApp.ViewModels
             if (await HomeService.Instance.GetAllCategoryAsync() != null)
                 Categories = new ObservableCollection<Category>(await HomeService.Instance.GetAllCategoryAsync());
 
-            if (await HomeService.Instance.GetAllProduct() != null)
-                Products = new ObservableCollection<Product>(await HomeService.Instance.GetAllProduct());
+            //if (await HomeService.Instance.GetAllProduct() != null)
+            //    Products = new ObservableCollection<Product>(await HomeService.Instance.GetAllProduct());
+
+            if (await HomeService.Instance.GetTopViewProduct() != null)
+            {
+                TopViewProducts = new ObservableCollection<Product>(await HomeService.Instance.GetTopViewProduct());
+                if (TopViewProducts.Count >= 5)
+                {
+                    TopViewProducts = (ObservableCollection<Product>)TopViewProducts.Take(5);
+                }
+            }
 
             if (await HomeService.Instance.GetTopDiscountProduct() != null)
             {

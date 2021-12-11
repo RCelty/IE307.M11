@@ -18,7 +18,7 @@ namespace PhoneStoreApp.Models
 
         public double Rating { get; set; }
 
-        public int? ViewCount { get; set; }
+        public int ViewCount { get; set; }
 
         public int? CommentCount { get; set; }
 

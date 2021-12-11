@@ -133,5 +133,21 @@ namespace API.Models.DAO
                 throw e;
             }
         }
+
+        public async Task<bool> IncreaseViewCount(int ID)
+        {
+            var result = db.Products.SingleOrDefault(p => p.ID == ID);
+            try
+            {
+                result.ViewCount++;
+                await db.SaveChangesAsync();
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+                throw e;
+            }
+        }
     }
 }

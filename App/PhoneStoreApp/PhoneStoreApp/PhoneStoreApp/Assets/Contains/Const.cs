@@ -22,6 +22,7 @@ namespace PhoneStoreApp.Assets.Contains
         public static readonly string GetAllAdvertisementPath = Domain + @"Api/AdvertisementController/GetAllAdvertisement";
         public static readonly string GetAllBrandPath = Domain + @"Api/BrandController/GetAllBrand";
         public static readonly string GetAllProductPath = Domain + @"Api/ProductController/GetAllProduct";
+        public static readonly string IncreaseViewCountPath = Domain + @"Api/ProductController/IncreaseViewCount/{ID}";
 
         public static readonly string LoginPath = Domain + @"Api/CustomerController/Login";
         public static readonly string GetCustomerByIDPath = Domain + @"Api/CustomerController/GetCustomerByID/{ID}";

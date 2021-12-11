@@ -182,5 +182,28 @@ namespace PhoneStoreApp.Services
                 }
             }
         }
+
+        public async Task<List<Product>> GetTopViewProduct()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.GetAllProductPath);
+                    var dataString = await client.GetStringAsync(convertString);
+
+                    var ProductList = JsonConvert.DeserializeObject<List<Product>>(dataString);
+
+                    ProductList.Sort((p1, p2) => p2.ViewCount.CompareTo((p1.ViewCount)));
+
+                    return ProductList;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                    throw e;
+                }
+            }
+        }
     }
 }

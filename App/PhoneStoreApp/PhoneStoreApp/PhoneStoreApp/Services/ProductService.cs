@@ -153,5 +153,27 @@ namespace PhoneStoreApp.Services
                 }
             }
         }
+
+        public async Task<bool> IncreaseViewCount(int ID)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.IncreaseViewCountPath, new object[] { ID });
+
+                    var dataString = await client.GetStringAsync(convertString);
+
+                    var result = JsonConvert.DeserializeObject<bool>(dataString);
+
+                    return result;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                    throw e;
+                }
+            }
+        }
     }
 }

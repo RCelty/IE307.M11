@@ -88,7 +88,7 @@
                         <StackLayout Orientation="Horizontal">
                             <Label Text="Sản phẩm nổi bật" TextTransform="Uppercase" FontSize="Large" Margin="5"/>
                             <material:MaterialButton BackgroundColor="Transparent"
-                                             Text="Xem tất cả" Command="{Binding SeeAllCommand}" CommandParameter="{Binding Products}"
+                                             Text="Xem tất cả" Command="{Binding SeeAllCommand}" CommandParameter="{Binding TopViewProducts}"
                                              TextColor="Blue"
                                              FontAttributes="None"
                                              TextTransform="None"
@@ -99,7 +99,7 @@
 
                         <ScrollView Orientation="Horizontal"
                                 HorizontalScrollBarVisibility="Never">
-                            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Products}">
+                            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding TopViewProducts}">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <material:MaterialCard WidthRequest="250" Padding="15" HasShadow="True" IsClickable="True" ClickCommand="{Binding BindingContext.ProductDetailOnClick, Source={x:Reference Name=MyHomePage}}" ClickCommandParameter="{Binding .}">
