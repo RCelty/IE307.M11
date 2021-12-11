@@ -28,6 +28,22 @@ namespace API.Controllers
             return Ok(await BillDAO.Instance.CreateBill(billDTO));
         }
 
+        [Route("Api/BillController/DeleteBill/{ID}")]
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IHttpActionResult> DeleteBill(int ID)
+        {
+            return Ok(await BillDAO.Instance.DeleteBill(ID));
+        }
+
+        [Route("Api/BillController/RestoreAllBill")]
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IHttpActionResult> RestoreAllBill()
+        {
+            return Ok(await BillDAO.Instance.RestoreAllBill());
+        }
+
         [Route("Api/BillController/GetAllBillByCustomerID/{ID}")]
         [AllowAnonymous]
         [HttpGet]

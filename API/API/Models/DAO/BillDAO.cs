@@ -61,13 +61,51 @@ namespace API.Models.DAO
             }
         }
 
+        public async Task<bool> DeleteBill(int ID)
+        {
+            var result = db.Bills.SingleOrDefault(b => b.ID == ID);
+            try
+            {
+                result.IsDelete = true;
+                await db.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+                throw e;
+            }
+        }
+
+        public async Task<bool> RestoreAllBill()
+        {
+            var List = (await db.Bills
+                        .ToListAsync())
+                        .Select(b => new BillDTO(b))
+                        .ToList();
+
+            try
+            {
+                var DeletedList = db.Bills.Where(b => b.IsDelete == true).ToList();
+                DeletedList.ForEach(b => b.IsDelete = false);
+                db.SaveChanges();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+                throw e;
+            }
+        }
+
         public async Task<List<BillDTO>> GetAllBillByCustomerID(int ID)
         {
             var resultList = (await db.Bills
                 .ToListAsync())
                 .Select(b => new BillDTO(b))
                 .ToList();
-            resultList = resultList.FindAll(b => b.CustomerID == ID);
+            resultList = resultList.FindAll(b => b.CustomerID == ID && b.IsDelete == false);
             return resultList;
         }
 
@@ -80,7 +118,7 @@ namespace API.Models.DAO
                 await db.SaveChangesAsync();
                 return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return false;
                 throw e;

@@ -114,7 +114,7 @@ namespace API.Models.DAO
 
         public async Task<bool> RestoreAllProduct()
         {
-            var BrandList = (await db.Products
+            var List = (await db.Products
                         .ToListAsync())
                         .Select(product => new ProductDTO(product))
                         .ToList();
