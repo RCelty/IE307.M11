@@ -58,6 +58,7 @@ namespace PhoneStoreApp.ViewModels
 
         #region Command
         public Command EditProfileCommand { get; set; }
+        public Command ChangePasswordCommand { get; set; }
         public Command NotificationCommand { get; set; }
         public Command UsagePolicyCommand { get; set; }
         public Command SecretPolicyCommand { get; set; }
@@ -70,6 +71,7 @@ namespace PhoneStoreApp.ViewModels
             LoadData();
 
             EditProfileCommand = new Command(EditProfileCommandExecute, () => true);
+            ChangePasswordCommand = new Command(ChangePasswordCommandExecute, () => true);
             NotificationCommand = new Command(NotificationCommandExecute, () => true);
             UsagePolicyCommand = new Command(UsagePolicyCommandExecute, () => true);
             SecretPolicyCommand = new Command(SecretPolicyCommandExecute, () => true);
@@ -93,9 +95,14 @@ namespace PhoneStoreApp.ViewModels
 
         }
 
-        private void EditProfileCommandExecute()
+        public async void EditProfileCommandExecute()
         {
+            await App.Current.MainPage.Navigation.PushAsync(new EditCustomerProfilePage(CustomerUser));
+        }
 
+        public async void ChangePasswordCommandExecute()
+        {
+            await App.Current.MainPage.Navigation.PushAsync(new ResetPasswordPage(CustomerUser,false));
         }
 
         private void NotificationCommandExecute()
@@ -114,10 +121,14 @@ namespace PhoneStoreApp.ViewModels
         {
 
         }
-        private async void LogoutCommandExecute()
+        public async void LogoutCommandExecute()
         {
-            await App.Current.MainPage.Navigation.PushAsync(new LoginPage());
-            Const.CurrentCustomerID = -1;
+            bool action = await App.Current.MainPage.DisplayAlert("Đăng xuất", "Bạn chắc chắn muốn đăng xuất chứ.", "Yes", "Cancel");
+            if (action)
+            {
+                await App.Current.MainPage.Navigation.PushAsync(new LoginPage());
+                Const.CurrentCustomerID = -1;
+            }
 
         }
 

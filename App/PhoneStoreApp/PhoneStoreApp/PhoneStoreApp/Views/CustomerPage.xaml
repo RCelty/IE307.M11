@@ -39,6 +39,10 @@
                 VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand"
                 Command="{Binding EditProfileCommand}"/>
                 <BoxView HeightRequest="0.1"  BackgroundColor="Black"/>
+                <Button Text="Đổi mật khẩu" FontAttributes="Bold"
+                TextTransform="None" FontSize="15" BackgroundColor="Transparent"  Padding="30,20,30,0"
+                VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand"
+                Command="{Binding ChangePasswordCommand}"/>
                 <Button Text="Thông báo" FontAttributes="Bold"
                 TextTransform="None" FontSize="15" BackgroundColor="Transparent"  Padding="30,20,30,0"
                 VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand"

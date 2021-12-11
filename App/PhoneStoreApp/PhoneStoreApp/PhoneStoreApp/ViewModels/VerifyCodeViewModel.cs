@@ -72,18 +72,6 @@ namespace PhoneStoreApp.ViewModels
             }
         }
 
-        private string minutes;
-        public string Minutes
-        {
-            get => minutes;
-            set
-            {
-                minutes = value;
-                OnPropertyChanged();
-                ResendCodeCommand.ChangeCanExecute();
-            }
-        }
-
         private string seconds;
         public string Seconds
         {
@@ -92,13 +80,22 @@ namespace PhoneStoreApp.ViewModels
             {
                 seconds = value;
                 OnPropertyChanged();
-                ResendCodeCommand.ChangeCanExecute();
             }
         }
 
 
 
-        public int count;
+        private int count;
+        public int CountDown
+        {
+            get => count;
+            set
+            {
+                count = value;
+                OnPropertyChanged();
+                //ResendCodeCommand.ChangeCanExecute();
+            }
+        }
         public string OTP;
         public Customer customer;
         public bool isSingUp;
@@ -131,45 +128,20 @@ namespace PhoneStoreApp.ViewModels
 
         public void startTimeSpan()
         {
-            Timer timer = new Timer() { Date = new DateTime(DateTime.Now.Ticks + new TimeSpan(0, 0, 1, 30).Ticks) };
-            Minutes = timer.Minutes;
-            Seconds = timer.Seconds;
-
-            count = 0;
+            CountDown = 60;
 
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
-                var timespan = timer.Date - DateTime.Now;
-                timer.Timespan = timespan;
-
-                Minutes = null;
-                Seconds = null;
-
-                Minutes = timer.Minutes;
-                Seconds = timer.Seconds;
-
-                if (count == 89)
+                CountDown--;
+                Seconds = "("+ CountDown.ToString()+")";
+                if (CountDown == 0)
                 {
                     return false;
                 }
-                else
-                {
-                    count++;
-                    return true;
-                }
+                return true;
             });
         }
 
-        public class Timer
-        {
-            public DateTime Date { get; set; }
-            public TimeSpan Timespan { get; set; }
-            public string Days => Timespan.Days.ToString("00");
-            public string Hours => Timespan.Hours.ToString("00");
-            public string Minutes => Timespan.Minutes.ToString("00");
-            public string Seconds => Timespan.Seconds.ToString("00");
-
-        }
 
         public async void GoOnBackClickExecute()
         {
@@ -218,7 +190,7 @@ namespace PhoneStoreApp.ViewModels
 
         public bool ResendCodeCommandCanExecute()
         {
-            if (count == 89)
+            if (CountDown == 0)
             {
                 return true;
             }

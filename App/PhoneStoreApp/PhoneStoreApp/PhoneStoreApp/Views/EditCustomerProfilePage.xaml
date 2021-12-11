@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PhoneStoreApp.Views.EditCustomerProfilePage"
+             x:Name="MyEditCustomerProfilePage"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+    <StackLayout Orientation="Vertical" Margin="20,0,20,0">
+        <StackLayout Orientation="Horizontal">
+            <ImageButton BackgroundColor="Transparent" 
+                         VerticalOptions="Center" HorizontalOptions="Start" 
+                         Command="{Binding BindingContext.GoBackOnClick, Source={Reference Name=MyEditCustomerProfilePage}}" >
+                <ImageButton.Source>
+                    <FontImageSource
+                                Size="25"
+                                Color="Black"
+                                 FontFamily="faS"
+                                Glyph="&#xf053;"
+                                >
+                    </FontImageSource>
+                </ImageButton.Source>
+            </ImageButton>
+            <Label Text="Chỉnh sửa hồ sơ" 
+                    FontSize="30" TextColor="Black" FontAttributes="Bold"
+                    Margin="0,20,0,20" TranslationX="-30"
+                   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <ImageButton CornerRadius="100" HeightRequest="150" WidthRequest="150"
+                         BorderWidth="3" BorderColor="Black" BackgroundColor="Black"
+                         HorizontalOptions="End" Aspect="AspectFill" x:Name="TxtCustomerAvatar"
+                         Source="{Binding CustomerAvatar, Converter={x:StaticResource ConvertStringToImage}}"/>
+            <ImageButton CornerRadius="30" HeightRequest="40" WidthRequest="40" 
+                         BackgroundColor="Blue" BorderWidth="1" BorderColor="Black"
+                         HorizontalOptions="Start" VerticalOptions="EndAndExpand" TranslationX="-40"
+                         Source="camera" Command="{Binding UploadAvatarCommand}"/>
+        </StackLayout>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout>
+                <Label Text="Họ và Tên"   Margin="0,20,0,00"
+               FontSize="15" TextColor="Black"></Label>
+                <Entry Keyboard="Text" MaxLength="80"
+               TextColor="Black" FontSize="18" Placeholder="Tên người dùng"
+                Text="{Binding CustomerDisplayName, Mode=TwoWay}"></Entry>
+
+                <Label Text="Số điện thoại" Margin="0,20,0,00"
+               FontSize="15" TextColor="Black"></Label>
+                <Entry Keyboard="Telephone" MaxLength="80"
+               TextColor="Black" FontSize="18" Placeholder="Số điện thoại"
+                Text="{Binding CustomerPhone, Mode=TwoWay}"></Entry>
+
+                <Label Text="Địa chỉ" Margin="0,20,0,00"
+               FontSize="15" TextColor="Black"></Label>
+                <Entry Keyboard="Text" MaxLength="80"
+               TextColor="Black" FontSize="18" Placeholder="Địa chỉ"
+                Text="{Binding CustomerAddress, Mode=TwoWay}"></Entry>
+            </StackLayout>
+        </ScrollView>
+        <Button Text="Lưu Thông tin" FontSize="20" TextTransform="None"
+                BackgroundColor="#57acf5" TextColor="#FFFFFF"
+                VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"
+                Margin="0,0,0,30" CornerRadius="30"
+                Command="{Binding SaveInfoCustomerEdited}"></Button>
+    </StackLayout>
+</ContentPage>
