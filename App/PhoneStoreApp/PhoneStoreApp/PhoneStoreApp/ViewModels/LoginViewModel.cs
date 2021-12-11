@@ -44,11 +44,12 @@ namespace PhoneStoreApp.ViewModels
 
         public LoginViewModel()
         {
-            //LoadData();
+
             LoginCommand = new Command(LoginCommandExecute, () => LoginCommandCanExecute());
             LostPasswordCommand = new Command(LostPasswordCommandExecute, () => true); ;
             SignUpCommand = new Command(SignUpCommandExecute, () => true);
         }
+
 
         public async void LostPasswordCommandExecute()
         {

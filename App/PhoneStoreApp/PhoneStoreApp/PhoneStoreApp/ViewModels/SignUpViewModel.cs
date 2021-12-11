@@ -106,12 +106,12 @@ namespace PhoneStoreApp.ViewModels
             SendFormSignUpCommand = new Command(SendFormSignUpCommandExecute, () => SendFormSignUpCommandCanExecute());
         }
 
-        private async void GoBackOnClickExecute()
+        public async void GoBackOnClickExecute()
         {
             await App.Current.MainPage.Navigation.PopAsync();
         }
 
-        private async void SendFormSignUpCommandExecute()
+        public async void SendFormSignUpCommandExecute()
         {
             Customer customer = new Customer()
             {
@@ -128,7 +128,7 @@ namespace PhoneStoreApp.ViewModels
                 var isRegisterAlbe = await Services.LoginServices.Instance.IsRegisterAlbe(customer);
                 if (isRegisterAlbe == 1)
                 {
-                    await App.Current.MainPage.Navigation.PushAsync(new VerifyCodePage(customer));
+                    await App.Current.MainPage.Navigation.PushAsync(new VerifyCodePage(customer, true));
                 }
                 else if (isRegisterAlbe == -1)
                 {

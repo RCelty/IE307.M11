@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using PhoneStoreApp.ViewModels;
 
 namespace PhoneStoreApp.Views
 {
@@ -16,33 +17,8 @@ namespace PhoneStoreApp.Views
         public LostPasswordPage()
         {
             InitializeComponent();
+            BindingContext = new LostPasswordPageViewMoel();
         }
 
-        private async void btnSendVerifyCode_Clicked(object sender, EventArgs e)
-        {
-            const string emailRegex = @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" + @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$";
-
-            string txtEmail = txtLoginUserEmail.Text;
-
-            if (txtEmail == null)
-            {
-                await DisplayAlert("", "Vui lòng nhập email", "Ok");
-
-            }
-            else
-            {
-                if (!Regex.IsMatch(txtEmail, emailRegex))
-                {
-                    lbUserMailError.Text = "Nhập sai dịnh dạng mail";
-                }
-                else
-                {
-                    //add code - send verify code for user
-
-                    Navigation.PushAsync(new VerifyCodePage());
-                    await DisplayAlert("Thông báo", "Đã gửi mã xác thực qua email", "Ok");
-                }
-            }
-        }
     }
 }

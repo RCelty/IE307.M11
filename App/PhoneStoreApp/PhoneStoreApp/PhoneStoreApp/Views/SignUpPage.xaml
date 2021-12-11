@@ -8,7 +8,7 @@
     <StackLayout Padding="30,0,30,0" >
         <!--Color Btn #57acf5-->
         <StackLayout Orientation="Horizontal">
-            <ImageButton Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" Command="{Binding BindingContext.GoBackOnClick, Source={Reference Name=MySignUpPage}}" >
+            <ImageButton BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" Command="{Binding BindingContext.GoBackOnClick, Source={Reference Name=MySignUpPage}}" >
                 <ImageButton.Source>
                     <FontImageSource
                                 Size="25"

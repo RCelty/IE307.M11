@@ -27,5 +27,10 @@ namespace PhoneStoreApp.Views
         {
             CurrentPage.BindingContext = new CartViewModel();
         }
+
+        private void CustomerPage_Appearing(object sender, EventArgs e)
+        {
+            CurrentPage.BindingContext = new CustomerProfileViewModel();
+        }
     }
 }

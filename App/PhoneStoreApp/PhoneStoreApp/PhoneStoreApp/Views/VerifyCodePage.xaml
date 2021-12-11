@@ -2,13 +2,29 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PhoneStoreApp.Views.VerifyCodePage"
+             x:Name="MyVerifyCodePage"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="White">
     <StackLayout Padding="30,0,30,0" >
         <!--Color Btn #57acf5-->
-        <Label Text="Xác thực" 
+        <StackLayout Orientation="Horizontal">
+            <ImageButton BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" Command="{Binding BindingContext.GoBackOnClick, Source={Reference Name=MyVerifyCodePage}}" >
+                <ImageButton.Source>
+                    <FontImageSource
+                                Size="25"
+                                Color="Black"
+                                 FontFamily="faS"
+                                Glyph="&#xf053;"
+                                >
+                    </FontImageSource>
+                </ImageButton.Source>
+            </ImageButton>
+            <Label Text="Xác thực" 
                FontSize="30" TextColor="Black" FontAttributes="Bold"
-               Margin="0,50,0,20"></Label>
+               Margin="0,50,0,20"
+               HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+        </StackLayout>
+        
         <Label FontSize="15" TextColor="#838589"
                x:Name="lbEmailVerify" Text="{Binding lbEmailVerify}"></Label>
         <Button Text="Không phải mail này?" FontSize="15" TextTransform="None" FontAttributes="Bold"
@@ -39,20 +55,11 @@
                TextColor="Black" FontSize="18"
                WidthRequest="50" HorizontalTextAlignment="Center"></Entry>
         </StackLayout>
-
-        <CollectionView x:Name="CouwndownVerifyCode" ItemsSource="{Binding}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <ContentView>
-                        <StackLayout Orientation="Horizontal" Margin="0,20,0,50" HorizontalOptions="End">
-                            <Label Text="{Binding Minutes}"  TextColor="#838589"></Label>
-                            <Label Text=":"  TextColor="#838589"></Label>
-                            <Label Text="{Binding Seconds}"  TextColor="#838589"></Label>
-                        </StackLayout>
-                    </ContentView>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+        <StackLayout Orientation="Horizontal" Margin="0,20,0,50" HorizontalOptions="End">
+            <Label Text="{Binding Minutes}"  TextColor="#838589"></Label>
+            <Label Text=":"  TextColor="#838589"></Label>
+            <Label Text="{Binding Seconds}"  TextColor="#838589"></Label>
+        </StackLayout>
 
         <Button Text="Xác nhận" FontSize="18" TextTransform="None"
                 CornerRadius="10"

@@ -3,6 +3,10 @@ using PhoneStoreApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+
+using PhoneStoreApp.Models;
+using PhoneStoreApp.Services;
+using PhoneStoreApp.Views;
 using Xamarin.Forms;
 
 namespace PhoneStoreApp.ViewModels
@@ -28,6 +32,7 @@ namespace PhoneStoreApp.ViewModels
             {
                 opt1 = value;
                 OnPropertyChanged();
+                ConfirmOTP.ChangeCanExecute();
             }
         }
 
@@ -39,6 +44,7 @@ namespace PhoneStoreApp.ViewModels
             {
                 opt2 = value;
                 OnPropertyChanged();
+                ConfirmOTP.ChangeCanExecute();
             }
         }
 
@@ -50,6 +56,7 @@ namespace PhoneStoreApp.ViewModels
             {
                 opt3 = value;
                 OnPropertyChanged();
+                ConfirmOTP.ChangeCanExecute();
             }
         }
 
@@ -61,6 +68,7 @@ namespace PhoneStoreApp.ViewModels
             {
                 opt4 = value;
                 OnPropertyChanged();
+                ConfirmOTP.ChangeCanExecute();
             }
         }
 
@@ -72,6 +80,7 @@ namespace PhoneStoreApp.ViewModels
             {
                 minutes = value;
                 OnPropertyChanged();
+                ResendCodeCommand.ChangeCanExecute();
             }
         }
 
@@ -83,30 +92,37 @@ namespace PhoneStoreApp.ViewModels
             {
                 seconds = value;
                 OnPropertyChanged();
+                ResendCodeCommand.ChangeCanExecute();
             }
         }
+
+
+
+        public int count;
+        public string OTP;
+        public Customer customer;
+        public bool isSingUp;
 
         #region Command
         public Command GoOnBackClick { get; set; }
         public Command ResendCodeCommand { get; set; }
         public Command ConfirmOTP { get; set; }
+        public Command GoBackOnClick { get; set; }
         #endregion
 
-        public VerifyCodeViewModel(Customer customerTemp)
+        public VerifyCodeViewModel(Customer customerTemp, bool isSigningUpTemp) // isSigningUpTemp = false -> lost password
         {
             setOTP(customerTemp);
             startTimeSpan();
             customer = customerTemp;
+            isSingUp = isSigningUpTemp;
             lbEmailVerify = "Mã xác thực đã được gửi đến mail " + customer.Email;
 
             GoOnBackClick = new Command(GoOnBackClickExecute, () => true);
-            ResendCodeCommand = new Command(ResendCodeCommandExecute, () => count == 89);
-            ConfirmOTP = new Command(ConfirmOTPExecute, () => true);
+            ResendCodeCommand = new Command(ResendCodeCommandExecute, () => ResendCodeCommandCanExecute());
+            ConfirmOTP = new Command(ConfirmOTPExecute, () => ConfirmOTPCanExecute());
+            GoBackOnClick = new Command(GoBackOnClickExecute, () => true);
         }
-
-        public int count;
-        public string OTP;
-        public Customer customer;
         public async void setOTP(Customer customer)
         {
             var otp = await Services.LoginServices.Instance.SendOTP(customer);
@@ -171,14 +187,21 @@ namespace PhoneStoreApp.ViewModels
 
             if (optConfirm == OTP)
             {
-                var RegisterID = await Services.LoginServices.Instance.Register(customer);
-                if (RegisterID != -1)
+                if (isSingUp == true)
                 {
-                    await App.Current.MainPage.Navigation.PushAsync(new SignUpSuccessPage());
+                    var RegisterID = await Services.LoginServices.Instance.Register(customer);
+                    if (RegisterID != -1)
+                    {
+                        await App.Current.MainPage.Navigation.PushAsync(new SignUpSuccessPage());
+                    }
+                    else
+                    {
+                        await App.Current.MainPage.DisplayAlert("Thông báo", "Lỗi đăng ký", "Ok");
+                    }
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayAlert("Thông báo", "Lỗi đăng ký", "Ok");
+                    await App.Current.MainPage.Navigation.PushAsync(new ResetPasswordPage(customer, true));
                 }
             }
             else
@@ -186,5 +209,34 @@ namespace PhoneStoreApp.ViewModels
                 await App.Current.MainPage.DisplayAlert("Thông báo", "Mã xác thực không đúng", "Ok");
             }
         }
+
+        public async void GoBackOnClickExecute()
+        {
+            await App.Current.MainPage.Navigation.PopAsync();
+
+        }
+
+        public bool ResendCodeCommandCanExecute()
+        {
+            if (count == 89)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool ConfirmOTPCanExecute()
+        {
+            if (string.IsNullOrWhiteSpace(OTP1) ||
+                string.IsNullOrWhiteSpace(OTP2) ||
+                string.IsNullOrWhiteSpace(OTP3) ||
+                string.IsNullOrWhiteSpace(OTP4))
+            {
+                return false;
+            }
+            return true;
+
+        }
+
     }
 }

@@ -15,6 +15,6 @@
 
     <Views:CartPage IconImageSource="bag.png" TranslationY="0" Appearing="CartPage_Appearing"/>
 
-    <Views:CustomerPage IconImageSource="user.png" TranslationY="0"/>
+    <Views:CustomerPage IconImageSource="user.png" TranslationY="0" Appearing="CustomerPage_Appearing"/>
 
 </TabbedPage>

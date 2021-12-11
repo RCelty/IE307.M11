@@ -18,10 +18,10 @@ namespace PhoneStoreApp.Views
         {
             InitializeComponent();
         }
-        public VerifyCodePage(Customer customer)
+        public VerifyCodePage(Customer customer, bool isSignUp)
         {
             InitializeComponent();
-            BindingContext = new VerifyCodeViewModel(customer);
+            BindingContext = new VerifyCodeViewModel(customer, isSignUp);
         }
         /*
         public VerifyCodePage(string email)

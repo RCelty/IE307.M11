@@ -19,6 +19,8 @@ namespace PhoneStoreApp.ViewModels
             {
                 customername = value;
                 OnPropertyChanged();
+                SendOTPCodeCommand.ChangeCanExecute();
+
             }
         }
 
@@ -30,6 +32,7 @@ namespace PhoneStoreApp.ViewModels
             {
                 customeremail = value;
                 OnPropertyChanged();
+                SendOTPCodeCommand.ChangeCanExecute();
             }
         }
 
@@ -40,27 +43,36 @@ namespace PhoneStoreApp.ViewModels
 
         public LostPasswordPageViewMoel()
         {
-            SendOTPCodeCommand = new Command(SendOTPCodeExecute, () => true);
+            SendOTPCodeCommand = new Command(SendOTPCodeExecute, () => SendOTPCodeCanExecute());
             GoBackOnClick = new Command(GoBackOnClickExecute, () => true);
         }
 
-        private async void SendOTPCodeExecute()
+        public async void SendOTPCodeExecute()
         {
             Customer customer = new Customer { UserName = CustomerName, Email = CustomerEmail };
             var isRegisterAble = await Services.LoginServices.Instance.IsRegisterAlbe(customer);
 
             if (isRegisterAble == -1) // check exist account
             {
-                await App.Current.MainPage.Navigation.PushAsync(new VerifyCodePage(customer));
+                await App.Current.MainPage.Navigation.PushAsync(new VerifyCodePage(customer, false));
             }else
             {
                 await App.Current.MainPage.DisplayAlert("Thông báo", "Tài khoảng không tồn tại", "Ok");
             }
         }
 
-        private async void GoBackOnClickExecute()
+        public async void GoBackOnClickExecute()
         {
             await App.Current.MainPage.Navigation.PopAsync();
+        }
+
+        public bool SendOTPCodeCanExecute()
+        {
+            if (string.IsNullOrWhiteSpace(CustomerName) || string.IsNullOrWhiteSpace(CustomerEmail))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

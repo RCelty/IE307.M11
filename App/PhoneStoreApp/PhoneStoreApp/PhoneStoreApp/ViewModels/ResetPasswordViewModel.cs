@@ -19,6 +19,7 @@ namespace PhoneStoreApp.ViewModels
             {
                 customeroldpassword = value;
                 OnPropertyChanged();
+                SaveNewPassword.ChangeCanExecute();
             }
         }
 
@@ -30,6 +31,7 @@ namespace PhoneStoreApp.ViewModels
             {
                 customernewpassword = value;
                 OnPropertyChanged();
+                SaveNewPassword.ChangeCanExecute();
             }
         }
 
@@ -41,6 +43,7 @@ namespace PhoneStoreApp.ViewModels
             {
                 customernewpasswordconfirm = value;
                 OnPropertyChanged();
+                SaveNewPassword.ChangeCanExecute();
             }
         }
 
@@ -57,11 +60,11 @@ namespace PhoneStoreApp.ViewModels
         {
             customerTemp = customer;
             isLostPassword = isLostPw;
-            SaveNewPassword = new Command(SaveNewPasswordExecute, () => true);
+            SaveNewPassword = new Command(SaveNewPasswordExecute, () => SaveNewPasswordCanExecute());
             GoBackOnClick = new Command(GoBackOnClickExecute, () => true);
         }
 
-        private async void SaveNewPasswordExecute()
+        public async void SaveNewPasswordExecute()
         {
             
             Customer customer = await Services.LoginServices.Instance.GetCustomerUserNameID(customerTemp.UserName);
@@ -84,7 +87,7 @@ namespace PhoneStoreApp.ViewModels
             }
         }
 
-        private async void checkNewPassword(Customer customer)
+        public async void checkNewPassword(Customer customer)
         {
             if (CustomerNewPassword.Equals(CustomerNewPasswordConfirm))
             {
@@ -98,10 +101,32 @@ namespace PhoneStoreApp.ViewModels
             }
         }
 
-        private async void GoBackOnClickExecute()
+        public async void GoBackOnClickExecute()
         {
             await App.Current.MainPage.Navigation.PopAsync();
         }
 
+        public bool SaveNewPasswordCanExecute()
+        {
+            if (isLostPassword)
+            {
+                if (string.IsNullOrWhiteSpace(CustomerNewPassword) ||
+                   string.IsNullOrWhiteSpace(CustomerNewPasswordConfirm))
+                {
+                    return false;
+                }
+                return true;
+            } else
+            {
+                if (string.IsNullOrWhiteSpace(CustomerOldPassword) ||
+                string.IsNullOrWhiteSpace(CustomerNewPassword) ||
+                string.IsNullOrWhiteSpace(CustomerNewPasswordConfirm))
+                {
+                    return false;
+                }
+                return true;
+            }
+            
+        }
     }
 }

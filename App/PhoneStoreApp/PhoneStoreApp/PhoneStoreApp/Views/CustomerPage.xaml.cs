@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using PhoneStoreApp.ViewModels;
 
 namespace PhoneStoreApp.Views
 {
@@ -15,6 +16,7 @@ namespace PhoneStoreApp.Views
         public CustomerPage()
         {
             InitializeComponent();
+            BindingContext = new CustomerProfileViewModel();
         }
     }
 }
