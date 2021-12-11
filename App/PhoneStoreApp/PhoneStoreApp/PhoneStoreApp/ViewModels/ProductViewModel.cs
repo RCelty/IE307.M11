@@ -22,11 +22,12 @@ namespace PhoneStoreApp.ViewModels
                 OnPropertyChanged();
             }
         }
-
+       
         #region Command
         public Command ProductDetailOnClick { get; set; }
         public Command SearchCommand { get; set; }
         public Command OpenFilterCommand { get; set; }
+        
         #endregion
 
         public ProductViewModel(ObservableCollection<Product> products)
@@ -37,6 +38,7 @@ namespace PhoneStoreApp.ViewModels
             ProductDetailOnClick = new Command<Product>(ProductDetailOnClickExcute, product => product != null);
             SearchCommand = new Command<string>(SearchCommandExecute, (s) => true);
             OpenFilterCommand = new Command(OpenFilterCommandExecute, () => true);
+           
         }
 
         public async void ProductDetailOnClickExcute(Product product)

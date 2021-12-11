@@ -82,6 +82,7 @@
                                              Grid.Column="1" Grid.Row="0" IsEnabled="{Binding CartProducts.Count, Converter={x:StaticResource ConvertProductCountToIsVisibleBoolean}}"
                                              Command="{Binding DeleteSelectedCommand}"/>
                     <material:MaterialButton Text="Thanh toán" BackgroundColor="#57acf5"  FontSize="12"
+                                              Command="{Binding CartPageOnClick}"
                                              Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
                                              IsEnabled="{Binding CartProducts.Count, Converter={x:StaticResource ConvertProductCountToIsVisibleBoolean}}"/>
                 </Grid>
