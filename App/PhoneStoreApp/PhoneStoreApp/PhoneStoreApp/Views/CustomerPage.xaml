@@ -19,7 +19,7 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Image Source="{Binding CustomerAvatar, Converter={x:StaticResource ConvertStringToImage}}"
+            <Image Source="{Binding CustomerAvatar}"
                    Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
                    VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Image>
             <Label Text="{Binding CustomerName}" FontSize="15" FontAttributes="Bold"

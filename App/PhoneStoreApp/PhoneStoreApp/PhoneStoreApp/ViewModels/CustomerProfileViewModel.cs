@@ -6,6 +6,7 @@ using PhoneStoreApp.Models;
 using PhoneStoreApp.Assets.Contains;
 using PhoneStoreApp.Views;
 using Xamarin.Forms;
+using PhoneStoreApp.Services;
 
 namespace PhoneStoreApp.ViewModels
 {
@@ -79,11 +80,15 @@ namespace PhoneStoreApp.ViewModels
 
         private async void LoadData()
         {
-            CustomerUser = await Services.LoginServices.Instance.GetCustomerByID(Const.CurrentCustomerID);
+            if (await LoginServices.Instance.GetCustomerByID(Const.CurrentCustomerID) != null)
+                CustomerUser = await LoginServices.Instance.GetCustomerByID(Const.CurrentCustomerID);
 
-            CustomerAvatar = CustomerUser.Avatar;
-            CustomerName = CustomerUser.DisplayName;
-            CustomerEmail = CustomerUser.Email;
+            if (CustomerUser != null)
+            {
+                CustomerAvatar = CustomerUser.Avatar;
+                CustomerName = CustomerUser.DisplayName;
+                CustomerEmail = CustomerUser.Email;
+            }
 
 
         }

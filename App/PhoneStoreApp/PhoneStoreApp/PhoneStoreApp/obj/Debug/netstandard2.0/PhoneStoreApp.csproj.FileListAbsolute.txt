@@ -80,3 +80,4 @@ C:\Users\ngocd\Desktop\git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreA
 C:\Users\ngocd\Desktop\git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\bin\Debug\netstandard2.0\ref\PhoneStoreApp.dll
 C:\Users\ngocd\Desktop\git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\bin\Debug\netstandard2.0\PhoneStoreApp.pdb
 C:\Users\ngocd\Desktop\git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\XamlC.stamp
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\AddCommentPage.xaml.g.cs

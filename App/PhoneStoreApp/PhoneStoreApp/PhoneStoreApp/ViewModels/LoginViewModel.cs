@@ -61,8 +61,8 @@ namespace PhoneStoreApp.ViewModels
             var customer = await LoginServices.Instance.LoginAsync(UserName, UserPassword);
             if (customer != null)
             {
-                await App.Current.MainPage.Navigation.PushAsync(new MainViewPage());
                 Const.CurrentCustomerID = (int)customer.ID;
+                await App.Current.MainPage.Navigation.PushAsync(new MainViewPage());                
             }
             else
             {
