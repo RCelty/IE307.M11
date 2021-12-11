@@ -134,7 +134,7 @@ namespace PhoneStoreApp.Services
             {
                 try
                 {
-                    var convertString = Const.ConverToPathWithParameter(Const.CreateBillPath);
+                    var convertString = Const.ConverToPathWithParameter(Const.AddBillDetailPath);
 
                     var myContent = JsonConvert.SerializeObject(billDetail);
                     var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
@@ -185,6 +185,28 @@ namespace PhoneStoreApp.Services
                 try
                 {
                     var convertString = Const.ConverToPathWithParameter(Const.ChangeBillStatusPath, new object[] { ID });
+
+                    var dataString = await client.GetStringAsync(convertString);
+
+                    var result = JsonConvert.DeserializeObject<bool>(dataString);
+
+                    return result;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                    throw e;
+                }
+            }
+        }
+
+        public async Task<bool> SendOrderConfirm(int ID)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var convertString = Const.ConverToPathWithParameter(Const.SendOrderConfirmMailPath, new object[] { ID });
 
                     var dataString = await client.GetStringAsync(convertString);
 

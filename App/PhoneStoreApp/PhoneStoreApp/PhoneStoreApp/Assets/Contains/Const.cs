@@ -18,12 +18,14 @@ namespace PhoneStoreApp.Assets.Contains
         public static readonly string SQLiteDBContextPath = "SQLite.db";
         public static readonly string Domain = $"http://10.0.2.2:88/";
 
+        //General Path
         public static readonly string GetAllCategoryPath = Domain + @"Api/CategoryController/GetAllCategory";
         public static readonly string GetAllAdvertisementPath = Domain + @"Api/AdvertisementController/GetAllAdvertisement";
         public static readonly string GetAllBrandPath = Domain + @"Api/BrandController/GetAllBrand";
         public static readonly string GetAllProductPath = Domain + @"Api/ProductController/GetAllProduct";
         public static readonly string IncreaseViewCountPath = Domain + @"Api/ProductController/IncreaseViewCount/{ID}";
 
+        //Customer Path
         public static readonly string LoginPath = Domain + @"Api/CustomerController/Login";
         public static readonly string GetCustomerByIDPath = Domain + @"Api/CustomerController/GetCustomerByID/{ID}";
         public static readonly string GetCustomerByUserNamePath = Domain + @"Api/CustomerController/GetCustomerByUserName/{UserName}";
@@ -38,11 +40,13 @@ namespace PhoneStoreApp.Assets.Contains
         public static readonly string AddFavoriteProductPath = Domain + @"Api/CustomerController/AddFavoriteProduct";
         public static readonly string DeleteFavoriteProductPath = Domain + @"Api/CustomerController/DeleteFavoriteProduct";
 
+        //Comment Path
         public static readonly string GetCommentByProductIDPath = Domain + @"Api/CommentController/GetCommentByProductID/{ID}";
         public static readonly string AddCommentPath = Domain + @"Api/CommentController/AddComment";
         public static readonly string UpdateCommentPath = Domain + @"Api/CommentController/UpdateComment";
         public static readonly string DeleteCommentPath = Domain + @"Api/CommentController/DeleteComment/{ID}";
 
+        //Bill Path
         public static readonly string CreateBillPath = Domain + @"Api/BillController/CreateBill";
         public static readonly string GetAllBillByCustomerIDPath = Domain + @"Api/BillController/GetAllBillByCustomerID/{ID}";
 
@@ -50,6 +54,7 @@ namespace PhoneStoreApp.Assets.Contains
         public static readonly string AddBillDetailPath = Domain + @"Api/BillController/AddBillDetail";
         public static readonly string DeleteBillDetailByIDPath = Domain + @"Api/BillController/DeleteBillDetailByID/{ID}";
         public static readonly string ChangeBillStatusPath = Domain + @"Api/BillController/ChangeBillStatus/{ID}";
+        public static readonly string SendOrderConfirmMailPath = Domain + @"Api/BillController/SendOrderConfirmMail/{ID}";
 
         public static readonly string Email = "ndo227587@gmail.com";
         public static readonly string Password = "766583Ha";

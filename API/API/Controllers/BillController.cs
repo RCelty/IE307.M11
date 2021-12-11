@@ -107,5 +107,13 @@ namespace API.Controllers
         {
             return Ok(await BillDAO.Instance.ChangeBillStatus(ID));
         }
+
+        [Route("Api/BillController/SendOrderConfirmMail/{ID}")]
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IHttpActionResult> SendOrderConfirmMail(int ID)
+        {
+            return Ok(await BillDAO.Instance.SendOrderConfirmMail(ID));
+        }
     }
 }
