@@ -8,7 +8,7 @@
     <StackLayout Padding="30,0,30,0" >
         <!--Color Btn #57acf5-->
         <StackLayout Orientation="Horizontal">
-            <ImageButton BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" Command="{Binding BindingContext.GoBackOnClick, Source={Reference Name=MyVerifyCodePage}}" >
+            <ImageButton BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" Command="{Binding GoBackOnClick}" >
                 <ImageButton.Source>
                     <FontImageSource
                                 Size="25"

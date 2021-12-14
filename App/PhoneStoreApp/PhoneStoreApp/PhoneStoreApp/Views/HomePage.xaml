@@ -99,7 +99,7 @@
 
                         <ScrollView Orientation="Horizontal"
                                 HorizontalScrollBarVisibility="Never">
-                            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding TopViewProducts}">
+                            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Top5ViewProducts}">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <material:MaterialCard WidthRequest="250" Padding="15" HasShadow="True" IsClickable="True" ClickCommand="{Binding BindingContext.ProductDetailOnClick, Source={x:Reference Name=MyHomePage}}" ClickCommandParameter="{Binding .}">
@@ -140,7 +140,7 @@
 
                         <ScrollView Orientation="Horizontal"
                                 HorizontalScrollBarVisibility="Never">
-                            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding TopDiscountProducts}">
+                            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Top5DiscountProducts}">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <material:MaterialCard WidthRequest="250" Padding="15" HasShadow="True" IsClickable="True" ClickCommand="{Binding BindingContext.ProductDetailOnClick, Source={x:Reference Name=MyHomePage}}" ClickCommandParameter="{Binding .}">
@@ -181,7 +181,7 @@
 
                         <ScrollView Orientation="Horizontal"
                                 HorizontalScrollBarVisibility="Never">
-                            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding TopSellProducts}">
+                            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Top5SellProducts}">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <material:MaterialCard WidthRequest="250" Padding="15" HasShadow="True" IsClickable="True" ClickCommand="{Binding BindingContext.ProductDetailOnClick, Source={x:Reference Name=MyHomePage}}" ClickCommandParameter="{Binding .}">
@@ -222,7 +222,7 @@
 
                         <ScrollView Orientation="Horizontal"
                                 HorizontalScrollBarVisibility="Never">
-                            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding TopRateProducts}">
+                            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Top5RateProducts}">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <material:MaterialCard WidthRequest="250" Padding="15" HasShadow="True" IsClickable="True" ClickCommand="{Binding BindingContext.ProductDetailOnClick, Source={x:Reference Name=MyHomePage}}" ClickCommandParameter="{Binding .}">

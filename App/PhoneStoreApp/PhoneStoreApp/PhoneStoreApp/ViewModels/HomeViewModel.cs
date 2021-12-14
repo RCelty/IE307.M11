@@ -64,6 +64,18 @@ namespace PhoneStoreApp.ViewModels
             }
         }
 
+        private ObservableCollection<Product> top5DiscountProducts;
+
+        public ObservableCollection<Product> Top5DiscountProducts
+        {
+            get => top5DiscountProducts;
+            set
+            {
+                top5DiscountProducts = value;
+                OnPropertyChanged();
+            }
+        }
+
         private ObservableCollection<Product> topSellProducts;
 
         public ObservableCollection<Product> TopSellProducts
@@ -72,6 +84,18 @@ namespace PhoneStoreApp.ViewModels
             set
             {
                 topSellProducts = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<Product> top5SellProducts;
+
+        public ObservableCollection<Product> Top5SellProducts
+        {
+            get => top5SellProducts;
+            set
+            {
+                top5SellProducts = value;
                 OnPropertyChanged();
             }
         }
@@ -88,6 +112,18 @@ namespace PhoneStoreApp.ViewModels
             }
         }
 
+        private ObservableCollection<Product> top5ViewProducts;
+
+        public ObservableCollection<Product> Top5ViewProducts
+        {
+            get => top5ViewProducts;
+            set
+            {
+                top5ViewProducts = value;
+                OnPropertyChanged();
+            }
+        }
+
         private ObservableCollection<Product> topRateProducts;
 
         public ObservableCollection<Product> TopRateProducts
@@ -96,6 +132,18 @@ namespace PhoneStoreApp.ViewModels
             set
             {
                 topRateProducts = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<Product> top5RateProducts;
+
+        public ObservableCollection<Product> Top5RateProducts
+        {
+            get => top5RateProducts;
+            set
+            {
+                top5RateProducts = value;
                 OnPropertyChanged();
             }
         }
@@ -135,36 +183,40 @@ namespace PhoneStoreApp.ViewModels
             if (await HomeService.Instance.GetTopViewProduct() != null)
             {
                 TopViewProducts = new ObservableCollection<Product>(await HomeService.Instance.GetTopViewProduct());
+                Top5ViewProducts = TopViewProducts;
                 if (TopViewProducts.Count >= 5)
                 {
-                    TopViewProducts = (ObservableCollection<Product>)TopViewProducts.Take(5);
+                    Top5ViewProducts = new ObservableCollection<Product>(Top5ViewProducts.Take(5).ToList());
                 }
             }
 
             if (await HomeService.Instance.GetTopDiscountProduct() != null)
             {
                 TopDiscountProducts = new ObservableCollection<Product>(await HomeService.Instance.GetTopDiscountProduct());
+                Top5DiscountProducts = TopDiscountProducts;
                 if (TopDiscountProducts.Count >= 5)
                 {
-                    TopDiscountProducts = (ObservableCollection<Product>)TopDiscountProducts.Take(5);
+                    Top5DiscountProducts = new ObservableCollection<Product>(TopDiscountProducts.Take(5).ToList());
                 }
             }
 
             if (await HomeService.Instance.GetTopSellProduct() != null)
             {
                 TopSellProducts = new ObservableCollection<Product>(await HomeService.Instance.GetTopSellProduct());
+                Top5SellProducts = TopSellProducts;
                 if (TopSellProducts.Count >= 5)
                 {
-                    TopSellProducts = (ObservableCollection<Product>)TopSellProducts.Take(5);
+                    Top5SellProducts = new ObservableCollection<Product>(TopSellProducts.Take(5).ToList());
                 }
             }
 
             if (await HomeService.Instance.GetTopRateProduct() != null)
             {
                 TopRateProducts = new ObservableCollection<Product>(await HomeService.Instance.GetTopRateProduct());
+                Top5RateProducts = TopRateProducts;
                 if (TopRateProducts.Count >= 5)
                 {
-                    TopRateProducts = (ObservableCollection<Product>)TopRateProducts.Take(5);
+                    Top5RateProducts = new ObservableCollection<Product>(TopRateProducts.Take(5).ToList());
                 }
             }
         }

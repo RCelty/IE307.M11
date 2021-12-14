@@ -58,14 +58,17 @@ namespace PhoneStoreApp.ViewModels
 
         public async void LoginCommandExecute()
         {
+            IsBusy = true;
             var customer = await LoginServices.Instance.LoginAsync(UserName, UserPassword);
             if (customer != null)
             {
                 Const.CurrentCustomerID = (int)customer.ID;
-                await App.Current.MainPage.Navigation.PushAsync(new MainViewPage());                
+                await App.Current.MainPage.Navigation.PushAsync(new MainViewPage());
+                IsBusy = false;
             }
             else
             {
+                IsBusy = false;
                 await App.Current.MainPage.DisplayAlert("","Tên đang nhập hoặc mật khẩu không đúng","OK");
             }
         }

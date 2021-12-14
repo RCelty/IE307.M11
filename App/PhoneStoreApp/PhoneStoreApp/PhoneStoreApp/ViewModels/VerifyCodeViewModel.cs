@@ -111,7 +111,7 @@ namespace PhoneStoreApp.ViewModels
         #endregion
 
         public VerifyCodeViewModel(Customer customerTemp, bool isSigningUpTemp) // isSigningUpTemp = false -> lost password
-        {
+        {           
             setOTP(customerTemp);
             startTimeSpan();
             customer = customerTemp;
@@ -123,6 +123,7 @@ namespace PhoneStoreApp.ViewModels
             ConfirmOTP = new Command(ConfirmOTPExecute, () => ConfirmOTPCanExecute());
             GoBackOnClick = new Command(GoBackOnClickExecute, () => true);
         }
+        
         public async void setOTP(Customer customer)
         {
             var otp = await Services.LoginServices.Instance.SendOTP(customer);

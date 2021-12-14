@@ -23,6 +23,7 @@ namespace API.Assets.Contain
         public static readonly string Email = "ndo227587@gmail.com";
         public static readonly string Password = "766583Ha";
 
+
         public static string CreateMD5(string input)
         {
             // Use input string to calculate MD5 hash
