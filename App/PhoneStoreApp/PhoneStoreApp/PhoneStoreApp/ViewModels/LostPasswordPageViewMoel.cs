@@ -24,18 +24,6 @@ namespace PhoneStoreApp.ViewModels
             }
         }
 
-        private string customeremail;
-        public string CustomerEmail
-        {
-            get => customeremail;
-            set
-            {
-                customeremail = value;
-                OnPropertyChanged();
-                SendOTPCodeCommand.ChangeCanExecute();
-            }
-        }
-
         #region Command
         public Command SendOTPCodeCommand { get; set; }
         public Command GoBackOnClick { get; set; }
@@ -49,7 +37,7 @@ namespace PhoneStoreApp.ViewModels
 
         public async void SendOTPCodeExecute()
         {
-            Customer customer = new Customer { UserName = CustomerName, Email = CustomerEmail };
+            Customer customer = await LoginServices.Instance.GetCustomerUserNameID(CustomerName);
             var isRegisterAble = await Services.LoginServices.Instance.IsRegisterAlbe(customer);
 
             if (isRegisterAble == -1) // check exist account
@@ -68,7 +56,7 @@ namespace PhoneStoreApp.ViewModels
 
         public bool SendOTPCodeCanExecute()
         {
-            if (string.IsNullOrWhiteSpace(CustomerName) || string.IsNullOrWhiteSpace(CustomerEmail))
+            if (string.IsNullOrWhiteSpace(CustomerName))
             {
                 return false;
             }

@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using PhoneStoreApp.Models;
 using PhoneStoreApp.Services;
 using PhoneStoreApp.Views;
+using PhoneStoreApp.Assets.Contains;
 
 namespace PhoneStoreApp.ViewModels
 {
@@ -76,7 +77,7 @@ namespace PhoneStoreApp.ViewModels
             }
             else //case change new password
             {
-                if (customer.PassWord.Equals(CustomerOldPassword))
+                if (customer.PassWord.Equals(Const.CreateMD5(CustomerOldPassword)))
                 {
                     checkNewPassword(customer);
                 }
