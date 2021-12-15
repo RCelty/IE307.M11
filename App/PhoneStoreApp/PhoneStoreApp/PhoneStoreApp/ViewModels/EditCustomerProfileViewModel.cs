@@ -140,6 +140,8 @@ namespace PhoneStoreApp.ViewModels
             CustomerUser.Address = CustomerAddress;
             CustomerUser.PhoneNumber = CustomerPhone;
             CustomerUser.Avatar = ImageName;
+            CustomerUser.PassWord = "";
+
             if (ImageData != null)
             {
                 await LoginServices.Instance.UploadImage(ImageData, ImageName);
