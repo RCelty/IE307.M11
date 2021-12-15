@@ -59,7 +59,7 @@ namespace PhoneStoreApp.ViewModels
         #region Command
         public Command EditProfileCommand { get; set; }
         public Command ChangePasswordCommand { get; set; }
-        public Command NotificationCommand { get; set; }
+        public Command HistoryCommand { get; set; }
         public Command UsagePolicyCommand { get; set; }
         public Command SecretPolicyCommand { get; set; }
         public Command ReportCommand { get; set; }
@@ -72,7 +72,7 @@ namespace PhoneStoreApp.ViewModels
 
             EditProfileCommand = new Command(EditProfileCommandExecute, () => true);
             ChangePasswordCommand = new Command(ChangePasswordCommandExecute, () => true);
-            NotificationCommand = new Command(NotificationCommandExecute, () => true);
+            HistoryCommand = new Command(HistoryCommandExecute, () => true);
             UsagePolicyCommand = new Command(UsagePolicyCommandExecute, () => true);
             SecretPolicyCommand = new Command(SecretPolicyCommandExecute, () => true);
             ReportCommand = new Command(ReportCommandExecute, () => true);
@@ -105,7 +105,7 @@ namespace PhoneStoreApp.ViewModels
             await App.Current.MainPage.Navigation.PushAsync(new ResetPasswordPage(CustomerUser,false));
         }
 
-        private void NotificationCommandExecute()
+        private void HistoryCommandExecute()
         {
 
         }

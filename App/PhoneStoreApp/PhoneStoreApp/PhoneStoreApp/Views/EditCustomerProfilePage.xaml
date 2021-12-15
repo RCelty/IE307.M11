@@ -31,10 +31,12 @@
             <ImageButton CornerRadius="100" HeightRequest="150" WidthRequest="150"
                          BorderWidth="3" BorderColor="Black" BackgroundColor="Black"
                          HorizontalOptions="End" Aspect="AspectFill" x:Name="TxtCustomerAvatar"
-                         Source="{Binding CustomerAvatar, Converter={x:StaticResource ConvertStringToImage}}"/>
+                         TranslationX="20"
+                         Source="{Binding CustomerAvatar}"/>
             <ImageButton CornerRadius="30" HeightRequest="40" WidthRequest="40" 
                          BackgroundColor="Blue" BorderWidth="1" BorderColor="Black"
-                         HorizontalOptions="Start" VerticalOptions="EndAndExpand" TranslationX="-40"
+                         TranslationX="-20"
+                         HorizontalOptions="Start" VerticalOptions="EndAndExpand" 
                          Source="camera" Command="{Binding UploadAvatarCommand}"/>
         </StackLayout>
         <ScrollView VerticalScrollBarVisibility="Never">

@@ -93,7 +93,7 @@ namespace PhoneStoreApp.ViewModels
             {
                 count = value;
                 OnPropertyChanged();
-                //ResendCodeCommand.ChangeCanExecute();
+
             }
         }
         public string OTP;
@@ -129,11 +129,11 @@ namespace PhoneStoreApp.ViewModels
         public void startTimeSpan()
         {
             CountDown = 60;
-
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
                 CountDown--;
-                Seconds = "("+ CountDown.ToString()+")";
+                ResendCodeCommand.ChangeCanExecute();
+                Seconds = "(" + CountDown.ToString() + ")";
                 if (CountDown == 0)
                 {
                     return false;

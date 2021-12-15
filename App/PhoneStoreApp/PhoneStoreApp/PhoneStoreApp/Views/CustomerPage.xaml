@@ -4,8 +4,8 @@
              x:Class="PhoneStoreApp.Views.CustomerPage"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="White">
-    <StackLayout>
-        <Label Text="Hồ sơ" FontSize="20" FontAttributes="Bold"
+    <StackLayout BackgroundColor="#57acf5">
+        <Label Text="Hồ sơ" FontSize="25" FontAttributes="Bold" TextColor="Black"
                HorizontalTextAlignment="Center" VerticalTextAlignment="Start"
                VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"
                Margin="0,20,0,0"/>
@@ -19,19 +19,22 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Image Source="{Binding CustomerAvatar}"
-                   Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
-                   VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Image>
-            <Label Text="{Binding CustomerName}" FontSize="15" FontAttributes="Bold"
-                   Grid.Column="1" Grid.Row="0"
-                   VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand"
+            <ImageButton Source="{Binding CustomerAvatar}"
+                   Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" 
+                   Aspect="AspectFill" WidthRequest="40" HeightRequest="40" 
+                   Scale="1.7" TranslationY="5"
+                   CornerRadius="100" BorderColor="White" BorderWidth="1"
+                   VerticalOptions="EndAndExpand" HorizontalOptions="Center"></ImageButton>
+            <Label Text="{Binding CustomerName}" FontSize="20" FontAttributes="Bold"
+                   Grid.Column="1" Grid.Row="0" Padding="10,0,0,0"
+                   VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand"
                    x:Name="lbUserName"/>
-            <Label Text="{Binding CustomerEmail}" FontSize="15"
-                   Grid.Column="1" Grid.Row="2"
+            <Label Text="{Binding CustomerEmail}" FontSize="15" TextColor="Black"
+                   Grid.Column="1" Grid.Row="2"  Padding="10,0,0,0"
                    VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand"/>
         </Grid>
 
-        <ScrollView Orientation="Vertical">
+        <ScrollView Orientation="Vertical" BackgroundColor="White">
             <StackLayout>
                 <Label Text="Tổng quan" Padding="30,20,30,0"/>
                 <Button Text="Chỉnh sửa hồ sơ" FontAttributes="Bold"
@@ -43,10 +46,10 @@
                 TextTransform="None" FontSize="15" BackgroundColor="Transparent"  Padding="30,20,30,0"
                 VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand"
                 Command="{Binding ChangePasswordCommand}"/>
-                <Button Text="Thông báo" FontAttributes="Bold"
+                <Button Text="Lịch sử mua hàng" FontAttributes="Bold"
                 TextTransform="None" FontSize="15" BackgroundColor="Transparent"  Padding="30,20,30,0"
                 VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand"
-                Command="{Binding NotificationCommand}"/>
+                Command="{Binding HistoryCommand}"/>
                 <BoxView HeightRequest="0.1"  BackgroundColor="Black"/>
 
                 <Label Text="Chính sách" Padding="30,20,30,0"/>

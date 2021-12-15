@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-
+using PhoneStoreApp.Assets.Contains;
 using PhoneStoreApp.Models;
 using PhoneStoreApp.Services;
 using PhoneStoreApp.Views;
-using Plugin.Media;
-using Plugin.Media.Abstractions;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace PhoneStoreApp.ViewModels
@@ -35,6 +34,7 @@ namespace PhoneStoreApp.ViewModels
             {
                 customeravatar = value;
                 OnPropertyChanged();
+
             }
         }
 
@@ -46,7 +46,6 @@ namespace PhoneStoreApp.ViewModels
             {
                 customerDisplayName = value;
                 OnPropertyChanged();
-
             }
         }
 
@@ -70,155 +69,116 @@ namespace PhoneStoreApp.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        private  string imagename;
+        public string ImageName
+        {
+            get => imagename;
+            set
+            {
+                imagename = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public byte[] ImageData;
+
         #region Command
         public Command GoBackOnClick { get; set; }
-        public Command UploadAvatarCommand {get; set; }
+        public Command UploadAvatarCommand { get; set; }
         public Command SaveInfoCustomerEdited { get; set; }
         #endregion
 
+        public static readonly string SourceImagePath = Const.Domain + @"Assets/Images/Customer/";
+
         public EditCustomerProfileViewModel(Customer customer)
         {
-            LoadData(customer);
             CustomerUser = customer;
+            LoadData();
 
             GoBackOnClick = new Command(GoBackOnClickExecute, () => true);
             UploadAvatarCommand = new Command(UploadAvatarCommandExecute, () => true);
-            SaveInfoCustomerEdited = new Command(SaveInfoCustomerEditedExecute, () => SaveInfoCustomerEditedCanExecute());
+            SaveInfoCustomerEdited = new Command(SaveInfoCustomerEditedExecute, () => true);
         }
 
-        public void LoadData(Customer customer)
+        public void LoadData()
         {
-            CustomerAvatar = customer.Avatar;
-            CustomerDisplayName = customer.DisplayName;
-            CustomerPhone = customer.PhoneNumber;
-            CustomerAddress = customer.Address;
+            CustomerDisplayName = CustomerUser.DisplayName;
+            CustomerPhone = CustomerUser.PhoneNumber;
+            CustomerAddress = CustomerUser.Address;
+            CustomerAvatar = CustomerUser.Avatar;
+
+            ImageName = CustomerUser.Avatar.Replace(SourceImagePath, "");
         }
 
-        public async void GoBackOnClickExecute() {
+        public async void GoBackOnClickExecute()
+        {
             await App.Current.MainPage.Navigation.PopAsync();
         }
-        public async void UploadAvatarCommandExecute() {
-            await CrossMedia.Current.Initialize();
+        public async void UploadAvatarCommandExecute()
+        {
 
-            if (!CrossMedia.Current.IsPickPhotoSupported)
-            {
-                await App.Current.MainPage.DisplayAlert("Thông báo", "Thiết bị của bạn không hỗ trợ tác vụ này", "Ok");
-                return;
-            }
-
-            var mediaOptions = new PickMediaOptions()
-            {
-                PhotoSize = PhotoSize.Medium
-            };
-
-            var selectedImageFile = await CrossMedia.Current.PickPhotoAsync(mediaOptions);
-            
-            if (selectedImageFile == null)
+            var file = await MediaPicker.PickPhotoAsync();
+            if (file == null)
             {
                 await App.Current.MainPage.DisplayAlert("Lỗi", "Không thể chọn ảnh, vui lòng thử lại!!!", "Ok");
                 return;
             }
 
-            byte[] imageByte = ReadToEnd(selectedImageFile.GetStream());
+            byte[] buffer = File.ReadAllBytes(file.FullPath);
+            ImageData = buffer;
 
-            Random random = new Random();
-            int randomNumber = random.Next(100000,9999999);
             string dateTime = DateTime.Now.ToString("dd-mm-yyyy-hh-mm-ss");
-            string ImageName = string.Concat(dateTime, randomNumber.ToString());
+            ImageName = dateTime + file.FileName;
 
-            string convertByteToString = Encoding.UTF8.GetString(imageByte);
-
-            CustomerAvatar = convertByteToString;
-            var isUploadImageSuccess = await LoginServices.Instance.UploadImage(imageByte, ImageName);
-            if (isUploadImageSuccess == null)
-            {
-                await App.Current.MainPage.DisplayAlert("Lỗi", "Không thể chọn ảnh, vui lòng thử lại!!!", "Ok");
-                return;
-            }
+            CustomerAvatar = file.FullPath;
 
         }
-        public async void SaveInfoCustomerEditedExecute() {
+        public async void SaveInfoCustomerEditedExecute()
+        {
             CustomerUser.DisplayName = CustomerDisplayName;
             CustomerUser.Address = CustomerAddress;
             CustomerUser.PhoneNumber = CustomerPhone;
-
-            if (CustomerUser != null)
+            CustomerUser.Avatar = ImageName;
+            if (ImageData != null)
             {
-                bool updateSuccess = await LoginServices.Instance.UpdateCustomer(CustomerUser);
-               if (updateSuccess)
-               {
-                    await App.Current.MainPage.Navigation.PopAsync();
-                    await App.Current.MainPage.DisplayAlert("", "Cập nhật tài khoảng thành công", "Ok");
+                await LoginServices.Instance.UploadImage(ImageData, ImageName);
+            }
 
-                }
-                else
+            if (SaveInfoCustomerEditedCanExecute())
+            {
+                if (CustomerUser != null)
                 {
-                    await App.Current.MainPage.DisplayAlert("Thông báo", "Cập nhật tài khoảng không thành công", "Ok");
+                    bool updateSuccess = await LoginServices.Instance.UpdateCustomer(CustomerUser);
+                    if (updateSuccess)
+                    {
+                        await App.Current.MainPage.Navigation.PopAsync();
+                        await App.Current.MainPage.DisplayAlert("", "Cập nhật tài khoảng thành công", "Ok");
+
+                    }
+                    else
+                    {
+                        await App.Current.MainPage.DisplayAlert("Thông báo", "Cập nhật tài khoảng không thành công", "Ok");
+                    }
                 }
+            } else
+            {
+                await App.Current.MainPage.DisplayAlert("Thông báo", "Không bỏ trống thông tin", "Ok");
             }
         }
 
         public bool SaveInfoCustomerEditedCanExecute()
         {
+
             if (string.IsNullOrWhiteSpace(CustomerDisplayName) ||
                 string.IsNullOrWhiteSpace(CustomerAddress) ||
-                string.IsNullOrWhiteSpace(CustomerPhone))
+                string.IsNullOrWhiteSpace(CustomerPhone) ||
+                    string.IsNullOrWhiteSpace(ImageName))
             {
                 return false;
             }
             return true;
         }
 
-        public static byte[] ReadToEnd(Stream stream)
-        {
-            long originalPosition = 0;
-
-            if (stream.CanSeek)
-            {
-                originalPosition = stream.Position;
-                stream.Position = 0;
-            }
-
-            try
-            {
-                byte[] readBuffer = new byte[4096];
-
-                int totalBytesRead = 0;
-                int bytesRead;
-
-                while ((bytesRead = stream.Read(readBuffer, totalBytesRead, readBuffer.Length - totalBytesRead)) > 0)
-                {
-                    totalBytesRead += bytesRead;
-
-                    if (totalBytesRead == readBuffer.Length)
-                    {
-                        int nextByte = stream.ReadByte();
-                        if (nextByte != -1)
-                        {
-                            byte[] temp = new byte[readBuffer.Length * 2];
-                            Buffer.BlockCopy(readBuffer, 0, temp, 0, readBuffer.Length);
-                            Buffer.SetByte(temp, totalBytesRead, (byte)nextByte);
-                            readBuffer = temp;
-                            totalBytesRead++;
-                        }
-                    }
-                }
-
-                byte[] buffer = readBuffer;
-                if (readBuffer.Length != totalBytesRead)
-                {
-                    buffer = new byte[totalBytesRead];
-                    Buffer.BlockCopy(readBuffer, 0, buffer, 0, totalBytesRead);
-                }
-                return buffer;
-            }
-            finally
-            {
-                if (stream.CanSeek)
-                {
-                    stream.Position = originalPosition;
-                }
-            }
-        }
     }
 }

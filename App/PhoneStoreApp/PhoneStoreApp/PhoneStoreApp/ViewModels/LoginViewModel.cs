@@ -66,7 +66,7 @@ namespace PhoneStoreApp.ViewModels
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("","Tên đang nhập hoặc mật khẩu không đúng","OK");
+                await App.Current.MainPage.DisplayAlert("","Tên đăng nhập hoặc mật khẩu không đúng","OK");
             }
         }
         public async void SignUpCommandExecute()
