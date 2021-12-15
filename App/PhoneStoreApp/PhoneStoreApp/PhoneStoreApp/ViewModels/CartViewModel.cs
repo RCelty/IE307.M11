@@ -40,6 +40,7 @@ namespace PhoneStoreApp.ViewModels
             }
         }
 
+
         #region Command
         public Command DecreaseCommand { get; set; }
         public Command IncreaseCommand { get; set; }
@@ -130,10 +131,10 @@ namespace PhoneStoreApp.ViewModels
         }
         async void CartPageOnClickExcute()
         {
-            string action = await App.Current.MainPage.DisplayActionSheet("Bạn muốn thanh toán bằng?", "Hủy", null, "Momo", "Tiền mặt");
+            string action = await App.Current.MainPage.DisplayActionSheet("Bạn muốn thanh toán bằng?", "Hủy", null, "Thanh toán online", "Tiền mặt");
 
-            if (action == "Momo")
-                CartPageOnClickMoMoExcute();
+            if (action == "Thanh toán online")
+                await App.Current.MainPage.Navigation.PushAsync(new StripePaymentPage(TotalPrice));
             if (action == "Tiền mặt")
             {
                 Bill bill = new Bill() { TotalPrice = TotalPrice, CustomerID = Const.CurrentCustomerID };
@@ -145,6 +146,7 @@ namespace PhoneStoreApp.ViewModels
                         BillDetail billdetail = new BillDetail() { ProductID = c.ID, TotalCount = c.Count, BillID = ID };
                         await CartService.Instance.AddBillDetail(billdetail);
                     }
+                    await CartService.Instance.SendOrderConfirm(ID);
                     await App.Current.MainPage.DisplayAlert("Thông báo", "Đặt hàng thành công", "Ok");
                     await App.Current.MainPage.Navigation.PopAsync();
                     await App.Current.MainPage.Navigation.PushAsync(new MainViewPage());
@@ -159,7 +161,7 @@ namespace PhoneStoreApp.ViewModels
             string accessKey = "iPXneGmrJH0G8FOP";
             string serectkey = "sFcbSGRSJjwGxwhhcEktCHWYUuTuPNDB";
             string orderInfo = "Thanh toán chợ TECH";
-            string returnUrl = "~";
+            string returnUrl = "http://phonestore.app.link";
             string notifyurl = "http://ba1adf48beba.ngrok.io/Home/SavePayment"; //lưu ý: notifyurl không được sử dụng localhost, có thể sử dụng ngrok để public localhost trong quá trình test
 
             string amount = totalPrice.ToString();

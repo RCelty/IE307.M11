@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PhoneStoreApp.Views.StripePaymentPage"
+             x:Name="StripePayment"
+             xmlns:FastEntry="clr-namespace:XamarinFastEntrySample.FastEntry;assembly=XamarinFastEntry.Behaviors"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <AbsoluteLayout >
+            <StackLayout BackgroundColor="#e6e6e6" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <ScrollView>
+                    <StackLayout>
+                        <Frame HasShadow="True"  HeightRequest="30" Margin="10,10,10,10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <ImageButton Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" Command="{Binding BindingContext.GoBackOnClick, Source={Reference Name=StripePayment}}" >
+                                    <ImageButton.Source>
+                                        <FontImageSource
+                                Size="25"
+                                Color="Black"
+                                 FontFamily="faS"
+                                Glyph="&#xf053;"
+                                >
+
+                                        </FontImageSource>
+                                    </ImageButton.Source>
+                                </ImageButton>
+                                <Label Text="Thanh toán online" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="1" FontSize="20" VerticalTextAlignment="Center" TextColor="Black" ></Label>
+
+                            </Grid>
+                        </Frame>
+                        <Grid>
+                            <Grid Grid.Row="0" Margin="10,10,10,60" BackgroundColor="#57acf5" >
+                                <StackLayout >
+
+                                    <Frame Margin="20" BackgroundColor="#24252a" CornerRadius="20" WidthRequest="250" HeightRequest="200" >
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="VISA" FontSize="Title" TextColor="White" FontAttributes="Bold" Grid.Row="0"></Label>
+                                            <Label Text="{Binding CardNumber,  Mode=Default}" Margin="0,10,0,0"  WidthRequest="200" FontSize="Large" FontAttributes="Bold" TextColor="White"  CharacterSpacing="1" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+
+                                            <Label Text="{Binding NameCard, Mode=Default}" TextColor="White"   TextTransform="Uppercase" Margin="0,30,0,0" Grid.Row="2" Grid.Column="0"></Label>
+                                            <Label Text="{Binding CardDate, Mode=Default}" TextColor="White" Grid.Row="2" Grid.Column="1" Margin="100,30,0,0"></Label>
+
+                                        </Grid>
+
+                                    </Frame>
+                                </StackLayout>
+
+                            </Grid >
+                            <Grid Grid.Row="1"  Margin="20,-60">
+                                <StackLayout Orientation="Vertical" Margin="20,20" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal" Margin="0,0,0,20">
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="Start">
+                                            <Label Text="Tên chủ thẻ" TextColor="MediumPurple"></Label>
+                                            <Entry Text="{Binding NameCard}" WidthRequest="200" TextTransform="Uppercase" ></Entry>
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal" Margin="0,0,0,20">
+                                        <StackLayout Orientation="Vertical">
+                                            <Label Text="Số thẻ" TextColor="MediumPurple"></Label>
+                                            <Entry Text="{Binding CardNumber}"
+               Keyboard="Numeric"
+               Grid.ColumnSpan="2"
+               Grid.Row="3" WidthRequest="200">
+                                                <Entry.Behaviors>
+                                                    <FastEntry:XamarinFastEntryBehaviour Mask="#### #### #### ####" MaxLength="19"  />
+                                                </Entry.Behaviors>
+                                            </Entry>
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                                            <Label Text="Hạn thẻ" TextColor="MediumPurple" ></Label>
+                                            <Entry Text="{Binding CardDate}" Keyboard="Numeric" WidthRequest="80">
+                                                <Entry.Behaviors>
+                                                    <FastEntry:XamarinFastEntryBehaviour Mask="##/##" MaxLength="5"/>
+                                                </Entry.Behaviors>
+                                            </Entry>
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Vertical" Margin="45,0">
+                                            <Label Text="CVV" TextColor="MediumPurple"></Label>
+                                            <Entry Text="{Binding CardCVV}" Keyboard="Numeric" WidthRequest="55">
+                                                <Entry.Behaviors>
+                                                    <FastEntry:XamarinFastEntryBehaviour Mask="###" MaxLength="3"/>
+                                                </Entry.Behaviors>
+                                            </Entry>
+                                        </StackLayout>
+
+
+                                    </StackLayout>
+
+                                    <Button Text="Thanh toán" Margin="60,30,60,0" TextColor="White" CornerRadius="20" BackgroundColor="#57acf5"  Command="{Binding BindingContext.PayCommand,Source={x:Reference Name=StripePayment}}"></Button>
+                                </StackLayout>
+
+                            </Grid>
+                        </Grid>
+
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Gray" Opacity="0.8" IsVisible="{Binding IsBusy}">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <ActivityIndicator IsRunning="{Binding IsBusy}" Color="White"></ActivityIndicator>
+                    <Label Text="Vui lòng chờ..." FontSize="30" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+                </StackLayout>
+            </Grid>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

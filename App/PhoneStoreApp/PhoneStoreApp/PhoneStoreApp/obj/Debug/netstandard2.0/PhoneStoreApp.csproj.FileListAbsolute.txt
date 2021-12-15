@@ -81,3 +81,11 @@ C:\Users\ngocd\Desktop\git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreA
 C:\Users\ngocd\Desktop\git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\bin\Debug\netstandard2.0\PhoneStoreApp.pdb
 C:\Users\ngocd\Desktop\git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\XamlC.stamp
 D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\AddCommentPage.xaml.g.cs
+C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\AddCommentPage.xaml.g.cs
+C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\LoginPage.xaml.g.cs
+C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\LostPasswordPage.xaml.g.cs
+C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\ResetPasswordPage.xaml.g.cs
+C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\SignUpPage.xaml.g.cs
+C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\SignUpSuccessPage.xaml.g.cs
+C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\VerifyCodePage.xaml.g.cs
+C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\StripePaymentPage.xaml.g.cs
