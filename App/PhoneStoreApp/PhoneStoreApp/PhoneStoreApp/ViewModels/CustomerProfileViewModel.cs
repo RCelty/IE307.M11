@@ -105,9 +105,9 @@ namespace PhoneStoreApp.ViewModels
             await App.Current.MainPage.Navigation.PushAsync(new ResetPasswordPage(CustomerUser,false));
         }
 
-        private void HistoryCommandExecute()
+        private async void HistoryCommandExecute()
         {
-
+            await App.Current.MainPage.Navigation.PushAsync(new HistoryPage());
         }
         private void UsagePolicyCommandExecute()
         {

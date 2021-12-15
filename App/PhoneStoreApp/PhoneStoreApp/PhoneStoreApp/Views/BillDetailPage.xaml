@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PhoneStoreApp.Views.BillDetailPage"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             x:Name="MyBillDetailPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="MediumPurple">
+    <StackLayout>
+        <Frame HasShadow="True" Margin="10,10,10,10" HeightRequest="30" BackgroundColor="White">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ImageButton Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" Command="{Binding BindingContext.GoBackOnClick, Source={Reference Name=MyBillDetailPage}}" >
+                    <ImageButton.Source>
+                        <FontImageSource
+                                Size="25"
+                                Color="Black"
+                                 FontFamily="faS"
+                                Glyph="&#xf053;"
+                                >
+                        </FontImageSource>
+                    </ImageButton.Source>
+                </ImageButton>
+                <Label Text="Chi tiết hóa đơn" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="1" FontSize="20" VerticalTextAlignment="Center" TextColor="Black" ></Label>
+            </Grid>
+        </Frame>
+        <ScrollView Orientation="Vertical" VerticalScrollBarVisibility="Never">
+            <StackLayout Orientation="Vertical">
+                <material:MaterialCard Padding="15" Margin="10,0,10,5" HasShadow="True" BackgroundColor="White">
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Mã Đơn Hàng:" TextColor="Black" FontSize="Large"></Label>
+                            <Label Text="{Binding BillID}" TextColor="Black" FontSize="Large"></Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Ngày đạt hàng:" FontSize="Medium"></Label>
+                            <Label Text="{Binding BillCreationDate}"  FontSize="Medium"></Label>
+                        </StackLayout>
+                        <Label Text="Giao hàng thành công" FontAttributes="Bold" FontSize="Medium"></Label>
+                        </StackLayout>
+                </material:MaterialCard>
+                <material:MaterialCard Padding="15" Margin="10,0,10,5" HasShadow="True" BackgroundColor="White">
+                    <StackLayout>
+                        <Label Text="Địa Chỉ Người Nhận " TextColor="Black" FontSize="Large"></Label>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Tên:" TextColor="Black" FontSize="Medium"></Label>
+                            <Label Text="{Binding BillCustomerName}" TextColor="Black"  FontSize="Medium"></Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Số điện thoại:" FontSize="Medium"></Label>
+                            <Label Text="{Binding BillCustomerPhone}"  FontSize="Medium"></Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Địa chỉ:" FontSize="Medium"></Label>
+                            <Label Text="{Binding BillCustomerAddress}"  FontSize="Medium"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                </material:MaterialCard>
+                <material:MaterialCard Padding="15" Margin="10,0,10,5" HasShadow="True" BackgroundColor="White" >
+                    <StackLayout>
+                        <Label Text="Đơn hàng " TextColor="Black" FontSize="Large"></Label>
+                        <StackLayout Orientation="Vertical" BindableLayout.ItemsSource="{Binding ListBillDetail}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <material:MaterialCard Padding="0,10,0,0" BackgroundColor="Transparent" IsClickable="true" ClickCommand="{Binding BindingContext.GoProductDetailOnClick, Source={x:Reference Name=MyBillDetailPage}}" ClickCommandParameter="{Binding .}">
+                                        <StackLayout>
+                                            <Label Text="{Binding ProductName}" FontSize="Medium"></Label>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="x" TextColor="Black" FontSize="Medium"></Label>
+                                                <Label Text="{Binding TotalCount}" TextColor="Black"  FontSize="Medium" TranslationX="-5"></Label>
+                                                <Label Text="{Binding Price}" TextColor="Black"  FontSize="Medium"></Label>
+                                                <Label Text="₫" TextColor="Black" FontSize="Medium" TranslationX="-2"></Label>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </material:MaterialCard>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </StackLayout>
+                </material:MaterialCard>
+                <material:MaterialCard Padding="15" Margin="10,0,10,20" HasShadow="True" BackgroundColor="White">
+                    <StackLayout>
+                        <Label Text="Tổng giá trị" TextColor="Black" FontSize="Large"></Label>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Tạm tính:"  FontSize="Medium" HorizontalOptions="StartAndExpand"></Label>
+                            <Label Text="{Binding BillTotalPrice}"  FontSize="Medium"></Label>
+                            <Label Text="VNĐ"  FontSize="Medium"></Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Thành tiền:" TextColor="Black" FontSize="Medium" HorizontalOptions="StartAndExpand" ></Label>
+                            <Label Text="{Binding BillTotalPrice}" TextColor="Black" FontSize="Medium"></Label>
+                            <Label Text="VNĐ" TextColor="Black"  FontSize="Medium" ></Label>
+                        </StackLayout>
+                    </StackLayout>
+                </material:MaterialCard>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+
+</ContentPage>
