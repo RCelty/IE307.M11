@@ -5,6 +5,7 @@
              x:Name="AddComment"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout >
             <Frame HasShadow="True" Margin="10,10,10,10" HeightRequest="30">
                 <Grid>
@@ -90,5 +91,6 @@
             <material:MaterialTextField  ErrorText="Error Text"  InputType="Default" BackgroundColor="White" AlwaysShowUnderline="True" Text="{Binding Content, Mode=TwoWay}" Margin="25,5,20,20"/>
             <material:MaterialButton BackgroundColor="#EAEAEA" HorizontalOptions="Center" Text="Ok" TextColor="Black" VerticalOptions="Center" Margin="0,5,0,0" Command="{Binding BindingContext.PostCommentCommand, Source={x:Reference Name=AddComment}}"/>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

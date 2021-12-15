@@ -175,3 +175,12 @@ C:\Users\ngocd\Documents\GitHub\IE307.M11\API\API\obj\Release\API.csproj.Assembl
 C:\Users\ngocd\Documents\GitHub\IE307.M11\API\API\obj\Release\API.csproj.CoreCompileInputs.cache
 C:\Users\ngocd\Documents\GitHub\IE307.M11\API\API\obj\Release\API.dll
 C:\Users\ngocd\Documents\GitHub\IE307.M11\API\API\obj\Release\API.pdb
+C:\Users\ngocd\Documents\GitHub\IE307.M11\API\API\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\ngocd\Documents\GitHub\IE307.M11\API\API\bin\Stripe.net.dll
+C:\Users\ngocd\Documents\GitHub\IE307.M11\API\API\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\ngocd\Documents\GitHub\IE307.M11\API\API\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\ngocd\Documents\GitHub\IE307.M11\API\API\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\ngocd\Documents\GitHub\IE307.M11\API\API\bin\Stripe.net.pdb
+C:\Users\ngocd\Documents\GitHub\IE307.M11\API\API\bin\Stripe.net.xml
+C:\Users\ngocd\Documents\GitHub\IE307.M11\API\API\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\ngocd\Documents\GitHub\IE307.M11\API\API\bin\System.Threading.Tasks.Extensions.xml
