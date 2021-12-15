@@ -51,6 +51,7 @@ namespace PhoneStoreApp.ViewModels
 
         public Customer customerTemp;
         public bool isLostPassword;
+        public static readonly string SourceImagePath = Const.Domain + @"Assets/Images/Customer/";
 
         #region Command
         public Command SaveNewPassword { get; set; }
@@ -69,17 +70,22 @@ namespace PhoneStoreApp.ViewModels
         {
             
             Customer customer = await Services.LoginServices.Instance.GetCustomerUserNameID(customerTemp.UserName);
+            string ImageName = customer.Avatar.Replace(SourceImagePath, "");
+            customer.Avatar = ImageName;
 
             // case lost password
             if (isLostPassword)
             {
                 checkNewPassword(customer);
+                await App.Current.MainPage.DisplayAlert("Thông báo", "Cập nhật mật khẩu thành công", "OK");
             }
             else //case change new password
             {
                 if (customer.PassWord.Equals(Const.CreateMD5(CustomerOldPassword)))
                 {
                     checkNewPassword(customer);
+                    await App.Current.MainPage.DisplayAlert("Thông báo", "Đổi mật khẩu thành công, hãy đăng nhập lại!!!", "OK");
+
                 }
                 else
                 {
