@@ -42,7 +42,7 @@
                             <Label Text="Ngày đạt hàng:" FontSize="Medium"></Label>
                             <Label Text="{Binding BillCreationDate}"  FontSize="Medium"></Label>
                         </StackLayout>
-                        <Label Text="Giao hàng thành công" FontAttributes="Bold" FontSize="Medium"></Label>
+                        <Label Text="{Binding BillIsCheckout, Converter={x:StaticResource ConvertIsCheckoutToString}}" FontAttributes="Bold" FontSize="Medium"></Label>
                         </StackLayout>
                 </material:MaterialCard>
                 <material:MaterialCard Padding="15" Margin="10,0,10,5" HasShadow="True" BackgroundColor="White">
@@ -74,8 +74,8 @@
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="x" TextColor="Black" FontSize="Medium"></Label>
                                                 <Label Text="{Binding TotalCount}" TextColor="Black"  FontSize="Medium" TranslationX="-5"></Label>
-                                                <Label Text="{Binding Price}" TextColor="Black"  FontSize="Medium"></Label>
-                                                <Label Text="₫" TextColor="Black" FontSize="Medium" TranslationX="-2"></Label>
+                                                <Label Text="{Binding Price, Converter={StaticResource ConvertLongPriceToString}}" TextColor="Black"  FontSize="Medium"></Label>
+                                                <!--<Label Text="₫" TextColor="Black" FontSize="Medium" TranslationX="-2"></Label>-->
                                             </StackLayout>
                                         </StackLayout>
                                     </material:MaterialCard>
@@ -89,13 +89,13 @@
                         <Label Text="Tổng giá trị" TextColor="Black" FontSize="Large"></Label>
                         <StackLayout Orientation="Horizontal">
                             <Label Text="Tạm tính:"  FontSize="Medium" HorizontalOptions="StartAndExpand"></Label>
-                            <Label Text="{Binding BillTotalPrice}"  FontSize="Medium"></Label>
+                            <Label Text="{Binding BillTotalPrice, Converter={x:StaticResource ConvertLongPriceToString}}"  FontSize="Medium"></Label>
                             <Label Text="VNĐ"  FontSize="Medium"></Label>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label Text="Thành tiền:" TextColor="Black" FontSize="Medium" HorizontalOptions="StartAndExpand" ></Label>
-                            <Label Text="{Binding BillTotalPrice}" TextColor="Black" FontSize="Medium"></Label>
-                            <Label Text="VNĐ" TextColor="Black"  FontSize="Medium" ></Label>
+                            <Label Text="{Binding BillTotalPrice, Converter={x:StaticResource ConvertLongPriceToString}}" TextColor="Black" FontSize="Medium"></Label>
+                            <!--<Label Text="VNĐ" TextColor="Black"  FontSize="Medium" ></Label>-->
                         </StackLayout>
                     </StackLayout>
                 </material:MaterialCard>

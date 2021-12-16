@@ -5,68 +5,77 @@
              x:Name="MyVerifyCodePage"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="White">
-    <StackLayout Padding="30,0,30,0" >
-        <!--Color Btn #57acf5-->
-        <StackLayout Orientation="Horizontal">
-            <ImageButton BackgroundColor="Transparent" 
+    <AbsoluteLayout>
+        <StackLayout Padding="30,0,30,0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <!--Color Btn #57acf5-->
+            <StackLayout Orientation="Horizontal">
+                <ImageButton BackgroundColor="Transparent" 
                          VerticalOptions="Center" HorizontalOptions="Start" 
                          Command="{Binding BindingContext.GoBackOnClick, Source={Reference Name=MyVerifyCodePage}}" >
-                <ImageButton.Source>
-                    <FontImageSource
+                    <ImageButton.Source>
+                        <FontImageSource
                                 Size="25"
                                 Color="Black"
                                  FontFamily="faS"
                                 Glyph="&#xf053;"
                                 >
-                    </FontImageSource>
-                </ImageButton.Source>
-            </ImageButton>
-            <Label Text="Xác thực" 
+                        </FontImageSource>
+                    </ImageButton.Source>
+                </ImageButton>
+                <Label Text="Xác thực" 
                FontSize="30" TextColor="Black" FontAttributes="Bold"
                Margin="0,50,0,20"
                HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
-        </StackLayout>
-        
-        <Label FontSize="15" TextColor="#838589"
+            </StackLayout>
+
+            <Label FontSize="15" TextColor="#838589"
                x:Name="lbEmailVerify" Text="{Binding lbEmailVerify}"></Label>
-        <Button Text="Không phải mail này?" FontSize="15" TextTransform="None" FontAttributes="Bold"
+            <Button Text="Không phải mail này?" FontSize="15" TextTransform="None" FontAttributes="Bold"
                     BackgroundColor="Transparent" TextColor="#57acf5"
                     HorizontalOptions="Start" VerticalOptions="Start" 
                     Margin="-10,0,0,60" Command="{Binding GoOnBackClick}"></Button>
-        <StackLayout Orientation="Horizontal" Margin="0,0,0,20">
-            <Label Text="Mã xác thực" 
+            <StackLayout Orientation="Horizontal" Margin="0,0,0,20">
+                <Label Text="Mã xác thực" 
                FontSize="15" TextColor="Black"
                Margin="0,0,0,10" VerticalTextAlignment="Center"></Label>
-            <Button Text="Gửi lại mã" FontSize="18" TextTransform="None" FontAttributes="Bold"
+                <Button Text="Gửi lại mã" FontSize="18" TextTransform="None" FontAttributes="Bold"
                     BackgroundColor="Transparent" TextColor="#57acf5"
                     HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"
                     x:Name="btnResendCode" Command="{Binding ResendCodeCommand}"></Button>
-            <Label Text="{Binding Seconds}"  TextColor="Black" 
+                <Label Text="{Binding Seconds}"  TextColor="Black" 
                    HorizontalOptions="End" VerticalOptions="Center"></Label>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal" 
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" 
                      HorizontalOptions="Center">
-            <Entry Keyboard="Numeric" MaxLength="1" Text="{Binding OTP1}"
+                <Entry Keyboard="Numeric" MaxLength="1" Text="{Binding OTP1}"
                TextColor="Black" FontSize="18"
                WidthRequest="50" HorizontalTextAlignment="Center"></Entry>
-            <Entry Keyboard="Numeric" MaxLength="1" Text="{Binding OTP2}"
+                <Entry Keyboard="Numeric" MaxLength="1" Text="{Binding OTP2}"
                TextColor="Black" FontSize="18"
                WidthRequest="50" HorizontalTextAlignment="Center"></Entry>
-            <Entry Keyboard="Numeric" MaxLength="1" Text="{Binding OTP3}"
+                <Entry Keyboard="Numeric" MaxLength="1" Text="{Binding OTP3}"
                TextColor="Black" FontSize="18"
                WidthRequest="50" HorizontalTextAlignment="Center"></Entry>
-            <Entry Keyboard="Numeric" MaxLength="1" Text="{Binding OTP4}"
+                <Entry Keyboard="Numeric" MaxLength="1" Text="{Binding OTP4}"
                TextColor="Black" FontSize="18"
                WidthRequest="50" HorizontalTextAlignment="Center"></Entry>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal" Margin="0,20,0,50" HorizontalOptions="End">
-            <Label Text="{Binding Minutes}"  TextColor="#838589"></Label>
-        </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Margin="0,20,0,50" HorizontalOptions="End">
+                <Label Text="{Binding Minutes}"  TextColor="#838589"></Label>
+            </StackLayout>
 
-        <Button Text="Xác nhận" FontSize="18" TextTransform="None"
+            <Button Text="Xác nhận" FontSize="18" TextTransform="None"
                 CornerRadius="10"
                 BackgroundColor="#57acf5" TextColor="White"
                 x:Name="btnToResetPassword" Command="{Binding ConfirmOTP}"
                 Margin="0,0,0,30"></Button>
-    </StackLayout>
+        </StackLayout>
+
+        <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Gray" Opacity="0.8" IsVisible="{Binding IsBusy}">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <ActivityIndicator IsRunning="{Binding IsBusy}" Color="White"></ActivityIndicator>
+                <Label Text="Vui lòng chờ..." FontSize="30" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+            </StackLayout>
+        </Grid>
+    </AbsoluteLayout>
 </ContentPage>

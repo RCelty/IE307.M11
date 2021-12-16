@@ -98,7 +98,7 @@ namespace PhoneStoreApp.ViewModels
 
             GoBackOnClick = new Command(GoBackOnClickExecute, () => true);
             UploadAvatarCommand = new Command(UploadAvatarCommandExecute, () => true);
-            SaveInfoCustomerEdited = new Command(SaveInfoCustomerEditedExecute, () => true);
+            SaveInfoCustomerEdited = new Command(SaveInfoCustomerEditedExecute, () => !IsBusy);
         }
 
         public void LoadData()
@@ -136,6 +136,7 @@ namespace PhoneStoreApp.ViewModels
         }
         public async void SaveInfoCustomerEditedExecute()
         {
+            IsBusy = true;
             CustomerUser.DisplayName = CustomerDisplayName;
             CustomerUser.Address = CustomerAddress;
             CustomerUser.PhoneNumber = CustomerPhone;
@@ -152,19 +153,23 @@ namespace PhoneStoreApp.ViewModels
                 if (CustomerUser != null)
                 {
                     bool updateSuccess = await LoginServices.Instance.UpdateCustomer(CustomerUser);
+                    
                     if (updateSuccess)
                     {
+                        IsBusy = false;
                         await App.Current.MainPage.Navigation.PopAsync();
-                        await App.Current.MainPage.DisplayAlert("", "Cập nhật tài khoảng thành công", "Ok");
+                        await App.Current.MainPage.DisplayAlert("", "Cập nhật tài khoản thành công", "Ok");
 
                     }
                     else
                     {
-                        await App.Current.MainPage.DisplayAlert("Thông báo", "Cập nhật tài khoảng không thành công", "Ok");
+                        IsBusy = false;
+                        await App.Current.MainPage.DisplayAlert("Thông báo", "Cập nhật tài khoản không thành công", "Ok");
                     }
                 }
             } else
             {
+                IsBusy = false;
                 await App.Current.MainPage.DisplayAlert("Thông báo", "Không bỏ trống thông tin", "Ok");
             }
         }

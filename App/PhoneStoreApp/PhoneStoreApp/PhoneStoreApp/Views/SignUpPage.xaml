@@ -5,76 +5,85 @@
              x:Name="MySignUpPage"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False">
-    <StackLayout Padding="30,0,30,0" >
-        <!--Color Btn #57acf5-->
-        <StackLayout Orientation="Horizontal">
-            <ImageButton BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" Command="{Binding BindingContext.GoBackOnClick, Source={Reference Name=MySignUpPage}}" >
-                <ImageButton.Source>
-                    <FontImageSource
+    <AbsoluteLayout>
+        <StackLayout Padding="30,0,30,0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <!--Color Btn #57acf5-->
+            <StackLayout Orientation="Horizontal">
+                <ImageButton BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" Command="{Binding BindingContext.GoBackOnClick, Source={Reference Name=MySignUpPage}}" >
+                    <ImageButton.Source>
+                        <FontImageSource
                                 Size="25"
                                 Color="Black"
                                  FontFamily="faS"
                                 Glyph="&#xf053;"
                                 >
 
-                    </FontImageSource>
-                </ImageButton.Source>
-            </ImageButton>
-            <Label Text="Đăng ký tài khoản" 
+                        </FontImageSource>
+                    </ImageButton.Source>
+                </ImageButton>
+                <Label Text="Đăng ký tài khoản" 
                     FontSize="30" TextColor="Black" FontAttributes="Bold"
                     Margin="0,20,0,20" 
                    HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
-        </StackLayout>
-        <ScrollView VerticalScrollBarVisibility="Never">
-            <StackLayout>
-                <Label Text="Email"   Margin="0,20,0,00"
+            </StackLayout>
+            <ScrollView VerticalScrollBarVisibility="Never">
+                <StackLayout>
+                    <Label Text="Email"   Margin="0,20,0,00"
                FontSize="15" TextColor="Black"></Label>
-                <Entry Keyboard="Email" MaxLength="80"
+                    <Entry Keyboard="Email" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Email đăng nhập"
                 Text="{Binding CustomerEmail, Mode=TwoWay}"></Entry>
 
-                <Label Text="Họ và Tên"   Margin="0,20,0,00"
+                    <Label Text="Họ và Tên"   Margin="0,20,0,00"
                FontSize="15" TextColor="Black"></Label>
-                <Entry Keyboard="Text" MaxLength="80"
+                    <Entry Keyboard="Text" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Tên người dùng"
                 Text="{Binding CustomerDisplayName, Mode=TwoWay}"></Entry>
 
-                <Label Text="Tên đăng nhập" Margin="0,20,0,00"
+                    <Label Text="Tên đăng nhập" Margin="0,20,0,00"
                FontSize="15" TextColor="Black"></Label>
-                <Entry Keyboard="Text" MaxLength="80"
+                    <Entry Keyboard="Text" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Tên đăng nhập"
                 Text="{Binding CustomerName, Mode=TwoWay}"></Entry>
 
-                <Label Text="Mật khẩu" Margin="0,20,0,00"
+                    <Label Text="Mật khẩu" Margin="0,20,0,00"
                FontSize="15" TextColor="Black"></Label>
-                <Entry Keyboard="Text" IsPassword="True" MaxLength="80"
+                    <Entry Keyboard="Text" IsPassword="True" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Mật khẩu" 
                 Text="{Binding CustomerPassword, Mode=TwoWay}"></Entry>
 
-                <Label Text="Nhập lại mật khẩu" Margin="0,20,0,00"
+                    <Label Text="Nhập lại mật khẩu" Margin="0,20,0,00"
                FontSize="15" TextColor="Black"></Label>
-                <Entry Keyboard="Text" IsPassword="True" MaxLength="80"
+                    <Entry Keyboard="Text" IsPassword="True" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Mật khẩu"
                Text="{Binding CustomerConfirmPassword, Mode=TwoWay}"></Entry>
 
-                <Label Text="Số điện thoại" Margin="0,20,0,00"
+                    <Label Text="Số điện thoại" Margin="0,20,0,00"
                FontSize="15" TextColor="Black"></Label>
-                <Entry Keyboard="Text" MaxLength="80"
+                    <Entry Keyboard="Text" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Số điện thoại"
                 Text="{Binding CustomerPhone, Mode=TwoWay}"></Entry>
 
-                <Label Text="Địa chỉ" Margin="0,20,0,00"
+                    <Label Text="Địa chỉ" Margin="0,20,0,00"
                FontSize="15" TextColor="Black"></Label>
-                <Entry Keyboard="Text" MaxLength="80"
+                    <Entry Keyboard="Text" MaxLength="80"
                TextColor="Black" FontSize="18" Placeholder="Địa chỉ"
                 Text="{Binding CustomerAddress, Mode=TwoWay}"></Entry>
-            </StackLayout>
-        </ScrollView>
+                </StackLayout>
+            </ScrollView>
 
-        <Button Text="Đăng ký" FontSize="18" TextTransform="None"
+            <Button Text="Đăng ký" FontSize="18" TextTransform="None"
                 CornerRadius="10"
                 BackgroundColor="#57acf5" TextColor="White"
                 VerticalOptions="EndAndExpand" Margin="0,0,0,30"
                 x:Name="btnSendFormSignUp" Command="{Binding SendFormSignUpCommand}"></Button>
-    </StackLayout>
+        </StackLayout>
+
+        <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Gray" Opacity="0.8" IsVisible="{Binding IsBusy}">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <ActivityIndicator IsRunning="{Binding IsBusy}" Color="White"></ActivityIndicator>
+                <Label Text="Vui lòng chờ..." FontSize="30" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+            </StackLayout>
+        </Grid>
+    </AbsoluteLayout>
 </ContentPage>

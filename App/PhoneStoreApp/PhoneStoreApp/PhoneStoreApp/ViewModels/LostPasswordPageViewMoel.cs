@@ -37,14 +37,17 @@ namespace PhoneStoreApp.ViewModels
 
         public async void SendOTPCodeExecute()
         {
+            IsBusy = true;
             Customer customer = await LoginServices.Instance.GetCustomerUserNameID(CustomerName);
             var isRegisterAble = await Services.LoginServices.Instance.IsRegisterAlbe(customer);
 
             if (isRegisterAble == -1) // check exist account
             {
+                IsBusy = false;
                 await App.Current.MainPage.Navigation.PushAsync(new VerifyCodePage(customer, false));
             }else
             {
+                IsBusy = false;
                 await App.Current.MainPage.DisplayAlert("Thông báo", "Tài khoảng không tồn tại", "Ok");
             }
         }

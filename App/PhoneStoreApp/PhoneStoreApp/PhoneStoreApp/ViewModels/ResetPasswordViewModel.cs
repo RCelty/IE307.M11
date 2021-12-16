@@ -68,7 +68,7 @@ namespace PhoneStoreApp.ViewModels
 
         public async void SaveNewPasswordExecute()
         {
-            
+            IsBusy = true;
             Customer customer = await Services.LoginServices.Instance.GetCustomerUserNameID(customerTemp.UserName);
             string ImageName = customer.Avatar.Replace(SourceImagePath, "");
             customer.Avatar = ImageName;
@@ -77,18 +77,18 @@ namespace PhoneStoreApp.ViewModels
             if (isLostPassword)
             {
                 checkNewPassword(customer);
-                await App.Current.MainPage.DisplayAlert("Thông báo", "Cập nhật mật khẩu thành công", "OK");
+                //await App.Current.MainPage.DisplayAlert("Thông báo", "Cập nhật mật khẩu thành công", "OK");
             }
             else //case change new password
             {
                 if (customer.PassWord.Equals(Const.CreateMD5(CustomerOldPassword)))
                 {
                     checkNewPassword(customer);
-                    await App.Current.MainPage.DisplayAlert("Thông báo", "Đổi mật khẩu thành công, hãy đăng nhập lại!!!", "OK");
-
+                    //IsBusy = false;                    
                 }
                 else
                 {
+                    IsBusy = false;
                     await App.Current.MainPage.DisplayAlert("Thông báo", "Mật khẩu cũ không đúng", "OK");
                 }
             }
@@ -100,10 +100,13 @@ namespace PhoneStoreApp.ViewModels
             {
                 customer.PassWord = CustomerNewPassword;
                 await Services.LoginServices.Instance.UpdateCustomer(customer);
+                IsBusy = false;
+                await App.Current.MainPage.DisplayAlert("Thông báo", "Đổi mật khẩu thành công, hãy đăng nhập lại!!!", "OK");
                 await App.Current.MainPage.Navigation.PushAsync(new LoginPage());
             }
             else
             {
+                IsBusy = false;
                 await App.Current.MainPage.DisplayAlert("Thông báo", "Mật khẩu xác nhận không chính xác", "OK");
             }
         }

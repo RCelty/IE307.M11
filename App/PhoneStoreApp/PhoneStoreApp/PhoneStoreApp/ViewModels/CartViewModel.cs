@@ -62,7 +62,7 @@ namespace PhoneStoreApp.ViewModels
             SelectAllCommand = new Command(SelectAllCommandExecute, () => true);
             DeleteSelectedCommand = new Command(DeleteSelectedCommandExecute, () => true);
             ProductDetailOnClick = new Command<CartItem>(ProductDetailOnClickExcute, product => product != null);
-            CartPageOnClick = new Command(CartPageOnClickExcute, () => true);
+            CartPageOnClick = new Command(CartPageOnClickExcute, () => !IsBusy);
         }
 
         public async void LoadData()
@@ -137,6 +137,7 @@ namespace PhoneStoreApp.ViewModels
                 await App.Current.MainPage.Navigation.PushAsync(new StripePaymentPage(TotalPrice));
             if (action == "Tiền mặt")
             {
+                IsBusy = true;
                 Bill bill = new Bill() { TotalPrice = TotalPrice, CustomerID = Const.CurrentCustomerID };
                 int ID = await CartService.Instance.CreateBill(bill);
                 if (ID != -1)
@@ -147,10 +148,12 @@ namespace PhoneStoreApp.ViewModels
                         await CartService.Instance.AddBillDetail(billdetail);
                     }
                     await CartService.Instance.SendOrderConfirm(ID);
+                    IsBusy = false;
                     await App.Current.MainPage.DisplayAlert("Thông báo", "Đặt hàng thành công", "Ok");
-                    await App.Current.MainPage.Navigation.PopAsync();
+                    //await App.Current.MainPage.Navigation.PopAsync();
                     await App.Current.MainPage.Navigation.PushAsync(new MainViewPage());
                 }
+                IsBusy = false;
             }
         }
         public async void CartPageOnClickMoMoExcute()

@@ -19,6 +19,8 @@
             <Converter:ConvertStarNumberToStarList x:Key="ConvertStarNumberToStarList"></Converter:ConvertStarNumberToStarList>
             <Converter:ConvertDateTime x:Key="ConvertDateTime"></Converter:ConvertDateTime>
             <Converter:ConvertIDCommentToIsVisbleButton x:Key="ConvertIDCommentToIsVisbleButton"></Converter:ConvertIDCommentToIsVisbleButton>
+            <Converter:ConvertLongPriceToString x:Key="ConvertLongPriceToString"></Converter:ConvertLongPriceToString>
+            <Converter:ConvertIsCheckoutToString x:Key="ConvertIsCheckoutToString"></Converter:ConvertIsCheckoutToString>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

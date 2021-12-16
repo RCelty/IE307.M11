@@ -58,7 +58,7 @@
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="Tổng giá trị đơn hàng(VNĐ):" FontSize="Medium" TextColor="Black" FontAttributes="Bold"
                                             HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
-                                    <Label Text="{Binding TotalPrice}" FontSize="Medium" TextColor="Red" FontAttributes="Bold"
+                                    <Label Text="{Binding TotalPrice, Converter={StaticResource ConvertLongPriceToString}}" FontSize="Medium" TextColor="Red" FontAttributes="Bold"
                                             HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                 </StackLayout>
                             </StackLayout>

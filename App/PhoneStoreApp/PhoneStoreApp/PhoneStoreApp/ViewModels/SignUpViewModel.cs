@@ -113,6 +113,7 @@ namespace PhoneStoreApp.ViewModels
 
         public async void SendFormSignUpCommandExecute()
         {
+            IsBusy = true;
             Customer customer = new Customer()
             {
                 Email = CustomerEmail,
@@ -128,18 +129,22 @@ namespace PhoneStoreApp.ViewModels
                 var isRegisterAlbe = await Services.LoginServices.Instance.IsRegisterAlbe(customer);
                 if (isRegisterAlbe == 1)
                 {
+                    IsBusy = false;
                     await App.Current.MainPage.Navigation.PushAsync(new VerifyCodePage(customer, true));
                 }
                 else if (isRegisterAlbe == -1)
                 {
+                    IsBusy = false;
                     await App.Current.MainPage.DisplayAlert("Thông báo", "Tài khoản đã tồn tại", "Ok");
                 }
                 else if (isRegisterAlbe == -2)
                 {
+                    IsBusy = false;
                     await App.Current.MainPage.DisplayAlert("Thông báo", "Email đăng ký chưa đúng", "Ok");
                 }
 
             }
+            IsBusy = false;
 
         }
 
@@ -151,7 +156,8 @@ namespace PhoneStoreApp.ViewModels
                 string.IsNullOrWhiteSpace(CustomerPassword) ||
                 string.IsNullOrWhiteSpace(CustomerConfirmPassword) ||
                 string.IsNullOrWhiteSpace(CustomerAddress) ||
-                string.IsNullOrWhiteSpace(CustomerPhone))
+                string.IsNullOrWhiteSpace(CustomerPhone)||
+                IsBusy)
             {
                 return false;
             }

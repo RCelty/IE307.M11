@@ -89,3 +89,7 @@ C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneS
 C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\SignUpSuccessPage.xaml.g.cs
 C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\VerifyCodePage.xaml.g.cs
 C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\StripePaymentPage.xaml.g.cs
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\BillDetailPage.xaml.g.cs
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\EditCustomerProfilePage.xaml.g.cs
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\HistoryPage.xaml.g.cs
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp\obj\Debug\netstandard2.0\Views\StripePaymentPage.xaml.g.cs

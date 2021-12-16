@@ -108,7 +108,8 @@ namespace PhoneStoreApp.ViewModels
         #endregion
 
         public VerifyCodeViewModel(Customer customerTemp, bool isSigningUpTemp) // isSigningUpTemp = false -> lost password
-        {           
+        {
+            IsBusy = true;
             setOTP(customerTemp);
             startTimeSpan();
             customer = customerTemp;
@@ -125,6 +126,7 @@ namespace PhoneStoreApp.ViewModels
         {
             var otp = await Services.LoginServices.Instance.SendOTP(customer);
             OTP = otp;
+            IsBusy = false;
         }
 
         public void startTimeSpan()
@@ -151,6 +153,7 @@ namespace PhoneStoreApp.ViewModels
 
         public async void ResendCodeCommandExecute()
         {
+            IsBusy = true;
             setOTP(customer);
             startTimeSpan();
         }
@@ -160,20 +163,24 @@ namespace PhoneStoreApp.ViewModels
 
             if (optConfirm == OTP)
             {
+                IsBusy = true;
                 if (isSingUp == true)
                 {
                     var RegisterID = await Services.LoginServices.Instance.Register(customer);
                     if (RegisterID != -1)
                     {
+                        IsBusy = false;
                         await App.Current.MainPage.Navigation.PushAsync(new SignUpSuccessPage());
                     }
                     else
                     {
+                        IsBusy = false;
                         await App.Current.MainPage.DisplayAlert("Thông báo", "Lỗi đăng ký", "Ok");
                     }
                 }
                 else
                 {
+                    IsBusy = false;
                     await App.Current.MainPage.Navigation.PushAsync(new ResetPasswordPage(customer, true));
                 }
             }

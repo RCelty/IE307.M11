@@ -10,9 +10,14 @@ namespace PhoneStoreApp.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var myPrice = (int)value;
-            string myPriceString = myPrice.ToString("N0")+" đ";
-            return myPriceString;
+            if (value != null)
+            {
+                var myPrice = (int)value;
+                string myPriceString = myPrice.ToString("N0") + " đ";
+                return myPriceString;
+            }
+            else
+                return "";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -66,13 +66,25 @@ namespace PhoneStoreApp.ViewModels
             }
         }
 
-        private string billTotalPrice;
-        public string BillTotalPrice
+        private long billTotalPrice;
+        public long BillTotalPrice
         {
             get => billTotalPrice;
             set
             {
                 billTotalPrice = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool billIsCheckout;
+
+        public bool BillIsCheckout
+        {
+            get => billIsCheckout;
+            set
+            {
+                billIsCheckout = value;
                 OnPropertyChanged();
             }
         }
@@ -120,7 +132,8 @@ namespace PhoneStoreApp.ViewModels
             BillCustomerAddress = CurrentBill.CustomerAddress;
             Customer customer = await LoginServices.Instance.GetCustomerByID((int)CurrentBill.CustomerID);
             BillCustomerPhone = customer.PhoneNumber;
-            BillTotalPrice = CurrentBill.TotalPrice.ToString();
+            BillTotalPrice = (long)CurrentBill.TotalPrice;
+            BillIsCheckout = (bool)CurrentBill.IsCheckOut;
 
             if (await CartService.Instance.GetBillDetailByBillID((int)CurrentBill.ID) != null)
             {
