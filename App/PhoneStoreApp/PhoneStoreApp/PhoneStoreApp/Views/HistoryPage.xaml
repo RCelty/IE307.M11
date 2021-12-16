@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PhoneStoreApp.Views.HistoryPage"
+             x:Name="MyHistoryPage"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout BackgroundColor="MediumPurple">
+        <Frame HasShadow="True" Margin="10,10,10,5" HeightRequest="30">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ImageButton Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" Command="{Binding BindingContext.GoBackOnClick, Source={Reference Name=MyHistoryPage}}" >
+                    <ImageButton.Source>
+                        <FontImageSource
+                                Size="25"
+                                Color="Black"
+                                 FontFamily="faS"
+                                Glyph="&#xf053;"
+                                >
+
+                        </FontImageSource>
+                    </ImageButton.Source>
+                </ImageButton>
+                <Label Text="Lịch sử mua hàng" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="1" FontSize="20" VerticalTextAlignment="Center" TextColor="Black" ></Label>
+
+            </Grid>
+        </Frame>
+
+        <ScrollView Orientation="Vertical"
+                                VerticalScrollBarVisibility="Never">
+            <StackLayout Orientation="Vertical" BindableLayout.ItemsSource="{Binding AllBill}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <material:MaterialCard Padding="15" Margin="10,0,10,5" HasShadow="True" BackgroundColor="White" IsClickable="True" ClickCommand="{Binding BindingContext.BillDetailOnClick, Source={x:Reference Name=MyHistoryPage}}" ClickCommandParameter="{Binding .}">
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Mã Đơn Hàng:" FontSize="Medium" TextColor="Black" MaxLines="2" LineBreakMode="TailTruncation"/>
+                                    <Label Text="{Binding ID}" FontSize="Medium" TextColor="Black" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" HorizontalOptions="FillAndExpand"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Khách hàng:" FontSize="Small" TextColor="Black" MaxLines="2" LineBreakMode="TailTruncation"/>
+                                    <Label Text="{Binding CustomerName}" FontSize="Small" TextColor="Black" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" HorizontalOptions="FillAndExpand"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Địa chỉ:" FontSize="Small"  FontAttributes="Bold" WidthRequest="50"/>
+                                    <Label Text="{Binding CustomerAddress}" FontSize="Small"  FontAttributes="Bold"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Thời gian:" FontSize="Small"  FontAttributes="Bold"/>
+                                    <Label Text="{Binding CreationDate}" FontSize="Small" FontAttributes="Bold"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Tổng giá trị đơn hàng(VNĐ):" FontSize="Medium" TextColor="Black" FontAttributes="Bold"
+                                            HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+                                    <Label Text="{Binding TotalPrice}" FontSize="Medium" TextColor="Red" FontAttributes="Bold"
+                                            HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </material:MaterialCard>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+
+    </StackLayout>
+            
+</ContentPage>
