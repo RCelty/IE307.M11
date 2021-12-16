@@ -5,69 +5,80 @@
              x:Name="MyFavoriteProductPage"
              x:Class="PhoneStoreApp.Views.FavoriteProductPage">
     <ContentPage.Content>
-        <StackLayout Margin="10">
-            <ScrollView VerticalScrollBarVisibility="Never">
-                <StackLayout BindableLayout.ItemsSource="{Binding FavoriteProducts}">
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <material:MaterialCard Padding="5" HasShadow="True" IsClickable="True" 
+        <AbsoluteLayout>
+
+
+            <StackLayout Margin="10" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <ScrollView VerticalScrollBarVisibility="Never">
+                    <StackLayout BindableLayout.ItemsSource="{Binding FavoriteProducts}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <material:MaterialCard Padding="5" HasShadow="True" IsClickable="True" 
                                                    ClickCommand="{Binding BindingContext.ProductDetailOnClick, Source={x:Reference Name=MyFavoriteProductPage}}"
                                                    ClickCommandParameter="{Binding .}">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="60"/>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="7*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="60"/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="7*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
 
-                                    <Image Source="{Binding Image1, Converter={x:StaticResource ConvertStringToImage}}" Aspect="AspectFit" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"/>
-                                    <Label Text="{Binding DisplayName}" FontSize="Large" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" Grid.Column="1" Grid.Row="0"/>
-                                    <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
-                                        <Label Text="{Binding Price, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="#8c8c8c" FontAttributes="Bold" TextDecorations="Strikethrough" IsVisible="{Binding DiscountPercent, Converter={StaticResource ConvertDiscountPercentToBoolean}}"/>
-                                        <Label Text="{Binding DiscountPrice, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="Red" FontAttributes="Bold"/>
-                                    </StackLayout>
-                                    <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
-                                        <Label Text="&#xf005;" FontFamily="faS" TextColor="Yellow"/>
-                                        <Label Text="{Binding Rating}"/>
-                                        <Label Text="{Binding CommentCount}" Margin="10,0,0,0"/>
-                                        <Label Text="Reviews"/>
-                                    </StackLayout>
-                                    <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" Grid.Column="2" Grid.Row="0" Color="MediumPurple" HorizontalOptions="Center"/>
-                                    <ImageButton Grid.Column="2" Grid.Row="1" BackgroundColor="Red" Padding="-2,2,-2,2" Command="{Binding BindingContext.DeleteCommand, Source={x:Reference Name=MyFavoriteProductPage}}" CommandParameter="{Binding .}">
-                                        <ImageButton.Source>
-                                            <FontImageSource Glyph="&#xf00d;" FontFamily="faS" Color="White" Size="Medium"/>
-                                        </ImageButton.Source>
-                                    </ImageButton>
-                                    
-                                </Grid>
-                            </material:MaterialCard>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </StackLayout>
-            </ScrollView>
-            <StackLayout VerticalOptions="EndAndExpand">
-                <BoxView HeightRequest="0.1" Color="Gray" Margin="0,0,0,10"></BoxView>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <!--<RowDefinition Height="auto"/>-->
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <material:MaterialButton Text="Xóa tất cả" Grid.Column="0" FontSize="12" BackgroundColor="Red" IsEnabled="{Binding FavoriteProducts.Count, Converter={x:StaticResource ConvertProductCountToIsVisibleBoolean}}"
+                                        <Image Source="{Binding Image1, Converter={x:StaticResource ConvertStringToImage}}" Aspect="AspectFit" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"/>
+                                        <Label Text="{Binding DisplayName}" FontSize="Large" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" Grid.Column="1" Grid.Row="0"/>
+                                        <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+                                            <Label Text="{Binding Price, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="#8c8c8c" FontAttributes="Bold" TextDecorations="Strikethrough" IsVisible="{Binding DiscountPercent, Converter={StaticResource ConvertDiscountPercentToBoolean}}"/>
+                                            <Label Text="{Binding DiscountPrice, Converter={x:StaticResource ConvertPriceToString}}" FontSize="Medium" TextColor="Red" FontAttributes="Bold"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                                            <Label Text="&#xf005;" FontFamily="faS" TextColor="Yellow"/>
+                                            <Label Text="{Binding Rating}"/>
+                                            <Label Text="{Binding CommentCount}" Margin="10,0,0,0"/>
+                                            <Label Text="Reviews"/>
+                                        </StackLayout>
+                                        <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" Grid.Column="2" Grid.Row="0" Color="MediumPurple" HorizontalOptions="Center"/>
+                                        <ImageButton Grid.Column="2" Grid.Row="1" BackgroundColor="Red" Padding="-2,2,-2,2" Command="{Binding BindingContext.DeleteCommand, Source={x:Reference Name=MyFavoriteProductPage}}" CommandParameter="{Binding .}">
+                                            <ImageButton.Source>
+                                                <FontImageSource Glyph="&#xf00d;" FontFamily="faS" Color="White" Size="Medium"/>
+                                            </ImageButton.Source>
+                                        </ImageButton>
+
+                                    </Grid>
+                                </material:MaterialCard>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </ScrollView>
+                <StackLayout VerticalOptions="EndAndExpand">
+                    <BoxView HeightRequest="0.1" Color="Gray" Margin="0,0,0,10"></BoxView>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <!--<RowDefinition Height="auto"/>-->
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <material:MaterialButton Text="Xóa tất cả" Grid.Column="0" FontSize="12" BackgroundColor="Red" 
                                              Command="{Binding DeleteAllCommand}"/>
-                    <material:MaterialButton Text="Xóa mục được chọn" Grid.Column="1" FontSize="12" BackgroundColor="MediumPurple" IsEnabled="{Binding FavoriteProducts.Count, Converter={x:StaticResource ConvertProductCountToIsVisibleBoolean}}"
+                        <material:MaterialButton Text="Xóa mục được chọn" Grid.Column="1" FontSize="12" BackgroundColor="MediumPurple"
                                              Command="{Binding DeleteSelectedCommand}"/>
-                    <!--<Button Text="select all" Command="{Binding SelectAllCmd}" Grid.Row="1"/>-->
-                </Grid>
+                        <!--<Button Text="select all" Command="{Binding SelectAllCmd}" Grid.Row="1"/>-->
+                    </Grid>
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
+
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Gray" Opacity="0.8" IsVisible="{Binding IsBusy}">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <ActivityIndicator IsRunning="{Binding IsBusy}" Color="White"></ActivityIndicator>
+                    <Label Text="Vui lòng chờ..." FontSize="30" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+                </StackLayout>
+            </Grid>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

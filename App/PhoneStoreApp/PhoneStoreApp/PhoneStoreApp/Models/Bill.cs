@@ -18,6 +18,6 @@ namespace PhoneStoreApp.Models
 
         public bool? IsDelete { get; set; }
 
-        public List<BillDetail> BillDetails { get; set; }
+        //public List<BillDetail> BillDetails { get; set; }
     }
 }

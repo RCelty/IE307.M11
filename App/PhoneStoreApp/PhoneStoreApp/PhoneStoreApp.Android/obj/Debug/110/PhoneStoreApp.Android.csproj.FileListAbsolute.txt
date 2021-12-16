@@ -1894,3 +1894,15 @@ C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneS
 C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\android\assets\System.Security.Principal.Windows.dll
 C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\android\assets\System.Threading.Tasks.Extensions.dll
 C:\Users\ngocd\Documents\GitHub\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\PhoneStoreApp.Android.csproj.CopyComplete
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\android\assets\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\android\assets\Stripe.net.dll
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\android\assets\Stripe.net.pdb
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\android\assets\System.Configuration.ConfigurationManager.dll
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\android\assets\System.Security.AccessControl.dll
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\android\assets\System.Security.Cryptography.ProtectedData.dll
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\android\assets\System.Security.dll
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\android\assets\System.Security.pdb
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\android\assets\System.Security.Permissions.dll
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\android\assets\System.Security.Principal.Windows.dll
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\android\assets\System.Threading.Tasks.Extensions.dll
+D:\Git\IE307.M11\App\PhoneStoreApp\PhoneStoreApp\PhoneStoreApp.Android\obj\Debug\110\android\assets\XamarinFastEntry.Behaviors.dll

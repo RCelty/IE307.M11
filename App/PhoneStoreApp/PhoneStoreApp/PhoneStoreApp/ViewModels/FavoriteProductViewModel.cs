@@ -21,7 +21,7 @@ namespace PhoneStoreApp.ViewModels
             set
             {
                 favoriteProducts = value;
-                OnPropertyChanged();
+                OnPropertyChanged();                
             }
         }
 
@@ -33,7 +33,7 @@ namespace PhoneStoreApp.ViewModels
             set
             {
                 favoriteList = value;
-                OnPropertyChanged();
+                OnPropertyChanged();                
             }
         }
 
@@ -50,14 +50,15 @@ namespace PhoneStoreApp.ViewModels
             LoadData();
 
             DeleteCommand = new Command<FavoriteProductItem>(DeleteCommandExecute, f => f != null);
-            DeleteAllCommand = new Command(DeleteAllCommandExecute, () => true);
-            DeleteSelectedCommand = new Command(DeleteSelectedCommandExecute, () => true);
+            DeleteAllCommand = new Command(DeleteAllCommandExecute, () => ButtonCanExecute());
+            DeleteSelectedCommand = new Command(DeleteSelectedCommandExecute, () => ButtonCanExecute());
             ProductDetailOnClick = new Command<FavoriteProductItem>(ProductDetailOnClickExcute, product => product != null);
             //SelectAllCmd = new Command(SelectAllCmdExe, () => true);
         }
 
         public async void LoadData()
         {
+            IsBusy = true;
             var productList = await HomeService.Instance.GetAllProduct();
 
             if (await ProductService.Instance.GetFavoriteProductByCustomerID(Const.CurrentCustomerID) != null)
@@ -89,6 +90,9 @@ namespace PhoneStoreApp.ViewModels
                     }
                 }
             }
+            DeleteAllCommand.ChangeCanExecute();
+            DeleteSelectedCommand.ChangeCanExecute();
+            IsBusy = false;
         }
 
         public async void DeleteCommandExecute(FavoriteProductItem favoriteProductItem)
@@ -103,6 +107,8 @@ namespace PhoneStoreApp.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert("Thông báo", "Có lỗi xảy ra, vui lòng thử lại", "OK");
             }
+            DeleteAllCommand.ChangeCanExecute();
+            DeleteSelectedCommand.ChangeCanExecute();
         }
 
         public async void DeleteAllCommandExecute()
@@ -115,6 +121,8 @@ namespace PhoneStoreApp.ViewModels
                 }
                 FavoriteProducts.Clear();
             }
+            DeleteAllCommand.ChangeCanExecute();
+            DeleteSelectedCommand.ChangeCanExecute();
         }
 
         public async void DeleteSelectedCommandExecute()
@@ -134,6 +142,8 @@ namespace PhoneStoreApp.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert("Thông báo", "Bạn chưa chọn sản phẩm để xóa", "Ok");
             }
+            DeleteAllCommand.ChangeCanExecute();
+            DeleteSelectedCommand.ChangeCanExecute();
 
             //LoadData();
         }
@@ -144,6 +154,16 @@ namespace PhoneStoreApp.ViewModels
             await App.Current.MainPage.Navigation.PushAsync(new ProductDetailPage(product.ID), true);
         }
 
+        bool ButtonCanExecute()
+        {
+            if (FavoriteProducts == null || FavoriteProducts.Count <= 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        
         //void SelectAllCmdExe()
         //{
         //    foreach(var f in FavoriteProducts)
