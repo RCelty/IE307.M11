@@ -5,7 +5,7 @@
              x:Name="MyHistoryPage"
              xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
              NavigationPage.HasNavigationBar="False">
-    <StackLayout BackgroundColor="MediumPurple">
+    <StackLayout BackgroundColor="#57acf5">
         <Frame HasShadow="True" Margin="10,10,10,5" HeightRequest="30">
             <Grid>
                 <Grid.RowDefinitions>
@@ -33,7 +33,7 @@
         </Frame>
 
         <ScrollView Orientation="Vertical"
-                                VerticalScrollBarVisibility="Never">
+                                VerticalScrollBarVisibility="Never" Margin="0,0,0,10">
             <StackLayout Orientation="Vertical" BindableLayout.ItemsSource="{Binding AllBill}">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>

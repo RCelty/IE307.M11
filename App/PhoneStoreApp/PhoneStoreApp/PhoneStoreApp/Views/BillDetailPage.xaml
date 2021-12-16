@@ -5,7 +5,7 @@
              xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
              x:Name="MyBillDetailPage"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="MediumPurple">
+             BackgroundColor="#57acf5">
     <StackLayout>
         <Frame HasShadow="True" Margin="10,10,10,10" HeightRequest="30" BackgroundColor="White">
             <Grid>
