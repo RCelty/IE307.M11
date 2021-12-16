@@ -15,9 +15,11 @@ namespace PhoneStoreApp.Models
         public int? CustomerID { get; set; }
 
         public string CustomerName { get; set; }
+        public string CustomerAddress { get; set; }
 
         public bool? IsDelete { get; set; }
+        public bool? IsCheckOut { get; set; }
 
-        public List<BillDetail> BillDetails { get; set; }
+        //public List<BillDetail> BillDetails { get; set; }
     }
 }

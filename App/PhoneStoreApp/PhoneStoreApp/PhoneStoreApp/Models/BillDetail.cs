@@ -11,6 +11,8 @@ namespace PhoneStoreApp.Models
         public int? TotalCount { get; set; }
 
         public int? ProductID { get; set; }
+        public string ProductName { get; set; }
+        public long? Price { get; set; }
 
         public int? BillID { get; set; }
     }
