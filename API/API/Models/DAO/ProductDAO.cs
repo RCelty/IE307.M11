@@ -44,8 +44,8 @@ namespace API.Models.DAO
             {
                 DisplayName = productDTO.DisplayName,
                 Price = productDTO.Price,
-                DiscountPercent = productDTO.DiscountPercent,                
-                ViewCount = 0,                                
+                DiscountPercent = productDTO.DiscountPercent,
+                ViewCount = 0,
                 Description = productDTO.Description,
                 Image1 = productDTO.Image1,
                 Image2 = productDTO.Image2,
@@ -77,7 +77,7 @@ namespace API.Models.DAO
                 result.DisplayName = productDTO.DisplayName;
                 result.Price = productDTO.Price;
                 result.DiscountPercent = productDTO.DiscountPercent;
-                result.Description = productDTO.Description;               
+                result.Description = productDTO.Description;
                 result.Image1 = productDTO.Image1;
                 result.Image2 = productDTO.Image2;
                 result.Image3 = productDTO.Image3;
@@ -143,11 +143,27 @@ namespace API.Models.DAO
                 await db.SaveChangesAsync();
                 return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return false;
                 throw e;
             }
+        }
+
+        public async Task<ProductDTO> GetProductByID(int ID)
+        {
+            try
+            {
+                var result = await db.Products.SingleOrDefaultAsync(p => p.ID == ID);
+                ProductDTO productDTO = new ProductDTO(result);
+                return productDTO;
+            }
+            catch (Exception e)
+            {
+                return null;
+                throw e;
+            }
+
         }
     }
 }

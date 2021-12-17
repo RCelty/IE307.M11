@@ -39,6 +39,7 @@ namespace PhoneStoreApp.Assets.Contains
         public static readonly string GetFavoriteProductByCustomerIDPath = Domain + @"Api/CustomerController/GetFavoriteProductByCustomerID/{ID}";
         public static readonly string AddFavoriteProductPath = Domain + @"Api/CustomerController/AddFavoriteProduct";
         public static readonly string DeleteFavoriteProductPath = Domain + @"Api/CustomerController/DeleteFavoriteProduct";
+        public static readonly string GetProductByIDPath = Domain + @"Api/ProductController/GetProductByID/{ID}";
 
         //Comment Path
         public static readonly string GetCommentByProductIDPath = Domain + @"Api/CommentController/GetCommentByProductID/{ID}";

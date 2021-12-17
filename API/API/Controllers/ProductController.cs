@@ -114,5 +114,13 @@ namespace API.Controllers
         {
             return Ok(await ProductDAO.Instance.IncreaseViewCount(ID));
         }
+
+        [Route("Api/ProductController/GetProductByID/{ID}")]
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetProductByID(int ID)
+        {
+            return Ok(await ProductDAO.Instance.GetProductByID(ID));
+        }
     }
 }

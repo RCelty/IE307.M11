@@ -36,7 +36,7 @@ namespace PhoneStoreApp.ViewModels
             }
         }
         private ObservableCollection<string> listImage;
-        public ObservableCollection<string> ListImage { get=>listImage; set { listImage = value; OnPropertyChanged(); } }
+        public ObservableCollection<string> ListImage { get => listImage; set { listImage = value; OnPropertyChanged(); } }
 
         public int ID { get; set; }
 
@@ -59,6 +59,7 @@ namespace PhoneStoreApp.ViewModels
         public ProductDetailViewModel(int ID)
         {
             this.ID = ID;
+            
             LoadData();
             SetIsFavorite();
             SetIsInCart();
@@ -72,16 +73,19 @@ namespace PhoneStoreApp.ViewModels
         }
         async void LoadData()
         {
+            await ProductService.Instance.IncreaseViewCount(ID);
             ListComment = new ObservableCollection<Comment>(await CommentService.Instance.GetCommentByProductID(ID));
-            temp_Product = new ObservableCollection<Product>(await HomeService.Instance.GetAllProduct());
-            foreach (Product product in temp_Product)
-            {
-                if (product.ID == ID)
-                {
-                    Product = product;
-                    break;
-                }
-            }
+            //temp_Product = new ObservableCollection<Product>(await HomeService.Instance.GetAllProduct());
+            //foreach (Product product in temp_Product)
+            //{
+            //    if (product.ID == ID)
+            //    {
+            //        Product = product;
+            //        break;
+            //    }
+            //}
+
+            Product = await ProductService.Instance.GetProductByID(ID);
             ListImage = new ObservableCollection<string>() { Product.Image1, Product.Image2, Product.Image3, Product.Image4 };
         }
 
