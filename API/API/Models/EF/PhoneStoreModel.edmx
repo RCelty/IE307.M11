@@ -90,6 +90,8 @@
           <Property Name="DisplayName" Type="nvarchar" MaxLength="100" />
           <Property Name="Price" Type="int" />
           <Property Name="DiscountPercent" Type="int" />
+          <Property Name="Rating" Type="float" />
+          <Property Name="SellCount" Type="int" />
           <Property Name="ViewCount" Type="int" />
           <Property Name="Image1" Type="varchar" MaxLength="500" />
           <Property Name="Image2" Type="varchar" MaxLength="500" />
@@ -286,12 +288,88 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PhoneStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PhoneStoreEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Advertisements" EntityType="PhoneStoreModel.Advertisement" />
+          <EntitySet Name="Bills" EntityType="PhoneStoreModel.Bill" />
+          <EntitySet Name="BillDetails" EntityType="PhoneStoreModel.BillDetail" />
+          <EntitySet Name="Brands" EntityType="PhoneStoreModel.Brand" />
+          <EntitySet Name="Categories" EntityType="PhoneStoreModel.Category" />
+          <EntitySet Name="Comments" EntityType="PhoneStoreModel.Comment" />
+          <EntitySet Name="Customers" EntityType="PhoneStoreModel.Customer" />
+          <EntitySet Name="FavoriteProducts" EntityType="PhoneStoreModel.FavoriteProduct" />
+          <EntitySet Name="Products" EntityType="PhoneStoreModel.Product" />
+          <EntitySet Name="ProductDetails" EntityType="PhoneStoreModel.ProductDetail" />
+          <AssociationSet Name="FK__Bill__CustomerID__3F466844" Association="PhoneStoreModel.FK__Bill__CustomerID__3F466844">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Bill" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BillDetai__BillI__4316F928" Association="PhoneStoreModel.FK__BillDetai__BillI__4316F928">
+            <End Role="Bill" EntitySet="Bills" />
+            <End Role="BillDetail" EntitySet="BillDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BillDetai__Produ__4222D4EF" Association="PhoneStoreModel.FK__BillDetai__Produ__4222D4EF">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="BillDetail" EntitySet="BillDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__BrandID__2D27B809" Association="PhoneStoreModel.FK__Product__BrandID__2D27B809">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__Categor__2C3393D0" Association="PhoneStoreModel.FK__Product__Categor__2C3393D0">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comment__Custome__3C69FB99" Association="PhoneStoreModel.FK__Comment__Custome__3C69FB99">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comment__Product__3B75D760" Association="PhoneStoreModel.FK__Comment__Product__3B75D760">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FavoriteP__Custo__38996AB5" Association="PhoneStoreModel.FK__FavoriteP__Custo__38996AB5">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="FavoriteProduct" EntitySet="FavoriteProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FavoriteP__Produ__37A5467C" Association="PhoneStoreModel.FK__FavoriteP__Produ__37A5467C">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="FavoriteProduct" EntitySet="FavoriteProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductDe__Produ__30F848ED" Association="PhoneStoreModel.FK__ProductDe__Produ__30F848ED">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductDetail" EntitySet="ProductDetails" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Advertisement">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TotalPrice" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="IsCheckOut" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Customer" Relationship="PhoneStoreModel.FK__Bill__CustomerID__3F466844" FromRole="Bill" ToRole="Customer" />
+          <NavigationProperty Name="BillDetails" Relationship="PhoneStoreModel.FK__BillDetai__BillI__4316F928" FromRole="Bill" ToRole="BillDetail" />
+        </EntityType>
+        <EntityType Name="BillDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TotalCount" Type="Int32" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="BillID" Type="Int32" />
+          <NavigationProperty Name="Bill" Relationship="PhoneStoreModel.FK__BillDetai__BillI__4316F928" FromRole="BillDetail" ToRole="Bill" />
+          <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__BillDetai__Produ__4222D4EF" FromRole="BillDetail" ToRole="Product" />
         </EntityType>
         <EntityType Name="Brand">
           <Key>
@@ -312,68 +390,18 @@
           <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="Products" Relationship="PhoneStoreModel.FK__Product__Categor__2C3393D0" FromRole="Category" ToRole="Product" />
         </EntityType>
-        <EntityContainer Name="PhoneStoreEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Advertisements" EntityType="Self.Advertisement" />
-          <EntitySet Name="Brands" EntityType="Self.Brand" />
-          <EntitySet Name="Categories" EntityType="Self.Category" />
-          <EntitySet Name="ProductDetails" EntityType="PhoneStoreModel.ProductDetail" />
-          <EntitySet Name="Customers" EntityType="PhoneStoreModel.Customer" />
-          <EntitySet Name="FavoriteProducts" EntityType="PhoneStoreModel.FavoriteProduct" />
-          <AssociationSet Name="FK__FavoriteP__Custo__37A5467C" Association="PhoneStoreModel.FK__FavoriteP__Custo__37A5467C">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="FavoriteProduct" EntitySet="FavoriteProducts" />
-          </AssociationSet>
-          <EntitySet Name="Comments" EntityType="PhoneStoreModel.Comment" />
-          <AssociationSet Name="FK__Comment__Custome__3B75D760" Association="PhoneStoreModel.FK__Comment__Custome__3B75D760">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="Comment" EntitySet="Comments" />
-          </AssociationSet>
-          <EntitySet Name="Bills" EntityType="PhoneStoreModel.Bill" />
-          <EntitySet Name="BillDetails" EntityType="PhoneStoreModel.BillDetail" />
-          <AssociationSet Name="FK__Bill__CustomerID__2B3F6F97" Association="PhoneStoreModel.FK__Bill__CustomerID__2B3F6F97">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="Bill" EntitySet="Bills" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BillDetai__BillI__2F10007B" Association="PhoneStoreModel.FK__BillDetai__BillI__2F10007B">
-            <End Role="Bill" EntitySet="Bills" />
-            <End Role="BillDetail" EntitySet="BillDetails" />
-          </AssociationSet>
-          <EntitySet Name="Products" EntityType="PhoneStoreModel.Product" />
-          <AssociationSet Name="FK__BillDetai__Produ__4222D4EF" Association="PhoneStoreModel.FK__BillDetai__Produ__4222D4EF">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="BillDetail" EntitySet="BillDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Product__BrandID__2D27B809" Association="PhoneStoreModel.FK__Product__BrandID__2D27B809">
-            <End Role="Brand" EntitySet="Brands" />
-            <End Role="Product" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Product__Categor__2C3393D0" Association="PhoneStoreModel.FK__Product__Categor__2C3393D0">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Product" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Comment__Product__3B75D760" Association="PhoneStoreModel.FK__Comment__Product__3B75D760">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="Comment" EntitySet="Comments" />
-          </AssociationSet>
-          <AssociationSet Name="FK__FavoriteP__Produ__37A5467C" Association="PhoneStoreModel.FK__FavoriteP__Produ__37A5467C">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="FavoriteProduct" EntitySet="FavoriteProducts" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ProductDe__Produ__30F848ED" Association="PhoneStoreModel.FK__ProductDe__Produ__30F848ED">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="ProductDetail" EntitySet="ProductDetails" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="ProductDetail">
+        <EntityType Name="Comment">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductID" Type="Int32" />
-          <Property Name="DetailName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="DetailDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__ProductDe__Produ__30F848ED" FromRole="ProductDetail" ToRole="Product" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="Content" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="PhoneStoreModel.FK__Comment__Custome__3C69FB99" FromRole="Comment" ToRole="Customer" />
+          <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__Comment__Product__3B75D760" FromRole="Comment" ToRole="Product" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -388,9 +416,9 @@
           <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Avatar" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="IsAdmin" Type="Boolean" />
-          <NavigationProperty Name="FavoriteProducts" Relationship="PhoneStoreModel.FK__FavoriteP__Custo__37A5467C" FromRole="Customer" ToRole="FavoriteProduct" />
-          <NavigationProperty Name="Comments" Relationship="PhoneStoreModel.FK__Comment__Custome__3B75D760" FromRole="Customer" ToRole="Comment" />
-          <NavigationProperty Name="Bills" Relationship="PhoneStoreModel.FK__Bill__CustomerID__2B3F6F97" FromRole="Customer" ToRole="Bill" />
+          <NavigationProperty Name="Bills" Relationship="PhoneStoreModel.FK__Bill__CustomerID__3F466844" FromRole="Customer" ToRole="Bill" />
+          <NavigationProperty Name="Comments" Relationship="PhoneStoreModel.FK__Comment__Custome__3C69FB99" FromRole="Customer" ToRole="Comment" />
+          <NavigationProperty Name="FavoriteProducts" Relationship="PhoneStoreModel.FK__FavoriteP__Custo__38996AB5" FromRole="Customer" ToRole="FavoriteProduct" />
         </EntityType>
         <EntityType Name="FavoriteProduct">
           <Key>
@@ -399,94 +427,9 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductID" Type="Int32" />
           <Property Name="CustomerID" Type="Int32" />
-          <NavigationProperty Name="Customer" Relationship="PhoneStoreModel.FK__FavoriteP__Custo__37A5467C" FromRole="FavoriteProduct" ToRole="Customer" />
+          <NavigationProperty Name="Customer" Relationship="PhoneStoreModel.FK__FavoriteP__Custo__38996AB5" FromRole="FavoriteProduct" ToRole="Customer" />
           <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__FavoriteP__Produ__37A5467C" FromRole="FavoriteProduct" ToRole="Product" />
         </EntityType>
-        <Association Name="FK__FavoriteP__Custo__37A5467C">
-          <End Type="PhoneStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
-          <End Type="PhoneStoreModel.FavoriteProduct" Role="FavoriteProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="FavoriteProduct">
-              <PropertyRef Name="CustomerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Comment">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductID" Type="Int32" />
-          <Property Name="CustomerID" Type="Int32" />
-          <Property Name="Content" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Rating" Type="Int32" />
-          <NavigationProperty Name="Customer" Relationship="PhoneStoreModel.FK__Comment__Custome__3B75D760" FromRole="Comment" ToRole="Customer" />
-          <Property Name="CreationDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__Comment__Product__3B75D760" FromRole="Comment" ToRole="Product" />
-        </EntityType>
-        <Association Name="FK__Comment__Custome__3B75D760">
-          <End Type="PhoneStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
-          <End Type="PhoneStoreModel.Comment" Role="Comment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Comment">
-              <PropertyRef Name="CustomerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Bill">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TotalPrice" Type="Int64" />
-          <Property Name="CreationDate" Type="DateTime" Precision="3" />
-          <Property Name="CustomerID" Type="Int32" />
-          <Property Name="IsDelete" Type="Boolean" />
-          <NavigationProperty Name="Customer" Relationship="PhoneStoreModel.FK__Bill__CustomerID__2B3F6F97" FromRole="Bill" ToRole="Customer" />
-          <NavigationProperty Name="BillDetails" Relationship="PhoneStoreModel.FK__BillDetai__BillI__2F10007B" FromRole="Bill" ToRole="BillDetail" />
-          <Property Name="IsCheckOut" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="BillDetail">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TotalCount" Type="Int32" />
-          <Property Name="ProductID" Type="Int32" />
-          <Property Name="BillID" Type="Int32" />
-          <NavigationProperty Name="Bill" Relationship="PhoneStoreModel.FK__BillDetai__BillI__2F10007B" FromRole="BillDetail" ToRole="Bill" />
-          <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__BillDetai__Produ__4222D4EF" FromRole="BillDetail" ToRole="Product" />
-        </EntityType>
-        <Association Name="FK__Bill__CustomerID__2B3F6F97">
-          <End Type="PhoneStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
-          <End Type="PhoneStoreModel.Bill" Role="Bill" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Bill">
-              <PropertyRef Name="CustomerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BillDetai__BillI__2F10007B">
-          <End Type="PhoneStoreModel.Bill" Role="Bill" Multiplicity="0..1" />
-          <End Type="PhoneStoreModel.BillDetail" Role="BillDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Bill">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="BillDetail">
-              <PropertyRef Name="BillID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ID" />
@@ -495,6 +438,8 @@
           <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Int32" />
           <Property Name="DiscountPercent" Type="Int32" />
+          <Property Name="Rating" Type="Double" />
+          <Property Name="SellCount" Type="Int32" />
           <Property Name="ViewCount" Type="Int32" />
           <Property Name="Image1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Image2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
@@ -511,6 +456,41 @@
           <NavigationProperty Name="FavoriteProducts" Relationship="PhoneStoreModel.FK__FavoriteP__Produ__37A5467C" FromRole="Product" ToRole="FavoriteProduct" />
           <NavigationProperty Name="ProductDetails" Relationship="PhoneStoreModel.FK__ProductDe__Produ__30F848ED" FromRole="Product" ToRole="ProductDetail" />
         </EntityType>
+        <EntityType Name="ProductDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="DetailName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DetailDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Product" Relationship="PhoneStoreModel.FK__ProductDe__Produ__30F848ED" FromRole="ProductDetail" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK__Bill__CustomerID__3F466844">
+          <End Type="PhoneStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="PhoneStoreModel.Bill" Role="Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BillDetai__BillI__4316F928">
+          <End Type="PhoneStoreModel.Bill" Role="Bill" Multiplicity="0..1" />
+          <End Type="PhoneStoreModel.BillDetail" Role="BillDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bill">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BillDetail">
+              <PropertyRef Name="BillID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__BillDetai__Produ__4222D4EF">
           <End Type="PhoneStoreModel.Product" Role="Product" Multiplicity="0..1" />
           <End Type="PhoneStoreModel.BillDetail" Role="BillDetail" Multiplicity="*" />
@@ -547,6 +527,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Comment__Custome__3C69FB99">
+          <End Type="PhoneStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="PhoneStoreModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Comment__Product__3B75D760">
           <End Type="PhoneStoreModel.Product" Role="Product" Multiplicity="0..1" />
           <End Type="PhoneStoreModel.Comment" Role="Comment" Multiplicity="*" />
@@ -556,6 +548,18 @@
             </Principal>
             <Dependent Role="Comment">
               <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FavoriteP__Custo__38996AB5">
+          <End Type="PhoneStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="PhoneStoreModel.FavoriteProduct" Role="FavoriteProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FavoriteProduct">
+              <PropertyRef Name="CustomerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -583,7 +587,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -592,8 +596,30 @@
           <EntitySetMapping Name="Advertisements">
             <EntityTypeMapping TypeName="PhoneStoreModel.Advertisement">
               <MappingFragment StoreEntitySet="Advertisement">
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bills">
+            <EntityTypeMapping TypeName="PhoneStoreModel.Bill">
+              <MappingFragment StoreEntitySet="Bill">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsCheckOut" ColumnName="IsCheckOut" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillDetails">
+            <EntityTypeMapping TypeName="PhoneStoreModel.BillDetail">
+              <MappingFragment StoreEntitySet="BillDetail">
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="TotalCount" ColumnName="TotalCount" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -601,9 +627,9 @@
             <EntityTypeMapping TypeName="PhoneStoreModel.Brand">
               <MappingFragment StoreEntitySet="Brand">
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -611,17 +637,18 @@
             <EntityTypeMapping TypeName="PhoneStoreModel.Category">
               <MappingFragment StoreEntitySet="Category">
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductDetails">
-            <EntityTypeMapping TypeName="PhoneStoreModel.ProductDetail">
-              <MappingFragment StoreEntitySet="ProductDetail">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="DetailDescription" ColumnName="DetailDescription" />
-                <ScalarProperty Name="DetailName" ColumnName="DetailName" />
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="PhoneStoreModel.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
@@ -651,40 +678,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Comments">
-            <EntityTypeMapping TypeName="PhoneStoreModel.Comment">
-              <MappingFragment StoreEntitySet="Comment">
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="Rating" ColumnName="Rating" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Bills">
-            <EntityTypeMapping TypeName="PhoneStoreModel.Bill">
-              <MappingFragment StoreEntitySet="Bill">
-                <ScalarProperty Name="IsCheckOut" ColumnName="IsCheckOut" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BillDetails">
-            <EntityTypeMapping TypeName="PhoneStoreModel.BillDetail">
-              <MappingFragment StoreEntitySet="BillDetail">
-                <ScalarProperty Name="BillID" ColumnName="BillID" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="TotalCount" ColumnName="TotalCount" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="PhoneStoreModel.Product">
               <MappingFragment StoreEntitySet="Product">
@@ -697,9 +690,22 @@
                 <ScalarProperty Name="Image2" ColumnName="Image2" />
                 <ScalarProperty Name="Image1" ColumnName="Image1" />
                 <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+                <ScalarProperty Name="SellCount" ColumnName="SellCount" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductDetails">
+            <EntityTypeMapping TypeName="PhoneStoreModel.ProductDetail">
+              <MappingFragment StoreEntitySet="ProductDetail">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="DetailDescription" ColumnName="DetailDescription" />
+                <ScalarProperty Name="DetailName" ColumnName="DetailName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

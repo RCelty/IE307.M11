@@ -4,8 +4,30 @@
     <EntitySetMapping Name="Advertisements">
       <EntityTypeMapping TypeName="PhoneStoreModel.Advertisement">
         <MappingFragment StoreEntitySet="Advertisement">
-          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bills">
+      <EntityTypeMapping TypeName="PhoneStoreModel.Bill">
+        <MappingFragment StoreEntitySet="Bill">
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsCheckOut" ColumnName="IsCheckOut" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BillDetails">
+      <EntityTypeMapping TypeName="PhoneStoreModel.BillDetail">
+        <MappingFragment StoreEntitySet="BillDetail">
+          <ScalarProperty Name="BillID" ColumnName="BillID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="TotalCount" ColumnName="TotalCount" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -13,9 +35,9 @@
       <EntityTypeMapping TypeName="PhoneStoreModel.Brand">
         <MappingFragment StoreEntitySet="Brand">
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
           <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -23,17 +45,18 @@
       <EntityTypeMapping TypeName="PhoneStoreModel.Category">
         <MappingFragment StoreEntitySet="Category">
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ProductDetails">
-      <EntityTypeMapping TypeName="PhoneStoreModel.ProductDetail">
-        <MappingFragment StoreEntitySet="ProductDetail">
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-          <ScalarProperty Name="DetailDescription" ColumnName="DetailDescription" />
-          <ScalarProperty Name="DetailName" ColumnName="DetailName" />
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="PhoneStoreModel.Comment">
+        <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
@@ -63,40 +86,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Comments">
-      <EntityTypeMapping TypeName="PhoneStoreModel.Comment">
-        <MappingFragment StoreEntitySet="Comment">
-          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-          <ScalarProperty Name="Rating" ColumnName="Rating" />
-          <ScalarProperty Name="Content" ColumnName="Content" />
-          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Bills">
-      <EntityTypeMapping TypeName="PhoneStoreModel.Bill">
-        <MappingFragment StoreEntitySet="Bill">
-          <ScalarProperty Name="IsCheckOut" ColumnName="IsCheckOut" />
-          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="BillDetails">
-      <EntityTypeMapping TypeName="PhoneStoreModel.BillDetail">
-        <MappingFragment StoreEntitySet="BillDetail">
-          <ScalarProperty Name="BillID" ColumnName="BillID" />
-          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-          <ScalarProperty Name="TotalCount" ColumnName="TotalCount" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="PhoneStoreModel.Product">
         <MappingFragment StoreEntitySet="Product">
@@ -109,9 +98,22 @@
           <ScalarProperty Name="Image2" ColumnName="Image2" />
           <ScalarProperty Name="Image1" ColumnName="Image1" />
           <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="SellCount" ColumnName="SellCount" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
           <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductDetails">
+      <EntityTypeMapping TypeName="PhoneStoreModel.ProductDetail">
+        <MappingFragment StoreEntitySet="ProductDetail">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="DetailDescription" ColumnName="DetailDescription" />
+          <ScalarProperty Name="DetailName" ColumnName="DetailName" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

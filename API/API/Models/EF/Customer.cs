@@ -17,9 +17,9 @@ namespace API.Models.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
-            this.FavoriteProducts = new HashSet<FavoriteProduct>();
-            this.Comments = new HashSet<Comment>();
             this.Bills = new HashSet<Bill>();
+            this.Comments = new HashSet<Comment>();
+            this.FavoriteProducts = new HashSet<FavoriteProduct>();
         }
     
         public int ID { get; set; }
@@ -33,10 +33,10 @@ namespace API.Models.EF
         public Nullable<bool> IsAdmin { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FavoriteProduct> FavoriteProducts { get; set; }
+        public virtual ICollection<Bill> Bills { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bill> Bills { get; set; }
+        public virtual ICollection<FavoriteProduct> FavoriteProducts { get; set; }
     }
 }

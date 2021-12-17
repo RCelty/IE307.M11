@@ -10,34 +10,55 @@
       ScrollViewer.CanContentScroll="True"
       Title="ProductPage">
 
-   
-        <StackPanel>
-            <TextBlock Text="Product" HorizontalAlignment="Center" FontSize="40"/>
-            <Button x:Name="add_btn" Content="Thêm" Width="80" HorizontalAlignment="Left" Margin="15"
-                Command="{Binding OpenAddProductWindowCommand}"/>
-            <ListView ItemsSource="{Binding Products}" ScrollViewer.CanContentScroll="True" Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5">
-                            <Grid Margin="10">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="200"/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
 
-                                <TextBlock Grid.Column="0" x:Name="ID" Text="{Binding ID}" VerticalAlignment="Center"/>
-                                <Image Grid.Column="1" Source="{Binding Image1}" Stretch="Uniform" StretchDirection="DownOnly"/>
-                                <TextBlock Grid.Column="2" x:Name="DisplayName" Text="{Binding DisplayName}" VerticalAlignment="Center" TextTrimming="WordEllipsis" TextWrapping="NoWrap"/>
-                                <Button Grid.Column="3" Content="Sửa" Margin="10,0,10,0" Background="LightGreen" Command="{Binding DataContext.OpenEditCommand, Source={x:Reference Name=MyProductPage}}" CommandParameter="{Binding .}"/>
-                                <Button Grid.Column="4" Content="Xóa" Margin="10,0,10,0" Background="red" Command="{Binding DataContext.DeleteCommand, Source={x:Reference Name=MyProductPage}}" CommandParameter="{Binding .}"/>
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackPanel>
-   
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Product" HorizontalAlignment="Center" FontSize="40"/>
+        <Button Grid.Row="1" x:Name="add_btn" Content="Thêm" Width="80" HorizontalAlignment="Left" Margin="15"
+                Command="{Binding OpenAddProductWindowCommand}"/>
+        <Grid Grid.Row="2" Margin="20,0,20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Content="ID" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label Grid.Column="1" Content="Ảnh" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label Grid.Column="2" Content="Tên sản phẩm" VerticalAlignment="Center" FontWeight="Bold"/>
+        </Grid>
+        <ListView Grid.Row="3" ItemsSource="{Binding Products}" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5">
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" x:Name="ID" Text="{Binding ID}" VerticalAlignment="Center"/>
+                            <Image Grid.Column="1" Source="{Binding Image1}" Stretch="Uniform" StretchDirection="DownOnly"/>
+                            <TextBlock Grid.Column="2" x:Name="DisplayName" Text="{Binding DisplayName}" VerticalAlignment="Center" TextTrimming="WordEllipsis" TextWrapping="NoWrap"/>
+                            <Button Grid.Column="3" Content="Sửa" Margin="10,0,10,0" Background="LightGreen" Command="{Binding DataContext.OpenEditCommand, Source={x:Reference Name=MyProductPage}}" CommandParameter="{Binding .}"/>
+                            <Button Grid.Column="4" Content="Xóa" Margin="10,0,10,0" Background="red" Command="{Binding DataContext.DeleteCommand, Source={x:Reference Name=MyProductPage}}" CommandParameter="{Binding .}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+
+
 </Page>

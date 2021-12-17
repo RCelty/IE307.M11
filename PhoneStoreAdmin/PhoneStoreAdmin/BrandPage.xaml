@@ -9,10 +9,34 @@
       x:Name="MyBrandPage"
       Title="Brand Page">
 
-    <StackPanel>
-        <TextBlock Text="Brand" HorizontalAlignment="Center" FontSize="40"/>
-        <Button x:Name="add_btn" Content="Thêm" Width="80" HorizontalAlignment="Left" Margin="15" Command="{Binding OpenAddBrandCommand}"/>
-        <ListView ItemsSource="{Binding Brands}" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Brand" HorizontalAlignment="Center" FontSize="40"
+                   Grid.Row="0"/>
+        <Button x:Name="add_btn" Content="Thêm" Width="80" HorizontalAlignment="Left" Margin="15" Command="{Binding OpenAddBrandCommand}"
+                Grid.Row="1"/>
+
+        <Grid Grid.Row="2" Margin="20,0,20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Content="ID" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label Grid.Column="1" Content="Logo" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label Grid.Column="2" Content="Tên nhãn hiệu" VerticalAlignment="Center" FontWeight="Bold"/>
+        </Grid>
+        
+        <ListView ItemsSource="{Binding Brands}" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="3">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5">
@@ -35,5 +59,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </StackPanel>
+    </Grid>
+
 </Page>

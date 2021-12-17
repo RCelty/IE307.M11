@@ -62,7 +62,7 @@ namespace PhoneStoreApp.ViewModels
             SelectAllCommand = new Command(SelectAllCommandExecute, () => true);
             DeleteSelectedCommand = new Command(DeleteSelectedCommandExecute, () => true);
             ProductDetailOnClick = new Command<CartItem>(ProductDetailOnClickExcute, product => product != null);
-            CartPageOnClick = new Command(CartPageOnClickExcute, () => !IsBusy);
+            CartPageOnClick = new Command(CartPageOnClickExcute, () => true);
         }
 
         public async void LoadData()
@@ -129,6 +129,11 @@ namespace PhoneStoreApp.ViewModels
                 await App.Current.MainPage.DisplayAlert("Thông báo", "Bạn chưa chọn sản phẩm để xóa", "Ok");
             }
         }
+
+        public async void SendConfirmMail(int ID)
+        {
+            await CartService.Instance.SendOrderConfirm(ID);
+        }
         async void CartPageOnClickExcute()
         {
             string action = await App.Current.MainPage.DisplayActionSheet("Bạn muốn thanh toán bằng?", "Hủy", null, "Thanh toán online", "Tiền mặt");
@@ -137,7 +142,7 @@ namespace PhoneStoreApp.ViewModels
                 await App.Current.MainPage.Navigation.PushAsync(new StripePaymentPage(TotalPrice));
             if (action == "Tiền mặt")
             {
-                IsBusy = true;
+                //IsBusy = true;
                 Bill bill = new Bill() { TotalPrice = TotalPrice, CustomerID = Const.CurrentCustomerID };
                 int ID = await CartService.Instance.CreateBill(bill);
                 if (ID != -1)
@@ -147,13 +152,13 @@ namespace PhoneStoreApp.ViewModels
                         BillDetail billdetail = new BillDetail() { ProductID = c.ID, TotalCount = c.Count, BillID = ID };
                         await CartService.Instance.AddBillDetail(billdetail);
                     }
-                    await CartService.Instance.SendOrderConfirm(ID);
-                    IsBusy = false;
+                    //IsBusy = false;
                     await App.Current.MainPage.DisplayAlert("Thông báo", "Đặt hàng thành công", "Ok");
+                    SendConfirmMail(ID);
                     //await App.Current.MainPage.Navigation.PopAsync();
                     await App.Current.MainPage.Navigation.PushAsync(new MainViewPage());
                 }
-                IsBusy = false;
+                //IsBusy = false;
             }
         }
         public async void CartPageOnClickMoMoExcute()

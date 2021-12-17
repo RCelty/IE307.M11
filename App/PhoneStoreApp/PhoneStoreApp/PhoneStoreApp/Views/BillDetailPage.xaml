@@ -90,7 +90,7 @@
                         <StackLayout Orientation="Horizontal">
                             <Label Text="Tạm tính:"  FontSize="Medium" HorizontalOptions="StartAndExpand"></Label>
                             <Label Text="{Binding BillTotalPrice, Converter={x:StaticResource ConvertLongPriceToString}}"  FontSize="Medium"></Label>
-                            <Label Text="VNĐ"  FontSize="Medium"></Label>
+                            <!--<Label Text="VNĐ"  FontSize="Medium"></Label>-->
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label Text="Thành tiền:" TextColor="Black" FontSize="Medium" HorizontalOptions="StartAndExpand" ></Label>

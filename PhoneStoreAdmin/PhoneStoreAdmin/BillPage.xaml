@@ -14,17 +14,35 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Text="Bill" HorizontalAlignment="Center" FontSize="40" Grid.Row="0"/>
-        <ListView ItemsSource="{Binding Bills}" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="1">
+
+        <Grid Grid.Row="1" Margin="20,0,20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Content="ID" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label Grid.Column="1" Content="Tên người dùng" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label Grid.Column="2" Content="Tổng cộng" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label Grid.Column="3" Content="Tình trạng" VerticalAlignment="Center" FontWeight="Bold"/>
+        </Grid>
+        
+        <ListView ItemsSource="{Binding Bills}" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="2">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5">
                         <Grid Margin="10">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="150"/>
                                 <ColumnDefinition Width="300"/>
                                 <ColumnDefinition Width="100"/>
                                 <ColumnDefinition/>

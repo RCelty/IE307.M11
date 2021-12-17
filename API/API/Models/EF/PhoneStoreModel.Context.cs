@@ -26,14 +26,14 @@ namespace API.Models.EF
         }
     
         public virtual DbSet<Advertisement> Advertisements { get; set; }
-        public virtual DbSet<Brand> Brands { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<ProductDetail> ProductDetails { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<FavoriteProduct> FavoriteProducts { get; set; }
-        public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<BillDetail> BillDetails { get; set; }
+        public virtual DbSet<Brand> Brands { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<FavoriteProduct> FavoriteProducts { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ProductDetail> ProductDetails { get; set; }
     }
 }

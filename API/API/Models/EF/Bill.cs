@@ -24,8 +24,8 @@ namespace API.Models.EF
         public Nullable<long> TotalPrice { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }
         public Nullable<int> CustomerID { get; set; }
-        public Nullable<bool> IsDelete { get; set; }
         public Nullable<bool> IsCheckOut { get; set; }
+        public Nullable<bool> IsDelete { get; set; }
     
         public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

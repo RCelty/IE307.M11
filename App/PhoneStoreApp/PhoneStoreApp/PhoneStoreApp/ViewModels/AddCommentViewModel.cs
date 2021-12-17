@@ -118,11 +118,13 @@ namespace PhoneStoreApp.ViewModels
         }
         async void PostCommentCommandExcute()
         {
+            IsBusy = true;
             if (commentglobal.ID == null)
             {
                 Comment comment = new Comment() { ProductID = ProductID, CustomerID = Const.CurrentCustomerID, Content = Content, Rating = StarNumber };
                 if (await CommentService.Instance.AddComment(comment) != -1)
                 {
+                    IsBusy = false;
                     await App.Current.MainPage.DisplayAlert("Thông báo", "Thêm đánh giá thành công", "Ok");
 
                     await App.Current.MainPage.Navigation.PopAsync();
@@ -136,6 +138,7 @@ namespace PhoneStoreApp.ViewModels
                 Commentglobal.Rating = StarNumber;
                 if (await CommentService.Instance.UpdateComment(commentglobal) == true)
                 {
+                    IsBusy = false;
                     await App.Current.MainPage.DisplayAlert("Thông báo", "Sửa đánh giá thành công", "Ok");
                     await App.Current.MainPage.Navigation.PopAsync();
                     await App.Current.MainPage.Navigation.PushAsync(new ProductDetailPage(ProductID));

@@ -137,26 +137,33 @@ namespace PhoneStoreApp.ViewModels
             bool result = await App.Current.MainPage.DisplayAlert("Thông báo", "Bạn có chắc chắn muốn xóa?", "Có", "Không");
             if (result == true)
             {
+                IsBusy = true;
                 var deleted = await CommentService.Instance.DeleteComment((int)comment.ID);
                 if (deleted)
                 {
+                    IsBusy = false;
                     ListComment.Remove(comment);
                     AddCommentCommand.ChangeCanExecute();
                     await App.Current.MainPage.DisplayAlert("Thông báo", "Xóa thành công", "Ok");
 
                 }
                 else
+                {
+                    IsBusy = false;
                     await App.Current.MainPage.DisplayAlert("Thông báo", "Xóa thành công", "Ok");
+                }
             }
         }
         public async void UpdateCommentCommandExecute(Comment comment)
         {
+            await App.Current.MainPage.Navigation.PopAsync();
             await App.Current.MainPage.Navigation.PushAsync(new AddCommentPage(comment, Product));
         }
         public async void AddCommentCommandExecute()
         {
             AddCommentCommand.ChangeCanExecute();
             Comment newcomment = new Comment() { ProductID = Product.ID };
+            await App.Current.MainPage.Navigation.PopAsync();
             await App.Current.MainPage.Navigation.PushAsync(new AddCommentPage(newcomment, Product));
         }
         private async void GoBackOnClickExcute()

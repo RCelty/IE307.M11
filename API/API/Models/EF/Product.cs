@@ -27,6 +27,8 @@ namespace API.Models.EF
         public string DisplayName { get; set; }
         public Nullable<int> Price { get; set; }
         public Nullable<int> DiscountPercent { get; set; }
+        public Nullable<double> Rating { get; set; }
+        public Nullable<int> SellCount { get; set; }
         public Nullable<int> ViewCount { get; set; }
         public string Image1 { get; set; }
         public string Image2 { get; set; }
