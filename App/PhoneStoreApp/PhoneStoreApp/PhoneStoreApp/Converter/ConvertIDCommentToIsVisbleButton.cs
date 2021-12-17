@@ -12,9 +12,9 @@ namespace PhoneStoreApp.Converter
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if ((int)value == Const.CurrentCustomerID)
-                return false;
-            else
                 return true;
+            else
+                return false;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -153,8 +153,8 @@ namespace PhoneStoreApp.ViewModels
                         await CartService.Instance.AddBillDetail(billdetail);
                     }
                     //IsBusy = false;
-                    await App.Current.MainPage.DisplayAlert("Thông báo", "Đặt hàng thành công", "Ok");
                     SendConfirmMail(ID);
+                    await App.Current.MainPage.DisplayAlert("Thông báo", "Đặt hàng thành công", "Ok");
                     //await App.Current.MainPage.Navigation.PopAsync();
                     await App.Current.MainPage.Navigation.PushAsync(new MainViewPage());
                 }
