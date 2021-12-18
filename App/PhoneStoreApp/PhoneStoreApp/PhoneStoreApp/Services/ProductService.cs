@@ -61,7 +61,8 @@ namespace PhoneStoreApp.Services
 
                     var ProductList = JsonConvert.DeserializeObject<List<Product>>(dataString);
 
-                    ProductList = ProductList.FindAll(p => Const.ConvertToUnsign(p.DisplayName).IndexOf(searchText, 0, StringComparison.CurrentCultureIgnoreCase) != -1);
+                    ProductList = ProductList.FindAll(p => Const.ConvertToUnsign(p.DisplayName).IndexOf(searchText, 0, StringComparison.CurrentCultureIgnoreCase) != -1 ||
+                    p.DisplayName.IndexOf(searchText, 0, StringComparison.CurrentCultureIgnoreCase) != -1);
 
                     return ProductList;
                 }
@@ -178,7 +179,7 @@ namespace PhoneStoreApp.Services
 
         public async Task<Product> GetProductByID(int ID)
         {
-            using(HttpClient client = new HttpClient())
+            using (HttpClient client = new HttpClient())
             {
                 try
                 {
@@ -190,7 +191,7 @@ namespace PhoneStoreApp.Services
 
                     return result;
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     return null;
                     throw e;

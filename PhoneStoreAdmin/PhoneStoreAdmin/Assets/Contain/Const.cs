@@ -9,8 +9,9 @@ namespace PhoneStoreAdmin.Assets.Contain
     public class Const
     {
         public static readonly string SQLiteDBContextPath = "SQLite.db";
-        public static readonly string Domain = $"http://localhost:88/";
-        
+        //public static readonly string Domain = $"http://localhost:88/";
+        public static readonly string Domain = $"http://chotechapi.somee.com/";
+
         public static readonly string GetAllAdvertisementPath = Domain + @"Api/AdvertisementController/GetAllAdvertisement";
         
         public static readonly string GetAllProductPath = Domain + @"Api/ProductController/GetAllProduct";

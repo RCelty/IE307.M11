@@ -17,6 +17,7 @@ namespace PhoneStoreApp.Assets.Contains
 
         public static readonly string SQLiteDBContextPath = "SQLite.db";
         public static readonly string Domain = $"http://10.0.2.2:88/";
+        //public static readonly string Domain = $"http://chotechapi.somee.com/";
 
         //General Path
         public static readonly string GetAllCategoryPath = Domain + @"Api/CategoryController/GetAllCategory";
