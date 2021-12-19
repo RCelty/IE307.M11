@@ -16,8 +16,8 @@ namespace PhoneStoreApp.Assets.Contains
         public static List<Product> cartProducts = new List<Product>();
 
         public static readonly string SQLiteDBContextPath = "SQLite.db";
-        public static readonly string Domain = $"http://10.0.2.2:88/";
-        //public static readonly string Domain = $"http://chotechapi.somee.com/";
+        //public static readonly string Domain = $"http://10.0.2.2:88/";
+        public static readonly string Domain = $"http://chotechAPI.somee.com/";
 
         //General Path
         public static readonly string GetAllCategoryPath = Domain + @"Api/CategoryController/GetAllCategory";
@@ -102,34 +102,34 @@ namespace PhoneStoreApp.Assets.Contains
             }
         }
 
-        //public static bool SendMail(string to, string subject, string body)
-        //{
-        //    try
-        //    {
-        //        MailMessage message = new MailMessage();
-        //        SmtpClient smtp = new SmtpClient();
+        public static bool SendMail(string to, string subject, string body)
+        {
+            try
+            {
+                MailMessage message = new MailMessage();
+                SmtpClient smtp = new SmtpClient();
 
-        //        message.From = new MailAddress(Const.Email);
-        //        message.To.Add(new MailAddress(to));
-        //        message.Subject = subject;
-        //        message.IsBodyHtml = true; //to make message body as html  
-        //        message.Body = body;
+                message.From = new MailAddress(Const.Email);
+                message.To.Add(new MailAddress(to));
+                message.Subject = subject;
+                message.IsBodyHtml = true; //to make message body as html  
+                message.Body = body;
 
-        //        smtp.Port = 587;
-        //        smtp.Host = "smtp.gmail.com"; //for gmail host  
-        //        smtp.EnableSsl = true;
-        //        smtp.UseDefaultCredentials = false;
-        //        smtp.Credentials = new NetworkCredential(Const.Email, Const.Password);
-        //        smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-               
-        //        smtp.Send(message);                
-        //        return true;
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return false;
-        //        throw e;
-        //    }
-        //}        
+                smtp.Port = 587;
+                smtp.Host = "smtp.gmail.com"; //for gmail host  
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential(Const.Email, Const.Password);
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+
+                smtp.Send(message);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+                throw e;
+            }
+        }
     }
 }

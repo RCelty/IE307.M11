@@ -70,8 +70,9 @@ namespace PhoneStoreApp.ViewModels
         {
             IsBusy = true;
             Customer customer = await Services.LoginServices.Instance.GetCustomerUserNameID(customerTemp.UserName);
-            string ImageName = customer.Avatar.Replace(SourceImagePath, "");
-            customer.Avatar = ImageName;
+            //string ImageName = customer.Avatar.Replace(SourceImagePath, "");
+            //customer.Avatar = ImageName;
+            customer.Avatar = "";
 
             // case lost password
             if (isLostPassword)

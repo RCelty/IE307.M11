@@ -264,8 +264,10 @@ namespace PhoneStoreApp.ViewModels
             //await LoginServices.Instance.UploadImage(ImageData, ImageName);
             //var user = await LoginServices.Instance.GetCustomerByID(Const.CurrentCustomerID);
             //var result = await LoginServices.Instance.SendOTP(user);
-            var list = await CartService.Instance.GetBillByCustomerID(1);
-            var e = "";
+            //var list = await CartService.Instance.GetBillByCustomerID(1);
+            //var e = "";
+            var result = LoginServices.Instance.ConfirmOTPEmail("DA", "18520459@gm.uit.edu.vn");
+            var e = 0;
         }
     }
 }

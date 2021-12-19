@@ -94,7 +94,7 @@ namespace PhoneStoreApp.ViewModels
         }
 
         void DeleteCommandExecute(CartItem cartItem)
-        {            
+        {
             var delete = Const.cartProducts.FirstOrDefault(p => p.ID == cartItem.ID);
             Const.cartProducts.Remove(delete);
             CartProducts.Remove(cartItem);
@@ -103,7 +103,7 @@ namespace PhoneStoreApp.ViewModels
 
         void SelectAllCommandExecute()
         {
-            foreach(var c in CartProducts)
+            foreach (var c in CartProducts)
             {
                 c.IsSelected = true;
             }
@@ -116,7 +116,7 @@ namespace PhoneStoreApp.ViewModels
 
             if (selectedList != null && selectedList.Count > 0)
             {
-                foreach(var s in selectedList)
+                foreach (var s in selectedList)
                 {
                     var delete = Const.cartProducts.SingleOrDefault(c => c.ID == s.ID);
                     Const.cartProducts.Remove(delete);
@@ -130,9 +130,9 @@ namespace PhoneStoreApp.ViewModels
             }
         }
 
-        public async void SendConfirmMail(int ID)
+        public async void SendConfirmMail(Bill bill, bool IsCheckOut, List<BillDetail> billDetails, Customer customer)
         {
-            await CartService.Instance.SendOrderConfirm(ID);
+            await CartService.Instance.SendOrderConfirm(bill, IsCheckOut, billDetails, customer);
         }
         async void CartPageOnClickExcute()
         {
@@ -143,17 +143,20 @@ namespace PhoneStoreApp.ViewModels
             if (action == "Tiền mặt")
             {
                 //IsBusy = true;
+                Customer customer = await LoginServices.Instance.GetCustomerByID(Const.CurrentCustomerID);
                 Bill bill = new Bill() { TotalPrice = TotalPrice, CustomerID = Const.CurrentCustomerID };
                 int ID = await CartService.Instance.CreateBill(bill);
                 if (ID != -1)
                 {
+                    List<BillDetail> billDetails = new List<BillDetail>();
                     foreach (var c in CartProducts)
                     {
-                        BillDetail billdetail = new BillDetail() { ProductID = c.ID, TotalCount = c.Count, BillID = ID };
+                        BillDetail billdetail = new BillDetail() { ProductID = c.ID, TotalCount = c.Count, BillID = ID, Price = c.Price, ProductName = c.DisplayName };
                         await CartService.Instance.AddBillDetail(billdetail);
+                        billDetails.Add(billdetail);
                     }
                     //IsBusy = false;
-                    SendConfirmMail(ID);
+                    SendConfirmMail(bill, false, billDetails, customer);
                     await App.Current.MainPage.DisplayAlert("Thông báo", "Đặt hàng thành công", "Ok");
                     //await App.Current.MainPage.Navigation.PopAsync();
                     await App.Current.MainPage.Navigation.PushAsync(new MainViewPage());

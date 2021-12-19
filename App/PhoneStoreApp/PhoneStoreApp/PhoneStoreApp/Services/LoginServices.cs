@@ -181,30 +181,66 @@ namespace PhoneStoreApp.Services
 
         public async Task<string> SendOTP(Customer customer)
         {
-            using (HttpClient client = new HttpClient())
+            //using (HttpClient client = new HttpClient())
+            //{
+            //    try
+            //    {
+            //        var convertString = Const.ConverToPathWithParameter(Const.SendOTPPath);
+
+            //        var myContent = JsonConvert.SerializeObject(customer);
+            //        var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+            //        var byteContent = new ByteArrayContent(buffer);
+
+            //        byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            //        var result = client.PostAsync(convertString, byteContent).Result.Content.ReadAsStringAsync().Result;
+
+            //        var OTP = JsonConvert.DeserializeObject<string>(result);
+
+            //        return OTP;
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        return "";
+            //        throw e;
+            //    }
+            //}
+            Task<string> task = new Task<string>(new Func<string>(() =>
             {
                 try
                 {
-                    var convertString = Const.ConverToPathWithParameter(Const.SendOTPPath);
+                    string OTP = new Random().Next(1000, 10000).ToString();
+                    var body = "";
 
-                    var myContent = JsonConvert.SerializeObject(customer);
-                    var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
-                    var byteContent = new ByteArrayContent(buffer);
+                    body += "<hr/>";
+                    body += "Xin chào <b>" + customer.DisplayName + "</b>,<br/><br/>";
 
-                    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                    body += "Mã xác thực OTP Chotech của bạn là: <b>" + OTP + "</b><br/><br/>";
+                    body += "Vui lòng không cung cấp mã OTP cho bất kì ai khác.<br/><br/>";
+                    body += "Cảm ơn đã đăng ký,<br/><br/>";
+                    body += "-----------------------------<br/>";
+                    body += "<b>D.A Nguyen - Leader</b><br/>";
+                    body += "<b>Phone:</b> (84) 00 7143 619<br/>";
+                    body += "<b>Facebook: </b><a href=" + "https://www.facebook.com/duyanh.nguyenngoc.14/" + ">https://www.facebook.com/duyanh.nguyenngoc.14/<a/>";
+                    body += "<hr/>";
 
-                    var result = client.PostAsync(convertString, byteContent).Result.Content.ReadAsStringAsync().Result;
+                    var result = Const.SendMail(customer.Email, "Xác thực Email - ChoTech", body);
+                    if (result)
+                        return OTP;
+                    else
+                        return "";
 
-                    var OTP = JsonConvert.DeserializeObject<string>(result);
-
-                    return OTP;
                 }
                 catch (Exception e)
                 {
                     return "";
                     throw e;
                 }
-            }
+            }));
+
+            task.Start();
+
+            return await task;
         }
 
         public async Task<bool> UpdateCustomer(Customer customer)
@@ -236,34 +272,34 @@ namespace PhoneStoreApp.Services
         }
 
 
-        //public async Task<string> ConfirmOTPEmail(string fullName, string email)
-        //{
-        //    Task<string> task = new Task<string>(new Func<string>(() =>
-        //    {
-        //        try
-        //        {
-        //            string OTP = new Random().Next(1000, 10000).ToString();
-        //            var body = "";
+        public async Task<string> ConfirmOTPEmail(string fullName, string email)
+        {
+            Task<string> task = new Task<string>(new Func<string>(() =>
+            {
+                try
+                {
+                    string OTP = new Random().Next(1000, 10000).ToString();
+                    var body = "";
 
-        //            body += "<hr/>";
-        //            body += "Xin chào <b>" + fullName + "</b>,<br/><br/>";
+                    body += "<hr/>";
+                    body += "Xin chào <b>" + fullName + "</b>,<br/><br/>";
 
-        //            body += "Mã xác thực OTP Chotech của bạn là: <b>" + OTP + "</b><br/><br/>";                    
+                    body += "Mã xác thực OTP Chotech của bạn là: <b>" + OTP + "</b><br/><br/>";
 
-        //            Const.SendMail(email, "Confirm Password - Electronic Shop", body);
-        //            return OTP;
+                    Const.SendMail(email, "Confirm Password - Electronic Shop", body);
+                    return OTP;
 
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            return "";
-        //            throw e;
-        //        }
-        //    }));
+                }
+                catch (Exception e)
+                {
+                    return "";
+                    throw e;
+                }
+            }));
 
-        //    task.Start();
+            task.Start();
 
-        //    return await task;
-        //}
+            return await task;
+        }
     }
 }

@@ -66,33 +66,36 @@ namespace PhoneStoreApp.ViewModels
         }
         async public void PayCommandExcute()
         {
-            if(CardNumber.Length < 19)
+            if (CardNumber.Length < 19)
                 await App.Current.MainPage.DisplayAlert("Thong bao", "Số thẻ không hợp lệ", "Ok");
             if (Convert.ToInt16(CardDate.Substring(3, 2)) <= 21)
             {
                 await App.Current.MainPage.DisplayAlert("Thong bao", "Hạn của thẻ không hợp lệ", "Ok");
-            } 
-            if(CardNumber.Length == 19 && Convert.ToInt16(CardDate.Substring(3, 2)) > 21)
+            }
+            if (CardNumber.Length == 19 && Convert.ToInt16(CardDate.Substring(3, 2)) > 21)
             {
                 IsBusy = true;
                 Pay();
-            }    
+            }
 
 
         }
         async public void CreateBill()
         {
             Bill bill = new Bill() { TotalPrice = TotalPrice, CustomerID = Const.CurrentCustomerID };
+
             int ID = await CartService.Instance.CreateBill(bill);
             if (ID != -1)
             {
+                List<BillDetail> billDetails = new List<BillDetail>();
                 foreach (var c in CartProducts)
                 {
-                    BillDetail billdetail = new BillDetail() { ProductID = c.ID, TotalCount = c.Count, BillID = ID };
+                    BillDetail billdetail = new BillDetail() { ProductID = c.ID, TotalCount = c.Count, BillID = ID, ProductName = c.DisplayName, Price = c.Price };
                     await CartService.Instance.AddBillDetail(billdetail);
+                    billDetails.Add(billdetail);
                 }
                 await CartService.Instance.ChangeBillStatus(ID);
-                await CartService.Instance.SendOrderConfirm(ID);
+                await CartService.Instance.SendOrderConfirm(bill, true, billDetails, Customer);
                 await App.Current.MainPage.DisplayAlert("Thông báo", "Thanh toán thành công, đơn hàng sẽ được chuyển đến bạn sớm", "Ok");
                 await App.Current.MainPage.Navigation.PopAsync();
                 await App.Current.MainPage.Navigation.PushAsync(new MainViewPage());
