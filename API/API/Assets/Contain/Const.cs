@@ -8,13 +8,14 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using Microsoft.Web.Administration;
 
 namespace API.Assets.Contain
 {
     public class Const
     {
-        //public static readonly string Domain = $"http://10.0.2.2:88/";
-        public static readonly string Domain = $"http://chotechAPI.somee.com/";
+        public static readonly string Domain = $"http://10.0.2.2:88/";
+        //public static readonly string Domain = $"http://chotechAPI.somee.com/";
         
         public static readonly string AdvertisementImagePath = Domain + @"Assets/Images/Advertisement/";
         public static readonly string BrandImagePath = Domain + @"Assets/Images/Brand/";
@@ -115,6 +116,34 @@ namespace API.Assets.Contain
             {
                 return false;
                 throw e;
+            }
+        }
+
+        public static void RecycleAppPools()
+        {
+            ServerManager serverManager = new ServerManager();
+            ApplicationPoolCollection appPools = serverManager.ApplicationPools;
+            foreach (ApplicationPool ap in appPools)
+            {
+                ap.Recycle();
+            }
+        }
+
+        public static void RecycleAppPool()
+        {
+            ServerManager serverManager = new ServerManager();
+            string appPoolName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            ApplicationPool appPool = serverManager.ApplicationPools[appPoolName];
+            if (appPool != null)
+            {
+                if (appPool.State == ObjectState.Stopped)
+                {
+                    appPool.Start();
+                }
+                else
+                {
+                    appPool.Recycle();
+                }
             }
         }
     }

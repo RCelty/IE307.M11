@@ -36,8 +36,17 @@ namespace API.Models.DTO
             ProductID = comment.ProductID;
             CustomerID = comment.CustomerID;
             CreationDate = comment.CreationDate;
-            CustomerName = comment.Customer.DisplayName;
-            CustomerAvatar = Const.CustomerImagePath + comment.Customer.Avatar;
+            if (comment.Customer == null)
+            {
+                CustomerName = "";
+                CustomerAvatar = "";
+            }
+            else
+            {
+                CustomerName = comment.Customer.DisplayName;
+                CustomerAvatar = Const.CustomerImagePath + comment.Customer.Avatar;
+            }
+
             Content = comment.Content;
             Rating = comment.Rating;
         }

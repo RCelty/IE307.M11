@@ -49,6 +49,13 @@ namespace API.Models.DAO
                 Rating = commentDTO.Rating
             };
 
+            Customer customer = db.Customers.SingleOrDefault(c => c.ID == comment.CustomerID);
+            comment.Customer = customer;
+            //Product product = db.Products.SingleOrDefault(p => p.ID == comment.ProductID);
+            //product.Comments.Add(comment);
+
+            db.Entry(comment).State = EntityState.Added;
+
             try
             {
                 db.Comments.Add(comment);
@@ -65,6 +72,9 @@ namespace API.Models.DAO
         public async Task<bool> UpdateComment(CommentDTO commentDTO)
         {
             var result = db.Comments.SingleOrDefault(c => c.ID == commentDTO.ID);
+
+            db.Entry(result).State = EntityState.Modified;
+
             try
             {
                 result.Content = commentDTO.Content;
@@ -82,6 +92,8 @@ namespace API.Models.DAO
         public async Task<bool> DeleteComment(int ID)
         {
             var result = db.Comments.SingleOrDefault(c => c.ID == ID);
+
+            db.Entry(result).State = EntityState.Deleted;
 
             try
             {

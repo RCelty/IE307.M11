@@ -66,6 +66,11 @@ namespace API.Models.DAO
                 ProductID = billDetailDTO.ProductID,
                 BillID = billDetailDTO.BillID
             };
+
+            Product product = db.Products.SingleOrDefault(p => p.ID == billDetail.ProductID);
+            billDetail.Product = product;
+
+            db.Entry(billDetail).State = EntityState.Added;
             try
             {
                 db.BillDetails.Add(billDetail);

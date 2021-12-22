@@ -7,6 +7,7 @@ using System.Web;
 using API.Assets.Contain;
 using API.Models.DTO;
 using API.Models.EF;
+using Microsoft.Web.Administration;
 
 namespace API.Models.DAO
 {
@@ -125,6 +126,8 @@ namespace API.Models.DAO
                     Address = customerDTO.Address,
                     IsAdmin = false
                 };
+                db.Entry(customer).State = EntityState.Added;
+
                 if (string.IsNullOrEmpty(customerDTO.Avatar))
                 {
                     customer.Avatar = "default.jpg";
@@ -135,8 +138,9 @@ namespace API.Models.DAO
                 }
 
                 db.Customers.Add(customer);
-                await db.SaveChangesAsync();
 
+                await db.SaveChangesAsync();    
+                
                 return customer.ID;
             }
             catch (Exception e)
@@ -238,9 +242,29 @@ namespace API.Models.DAO
                 await db.SaveChangesAsync();
                 return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return false;
+                throw e;
+            }
+        }
+
+        public async Task<int> RecycleAppPool()
+        {
+            try
+            {
+                //var yourAppPool = new ServerManager().ApplicationPools["WebAPI"];
+                //if (yourAppPool != null)
+                //{
+                //    yourAppPool.Recycle();
+                //    return 1;
+                //}
+                System.Web.HttpRuntime.UnloadAppDomain();
+                return 1;
+            }
+            catch (Exception e)
+            {
+                return -2;
                 throw e;
             }
         }

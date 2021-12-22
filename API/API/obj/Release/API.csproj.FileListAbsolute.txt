@@ -193,3 +193,10 @@ D:\Git\IE307.M11\API\API\bin\Stripe.net.pdb
 D:\Git\IE307.M11\API\API\bin\Stripe.net.xml
 D:\Git\IE307.M11\API\API\bin\System.Runtime.CompilerServices.Unsafe.xml
 D:\Git\IE307.M11\API\API\bin\System.Threading.Tasks.Extensions.xml
+D:\Git\IE307.M11\API\API\bin\Microsoft.Web.Administration.dll
+D:\Git\IE307.M11\API\API\bin\Microsoft.Win32.Registry.dll
+D:\Git\IE307.M11\API\API\bin\System.Diagnostics.DiagnosticSource.dll
+D:\Git\IE307.M11\API\API\bin\System.Reflection.TypeExtensions.dll
+D:\Git\IE307.M11\API\API\bin\System.Security.Principal.Windows.dll
+D:\Git\IE307.M11\API\API\bin\System.ServiceProcess.ServiceController.dll
+D:\Git\IE307.M11\API\API\bin\System.Diagnostics.DiagnosticSource.xml

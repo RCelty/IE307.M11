@@ -145,5 +145,13 @@ namespace API.Controllers
         {
             return Ok(await CustomerDAO.Instance.ChangeCustomerRole(ID));
         }
+
+        //[Route("Api/CustomerController/RecycleAppPool")]
+        //[AllowAnonymous]
+        //[HttpGet]
+        //public async Task<IHttpActionResult> RecycleAppPool()
+        //{
+        //    return Ok(await CustomerDAO.Instance.RecycleAppPool());
+        //}
     }
 }

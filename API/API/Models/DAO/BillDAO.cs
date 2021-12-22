@@ -49,6 +49,12 @@ namespace API.Models.DAO
                 IsDelete = false,
                 IsCheckOut = false
             };
+
+            Customer customer = db.Customers.SingleOrDefault(c => c.ID == bill.CustomerID);
+            bill.Customer = customer;
+
+            db.Entry(bill).State = EntityState.Added;
+
             try
             {
                 db.Bills.Add(bill);
