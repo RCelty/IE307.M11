@@ -82,7 +82,7 @@ namespace API.Models.DTO
             Comments = product.Comments.Select(c => new CommentDTO(c)).ToList();
             IsDeleted = product.IsDeleted;
             BillDetails = product.BillDetails.Select(b => new BillDetailDTO(b)).ToList();
-            Rating = Comments.Count > 0 ? product.Comments.Average(c => c.Rating) : 0;
+            Rating = Comments.Count > 0 ? Math.Round((double)product.Comments.Average(c => c.Rating), 1) : 0;
             SellCount = BillDetails.Count > 0 ? product.BillDetails.Sum(b => b.TotalCount) : 0;
         }
     }

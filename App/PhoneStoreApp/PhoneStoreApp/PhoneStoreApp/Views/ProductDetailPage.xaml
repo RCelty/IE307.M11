@@ -33,7 +33,7 @@
 
                     </Grid>
                 </Frame>
-                <ScrollView >
+                <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                     <StackLayout Orientation="Vertical" Margin="20">
                         <CarouselView x:Name="CarouselViewer"
                                             ItemsSource="{Binding ListImage}" 
@@ -108,19 +108,24 @@
                         </StackLayout>
                         <BoxView HeightRequest="0.1" Color="Gray" Margin="0,0,0,10"></BoxView>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Đánh Giá" FontSize="Medium" FontAttributes="Bold" TextColor="Black"></Label>
-                            <Label Text="{Binding Product.CommentCount}" FontSize="Medium" FontAttributes="Bold" TextColor="Black"></Label>
-                            <ImageButton BackgroundColor="Transparent" Margin="220,0,0,0" >
-                                <ImageButton.Source>
-                                    <FontImageSource
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                                <Label Text="Đánh Giá" FontSize="Medium" FontAttributes="Bold" TextColor="Black"></Label>
+                                <Label Text="{Binding Product.CommentCount}" FontSize="Medium" FontAttributes="Bold" TextColor="Black"></Label>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                <ImageButton BackgroundColor="Transparent">
+                                    <ImageButton.Source>
+                                        <FontImageSource
                                 Size="17"
                                 Color="#FFFFC120"
                                  FontFamily="faS" 
                                 Glyph="&#xf005;">
-                                    </FontImageSource>
-                                </ImageButton.Source>
-                            </ImageButton>
-                            <Label Text="{Binding Product.Rating}"  Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold" TextColor="Black" ></Label>
+                                        </FontImageSource>
+                                    </ImageButton.Source>
+                                </ImageButton>
+                                <Label Text="{Binding Product.Rating}"  Margin="0,0,0,0" FontSize="Medium" FontAttributes="Bold" TextColor="Black" ></Label>
+                            </StackLayout>
 
                         </StackLayout>
                         <Label Text="Chưa có đánh giá nào cho sản phẩm này" Padding="10,0,10,0" IsVisible="{ Binding ListComment, Converter={x:StaticResource ConvertCountCommentToBooleanLabel}}" HorizontalTextAlignment="Center" Margin="0,0,0,0" TextColor="Blue" FontSize="14"></Label>

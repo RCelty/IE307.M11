@@ -51,8 +51,10 @@ namespace API.Models.DAO
 
             Customer customer = db.Customers.SingleOrDefault(c => c.ID == comment.CustomerID);
             comment.Customer = customer;
+
             //Product product = db.Products.SingleOrDefault(p => p.ID == comment.ProductID);
-            //product.Comments.Add(comment);
+            //db.Entry(product).State = EntityState.Modified;
+            //product.Comments.Add(comment);            
 
             db.Entry(comment).State = EntityState.Added;
 
