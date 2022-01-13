@@ -139,7 +139,7 @@ namespace PhoneStoreApp.ViewModels
             string action = await App.Current.MainPage.DisplayActionSheet("Bạn muốn thanh toán bằng?", "Hủy", null, "Thanh toán online", "Tiền mặt");
 
             if (action == "Thanh toán online")
-                await App.Current.MainPage.Navigation.PushAsync(new StripePaymentPage(TotalPrice));
+                await App.Current.MainPage.Navigation.PushAsync(new StripePaymentPage(TotalPrice, CartProducts));
             if (action == "Tiền mặt")
             {
                 //IsBusy = true;

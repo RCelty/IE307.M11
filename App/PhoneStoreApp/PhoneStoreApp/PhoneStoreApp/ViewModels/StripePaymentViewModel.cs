@@ -48,17 +48,18 @@ namespace PhoneStoreApp.ViewModels
         }
         public Command GoBackOnClick { get; set; }
         public Command PayCommand { get; set; }
-        public StripePaymentViewModel(int price)
+        public StripePaymentViewModel(int price, ObservableCollection<CartItem> cartItems)
         {
             GoBackOnClick = new Command(GoBackOnClickExcute, () => true);
             PayCommand = new Command(PayCommandExcute, () => !IsBusy);
             TotalPrice = price;
+            CartProducts = cartItems;
             LoadData();
         }
         async public void LoadData()
         {
             Customer = await LoginServices.Instance.GetCustomerByID(Const.CurrentCustomerID);
-            CartProducts = new ObservableCollection<CartItem>(await CartService.Instance.GetAllCart());
+            //CartProducts = new ObservableCollection<CartItem>(await CartService.Instance.GetAllCart());            
         }
         private async void GoBackOnClickExcute()
         {
